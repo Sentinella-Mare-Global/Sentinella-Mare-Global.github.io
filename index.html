@@ -816,6 +816,239 @@
     content: ''; width: 6px; height: 6px; border-radius: 50%;
     background: var(--green-glow); animation: blink 1.5s infinite;
   }
+
+  /* ── MOBILE RESPONSIVE STYLES ── */
+  @media (max-width: 1024px) {
+    /* Tablet adjustments */
+    nav { padding: 14px 32px; }
+    .nav-links { gap: 20px; }
+    .nav-links a { font-size: 11px; letter-spacing: 1.5px; }
+
+    .hero { padding: 100px 32px 60px; }
+    .radar-wrap { width: 350px; height: 350px; right: 3%; }
+    .radar-ring:nth-child(1) { width: 70px; height: 70px; }
+    .radar-ring:nth-child(2) { width: 140px; height: 140px; }
+    .radar-ring:nth-child(3) { width: 210px; height: 210px; }
+    .radar-ring:nth-child(4) { width: 280px; height: 280px; }
+    .radar-ring:nth-child(5) { width: 350px; height: 350px; }
+    .radar-cross { width: 350px; height: 350px; }
+    .radar-sweep { width: 175px; }
+
+    section { padding: 80px 32px; }
+    .feature-grid { grid-template-columns: 1fr; gap: 40px; }
+    .platform-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  }
+
+  @media (max-width: 768px) {
+    /* Mobile navigation */
+    nav {
+      padding: 12px 20px;
+      flex-wrap: wrap;
+    }
+    .nav-brand .n1 { font-size: 16px; letter-spacing: 2px; }
+    .nav-brand .n2 { font-size: 8px; letter-spacing: 3px; }
+    .nav-logo img { height: 40px; }
+    .nav-links {
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .nav-links a {
+      font-size: 10px;
+      letter-spacing: 1px;
+      padding: 6px 0;
+    }
+    .btn-nav {
+      padding: 6px 14px !important;
+      letter-spacing: 1px !important;
+    }
+
+    /* Mobile hero */
+    .hero {
+      padding: 100px 20px 60px;
+      flex-direction: column;
+      text-align: center;
+    }
+    .hero-content {
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .hero-tag {
+      font-size: 10px;
+      letter-spacing: 2px;
+    }
+    .hero-tag::before { width: 20px; }
+    h1 {
+      font-size: clamp(28px, 8vw, 48px);
+      margin-bottom: 20px;
+    }
+    .hero-desc {
+      font-size: 16px;
+      max-width: 100%;
+      margin-bottom: 32px;
+    }
+    .hero-ctas {
+      justify-content: center;
+      width: 100%;
+    }
+    .radar-wrap {
+      position: relative;
+      right: auto;
+      top: auto;
+      transform: none;
+      width: 280px;
+      height: 280px;
+      margin: 40px auto 0;
+    }
+    .radar-ring:nth-child(1) { width: 56px; height: 56px; }
+    .radar-ring:nth-child(2) { width: 112px; height: 112px; }
+    .radar-ring:nth-child(3) { width: 168px; height: 168px; }
+    .radar-ring:nth-child(4) { width: 224px; height: 224px; }
+    .radar-ring:nth-child(5) { width: 280px; height: 280px; }
+    .radar-cross { width: 280px; height: 280px; }
+    .radar-sweep { width: 140px; }
+
+    /* Mobile sections */
+    section { padding: 60px 20px; }
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+    .section-lead {
+      font-size: 18px;
+      max-width: 100%;
+    }
+
+    /* Mobile buttons */
+    .btn-primary {
+      padding: 12px 28px;
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+    .btn-secondary {
+      padding: 12px 28px;
+      font-size: 12px;
+    }
+
+    /* Mobile cards */
+    .service-card {
+      padding: 28px;
+    }
+    .service-icon {
+      width: 44px;
+      height: 44px;
+    }
+
+    /* Mobile stats */
+    .stat-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    /* Mobile dashboard preview */
+    .dash-header {
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .dash-grid {
+      grid-template-columns: 1fr;
+    }
+
+    /* Mobile lists */
+    .check-list li {
+      font-size: 15px;
+    }
+
+    /* Mobile CTA section */
+    .cta-flex {
+      flex-direction: column;
+      text-align: center;
+      gap: 24px;
+    }
+    .cta-actions {
+      justify-content: center;
+    }
+
+    /* Mobile footer */
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .footer-bottom {
+      flex-direction: column;
+      gap: 12px;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    /* Small mobile adjustments */
+    .nav-links { display: none; }
+    .mobile-menu-btn {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 8px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .mobile-menu-btn span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--green-mid);
+      transition: all 0.3s;
+    }
+
+    h1 { font-size: 32px; }
+    .hero-desc { font-size: 15px; }
+
+    .radar-wrap {
+      width: 220px;
+      height: 220px;
+    }
+    .radar-ring:nth-child(1) { width: 44px; height: 44px; }
+    .radar-ring:nth-child(2) { width: 88px; height: 88px; }
+    .radar-ring:nth-child(3) { width: 132px; height: 132px; }
+    .radar-ring:nth-child(4) { width: 176px; height: 176px; }
+    .radar-ring:nth-child(5) { width: 220px; height: 220px; }
+    .radar-cross { width: 220px; height: 220px; }
+    .radar-sweep { width: 110px; }
+
+    .btn-primary, .btn-secondary {
+      width: 100%;
+      text-align: center;
+    }
+
+    .pricing-card { padding: 28px 20px; }
+  }
+
+  /* Mobile menu when active */
+  .nav-links.mobile-active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(8,19,30,0.98);
+    padding: 20px;
+    border-bottom: 1px solid rgba(45,122,58,0.3);
+    gap: 16px;
+  }
+  .nav-links.mobile-active a {
+    font-size: 14px;
+    text-align: center;
+    padding: 12px;
+  }
 </style>
 </head>
 <body>
@@ -829,7 +1062,7 @@
       <span class="n2">Mediterranean Intelligence</span>
     </div>
   </a>
-  <div class="nav-links">
+  <div class="nav-links" id="navLinks">
     <a href="#services">Services</a>
     <a href="#platform">Live Platform</a>
     <a href="#advisory">Advisory</a>
@@ -837,6 +1070,11 @@
     <a href="#clients">Clients</a>
     <a href="#contact" class="btn-nav">Request Access</a>
   </div>
+  <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -1317,6 +1555,30 @@
     <div class="clearance">PLATFORM LIVE · FEEDS NOMINAL · 36 STATES MONITORED</div>
   </div>
 </footer>
+
+<script>
+  // Mobile menu toggle
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const navLinks = document.getElementById('navLinks');
+
+  mobileMenuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('mobile-active');
+  });
+
+  // Close mobile menu when clicking a link
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('mobile-active');
+    });
+  });
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('nav')) {
+      navLinks.classList.remove('mobile-active');
+    }
+  });
+</script>
 
 </body>
 </html>
