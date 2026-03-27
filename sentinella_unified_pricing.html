@@ -1,0 +1,324 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);color:var(--color-text-primary)}
+.wrap{padding:1rem 0}
+.tier-grid{display:grid;grid-template-columns:200px repeat(3,1fr);gap:0;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden;margin-bottom:1.5rem}
+.cell{padding:12px 14px;font-size:13px;border-bottom:0.5px solid var(--color-border-tertiary);border-right:0.5px solid var(--color-border-tertiary);display:flex;align-items:center;gap:6px}
+.cell:last-child{border-right:none}
+.row:last-child .cell{border-bottom:none}
+.row{display:contents}
+.hdr{background:var(--color-background-secondary);font-size:12px;font-weight:500;color:var(--color-text-secondary);letter-spacing:.02em;text-transform:uppercase;padding:8px 14px;border-bottom:0.5px solid var(--color-border-tertiary);border-right:0.5px solid var(--color-border-tertiary)}
+.hdr:last-child{border-right:none}
+.tier-name{font-size:15px;font-weight:500}
+.price{font-size:20px;font-weight:500;color:var(--color-text-primary)}
+.price-sub{font-size:12px;color:var(--color-text-secondary);margin-top:2px}
+.check{color:#3B6D11;font-size:13px}
+.dash{color:var(--color-text-secondary);font-size:13px}
+.featured{border-top:2px solid #185FA5}
+.featured .tier-name{color:#185FA5}
+.badge{font-size:10px;background:#E6F1FB;color:#185FA5;padding:2px 6px;border-radius:4px;font-weight:500}
+.section-label{font-size:11px;font-weight:500;color:var(--color-text-secondary);letter-spacing:.05em;text-transform:uppercase;grid-column:1/-1;background:var(--color-background-secondary);padding:6px 14px;border-bottom:0.5px solid var(--color-border-tertiary)}
+.label-cell{font-size:13px;color:var(--color-text-secondary);background:var(--color-background-primary)}
+.addon-section{margin-top:1.5rem}
+.addon-title{font-size:15px;font-weight:500;margin-bottom:8px}
+.addon-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:8px;margin-bottom:1rem}
+.addon-card{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:10px 12px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:background .1s}
+.addon-card:hover{background:var(--color-background-secondary)}
+.addon-card.active{background:#E6F1FB;border-color:#185FA5}
+.addon-card.active .add-price{color:#185FA5}
+.addon-label{font-size:13px;flex:1}
+.addon-sub{font-size:11px;color:var(--color-text-secondary);margin-top:2px}
+.add-price{font-size:13px;font-weight:500;color:var(--color-text-secondary);white-space:nowrap}
+.toggle{width:36px;height:20px;background:var(--color-border-tertiary);border-radius:10px;position:relative;transition:background .15s;flex-shrink:0}
+.addon-card.active .toggle{background:#185FA5}
+.toggle::after{content:'';position:absolute;width:14px;height:14px;background:#fff;border-radius:50%;top:3px;left:3px;transition:left .15s}
+.addon-card.active .toggle::after{left:19px}
+.total-bar{background:var(--color-background-secondary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:14px 16px;display:flex;justify-content:space-between;align-items:center;margin-top:1rem}
+.total-label{font-size:13px;color:var(--color-text-secondary)}
+.total-price{font-size:22px;font-weight:500}
+.total-sub{font-size:12px;color:var(--color-text-secondary);margin-top:2px}
+.tier-btn{font-size:12px;padding:4px 10px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:transparent;cursor:pointer;color:var(--color-text-secondary)}
+.tier-btn.selected{background:#185FA5;color:#fff;border-color:#185FA5}
+.tier-selector{display:flex;gap:6px;margin-bottom:1rem;align-items:center}
+.tier-selector-label{font-size:12px;color:var(--color-text-secondary);margin-right:4px}
+.seg-tabs{display:flex;gap:6px;margin-bottom:1.5rem}
+.seg-tab{font-size:12px;padding:5px 12px;border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);cursor:pointer;background:var(--color-background-primary);color:var(--color-text-secondary)}
+.seg-tab.active{background:var(--color-background-secondary);color:var(--color-text-primary);border-color:var(--color-border-secondary);font-weight:500}
+.insight{background:var(--color-background-secondary);border-left:3px solid #185FA5;border-radius:0 var(--border-radius-md) var(--border-radius-md) 0;padding:10px 14px;font-size:13px;color:var(--color-text-secondary);margin-bottom:1.5rem;line-height:1.5}
+.insight strong{color:var(--color-text-primary);font-weight:500}
+</style>
+
+<div class="wrap">
+
+<div class="seg-tabs" id="segTabs">
+  <button class="seg-tab active" data-seg="all">All segments</button>
+  <button class="seg-tab" data-seg="port">Port operator</button>
+  <button class="seg-tab" data-seg="fleet">Fleet / logistics</button>
+  <button class="seg-tab" data-seg="subsea">Subsea cable</button>
+</div>
+
+<div class="insight" id="segInsight">
+  <strong>Research finding:</strong> All three segments share 80% of the same core needs — AIS vessel monitoring, geopolitical threat feeds, cyber signals, and predictive alerting. Only asset type (ports vs vessels vs cable routes) and 2–3 domain-specific features differ. A unified base platform with add-on modules is the optimal structure.
+</div>
+
+<div class="tier-grid">
+  <div class="hdr"></div>
+  <div class="hdr">Exposure</div>
+  <div class="hdr" style="border-top:2px solid #185FA5">Sentinel <span class="badge" style="margin-left:4px">Popular</span></div>
+  <div class="hdr">Command</div>
+
+  <div class="section-label">Pricing</div>
+
+  <div class="cell label-cell">Monthly price</div>
+  <div class="cell">€1,200/mo</div>
+  <div class="cell featured">€2,800/mo</div>
+  <div class="cell">€6,500/mo</div>
+
+  <div class="cell label-cell">Annual cost</div>
+  <div class="cell">~€14,400</div>
+  <div class="cell featured">~€33,600</div>
+  <div class="cell">~€78,000</div>
+
+  <div class="cell label-cell">Asset coverage</div>
+  <div class="cell">Up to 5 assets</div>
+  <div class="cell featured">Up to 25 assets</div>
+  <div class="cell">Unlimited</div>
+
+  <div class="section-label">Core features — all plans</div>
+
+  <div class="cell label-cell">Live MHTES dashboard</div>
+  <div class="cell"><span class="check">✓</span></div>
+  <div class="cell featured"><span class="check">✓</span></div>
+  <div class="cell"><span class="check">✓</span></div>
+
+  <div class="cell label-cell">AIS & grey fleet signals</div>
+  <div class="cell"><span class="check">✓</span></div>
+  <div class="cell featured"><span class="check">✓</span></div>
+  <div class="cell"><span class="check">✓</span></div>
+
+  <div class="cell label-cell">72-hr predictive window</div>
+  <div class="cell"><span class="check">✓</span></div>
+  <div class="cell featured"><span class="check">✓</span></div>
+  <div class="cell"><span class="check">✓</span></div>
+
+  <div class="cell label-cell">Weekly briefing digest</div>
+  <div class="cell"><span class="check">✓</span></div>
+  <div class="cell featured"><span class="check">✓</span></div>
+  <div class="cell"><span class="check">✓</span></div>
+
+  <div class="cell label-cell">Port & fleet monitoring</div>
+  <div class="cell"><span class="check">✓</span></div>
+  <div class="cell featured"><span class="check">✓</span></div>
+  <div class="cell"><span class="check">✓</span></div>
+
+  <div class="section-label">Intelligence features — Sentinel & Command</div>
+
+  <div class="cell label-cell">Geopolitical & disinfo feeds</div>
+  <div class="cell"><span class="dash">—</span></div>
+  <div class="cell featured"><span class="check">✓</span></div>
+  <div class="cell"><span class="check">✓</span></div>
+
+  <div class="cell label-cell">Cyber vulnerability signals</div>
+  <div class="cell"><span class="dash">—</span></div>
+  <div class="cell featured"><span class="check">✓</span></div>
+  <div class="cell"><span class="check">✓</span></div>
+
+  <div class="cell label-cell">GPS/AIS spoofing detection</div>
+  <div class="cell"><span class="dash">—</span></div>
+  <div class="cell featured"><span class="check">✓</span></div>
+  <div class="cell"><span class="check">✓</span></div>
+
+  <div class="cell label-cell">Real-time exposure alerts</div>
+  <div class="cell"><span class="dash">—</span></div>
+  <div class="cell featured"><span class="check">✓</span></div>
+  <div class="cell"><span class="check">✓</span></div>
+
+  <div class="cell label-cell">Predictive threat modeling</div>
+  <div class="cell"><span class="dash">—</span></div>
+  <div class="cell featured"><span class="check">✓</span></div>
+  <div class="cell"><span class="check">✓</span></div>
+
+  <div class="section-label">Enterprise features — Command only</div>
+
+  <div class="cell label-cell">Scenario & sabotage modeling</div>
+  <div class="cell"><span class="dash">—</span></div>
+  <div class="cell featured"><span class="dash">—</span></div>
+  <div class="cell"><span class="check">✓</span></div>
+
+  <div class="cell label-cell">Custom intelligence reports</div>
+  <div class="cell"><span class="dash">—</span></div>
+  <div class="cell featured"><span class="dash">—</span></div>
+  <div class="cell"><span class="check">✓</span></div>
+
+  <div class="cell label-cell">API access & data export</div>
+  <div class="cell"><span class="dash">—</span></div>
+  <div class="cell featured"><span class="dash">—</span></div>
+  <div class="cell"><span class="check">✓</span></div>
+
+  <div class="cell label-cell">Dedicated analyst support</div>
+  <div class="cell"><span class="dash">—</span></div>
+  <div class="cell featured"><span class="dash">—</span></div>
+  <div class="cell"><span class="check">✓</span></div>
+</div>
+
+<div class="addon-section">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+    <div class="addon-title">Add-on modules</div>
+    <div class="tier-selector">
+      <span class="tier-selector-label">Calculating for:</span>
+      <button class="tier-btn selected" data-tier="exposure" onclick="setTier('exposure')">Exposure</button>
+      <button class="tier-btn" data-tier="sentinel" onclick="setTier('sentinel')">Sentinel</button>
+      <button class="tier-btn" data-tier="command" onclick="setTier('command')">Command</button>
+    </div>
+  </div>
+
+  <div class="addon-grid" id="addonGrid">
+    <div class="addon-card" data-price="150" data-key="port" onclick="toggleAddon(this)">
+      <div style="flex:1">
+        <div class="addon-label">Port module</div>
+        <div class="addon-sub">Approach scoring, ISPS compliance reporting, vessel density at berth</div>
+      </div>
+      <div class="add-price">+€150/mo</div>
+      <div class="toggle"></div>
+    </div>
+    <div class="addon-card" data-price="150" data-key="fleet" onclick="toggleAddon(this)">
+      <div style="flex:1">
+        <div class="addon-label">Fleet module</div>
+        <div class="addon-sub">Per-vessel tracking, route chokepoint alerts, strategic value scoring</div>
+      </div>
+      <div class="add-price">+€150/mo</div>
+      <div class="toggle"></div>
+    </div>
+    <div class="addon-card" data-price="250" data-key="subsea" onclick="toggleAddon(this)">
+      <div style="flex:1">
+        <div class="addon-label">Subsea cable module</div>
+        <div class="addon-sub">Anchoring & drag risk, vessel density on cable routes, sabotage scenario modeling</div>
+      </div>
+      <div class="add-price">+€250/mo</div>
+      <div class="toggle"></div>
+    </div>
+    <div class="addon-card" data-price="200" data-key="alerts" onclick="toggleAddon(this)">
+      <div style="flex:1">
+        <div class="addon-label">Real-time push alerts</div>
+        <div class="addon-sub">SMS, email & webhook alerts as events happen</div>
+      </div>
+      <div class="add-price">+€200/mo</div>
+      <div class="toggle"></div>
+    </div>
+    <div class="addon-card" data-price="250" data-key="geo" onclick="toggleAddon(this)">
+      <div style="flex:1">
+        <div class="addon-label">Geopolitical & disinfo feeds</div>
+        <div class="addon-sub">Shadow fleet intelligence, hybrid threat signals (add to Exposure tier)</div>
+      </div>
+      <div class="add-price">+€250/mo</div>
+      <div class="toggle"></div>
+    </div>
+    <div class="addon-card" data-price="250" data-key="cyber" onclick="toggleAddon(this)">
+      <div style="flex:1">
+        <div class="addon-label">Cyber vulnerability signals</div>
+        <div class="addon-sub">OT/IT exposure scoring, port & vessel network alerts</div>
+      </div>
+      <div class="add-price">+€250/mo</div>
+      <div class="toggle"></div>
+    </div>
+    <div class="addon-card" data-price="400" data-key="reports" onclick="toggleAddon(this)">
+      <div style="flex:1">
+        <div class="addon-label">Custom intelligence reports</div>
+        <div class="addon-sub">Monthly bespoke analyst-written threat assessments</div>
+      </div>
+      <div class="add-price">+€400/mo</div>
+      <div class="toggle"></div>
+    </div>
+    <div class="addon-card" data-price="500" data-key="api" onclick="toggleAddon(this)">
+      <div style="flex:1">
+        <div class="addon-label">API access & data export</div>
+        <div class="addon-sub">Full data export, REST/GraphQL access, 3rd-party integrations</div>
+      </div>
+      <div class="add-price">+€500/mo</div>
+      <div class="toggle"></div>
+    </div>
+    <div class="addon-card" data-price="700" data-key="analyst" onclick="toggleAddon(this)">
+      <div style="flex:1">
+        <div class="addon-label">Dedicated analyst support</div>
+        <div class="addon-sub">Named analyst, 4 monthly sessions, priority escalation line</div>
+      </div>
+      <div class="add-price">+€700/mo</div>
+      <div class="toggle"></div>
+    </div>
+    <div class="addon-card" data-price="80" data-key="assets" onclick="toggleAddon(this)">
+      <div style="flex:1">
+        <div class="addon-label">Extra assets (+10)</div>
+        <div class="addon-sub">Add 10 more ports, vessels, or cable routes to any tier</div>
+      </div>
+      <div class="add-price">+€80/mo</div>
+      <div class="toggle"></div>
+    </div>
+  </div>
+
+  <div class="total-bar">
+    <div>
+      <div class="total-label">Estimated monthly total</div>
+      <div class="total-sub" id="totalSub">Base Exposure plan · 0 add-ons selected</div>
+    </div>
+    <div style="text-align:right">
+      <div class="total-price" id="totalPrice">€1,200/mo</div>
+      <div class="total-sub" id="totalAnnual">~€14,400/yr</div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<script>
+const basePrices = {exposure:1200, sentinel:2800, command:6500};
+let currentTier = 'exposure';
+let addons = {};
+
+const segInsights = {
+  all: '<strong>Research finding:</strong> All three segments share 80% of the same core needs — AIS vessel monitoring, geopolitical threat feeds, cyber signals, and predictive alerting. Only asset type (ports vs vessels vs cable routes) and 2–3 domain-specific features differ. A unified base platform with add-on modules is the optimal structure.',
+  port: '<strong>Port operators need:</strong> Vessel approach risk scoring, cyber resilience (ports are the #2 most-attacked sector in Europe), ISPS/NIS2 compliance tools, and geopolitical awareness. The Crowdstrike 2024 outage showed how a single software gap shut down ports globally. Real-time alerts and cyber signals are their top add-ons.',
+  fleet: '<strong>Ferry & logistics fleets need:</strong> Per-vessel GPS/AIS spoofing detection (23,400 malware detections on vessels in H1 2024), route chokepoint intelligence, and cyber OT protection. 71% of shipping executives rank cybersecurity as their #1 business risk. GPS spoofing alone disrupts schedules and incurs rerouting costs averaging $M per incident.',
+  subsea: '<strong>Subsea cable operators need:</strong> Anchoring & drag risk monitoring (11 Baltic cables damaged since Oct 2023 by shadow fleet vessels dragging anchors), vessel density pressure along routes, and hybrid sabotage scenario modeling. The EU\'s 2025 Action Plan on Cable Security and NATO\'s Baltic Sentry operation confirm this is the fastest-growing segment for maritime intelligence.'
+};
+
+document.querySelectorAll('.seg-tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.seg-tab').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('segInsight').innerHTML = segInsights[btn.dataset.seg];
+  });
+});
+
+function setTier(tier) {
+  currentTier = tier;
+  document.querySelectorAll('.tier-btn').forEach(b => {
+    b.classList.toggle('selected', b.dataset.tier === tier);
+  });
+  updateTotal();
+}
+
+function toggleAddon(card) {
+  const key = card.dataset.key;
+  const price = parseInt(card.dataset.price);
+  if(addons[key]) {
+    delete addons[key];
+    card.classList.remove('active');
+  } else {
+    addons[key] = price;
+    card.classList.add('active');
+  }
+  updateTotal();
+}
+
+function updateTotal() {
+  const base = basePrices[currentTier];
+  const addonTotal = Object.values(addons).reduce((a,b) => a+b, 0);
+  const total = base + addonTotal;
+  const count = Object.keys(addons).length;
+  document.getElementById('totalPrice').textContent = '€' + total.toLocaleString() + '/mo';
+  document.getElementById('totalAnnual').textContent = '~€' + (total * 12).toLocaleString() + '/yr';
+  const tierLabel = currentTier.charAt(0).toUpperCase() + currentTier.slice(1);
+  document.getElementById('totalSub').textContent = 'Base ' + tierLabel + ' plan · ' + count + ' add-on' + (count !== 1 ? 's' : '') + ' selected';
+}
+</script>

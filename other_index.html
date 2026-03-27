@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
   :root {
-    --navy: #060f18;
+    --navy: #08131e;
     --navy-2: #0d1b2a;
     --navy-3: #112336;
     --navy-4: #1a3450;
@@ -16,8 +16,8 @@
     --green-glow: #4fd962;
     --green-dim: #1d5228;
     --gold: #c9a84c;
-    --text: #f0f5fc;
-    --text-dim: #c8d8ec;
+    --text: #b8ccdf;
+    --text-dim: #5a7a99;
     --white: #eef3f8;
   }
 
@@ -28,8 +28,6 @@
     background: var(--navy);
     color: var(--text);
     font-family: 'Rajdhani', sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
     overflow-x: hidden;
   }
 
@@ -55,7 +53,7 @@
   }
   .nav-links { display: flex; align-items: center; gap: 32px; }
   .nav-links a {
-    color: var(--text); text-decoration: none;
+    color: var(--text-dim); text-decoration: none;
     font-size: 12px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
     transition: color 0.25s;
   }
@@ -184,8 +182,8 @@
   }
   h1 span { color: var(--green-mid); }
   .hero-desc {
-    font-size: 19px; font-weight: 400; line-height: 1.85;
-    color: var(--text); max-width: 540px;
+    font-size: 18px; font-weight: 400; line-height: 1.7;
+    color: var(--text-dim); max-width: 540px;
     margin-bottom: 44px;
   }
   .hero-ctas { display: flex; gap: 18px; flex-wrap: wrap; }
@@ -228,7 +226,7 @@
     display: flex; align-items: center; gap: 10px;
     font-family: 'Share Tech Mono', monospace;
     font-size: 11px; letter-spacing: 1.5px;
-    color: var(--text); white-space: nowrap;
+    color: var(--text-dim); white-space: nowrap;
   }
   .live-dot {
     width: 7px; height: 7px; border-radius: 50%;
@@ -245,7 +243,7 @@
   .live-sep { color: rgba(45,122,58,0.3); }
 
   /* ── SECTION SHARED ── */
-  section { padding: 60px 64px; }
+  section { padding: 100px 64px; }
   .section-label {
     display: inline-flex; align-items: center; gap: 10px;
     font-family: 'Share Tech Mono', monospace;
@@ -264,7 +262,7 @@
   h2 span { color: var(--green-mid); }
   .section-lead {
     font-size: 17px; line-height: 1.75;
-    color: var(--text); max-width: 620px;
+    color: var(--text-dim); max-width: 620px;
     margin-bottom: 60px;
   }
 
@@ -333,14 +331,14 @@
   .svc-tagline.gold { color: var(--gold); }
   .svc-desc {
     font-size: 16px; line-height: 1.75;
-    color: var(--text); margin-bottom: 36px;
+    color: var(--text-dim); margin-bottom: 36px;
   }
   .svc-features { list-style: none; margin-bottom: 40px; }
   .svc-features li {
     display: flex; align-items: flex-start; gap: 12px;
-    font-size: 14px; font-weight: 500; letter-spacing: 0.5px; line-height: 1.6;
-    color: var(--text); padding: 3px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    font-size: 14px; font-weight: 500; letter-spacing: 0.5px;
+    color: var(--text); padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
   }
   .svc-features li::before {
     content: '▸'; color: var(--green-mid);
@@ -559,24 +557,15 @@
   }
   .why-card {
     background: var(--navy-3);
-    padding: 28px 28px;
+    padding: 40px 36px;
     position: relative; overflow: hidden;
     transition: background 0.3s;
-    display: flex; flex-direction: column; align-items: center;
-    text-align: center;
   }
   .why-card:hover { background: var(--navy-4); }
   .why-num {
-    width: 56px; height: 56px;
-    border-radius: 50%;
-    background: rgba(45,122,58,0.15);
-    border: 1px solid rgba(79,217,98,0.25);
-    display: flex; align-items: center; justify-content: center;
-    font-family: 'Cinzel', serif;
-    font-size: 22px; font-weight: 700;
-    color: var(--green-glow);
-    margin-bottom: 24px;
-    box-shadow: 0 0 18px rgba(79,217,98,0.1);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px; letter-spacing: 3px; color: var(--green-dim);
+    margin-bottom: 20px;
   }
   .why-title {
     font-family: 'Cinzel', serif;
@@ -586,7 +575,7 @@
   }
   .why-text {
     font-size: 14px; line-height: 1.75;
-    color: var(--text);
+    color: var(--text-dim);
   }
 
   /* ── PRICING ── */
@@ -634,14 +623,14 @@
   .price-period {
     font-family: 'Share Tech Mono', monospace;
     font-size: 11px; letter-spacing: 2px;
-    color: var(--text); margin-bottom: 32px;
+    color: var(--text-dim); margin-bottom: 32px;
   }
   .price-features { list-style: none; margin-bottom: 36px; }
   .price-features li {
-    display: flex; align-items: flex-start; gap: 10px;
-    font-size: 14px; font-weight: 500; letter-spacing: 0.5px; line-height: 1.6;
+    display: flex; align-items: center; gap: 10px;
+    font-size: 13px; font-weight: 500; letter-spacing: 0.5px;
     color: var(--text); padding: 9px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
   }
   .price-features li::before {
     content: '✓'; color: var(--green-mid);
@@ -676,7 +665,7 @@
   .adv-list li {
     display: flex; align-items: flex-start; gap: 20px;
     padding: 22px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
   }
   .adv-icon {
     flex-shrink: 0; width: 44px; height: 44px;
@@ -693,7 +682,7 @@
   }
   .adv-content p {
     font-size: 14px; line-height: 1.65;
-    color: var(--text);
+    color: var(--text-dim);
   }
   .adv-right {
     background: var(--navy-3);
@@ -713,14 +702,14 @@
   }
   .adv-right p {
     font-size: 15px; line-height: 1.75;
-    color: var(--text); margin-bottom: 24px;
+    color: var(--text-dim); margin-bottom: 24px;
   }
   .engagement-types { list-style: none; }
   .engagement-types li {
     display: flex; align-items: center; gap: 12px;
     font-size: 14px; font-weight: 500; letter-spacing: 0.5px;
     color: var(--text); padding: 10px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.07);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
   }
   .engagement-types li::before {
     content: '▸'; color: var(--gold); font-size: 12px;
@@ -738,7 +727,7 @@
     padding: 18px 28px;
     font-family: 'Share Tech Mono', monospace;
     font-size: 11px; letter-spacing: 3px;
-    color: var(--text); text-transform: uppercase;
+    color: var(--text-dim); text-transform: uppercase;
     transition: all 0.3s; cursor: default; flex: 1;
     text-align: center; min-width: 180px;
   }
@@ -769,7 +758,7 @@
     color: var(--white);
   }
   .cta-text p {
-    font-size: 16px; color: var(--text);
+    font-size: 16px; color: var(--text-dim);
     max-width: 500px; line-height: 1.7;
   }
   .cta-actions { display: flex; gap: 16px; flex-shrink: 0; flex-wrap: wrap; }
@@ -787,7 +776,7 @@
   .footer-brand { display: flex; flex-direction: column; gap: 16px; }
   .footer-brand img { height: 56px; width: fit-content; }
   .footer-brand p {
-    font-size: 13px; line-height: 1.7; color: var(--text);
+    font-size: 13px; line-height: 1.7; color: var(--text-dim);
     max-width: 280px;
   }
   .footer-brand .hq {
@@ -803,7 +792,7 @@
   }
   .footer-col a, .footer-col p {
     display: block; font-size: 13px;
-    color: var(--text); text-decoration: none;
+    color: var(--text-dim); text-decoration: none;
     margin-bottom: 10px; letter-spacing: 0.5px;
     transition: color 0.25s;
   }
@@ -811,21 +800,254 @@
   .footer-bottom {
     display: flex; align-items: center; justify-content: space-between;
     padding-top: 28px;
-    border-top: 1px solid rgba(255,255,255,0.07);
+    border-top: 1px solid rgba(255,255,255,0.05);
   }
   .footer-bottom p {
     font-family: 'Share Tech Mono', monospace;
     font-size: 9px; letter-spacing: 2px;
-    color: var(--text); text-transform: uppercase;
+    color: var(--text-dim); text-transform: uppercase;
   }
   .footer-bottom .clearance {
     display: flex; align-items: center; gap: 8px;
     font-family: 'Share Tech Mono', monospace;
-    font-size: 9px; letter-spacing: 2px; color: var(--text);
+    font-size: 9px; letter-spacing: 2px; color: var(--text-dim);
   }
   .footer-bottom .clearance::before {
     content: ''; width: 6px; height: 6px; border-radius: 50%;
     background: var(--green-glow); animation: blink 1.5s infinite;
+  }
+
+  /* ── MOBILE RESPONSIVE STYLES ── */
+  @media (max-width: 1024px) {
+    /* Tablet adjustments */
+    nav { padding: 14px 32px; }
+    .nav-links { gap: 20px; }
+    .nav-links a { font-size: 11px; letter-spacing: 1.5px; }
+
+    .hero { padding: 100px 32px 60px; }
+    .radar-wrap { width: 350px; height: 350px; right: 3%; }
+    .radar-ring:nth-child(1) { width: 70px; height: 70px; }
+    .radar-ring:nth-child(2) { width: 140px; height: 140px; }
+    .radar-ring:nth-child(3) { width: 210px; height: 210px; }
+    .radar-ring:nth-child(4) { width: 280px; height: 280px; }
+    .radar-ring:nth-child(5) { width: 350px; height: 350px; }
+    .radar-cross { width: 350px; height: 350px; }
+    .radar-sweep { width: 175px; }
+
+    section { padding: 80px 32px; }
+    .feature-grid { grid-template-columns: 1fr; gap: 40px; }
+    .platform-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+  }
+
+  @media (max-width: 768px) {
+    /* Mobile navigation */
+    nav {
+      padding: 12px 20px;
+      flex-wrap: wrap;
+    }
+    .nav-brand .n1 { font-size: 16px; letter-spacing: 2px; }
+    .nav-brand .n2 { font-size: 8px; letter-spacing: 3px; }
+    .nav-logo img { height: 40px; }
+    .nav-links {
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .nav-links a {
+      font-size: 10px;
+      letter-spacing: 1px;
+      padding: 6px 0;
+    }
+    .btn-nav {
+      padding: 6px 14px !important;
+      letter-spacing: 1px !important;
+    }
+
+    /* Mobile hero */
+    .hero {
+      padding: 100px 20px 60px;
+      flex-direction: column;
+      text-align: center;
+    }
+    .hero-content {
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .hero-tag {
+      font-size: 10px;
+      letter-spacing: 2px;
+    }
+    .hero-tag::before { width: 20px; }
+    h1 {
+      font-size: clamp(28px, 8vw, 48px);
+      margin-bottom: 20px;
+    }
+    .hero-desc {
+      font-size: 16px;
+      max-width: 100%;
+      margin-bottom: 32px;
+    }
+    .hero-ctas {
+      justify-content: center;
+      width: 100%;
+    }
+    .radar-wrap {
+      position: relative;
+      right: auto;
+      top: auto;
+      transform: none;
+      width: 280px;
+      height: 280px;
+      margin: 40px auto 0;
+    }
+    .radar-ring:nth-child(1) { width: 56px; height: 56px; }
+    .radar-ring:nth-child(2) { width: 112px; height: 112px; }
+    .radar-ring:nth-child(3) { width: 168px; height: 168px; }
+    .radar-ring:nth-child(4) { width: 224px; height: 224px; }
+    .radar-ring:nth-child(5) { width: 280px; height: 280px; }
+    .radar-cross { width: 280px; height: 280px; }
+    .radar-sweep { width: 140px; }
+
+    /* Mobile sections */
+    section { padding: 60px 20px; }
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+    }
+    .section-lead {
+      font-size: 18px;
+      max-width: 100%;
+    }
+
+    /* Mobile buttons */
+    .btn-primary {
+      padding: 12px 28px;
+      font-size: 12px;
+      letter-spacing: 2px;
+    }
+    .btn-secondary {
+      padding: 12px 28px;
+      font-size: 12px;
+    }
+
+    /* Mobile cards */
+    .service-card {
+      padding: 28px;
+    }
+    .service-icon {
+      width: 44px;
+      height: 44px;
+    }
+
+    /* Mobile stats */
+    .stat-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      max-width: 300px;
+      margin: 0 auto;
+    }
+
+    /* Mobile dashboard preview */
+    .dash-header {
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .dash-grid {
+      grid-template-columns: 1fr;
+    }
+
+    /* Mobile lists */
+    .check-list li {
+      font-size: 15px;
+    }
+
+    /* Mobile CTA section */
+    .cta-flex {
+      flex-direction: column;
+      text-align: center;
+      gap: 24px;
+    }
+    .cta-actions {
+      justify-content: center;
+    }
+
+    /* Mobile footer */
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+    .footer-bottom {
+      flex-direction: column;
+      gap: 12px;
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    /* Small mobile adjustments */
+    .nav-links { display: none; }
+    .mobile-menu-btn {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding: 8px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .mobile-menu-btn span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--green-mid);
+      transition: all 0.3s;
+    }
+
+    h1 { font-size: 32px; }
+    .hero-desc { font-size: 15px; }
+
+    .radar-wrap {
+      width: 220px;
+      height: 220px;
+    }
+    .radar-ring:nth-child(1) { width: 44px; height: 44px; }
+    .radar-ring:nth-child(2) { width: 88px; height: 88px; }
+    .radar-ring:nth-child(3) { width: 132px; height: 132px; }
+    .radar-ring:nth-child(4) { width: 176px; height: 176px; }
+    .radar-ring:nth-child(5) { width: 220px; height: 220px; }
+    .radar-cross { width: 220px; height: 220px; }
+    .radar-sweep { width: 110px; }
+
+    .btn-primary, .btn-secondary {
+      width: 100%;
+      text-align: center;
+    }
+
+    .pricing-card { padding: 28px 20px; }
+  }
+
+  /* Mobile menu when active */
+  .nav-links.mobile-active {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(8,19,30,0.98);
+    padding: 20px;
+    border-bottom: 1px solid rgba(45,122,58,0.3);
+    gap: 16px;
+  }
+  .nav-links.mobile-active a {
+    font-size: 14px;
+    text-align: center;
+    padding: 12px;
   }
 </style>
 </head>
@@ -840,7 +1062,7 @@
       <span class="n2">Mediterranean Intelligence</span>
     </div>
   </a>
-  <div class="nav-links">
+  <div class="nav-links" id="navLinks">
     <a href="#services">Services</a>
     <a href="#platform">Live Platform</a>
     <a href="#advisory">Advisory</a>
@@ -848,6 +1070,11 @@
     <a href="#clients">Clients</a>
     <a href="#contact" class="btn-nav">Request Access</a>
   </div>
+  <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -1109,32 +1336,32 @@
 
   <div class="why-grid">
     <div class="why-card">
-      <div class="why-num">1</div>
+      <div class="why-num">// 01</div>
       <div class="why-title">Predictive, Not Reactive</div>
       <p class="why-text">Our AI engine synthesizes cross-domain signals — geopolitical, cyber, military, environmental — to deliver early-warning triggers before risk events materialize in mainstream reporting.</p>
     </div>
     <div class="why-card">
-      <div class="why-num">2</div>
+      <div class="why-num">// 02</div>
       <div class="why-title">Mediterranean-Native Expertise</div>
       <p class="why-text">Headquartered in Cagliari, Sardinia. We operate within the maritime ecosystem we analyze — embedded in port communities, forums, and institutional networks that generalist firms cannot replicate.</p>
     </div>
     <div class="why-card">
-      <div class="why-num">3</div>
+      <div class="why-num">// 03</div>
       <div class="why-title">Proprietary Intelligence Engine</div>
       <p class="why-text">A vertically-trained LLM purpose-built for maritime risk intelligence — not a generic AI wrapper. Cross-domain pattern detection across commercial shipping, naval activity, infrastructure, and energy corridors.</p>
     </div>
     <div class="why-card">
-      <div class="why-num">4</div>
+      <div class="why-num">// 04</div>
       <div class="why-title">Subscription Efficiency</div>
       <p class="why-text">Tiered subscription model delivers continuous intelligence value — no hourly billing, no retainer uncertainty. You pay for persistent awareness, not episodic reports that age on arrival.</p>
     </div>
     <div class="why-card">
-      <div class="why-num">5</div>
+      <div class="why-num">// 05</div>
       <div class="why-title">Boutique Confidentiality</div>
       <p class="why-text">As a specialist boutique, we offer direct access to senior analysts — not junior handoffs. Client intelligence and strategic position remain completely confidential across every engagement.</p>
     </div>
     <div class="why-card">
-      <div class="why-num">6</div>
+      <div class="why-num">// 06</div>
       <div class="why-title">Scalable Coverage</div>
       <p class="why-text">Beginning with the Sardinian maritime corridor and scaling outward across Western Mediterranean shipping lanes, Adriatic, Tyrrhenian, and Eastern Mediterranean as client base expands.</p>
     </div>
@@ -1288,8 +1515,8 @@
     <p>Request a platform demonstration or advisory consultation. We work with a limited number of clients to ensure analytical depth and discretion.</p>
   </div>
   <div class="cta-actions">
-    <a href="/cdn-cgi/l/email-protection#fa93948e9f9696939d9f94999fba899f948e93949f96969b979b889fd4999597" class="btn-primary">Request Platform Demo</a>
-    <a href="/cdn-cgi/l/email-protection#ec8d889a859f839e95ac9f89829885828980808d818d9e89c28f8381" class="btn-secondary">Advisory Inquiry</a>
+    <a href="mailto:intelligence@sentinellamare.com" class="btn-primary">Request Platform Demo</a>
+    <a href="mailto:advisory@sentinellamare.com" class="btn-secondary">Advisory Inquiry</a>
   </div>
 </div>
 
@@ -1318,5 +1545,40 @@
     </div>
     <div class="footer-col">
       <h5>Contact</h5>
-      <a href="/cdn-cgi/l/email-protection#a8c1c6dccdc4c4c1cfcdc6cbcde8dbcdc6dcc1c6cdc4c4c9c5c9dacd86cbc7c5"><span class="__cf_email__" data-cfemail="3b52554f5e5757525c5e55585e7b485e554f52555e57575a565a495e15585456">[email&#160;protected]</span></a>
-      <a href="/cdn-cgi/l/email-protection#f9989d8f908a968b80b98a9c978d90979c95959894988b9cd79a9694"><span class="__cf_email__" data-cfemail="e48580928d978b969da497818a908d8a8188888589859681ca878b89">[email&#160;protected]</span></
+      <a href="mailto:intelligence@sentinellamare.com">intelligence@sentinellamare.com</a>
+      <a href="mailto:advisory@sentinellamare.com">advisory@sentinellamare.com</a>
+      <p style="margin-top:12px;font-size:12px;color:var(--text-dim)">Access is by referral<br>and direct engagement only.</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Sentinella Mare · All intelligence is proprietary · Unauthorized redistribution prohibited</p>
+    <div class="clearance">PLATFORM LIVE · FEEDS NOMINAL · 36 STATES MONITORED</div>
+  </div>
+</footer>
+
+<script>
+  // Mobile menu toggle
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const navLinks = document.getElementById('navLinks');
+
+  mobileMenuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('mobile-active');
+  });
+
+  // Close mobile menu when clicking a link
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('mobile-active');
+    });
+  });
+
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('nav')) {
+      navLinks.classList.remove('mobile-active');
+    }
+  });
+</script>
+
+</body>
+</html>
