@@ -820,7 +820,7 @@
     border-top: 1px solid rgba(45,122,58,0.12);
   }
   .footer-top {
-    display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
     gap: 48px; margin-bottom: 60px;
   }
   .footer-brand { display: flex; flex-direction: row; align-items: flex-start; gap: 20px; }
@@ -960,7 +960,8 @@
     footer { padding: 48px 32px 28px; }
 
     .pricing-grid { grid-template-columns: repeat(2, 1fr); }
-    .footer-top { grid-template-columns: 1fr 1fr; gap: 36px; }
+    .footer-top { grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
+    .footer-brand { grid-column: 1 / -1; flex-direction: row; }
     .adv-grid { gap: 40px; }
   }
 
@@ -1003,6 +1004,7 @@
 
     footer { padding: 36px 20px 24px; }
     .footer-top { grid-template-columns: 1fr; gap: 28px; }
+    .footer-brand { grid-column: auto; flex-direction: row; }
     .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
 
     .price-card.featured { transform: none; }
