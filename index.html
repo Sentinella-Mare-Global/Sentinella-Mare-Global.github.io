@@ -823,7 +823,8 @@
     display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr;
     gap: 48px; margin-bottom: 60px;
   }
-  .footer-brand { display: flex; flex-direction: column; gap: 16px; }
+  .footer-brand { display: flex; flex-direction: row; align-items: flex-start; gap: 20px; }
+  .footer-brand-text { display: flex; flex-direction: column; gap: 12px; }
   .footer-brand img { height: 100px; width: fit-content; }
   .footer-brand p {
     font-size: 13px; line-height: 1.7; color: var(--text);
@@ -1600,8 +1601,10 @@
   <div class="footer-top">
     <div class="footer-brand">
       <img src="Sentinella Mare Logo_White.png" alt="Sentinella Mare">
-      <p data-i18n="footer.brand">Mediterranean maritime intelligence. AI-driven risk intelligence for shipping operators, logistics firms, and institutional investors navigating the world's most strategically complex sea.</p>
-      <span class="hq" data-i18n="footer.hq">// HQ: Olbia, Sardinia, Italy</span>
+      <div class="footer-brand-text">
+        <p data-i18n="footer.brand">Mediterranean maritime intelligence. AI-driven risk intelligence for shipping operators, logistics firms, and institutional investors navigating the world's most strategically complex sea.</p>
+        <span class="hq" data-i18n="footer.hq">// HQ: Olbia, Sardinia, Italy</span>
+      </div>
     </div>
     <div class="footer-col">
       <h5 data-i18n="footer.h.services">Services</h5>
