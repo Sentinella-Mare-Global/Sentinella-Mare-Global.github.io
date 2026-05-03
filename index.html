@@ -53,6 +53,7 @@
     font-family: 'Share Tech Mono', monospace; font-size: 9px;
     color: var(--green-mid); letter-spacing: 4px; margin-top: 3px;
   }
+  .nav-logo img { max-width: 160px; }
   .nav-links { display: flex; align-items: center; gap: 32px; }
   .nav-links a {
     color: var(--text); text-decoration: none;
@@ -60,6 +61,23 @@
     transition: color 0.25s;
   }
   .nav-links a:hover { color: var(--green-glow); }
+  .nav-toggle {
+    display: none; flex-direction: column; justify-content: center; gap: 5px;
+    cursor: pointer; padding: 8px; background: none; border: none; z-index: 1001;
+  }
+  .nav-toggle span {
+    display: block; width: 24px; height: 2px;
+    background: var(--green-mid); transition: all 0.3s;
+  }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  .hero-tagline {
+    margin-top: 28px; margin-bottom: 52px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 18px; letter-spacing: 3px;
+    color: var(--green-mid); text-transform: uppercase; font-weight: 700;
+  }
   .btn-nav {
     border: 1px solid var(--green); color: var(--green-mid) !important;
     padding: 8px 20px !important; letter-spacing: 2px !important;
@@ -72,7 +90,7 @@
 
   /* ── HERO ── */
   .hero {
-    min-height: 100vh; position: relative;
+    min-height: 100svh; position: relative;
     display: flex; align-items: center;
     padding: 148px 64px 80px;
     overflow: hidden;
@@ -962,6 +980,8 @@
     footer { padding: 48px 32px 28px; }
 
     .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+    .price-card { padding: 36px 24px; }
+    .price-amt { font-size: 36px; }
     .footer-top { grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
     .footer-brand { grid-column: 1 / -1; flex-direction: row; }
     .adv-grid { gap: 40px; }
@@ -1017,13 +1037,29 @@
     .clients-row { flex-direction: column; }
     .client-tag { min-width: unset; }
 
-    .nav-links { gap: 16px; }
-    .nav-links a { font-size: 10px; letter-spacing: 1.5px; }
+    .nav-toggle { display: flex; }
+    .nav-links {
+      display: none; position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(6,15,24,0.97);
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 32px; z-index: 999;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { font-size: 16px; letter-spacing: 3px; }
+    .lang-dropdown { order: 10; }
+
+    .services-grid { grid-template-columns: 1fr; }
+    .service-card { padding: 40px 28px; }
+
+    .why-grid { grid-template-columns: 1fr; }
+
+    .footer-contact-btn { width: 100%; text-align: center; }
 
     /* Radar hidden on tablets — too large */
     .radar-wrap { display: none; }
 
-    .btn-nav { padding: 6px 14px !important; font-size: 10px !important; }
+    .btn-nav { font-size: 14px !important; letter-spacing: 2px !important; padding: 12px 28px !important; }
     .btn-primary, .btn-secondary { padding: 12px 24px; font-size: 11px; }
   }
 
@@ -1033,9 +1069,6 @@
     .nav-logo img { height: 56px; }
     .nav-brand .n1 { font-size: 12px; letter-spacing: 1px; }
     .nav-brand .n2 { font-size: 7px; letter-spacing: 2px; display: none; }
-    .nav-links { gap: 10px; }
-    .nav-links a { font-size: 8px; letter-spacing: 1px; }
-    .btn-nav { padding: 4px 10px !important; font-size: 8px !important; }
 
     .hero { padding: 100px 16px 40px; }
     h1 { font-size: clamp(22px, 7vw, 30px); }
@@ -1048,7 +1081,7 @@
 
     section { padding: 32px 16px; }
 
-    .section-label { font-size: 9px; letter-spacing: 3px; }
+    .section-label { font-size: 9px; letter-spacing: 2px; }
     h2 { font-size: clamp(18px, 6vw, 24px); }
     .section-lead { font-size: 14px; }
 
@@ -1087,9 +1120,11 @@
 
     footer { padding: 28px 16px 20px; }
     .footer-top { gap: 24px; }
+    .footer-brand { flex-direction: column; align-items: flex-start; }
     .footer-brand img { height: 80px; }
-    .footer-brand p { font-size: 12px; }
+    .footer-brand p { font-size: 12px; max-width: 100%; }
     .footer-col a, .footer-col p { font-size: 12px; }
+    .footer-bottom p, .footer-bottom .clearance { font-size: 10px; letter-spacing: 1px; }
 
     .dash-header-left { flex-wrap: wrap; gap: 10px; }
 
@@ -1102,7 +1137,11 @@
     .adv-content h4 { font-size: 14px; }
     .adv-content p { font-size: 13px; }
 
-    .btn-primary, .btn-secondary { padding: 10px 20px; font-size: 10px; }
+    .btn-primary, .btn-secondary {
+      padding: 14px 24px; font-size: 12px;
+      min-height: 44px; display: inline-flex; align-items: center; justify-content: center;
+    }
+    .hero-tagline { font-size: 13px; letter-spacing: 1.5px; margin-bottom: 32px; }
 
     .price-best-for { font-size: 11px; }
     .price-features li { font-size: 13px; }
@@ -1115,8 +1154,6 @@
     nav { padding: 8px 12px; }
     .nav-logo img { height: 46px; }
     .nav-brand .n1 { font-size: 10px; }
-    .nav-links { gap: 6px; }
-    .nav-links a { font-size: 7px; letter-spacing: 0.5px; }
 
     .hero { padding: 90px 12px 32px; }
     h1 { font-size: 18px; }
@@ -1136,12 +1173,15 @@
       <span class="n2">Mediterranean Intelligence</span>
     </div>
   </a>
-  <div class="nav-links">
-    <a href="#services" data-i18n="nav.services">Services</a>
-    <a href="#platform" data-i18n="nav.platform">Live Platform</a>
-    <a href="#advisory" data-i18n="nav.advisory">Advisory</a>
-    <a href="#pricing" data-i18n="nav.pricing">Subscription</a>
-    <a href="#clients" data-i18n="nav.clients">Clients</a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navLinks">
+    <a href="#services" data-i18n="nav.services" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Services</a>
+    <a href="#platform" data-i18n="nav.platform" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Live Platform</a>
+    <a href="#advisory" data-i18n="nav.advisory" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Advisory</a>
+    <a href="#pricing" data-i18n="nav.pricing" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Subscription</a>
+    <a href="#clients" data-i18n="nav.clients" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Clients</a>
     <div class="lang-dropdown" id="langDropdown">
       <button class="lang-globe" onclick="document.getElementById('langDropdown').classList.toggle('open')" aria-label="Select language">
         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -1157,7 +1197,7 @@
         <button class="lang-btn" onclick="setLang('el'); document.getElementById('langDropdown').classList.remove('open')" id="btn-el">EL</button>
       </div>
     </div>
-    <a href="#contact" class="btn-nav" data-i18n="nav.cta">Request Access</a>
+    <a href="#contact" class="btn-nav" data-i18n="nav.cta" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Request Access</a>
   </div>
 </nav>
 
@@ -1188,7 +1228,7 @@
     <p class="hero-desc">
       <span data-i18n="hero.desc">Sentinella Mare delivers AI-driven maritime intelligence and geopolitical risk advisory for shipping operators, logistics firms, and investment institutions navigating the Mediterranean basin.</span>
     </p>
-    <p style="margin-top: 28px; margin-bottom: 52px; font-family: 'Share Tech Mono', monospace; font-size: 18px; letter-spacing: 3px; color: var(--green-mid); text-transform: uppercase; font-weight: 700;">Beyond <span style="color: var(--white);">Monitoring.</span> Ahead <span style="color: var(--white);">of Threats.</span></p>
+    <p class="hero-tagline">Beyond <span style="color: var(--white);">Monitoring.</span> Ahead <span style="color: var(--white);">of Threats.</span></p>
     <div class="hero-ctas">
       <a href="#platform" class="btn-primary" data-i18n="hero.btn1">View Live Dashboard</a>
       <a href="#services" class="btn-secondary btn-green" data-i18n="hero.btn2">Our Services</a>
