@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Sentinella Mare — Mediterranean Maritime Intelligence</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&family=Noto+Sans:wght@400;600;700&subset=greek&display=swap" rel="stylesheet">
 <style>
   :root {
     --navy: #060f18;
@@ -43,7 +43,7 @@
     border-bottom: 1px solid rgba(45,122,58,0.18);
   }
   .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
-  .nav-logo img { height: 90px; }
+  .nav-logo img { height: 90px; width: auto; }
   .nav-brand { display: flex; flex-direction: column; line-height: 1; }
   .nav-brand .n1 {
     font-family: 'Cinzel', serif; font-size: 18px; font-weight: 700;
@@ -53,7 +53,7 @@
     font-family: 'Share Tech Mono', monospace; font-size: 9px;
     color: var(--green-mid); letter-spacing: 4px; margin-top: 3px;
   }
-  .nav-logo img { max-width: 160px; }
+  .nav-logo img { max-height: 90px; width: auto; }
   .nav-links { display: flex; align-items: center; gap: 32px; }
   .nav-links a {
     color: var(--text); text-decoration: none;
@@ -917,6 +917,8 @@
 
   /* ── RTL SUPPORT ── */
   html[dir="rtl"] nav { flex-direction: row-reverse; }
+  html[dir="rtl"] .hero-tag { flex-direction: row-reverse; }
+  html[dir="rtl"] .hero-tag::before { transform: scaleX(-1); }
   html[dir="rtl"] .nav-links { flex-direction: row-reverse; }
   html[dir="rtl"] .hero-content { text-align: right; }
   html[dir="rtl"] .hero-ctas { justify-content: flex-end; }
@@ -940,13 +942,13 @@
   html[lang="el"] .client-tag,
   html[lang="el"] .cta-text p,
   html[lang="el"] .footer-col {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Noto Sans', -apple-system, 'Segoe UI', sans-serif;
   }
   html[lang="el"] h1,
   html[lang="el"] h2,
   html[lang="el"] h3,
   html[lang="el"] h4 {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Noto Sans', -apple-system, 'Segoe UI', sans-serif;
     letter-spacing: 0.5px;
   }
   html[lang="el"] .hero-tag,
@@ -962,7 +964,7 @@
   html[lang="el"] .dash-bottom span,
   html[lang="el"] .price-tier,
   html[lang="el"] .price-period {
-    font-family: 'Noto Sans', sans-serif;
+    font-family: 'Noto Sans', -apple-system, 'Segoe UI', sans-serif;
     letter-spacing: 0.5px;
   }
 
@@ -985,12 +987,13 @@
     .footer-top { grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
     .footer-brand { grid-column: 1 / -1; flex-direction: row; }
     .adv-grid { gap: 40px; }
+    .dash-body { grid-template-columns: 1fr 220px; }
   }
 
   /* ── Tablets (≤ 768px) ── */
   @media (max-width: 768px) {
     /* Layout & spacing */
-    nav { padding: 12px 20px; }
+    nav { padding: 12px 20px; backdrop-filter: none; -webkit-backdrop-filter: none; }
     .nav-logo img { height: 70px; }
     .nav-brand .n1 { font-size: 15px; letter-spacing: 2px; }
     .nav-brand .n2 { font-size: 8px; letter-spacing: 3px; }
@@ -1008,6 +1011,8 @@
     .live-bar {
       padding: 10px 20px; gap: 20px;
       overflow-x: auto; -webkit-overflow-scrolling: touch;
+      mask-image: linear-gradient(to right, black 85%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
     }
     .live-item { font-size: 10px; flex-shrink: 0; }
     .live-sep { flex-shrink: 0; }
@@ -1026,13 +1031,18 @@
 
     footer { padding: 36px 20px 24px; }
     .footer-top { grid-template-columns: 1fr; gap: 28px; }
-    .footer-brand { grid-column: auto; flex-direction: row; }
+    .footer-brand { grid-column: auto; flex-direction: row; flex-wrap: wrap; }
     .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
 
     .price-card.featured { transform: none; }
+    .pricing-grid { grid-template-columns: 1fr; }
 
     .asset-tabs { flex-direction: column; gap: 1px; }
-    .asset-tab { text-align: center; }
+    .asset-tab { text-align: left; padding-left: 20px; border-bottom: 1px solid rgba(255,255,255,0.06); border-left: 3px solid transparent; }
+    .asset-tab.active { border-bottom-color: transparent; border-left-color: var(--green); color: var(--green-mid); }
+
+    .adv-grid { grid-template-columns: 1fr; gap: 36px; }
+    .dash-body { grid-template-columns: 1fr; min-height: auto; }
 
     .clients-row { flex-direction: column; }
     .client-tag { min-width: unset; }
@@ -1041,13 +1051,19 @@
     .nav-links {
       display: none; position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(6,15,24,0.97);
+      width: 100vw; height: 100vh; height: 100dvh;
+      background: var(--navy);
       flex-direction: column; align-items: center; justify-content: center;
-      gap: 32px; z-index: 999;
+      gap: 28px; z-index: 1000;
+      overflow-y: auto; padding: 80px 20px 40px;
     }
     .nav-links.open { display: flex; }
     .nav-links a { font-size: 16px; letter-spacing: 3px; }
     .lang-dropdown { order: 10; }
+    .nav-links.open .lang-dropdown .lang-menu {
+      position: static; display: flex; flex-direction: row; gap: 4px;
+      box-shadow: none; background: transparent; border: none; padding: 4px 0;
+    }
 
     .services-grid { grid-template-columns: 1fr; }
     .service-card { padding: 40px 28px; }
@@ -1056,11 +1072,16 @@
 
     .footer-contact-btn { width: 100%; text-align: center; }
 
-    /* Radar hidden on tablets — too large */
-    .radar-wrap { display: none; }
+    /* Radar faded on tablets — keeps brand atmosphere */
+    .radar-wrap { opacity: 0.12; pointer-events: none; right: -15%; }
 
     .btn-nav { font-size: 14px !important; letter-spacing: 2px !important; padding: 12px 28px !important; }
     .btn-primary, .btn-secondary { padding: 12px 24px; font-size: 11px; }
+
+    .price-btn, .asset-tab, .lang-btn, .client-tag, .nav-links a {
+      min-height: 44px; display: inline-flex; align-items: center; justify-content: center;
+    }
+    .asset-tab { justify-content: flex-start; }
   }
 
   /* ── Phones (≤ 480px) ── */
@@ -1091,7 +1112,7 @@
     .svc-num { font-size: 44px; right: 16px; top: 12px; }
     .svc-icon { font-size: 40px; margin-bottom: 20px; }
     .svc-desc { font-size: 14px; }
-    .svc-features li { font-size: 13px; }
+    .svc-features li { font-size: 14px; padding: 8px 0; }
 
     .dash-header { flex-direction: column; gap: 8px; align-items: flex-start; }
     .dash-body { grid-template-columns: 1fr; min-height: auto; }
@@ -1113,15 +1134,15 @@
     .adv-list li { flex-direction: column; gap: 8px; }
 
     .cta-banner { padding: 36px 16px; }
-    .cta-text h2 { font-size: 22px; }
+    .cta-text h2 { font-size: clamp(18px, 5.5vw, 22px); }
     .cta-ctas { flex-direction: column; gap: 12px; }
     .cta-actions { flex-direction: column; align-items: stretch; }
     .cta-actions a { text-align: center; }
 
     footer { padding: 28px 16px 20px; }
     .footer-top { gap: 24px; }
-    .footer-brand { flex-direction: column; align-items: flex-start; }
-    .footer-brand img { height: 80px; }
+    .footer-brand { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .footer-brand img { height: 64px; }
     .footer-brand p { font-size: 12px; max-width: 100%; }
     .footer-col a, .footer-col p { font-size: 12px; }
     .footer-bottom p, .footer-bottom .clearance { font-size: 10px; letter-spacing: 1px; }
@@ -1144,7 +1165,7 @@
     .hero-tagline { font-size: 13px; letter-spacing: 1.5px; margin-bottom: 32px; }
 
     .price-best-for { font-size: 11px; }
-    .price-features li { font-size: 13px; }
+    .price-features li { font-size: 13px; padding: 11px 0; word-break: break-word; hyphens: auto; }
 
     .client-tag { font-size: 9px; letter-spacing: 2px; padding: 8px 12px; }
   }
@@ -1155,10 +1176,28 @@
     .nav-logo img { height: 46px; }
     .nav-brand .n1 { font-size: 10px; }
 
-    .hero { padding: 90px 12px 32px; }
-    h1 { font-size: 18px; }
+    .hero { padding: 90px 16px 32px; }
+    h1 { font-size: clamp(20px, 6.5vw, 26px); }
 
     section { padding: 24px 12px; }
+    h1 br, h2 br { display: none; }
+  }
+
+  /* ── iOS safe-area insets ── */
+  @supports (padding: max(0px)) {
+    nav { padding-top: max(14px, env(safe-area-inset-top)); padding-left: max(20px, env(safe-area-inset-left)); padding-right: max(20px, env(safe-area-inset-right)); }
+    @media (max-width: 480px) {
+      nav { padding-top: max(10px, env(safe-area-inset-top)); padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
+    }
+  }
+
+  /* ── Reduced motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 </style>
 </head>
@@ -1167,7 +1206,7 @@
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="#">
-    <img src="Sentinella Mare Logo_White.png" alt="Sentinella Mare">
+    <img src="Sentinella Mare Logo_White.png" alt="Sentinella Mare" fetchpriority="high" decoding="async" style="height:90px;width:auto;">
     <div class="nav-brand">
       <span class="n1">SENTINELLA MARE</span>
       <span class="n2">Mediterranean Intelligence</span>
@@ -1313,9 +1352,9 @@
 <section id="platform">
   <div class="section-label" data-i18n="platform.label">Live Intelligence Platform</div>
   <h2 data-i18n="plat.h2" data-i18n-html="true">The <span>Mediterranean Watch</span><br>Command Interface</h2>
-  <img src="Live Example.png" alt="Live Example" style="width:100%; display:block; border-radius:4px; box-shadow:0 8px 48px rgba(0,0,0,0.6); margin-bottom:16px;">
-  <img src="MARE Dashboard.png" alt="MARE Dashboard" style="width:100%; display:block; border-radius:4px; box-shadow:0 8px 48px rgba(0,0,0,0.6); margin-bottom:16px;">
-  <img src="Dashboard Screenshot.png" alt="Mediterranean Watch Dashboard" style="width:100%; display:block; border-radius:4px; box-shadow:0 8px 48px rgba(0,0,0,0.6);">
+  <img src="Live Example.png" alt="Live Example" fetchpriority="high" decoding="async" style="width:100%; height:auto; display:block; border-radius:4px; box-shadow:0 8px 48px rgba(0,0,0,0.6); margin-bottom:16px;">
+  <img src="MARE Dashboard.png" alt="MARE Dashboard" loading="lazy" decoding="async" style="width:100%; height:auto; display:block; border-radius:4px; box-shadow:0 8px 48px rgba(0,0,0,0.6); margin-bottom:16px;">
+  <img src="Dashboard Screenshot.png" alt="Mediterranean Watch Dashboard" loading="lazy" decoding="async" style="width:100%; height:auto; display:block; border-radius:4px; box-shadow:0 8px 48px rgba(0,0,0,0.6);">
 </section>
 
 <!-- WHY SENTINELLA -->
