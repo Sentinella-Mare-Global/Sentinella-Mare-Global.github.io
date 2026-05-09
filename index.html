@@ -291,8 +291,19 @@
   .section-lead {
     font-size: 17px; line-height: 1.75;
     color: var(--text); max-width: 620px;
-    margin-bottom: 60px;
+    margin-bottom: 32px;
   }
+  .reg-callout {
+    display: block; max-width: 720px;
+    border-left: 3px solid var(--green-mid);
+    background: rgba(45,122,58,0.07);
+    padding: 18px 24px;
+    margin-bottom: 52px;
+    border-radius: 0 6px 6px 0;
+    font-size: 14px; line-height: 1.75;
+    color: var(--text-dim);
+  }
+  .reg-callout strong { color: var(--green-mid); }
 
   /* ── SERVICES ── */
   #services { background: var(--navy-2); position: relative; overflow: hidden; }
@@ -1307,8 +1318,12 @@
   <div class="section-label" data-i18n="services.label">Core Services</div>
   <h2 data-i18n="services.h2" data-i18n-html="true">Two Missions.<br><span>One Platform.</span></h2>
   <p class="section-lead">
-    <span data-i18n="services.lead" data-i18n-html="true">Real-time geospatial intelligence and deep analytical expertise — built for operational and strategic clients across the Mediterranean corridor. Underpinning both offerings is the <strong>Maritime Hybrid Threat Exposure Score (MHTES)</strong>: a 72-hour predictive score that fuses cyber, geopolitical, grey fleet, disinformation, and weather signals into a single actionable risk metric per asset.<br><br>MHTES is purpose-built around the integrated, all-hazards exposure picture that NIS2, the CER Directive, and Italy's Circular 177/2025 are increasingly oriented toward — giving operators a single, continuously updated view of exposure that aligns with the direction of European maritime regulation.</span>
+    <span data-i18n="services.lead" data-i18n-html="true">Real-time geospatial intelligence and deep analytical expertise — built for operational and strategic clients across the Mediterranean corridor. Underpinning both offerings is the <strong>Maritime Hybrid Threat Exposure Score (MHTES)</strong>: a 72-hour predictive score that fuses cyber, geopolitical, grey fleet, disinformation, and weather signals into a single actionable risk metric per asset.</span>
   </p>
+
+  <div class="reg-callout">
+    <span data-i18n="services.callout" data-i18n-html="true"><strong>Aligned with European Maritime Regulation:</strong> MHTES delivers the integrated, all-hazards exposure picture that NIS2, the CER Directive, and Italy's Circular 177/2025 are increasingly oriented toward — built for operators preparing for the convergence of these frameworks across 2026 and 2027.</span>
+  </div>
 
   <div class="services-grid">
     <!-- Service 1 -->
@@ -1701,7 +1716,8 @@ const translations = {
     // Services
     'services.label': 'Core Services',
     'services.h2': 'Two Missions.<br><span>One Platform.</span>',
-    'services.lead': 'Real-time geospatial intelligence and deep analytical expertise — built for operational and strategic clients across the Mediterranean corridor. Underpinning both offerings is the <strong>Maritime Hybrid Threat Exposure Score (MHTES)</strong>: a 72-hour predictive score that fuses cyber, geopolitical, grey fleet, disinformation, and weather signals into a single actionable risk metric per asset.<br><br>MHTES is purpose-built around the integrated, all-hazards exposure picture that NIS2, the CER Directive, and Italy's Circular 177/2025 are increasingly oriented toward — giving operators a single, continuously updated view of exposure that aligns with the direction of European maritime regulation.',
+    'services.lead': 'Real-time geospatial intelligence and deep analytical expertise — built for operational and strategic clients across the Mediterranean corridor. Underpinning both offerings is the <strong>Maritime Hybrid Threat Exposure Score (MHTES)</strong>: a 72-hour predictive score that fuses cyber, geopolitical, grey fleet, disinformation, and weather signals into a single actionable risk metric per asset.',
+    'services.callout': '<strong>Aligned with European Maritime Regulation:</strong> MHTES delivers the integrated, all-hazards exposure picture that NIS2, the CER Directive, and Italy\'s Circular 177/2025 are increasingly oriented toward — built for operators preparing for the convergence of these frameworks across 2026 and 2027.',
     's1.tagline': 'Subscription · Live Intelligence',
     's1.title': 'Mediterranean Watch<br>Dashboard',
     's1.desc': 'A continuously updated geopolitical and maritime operations dashboard providing shipping companies and logistics operators with live situational awareness across the Mediterranean. Built on our proprietary predictive intelligence engine — not a report, a live signal.',
