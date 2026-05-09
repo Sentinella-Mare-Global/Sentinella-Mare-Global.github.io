@@ -22,7 +22,11 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  img { max-width: 100%; height: auto; }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 120px;
+  }
 
   body {
     background: var(--navy);
@@ -31,6 +35,8 @@
     font-size: 16px;
     line-height: 1.6;
     overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 
   /* ── NAV ── */
@@ -256,6 +262,43 @@
     box-shadow: 0 0 32px rgba(79,217,98,0.3);
   }
 
+  /* ── TOUCH OPTIMIZATIONS ── */
+  a, button, [role="button"],
+  .btn-primary, .btn-nav, .nav-toggle,
+  .lang-globe, .lang-btn {
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn-primary, .btn-nav, .nav-toggle,
+  .lang-globe, .lang-btn {
+    touch-action: manipulation;
+  }
+
+  /* ── GREEK FONT OVERRIDES ── */
+  html[lang="el"] body,
+  html[lang="el"] p,
+  html[lang="el"] li,
+  html[lang="el"] a,
+  html[lang="el"] button {
+    font-family: 'Noto Sans', -apple-system, 'Segoe UI', sans-serif;
+  }
+  html[lang="el"] h1,
+  html[lang="el"] h2,
+  html[lang="el"] h3,
+  html[lang="el"] .leader-name,
+  html[lang="el"] .leader-title {
+    font-family: 'Noto Sans', -apple-system, 'Segoe UI', sans-serif;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── RTL SUPPORT (Arabic) ── */
+  html[dir="rtl"] nav { flex-direction: row-reverse; }
+  html[dir="rtl"] .nav-links { flex-direction: row-reverse; }
+  html[dir="rtl"] .leader-header { flex-direction: row-reverse; }
+  html[dir="rtl"] .leader-bio p { text-align: right; }
+  html[dir="rtl"] .page-label { flex-direction: row-reverse; }
+  html[dir="rtl"] .footer-brand { flex-direction: row-reverse; }
+  html[dir="rtl"] .footer-col { text-align: right; }
+
   /* ── RESPONSIVE ── */
   @media (max-width: 1024px) {
     nav { padding: 14px 32px; }
@@ -273,12 +316,20 @@
     .nav-links {
       display: none; position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(6,15,24,0.97);
+      width: 100vw; height: 100vh; height: 100dvh;
+      background: var(--navy);
       flex-direction: column; align-items: center; justify-content: center;
-      gap: 32px; z-index: 999;
+      gap: 32px; z-index: 1000;
+      overflow-y: auto; padding: 80px 20px 40px;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
     }
     .nav-links.open { display: flex; }
     .nav-links a { font-size: 16px; letter-spacing: 3px; }
+    .nav-links.open .lang-dropdown .lang-menu {
+      position: static; display: flex; flex-direction: row; gap: 4px;
+      box-shadow: none; background: transparent; border: none; padding: 4px 0;
+    }
     .lang-dropdown { order: 10; }
     .page-hero { padding: 120px 20px 48px; }
     .leadership-section { padding: 48px 20px; }
@@ -286,14 +337,19 @@
     .leader-header { gap: 24px; }
     .leader-headshot { width: 110px; height: 110px; }
     .leader-name { font-size: 22px; }
+    .leader-bio p { font-size: 16px; }
     footer { padding: 36px 20px 24px; }
-    .footer-top { grid-template-columns: 1fr; gap: 28px; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .footer-brand { grid-column: 1 / -1; }
     .footer-bottom { flex-direction: column; text-align: center; }
+    .footer-contact-btn { width: 100%; text-align: center; }
   }
 
   @media (max-width: 480px) {
     nav { padding: 10px 16px; }
     .nav-logo img { height: 56px; }
+    .nav-brand .n1 { font-size: 12px; letter-spacing: 1px; }
+    .nav-brand .n2 { display: none; }
     .page-hero { padding: 100px 16px 40px; }
     .leadership-section { padding: 36px 16px; }
     .leadership-card { padding: 28px 20px; }
@@ -302,8 +358,51 @@
     .leader-name { font-size: 20px; }
     .leader-bio p { font-size: 15px; }
     footer { padding: 28px 16px 20px; }
-    .footer-brand { flex-direction: column; }
+    .footer-top { grid-template-columns: 1fr; gap: 20px; }
+    .footer-brand { flex-direction: column; grid-column: auto; }
     .footer-brand img { height: 80px; }
+    .footer-col a, .footer-col p { font-size: 12px; }
+  }
+
+  /* ── Extra small phones (≤ 360px) ── */
+  @media (max-width: 360px) {
+    nav { padding: 8px 12px; }
+    .nav-logo img { height: 46px; }
+    .page-hero { padding: 90px 12px 32px; }
+    .leadership-section { padding: 28px 12px; }
+    .leadership-card { padding: 24px 16px; }
+  }
+
+  /* ── iOS safe-area insets ── */
+  @supports (padding: max(0px)) {
+    nav {
+      padding-top: max(14px, env(safe-area-inset-top));
+      padding-left: max(20px, env(safe-area-inset-left));
+      padding-right: max(20px, env(safe-area-inset-right));
+    }
+    footer { padding-bottom: max(32px, env(safe-area-inset-bottom)); }
+    @media (max-width: 480px) {
+      nav {
+        padding-top: max(10px, env(safe-area-inset-top));
+        padding-left: max(16px, env(safe-area-inset-left));
+        padding-right: max(16px, env(safe-area-inset-right));
+      }
+      footer { padding-bottom: max(20px, env(safe-area-inset-bottom)); }
+    }
+  }
+
+  /* ── Touch: skip hover effects ── */
+  @media (hover: none) and (pointer: coarse) {
+    nav { backdrop-filter: none; -webkit-backdrop-filter: none; }
+  }
+
+  /* ── Reduced motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 </style>
 </head>
