@@ -132,17 +132,28 @@
     width: 3px; height: 100%;
     background: linear-gradient(to bottom, var(--green-mid), transparent);
   }
+  .leader-header {
+    display: flex; align-items: flex-start; gap: 36px;
+    margin-bottom: 36px;
+  }
+  .leader-headshot {
+    width: 140px; height: 140px;
+    border-radius: 4px;
+    object-fit: cover; object-position: top;
+    border: 2px solid rgba(45,122,58,0.35);
+    flex-shrink: 0;
+  }
+  .leader-meta { display: flex; flex-direction: column; justify-content: center; }
   .leader-name {
     font-family: 'Cinzel', serif;
     font-size: 28px; font-weight: 700;
     color: var(--white); letter-spacing: 1.5px;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
   }
   .leader-title {
     font-family: 'Share Tech Mono', monospace;
     font-size: 12px; letter-spacing: 3px;
     color: var(--green-mid); text-transform: uppercase;
-    margin-bottom: 36px;
   }
   .leader-bio p {
     font-size: 17px; line-height: 1.8;
@@ -241,6 +252,8 @@
     .page-hero { padding: 120px 20px 48px; }
     .leadership-section { padding: 48px 20px; }
     .leadership-card { padding: 36px 28px; }
+    .leader-header { gap: 24px; }
+    .leader-headshot { width: 110px; height: 110px; }
     .leader-name { font-size: 22px; }
     footer { padding: 36px 20px 24px; }
     .footer-top { grid-template-columns: 1fr; gap: 28px; }
@@ -253,6 +266,8 @@
     .page-hero { padding: 100px 16px 40px; }
     .leadership-section { padding: 36px 16px; }
     .leadership-card { padding: 28px 20px; }
+    .leader-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .leader-headshot { width: 100px; height: 100px; }
     .leader-name { font-size: 20px; }
     .leader-bio p { font-size: 15px; }
     footer { padding: 28px 16px 20px; }
@@ -295,8 +310,13 @@
 <!-- LEADERSHIP CONTENT -->
 <section class="leadership-section">
   <div class="leadership-card">
-    <div class="leader-name">James Davies</div>
-    <div class="leader-title">Founder &amp; CEO</div>
+    <div class="leader-header">
+      <img src="../James Davies_Headshot.jpeg" alt="James Davies" class="leader-headshot">
+      <div class="leader-meta">
+        <div class="leader-name">James Davies</div>
+        <div class="leader-title">Founder &amp; CEO</div>
+      </div>
+    </div>
     <div class="leader-bio">
       <p>Founder and CEO of Sentinella Global. James leads the company's strategic direction, the development of its intelligence framework, and its institutional partnerships across the Mediterranean.</p>
       <div class="leader-divider"></div>
