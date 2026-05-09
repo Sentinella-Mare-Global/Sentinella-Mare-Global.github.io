@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Leadership — Sentinella Global</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #060f18;
+    --navy-2: #0d1b2a;
+    --navy-3: #112336;
+    --navy-4: #1a3450;
+    --green: #2d7a3a;
+    --green-mid: #3aab4a;
+    --green-glow: #4fd962;
+    --green-dim: #1d5228;
+    --gold: #c9a84c;
+    --text: #f0f5fc;
+    --text-dim: #c8d8ec;
+    --white: #eef3f8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 64px;
+    background: rgba(8,19,30,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(45,122,58,0.18);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .nav-logo img { height: 90px; max-width: 160px; }
+  .nav-brand { display: flex; flex-direction: column; line-height: 1; }
+  .nav-brand .n1 {
+    font-family: 'Cinzel', serif; font-size: 18px; font-weight: 700;
+    color: var(--white); letter-spacing: 3px;
+  }
+  .nav-brand .n2 {
+    font-family: 'Share Tech Mono', monospace; font-size: 9px;
+    color: var(--green-mid); letter-spacing: 4px; margin-top: 3px;
+  }
+  .nav-links { display: flex; align-items: center; gap: 32px; }
+  .nav-links a {
+    color: var(--text); text-decoration: none;
+    font-size: 12px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+    transition: color 0.25s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--green-glow); }
+  .btn-nav {
+    border: 1px solid var(--green); color: var(--green-mid) !important;
+    padding: 8px 20px !important; letter-spacing: 2px !important;
+    transition: all 0.25s !important;
+  }
+  .btn-nav:hover {
+    background: var(--green) !important; color: white !important;
+    box-shadow: 0 0 24px rgba(79,217,98,0.25) !important;
+  }
+  .nav-toggle {
+    display: none; flex-direction: column; justify-content: center; gap: 5px;
+    cursor: pointer; padding: 8px; background: none; border: none; z-index: 1001;
+  }
+  .nav-toggle span {
+    display: block; width: 24px; height: 2px;
+    background: var(--green-mid); transition: all 0.3s;
+  }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ── PAGE HERO ── */
+  .page-hero {
+    padding: 160px 64px 80px;
+    position: relative;
+    background: var(--navy);
+    overflow: hidden;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 80% 50%, rgba(45,122,58,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .page-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px; letter-spacing: 3px; color: var(--green-mid);
+    text-transform: uppercase; margin-bottom: 20px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .page-label::before {
+    content: ''; display: block;
+    width: 30px; height: 1px; background: var(--green-mid);
+  }
+  .page-hero h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 700; letter-spacing: 2px;
+    color: var(--white); line-height: 1.15;
+  }
+  .page-hero h1 span { color: var(--green-glow); }
+
+  /* ── LEADERSHIP SECTION ── */
+  .leadership-section {
+    background: var(--navy-2);
+    padding: 80px 64px;
+  }
+  .leadership-card {
+    max-width: 860px;
+    background: var(--navy-3);
+    border: 1px solid rgba(45,122,58,0.18);
+    border-radius: 4px;
+    padding: 56px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .leadership-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: linear-gradient(to bottom, var(--green-mid), transparent);
+  }
+  .leader-name {
+    font-family: 'Cinzel', serif;
+    font-size: 28px; font-weight: 700;
+    color: var(--white); letter-spacing: 1.5px;
+    margin-bottom: 6px;
+  }
+  .leader-title {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px; letter-spacing: 3px;
+    color: var(--green-mid); text-transform: uppercase;
+    margin-bottom: 36px;
+  }
+  .leader-bio p {
+    font-size: 17px; line-height: 1.8;
+    color: var(--text-dim);
+    margin-bottom: 20px;
+  }
+  .leader-bio p:last-child { margin-bottom: 0; }
+  .leader-divider {
+    width: 48px; height: 2px;
+    background: var(--green-mid);
+    margin: 28px 0;
+    opacity: 0.6;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy-2);
+    border-top: 1px solid rgba(45,122,58,0.12);
+    padding: 56px 64px 32px;
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px; margin-bottom: 60px;
+  }
+  .footer-brand { display: flex; flex-direction: row; align-items: flex-start; gap: 20px; }
+  .footer-brand-text { display: flex; flex-direction: column; gap: 12px; }
+  .footer-brand img { height: 100px; width: fit-content; }
+  .footer-brand p {
+    font-size: 13px; line-height: 1.7; color: var(--text-dim);
+    max-width: 280px;
+  }
+  .footer-brand .hq {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px; letter-spacing: 3px; color: var(--green-mid);
+    text-transform: uppercase;
+  }
+  .footer-col h5 {
+    font-family: 'Cinzel', serif;
+    font-size: 13px; font-weight: 600;
+    color: var(--white); letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+  .footer-col a, .footer-col p {
+    display: block; color: var(--text-dim); text-decoration: none;
+    font-size: 13px; line-height: 1.6; margin-bottom: 10px;
+  }
+  .footer-col a:hover { color: var(--green-mid); }
+  .footer-contact-btn { display: inline-block; width: fit-content; }
+  .footer-bottom {
+    border-top: 1px solid rgba(45,122,58,0.1);
+    padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .footer-bottom p {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px; letter-spacing: 2px;
+    color: var(--text-dim); text-transform: uppercase;
+  }
+  .btn-primary {
+    background: var(--green); color: #fff;
+    padding: 14px 36px; font-family: 'Rajdhani', sans-serif;
+    font-size: 13px; font-weight: 700; letter-spacing: 2.5px;
+    text-transform: uppercase; text-decoration: none;
+    border: none; cursor: pointer;
+    transition: all 0.3s; display: inline-block;
+  }
+  .btn-primary:hover {
+    background: var(--green-mid);
+    box-shadow: 0 0 32px rgba(79,217,98,0.3);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    nav { padding: 14px 32px; }
+    .page-hero { padding: 132px 32px 64px; }
+    .leadership-section { padding: 64px 32px; }
+    footer { padding: 48px 32px 28px; }
+    .footer-top { grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
+    .footer-brand { grid-column: 1 / -1; }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 12px 20px; }
+    .nav-logo img { height: 70px; }
+    .nav-toggle { display: flex; }
+    .nav-links {
+      display: none; position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(6,15,24,0.97);
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 32px; z-index: 999;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { font-size: 16px; letter-spacing: 3px; }
+    .page-hero { padding: 120px 20px 48px; }
+    .leadership-section { padding: 48px 20px; }
+    .leadership-card { padding: 36px 28px; }
+    .leader-name { font-size: 22px; }
+    footer { padding: 36px 20px 24px; }
+    .footer-top { grid-template-columns: 1fr; gap: 28px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+  }
+
+  @media (max-width: 480px) {
+    nav { padding: 10px 16px; }
+    .nav-logo img { height: 56px; }
+    .page-hero { padding: 100px 16px 40px; }
+    .leadership-section { padding: 36px 16px; }
+    .leadership-card { padding: 28px 20px; }
+    .leader-name { font-size: 20px; }
+    .leader-bio p { font-size: 15px; }
+    footer { padding: 28px 16px 20px; }
+    .footer-brand { flex-direction: column; }
+    .footer-brand img { height: 80px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="../">
+    <img src="../Sentinella Mare Logo_White.png" alt="Sentinella Mare">
+    <div class="nav-brand">
+      <span class="n1">SENTINELLA MARE</span>
+      <span class="n2">Mediterranean Intelligence</span>
+    </div>
+  </a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navLinks">
+    <a href="../#services" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Services</a>
+    <a href="../#platform" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Live Platform</a>
+    <a href="../#advisory" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Advisory</a>
+    <a href="../#pricing" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Subscription</a>
+    <a href="../#clients" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Clients</a>
+    <a href="/Leadership" class="active" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Leadership</a>
+    <a href="../#contact" class="btn-nav" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Request Access</a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-label">Sentinella Global</div>
+  <h1>Our <span>Leadership</span></h1>
+</div>
+
+<!-- LEADERSHIP CONTENT -->
+<section class="leadership-section">
+  <div class="leadership-card">
+    <div class="leader-name">James Davies</div>
+    <div class="leader-title">Founder &amp; CEO</div>
+    <div class="leader-bio">
+      <p>Founder and CEO of Sentinella Global. James leads the company's strategic direction, the development of its intelligence framework, and its institutional partnerships across the Mediterranean.</p>
+      <div class="leader-divider"></div>
+      <p>He brings more than a decade of federal law enforcement and hybrid threat intelligence experience to the role, with deep coverage of both Latin America and Russia and fluency in Spanish and Russian. His operational background spans all-source intelligence collection, virtual operations, protective intelligence, and disinformation campaigns. That cross-domain experience is the foundation of the MHTES framework that powers Sentinella Mare — a single, operationally validated exposure score that synthesises five threat vectors into one continuously updated picture.</p>
+      <p>James founded Sentinella Global to bring the integrated, all-source craft developed inside federal service to the commercial maritime operators who increasingly need it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="../Sentinella Mare Logo_White.png" alt="Sentinella Mare">
+      <div class="footer-brand-text">
+        <p>Mediterranean maritime intelligence. AI-driven risk intelligence for shipping operators, logistics firms, and institutional investors navigating the world's most strategically complex sea.</p>
+        <span class="hq">// HQ: Brussels, Belgium</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5>Services</h5>
+      <a href="../#services">Mediterranean Watch Dashboard</a>
+      <a href="../#advisory">Investment Advisory</a>
+      <a href="../#advisory">Supply Chain Risk</a>
+      <a href="../#pricing">Subscription Tiers</a>
+    </div>
+    <div class="footer-col">
+      <h5>Coverage</h5>
+      <p>Strait of Gibraltar</p>
+      <p>Tyrrhenian Sea</p>
+      <p>Strait of Sicily</p>
+      <p>Adriatic Sea</p>
+      <p>Eastern Mediterranean</p>
+    </div>
+    <div class="footer-col">
+      <a href="mailto:james@sentinellaglobal.com" class="btn-primary footer-contact-btn">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Sentinella Global. All rights reserved.</p>
+    <p>MARITIME HYBRID THREAT INTELLIGENCE PLATFORM</p>
+  </div>
+</footer>
+
+</body>
+</html>
