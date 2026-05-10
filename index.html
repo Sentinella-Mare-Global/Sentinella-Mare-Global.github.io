@@ -22,7 +22,12 @@
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
+  img { max-width: 100%; height: auto; }
+  html {
+    scroll-behavior: smooth;
+    /* Keeps anchor targets visible below the fixed nav */
+    scroll-padding-top: 120px;
+  }
 
   body {
     background: var(--navy);
@@ -31,6 +36,9 @@
     font-size: 16px;
     line-height: 1.6;
     overflow-x: hidden;
+    /* Prevent iOS from auto-resizing text */
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
   }
 
   /* ── NAV ── */
@@ -188,6 +196,7 @@
     font-family: 'Share Tech Mono', monospace;
     font-size: 11px; letter-spacing: 3px; color: var(--green-mid);
     text-transform: uppercase; margin-bottom: 28px;
+    white-space: nowrap;
   }
   .hero-tag::before {
     content: ''; display: block;
@@ -240,6 +249,21 @@
     background: var(--green-mid); border-color: var(--green-mid); color: #fff;
   }
 
+  /* ── TOUCH / TAP OPTIMIZATIONS ── */
+  /* Remove iOS blue flash on tap */
+  a, button, [role="button"],
+  .btn-primary, .btn-secondary, .btn-nav,
+  .nav-toggle, .asset-tab, .price-btn,
+  .lang-globe, .lang-btn, .svc-cta, .client-tag {
+    -webkit-tap-highlight-color: transparent;
+  }
+  /* Faster tap response — skip 300ms delay on all interactive elements */
+  .btn-primary, .btn-secondary, .btn-nav,
+  .nav-toggle, .asset-tab, .price-btn,
+  .lang-globe, .lang-btn {
+    touch-action: manipulation;
+  }
+
   /* Live status bar */
   .live-bar {
     position: absolute; bottom: 0; left: 0; right: 0;
@@ -290,8 +314,19 @@
   .section-lead {
     font-size: 17px; line-height: 1.75;
     color: var(--text); max-width: 620px;
-    margin-bottom: 60px;
+    margin-bottom: 32px;
   }
+  .reg-callout {
+    display: block; max-width: 720px;
+    border-left: 3px solid var(--green-mid);
+    background: rgba(45,122,58,0.07);
+    padding: 18px 24px;
+    margin-bottom: 52px;
+    border-radius: 0 6px 6px 0;
+    font-size: 14px; line-height: 1.75;
+    color: var(--text-dim);
+  }
+  .reg-callout strong { color: var(--green-mid); }
 
   /* ── SERVICES ── */
   #services { background: var(--navy-2); position: relative; overflow: hidden; }
@@ -1000,7 +1035,7 @@
 
     .hero { flex-direction: column; padding: 120px 20px 60px; text-align: center; }
     .hero-content { max-width: 100%; }
-    .hero-tag { justify-content: center; font-size: 10px; }
+    .hero-tag { justify-content: center; font-size: 9px; letter-spacing: 1.5px; }
     .hero-tag::before { display: none; }
     h1 { font-size: clamp(28px, 6vw, 40px); }
     .hero-desc { font-size: 16px; max-width: 100%; }
@@ -1056,6 +1091,10 @@
       flex-direction: column; align-items: center; justify-content: center;
       gap: 28px; z-index: 1000;
       overflow-y: auto; padding: 80px 20px 40px;
+      /* Prevent background from scrolling while nav is open */
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+
     }
     .nav-links.open { display: flex; }
     .nav-links a { font-size: 16px; letter-spacing: 3px; }
@@ -1068,7 +1107,8 @@
     .services-grid { grid-template-columns: 1fr; }
     .service-card { padding: 40px 28px; }
 
-    .why-grid { grid-template-columns: 1fr; }
+    /* Keep 2-col on tablets — drop to 1-col at 600px */
+    .why-grid { grid-template-columns: repeat(2, 1fr); }
 
     .footer-contact-btn { width: 100%; text-align: center; }
 
@@ -1082,6 +1122,22 @@
       min-height: 44px; display: inline-flex; align-items: center; justify-content: center;
     }
     .asset-tab { justify-content: flex-start; }
+
+  }
+
+  /* ── Small tablets / large phones (≤ 600px) ── */
+  @media (max-width: 600px) {
+    /* Stack why-grid on smaller phones */
+    .why-grid { grid-template-columns: 1fr; }
+
+    /* Tighten CTA actions */
+    .cta-actions { flex-direction: column; align-items: stretch; }
+    .cta-actions a { text-align: center; }
+
+    /* Footer columns: 2-col grid instead of 1 on medium phones */
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .footer-brand { grid-column: 1 / -1; }
+
   }
 
   /* ── Phones (≤ 480px) ── */
@@ -1094,7 +1150,7 @@
     .hero { padding: 100px 16px 40px; }
     h1 { font-size: clamp(22px, 7vw, 30px); }
     .hero-desc { font-size: 14px; }
-    .hero-tag { font-size: 9px; gap: 6px; }
+    .hero-tag { font-size: 7.5px; letter-spacing: 1px; gap: 6px; white-space: normal; justify-content: center; text-align: center; }
 
     .live-bar { padding: 8px 16px; gap: 14px; }
     .live-item { font-size: 9px; }
@@ -1140,8 +1196,9 @@
     .cta-actions a { text-align: center; }
 
     footer { padding: 28px 16px 20px; }
-    .footer-top { gap: 24px; }
-    .footer-brand { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .footer-top { grid-template-columns: 1fr; gap: 24px; }
+    .footer-brand { flex-direction: column; align-items: flex-start; gap: 16px; grid-column: auto; }
+
     .footer-brand img { height: 64px; }
     .footer-brand p { font-size: 12px; max-width: 100%; }
     .footer-col a, .footer-col p { font-size: 12px; }
@@ -1185,10 +1242,42 @@
 
   /* ── iOS safe-area insets ── */
   @supports (padding: max(0px)) {
-    nav { padding-top: max(14px, env(safe-area-inset-top)); padding-left: max(20px, env(safe-area-inset-left)); padding-right: max(20px, env(safe-area-inset-right)); }
-    @media (max-width: 480px) {
-      nav { padding-top: max(10px, env(safe-area-inset-top)); padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
+    nav {
+      padding-top: max(14px, env(safe-area-inset-top));
+      padding-left: max(20px, env(safe-area-inset-left));
+      padding-right: max(20px, env(safe-area-inset-right));
     }
+    /* Prevent content from being hidden behind home indicator */
+    footer {
+      padding-bottom: max(36px, env(safe-area-inset-bottom));
+    }
+    .live-bar {
+      padding-left: max(64px, env(safe-area-inset-left));
+      padding-right: max(64px, env(safe-area-inset-right));
+    }
+    @media (max-width: 768px) {
+      .live-bar {
+        padding-left: max(20px, env(safe-area-inset-left));
+        padding-right: max(20px, env(safe-area-inset-right));
+      }
+    }
+    @media (max-width: 480px) {
+      nav {
+        padding-top: max(10px, env(safe-area-inset-top));
+        padding-left: max(16px, env(safe-area-inset-left));
+        padding-right: max(16px, env(safe-area-inset-right));
+      }
+      footer { padding-bottom: max(20px, env(safe-area-inset-bottom)); }
+    }
+  }
+
+  /* ── Touch devices: skip hover transforms that feel laggy ── */
+  @media (hover: none) and (pointer: coarse) {
+    .service-card:hover { transform: none; }
+    .btn-primary:hover { transform: none; }
+    .price-card.featured { transform: none; }
+    /* Disable backdrop-filter on mobile — battery & rendering savings */
+    nav { backdrop-filter: none; -webkit-backdrop-filter: none; }
   }
 
   /* ── Reduced motion ── */
@@ -1221,6 +1310,7 @@
     <a href="#advisory" data-i18n="nav.advisory" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Advisory</a>
     <a href="#pricing" data-i18n="nav.pricing" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Subscription</a>
     <a href="#clients" data-i18n="nav.clients" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Clients</a>
+    <a href="/Leadership" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Leadership</a>
     <div class="lang-dropdown" id="langDropdown">
       <button class="lang-globe" onclick="document.getElementById('langDropdown').classList.toggle('open')" aria-label="Select language">
         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -1262,7 +1352,7 @@
   </div>
 
   <div class="hero-content">
-    <div class="hero-tag" data-i18n="hero.tag">Mediterranean OSINT Platform · Est. Olbia, Sardinia</div>
+    <div class="hero-tag" data-i18n="hero.tag">MARITIME HYBRID THREAT INTELLIGENCE PLATFORM · Est. Brussels, Belgium</div>
     <h1 data-i18n="hero.h1" data-i18n-html="true">Intelligence That<br>Moves <span>Before</span><br>Disruption Does</h1>
     <p class="hero-desc">
       <span data-i18n="hero.desc">Sentinella Mare delivers AI-driven maritime intelligence and geopolitical risk advisory for shipping operators, logistics firms, and investment institutions navigating the Mediterranean basin.</span>
@@ -1278,25 +1368,16 @@
   <div class="live-bar">
     <div class="live-item">
       <div class="live-dot"></div>
-      <span data-i18n="live.feed">LIVE FEED ACTIVE</span>
+      <span data-i18n="live.feed">LIVE PORT SURVEILLANCE CAMS</span>
     </div>
     <div class="live-sep">|</div>
     <div class="live-item">
-      <span data-i18n="live.vessels">VESSELS TRACKED</span> <span class="live-val">1,247</span>
+      <span data-i18n="live.vessels">VESSELS TRACKED</span> <span class="live-val">285,163</span>
     </div>
     <div class="live-sep">|</div>
     <div class="live-item">
       <div class="live-dot amber"></div>
-      <span data-i18n="live.threat">THREAT ZONE: STRAIT OF SICILY —</span> <span class="live-val">ELEVATED</span>
-    </div>
-    <div class="live-sep">|</div>
-    <div class="live-item">
-      <div class="live-dot red"></div>
-      <span data-i18n="live.alert">ACTIVE ALERT: WESTERN MED CORRIDOR</span>
-    </div>
-    <div class="live-sep">|</div>
-    <div class="live-item">
-      <span data-i18n="live.ais">AIS COVERAGE</span> <span class="live-val">98.4%</span>
+      <span data-i18n="live.traffic">MARINE TRAFFIC — MEDITERRANEAN LIVE</span>
     </div>
   </div>
 </section>
@@ -1306,8 +1387,12 @@
   <div class="section-label" data-i18n="services.label">Core Services</div>
   <h2 data-i18n="services.h2" data-i18n-html="true">Two Missions.<br><span>One Platform.</span></h2>
   <p class="section-lead">
-    <span data-i18n="services.lead" data-i18n-html="true">Real-time geospatial intelligence and deep analytical expertise — built for operational and strategic clients across the Mediterranean corridor. Underpinning both offerings is the <strong>Maritime Hybrid Threat Exposure Score (MHTES)</strong>: a 72-hour predictive score that fuses cyber, geopolitical, gray-zone, illicit activity, and disinformation signals into a single actionable risk metric per asset.</span>
+    <span data-i18n="services.lead" data-i18n-html="true">Real-time geospatial intelligence and deep analytical expertise — built for operational and strategic clients across the Mediterranean corridor. Underpinning both offerings is the <strong>Maritime Hybrid Threat Exposure Score (MHTES)</strong>: a 72-hour predictive score that fuses cyber, geopolitical, grey fleet, disinformation, and weather signals into a single actionable risk metric per asset.</span>
   </p>
+
+  <div class="reg-callout">
+    <span data-i18n="services.callout" data-i18n-html="true"><strong>Aligned with European Maritime Regulation:</strong> MHTES delivers the integrated, all-hazards exposure picture that NIS2, the CER Directive, and Italy's Circular 177/2025 are increasingly oriented toward — built for operators preparing for the November 2026 convergence of these frameworks.</span>
+  </div>
 
   <div class="services-grid">
     <!-- Service 1 -->
@@ -1374,7 +1459,7 @@
     <div class="why-card">
       <div class="why-num">2</div>
       <div class="why-title" data-i18n="why.c2.title">Mediterranean-Native</div>
-      <p class="why-text" data-i18n="why.c2.text">Based in Olbia, Sardinia — embedded in the port communities, forums, and institutional networks that global firms cannot replicate from a distance.</p>
+      <p class="why-text" data-i18n="why.c2.text">Embedded in the port communities, forums, and institutional networks that global firms cannot replicate from a distance.</p>
     </div>
     <div class="why-card">
       <div class="why-num">3</div>
@@ -1656,7 +1741,7 @@
       <img src="Sentinella Mare Logo_White.png" alt="Sentinella Mare">
       <div class="footer-brand-text">
         <p data-i18n="footer.brand">Mediterranean maritime intelligence. AI-driven risk intelligence for shipping operators, logistics firms, and institutional investors navigating the world's most strategically complex sea.</p>
-        <span class="hq" data-i18n="footer.hq">// HQ: Olbia, Sardinia, Italy</span>
+        <span class="hq" data-i18n="footer.hq">// HQ: Brussels, Belgium</span>
       </div>
     </div>
     <div class="footer-col">
@@ -1692,7 +1777,7 @@ const translations = {
     'nav.clients': 'Clients',
     'nav.cta': 'Request Access',
     // Hero
-    'hero.tag': 'Mediterranean OSINT Platform · Est. Olbia, Sardinia',
+    'hero.tag': 'MARITIME HYBRID THREAT INTELLIGENCE PLATFORM · Est. Brussels, Belgium',
     'hero.h1': 'Intelligence That<br>Moves <span>Before</span><br>Disruption Does',
     'hero.desc': 'Sentinella Mare delivers AI-driven maritime intelligence and geopolitical risk advisory for shipping operators, logistics firms, and investment institutions navigating the Mediterranean basin.',
     'hero.btn1': 'View Live Dashboard',
@@ -1700,7 +1785,8 @@ const translations = {
     // Services
     'services.label': 'Core Services',
     'services.h2': 'Two Missions.<br><span>One Platform.</span>',
-    'services.lead': 'Real-time geospatial intelligence and deep analytical expertise — built for operational and strategic clients across the Mediterranean corridor. Underpinning both offerings is the <strong>Maritime Hybrid Threat Exposure Score (MHTES)</strong>: a 72-hour predictive score that fuses cyber, geopolitical, gray-zone, illicit activity, and disinformation signals into a single actionable risk metric per asset.',
+    'services.lead': 'Real-time geospatial intelligence and deep analytical expertise — built for operational and strategic clients across the Mediterranean corridor. Underpinning both offerings is the <strong>Maritime Hybrid Threat Exposure Score (MHTES)</strong>: a 72-hour predictive score that fuses cyber, geopolitical, grey fleet, disinformation, and weather signals into a single actionable risk metric per asset.',
+    'services.callout': '<strong>Aligned with European Maritime Regulation:</strong> MHTES delivers the integrated, all-hazards exposure picture that NIS2, the CER Directive, and Italy\'s Circular 177/2025 are increasingly oriented toward — built for operators preparing for the November 2026 convergence of these frameworks.',
     's1.tagline': 'Subscription · Live Intelligence',
     's1.title': 'Mediterranean Watch<br>Dashboard',
     's1.desc': 'A continuously updated geopolitical and maritime operations dashboard providing shipping companies and logistics operators with live situational awareness across the Mediterranean. Built on our proprietary predictive intelligence engine — not a report, a live signal.',
@@ -1724,11 +1810,9 @@ const translations = {
     's2.f6': 'Regulatory and sanctions landscape advisory',
     's2.f7': 'Retainer or project-based engagement structures',
     // Live status bar
-    'live.feed': 'LIVE FEED ACTIVE',
+    'live.feed': 'LIVE PORT SURVEILLANCE CAMS',
     'live.vessels': 'VESSELS TRACKED',
-    'live.threat': 'THREAT ZONE: STRAIT OF SICILY —',
-    'live.alert': 'ACTIVE ALERT: WESTERN MED CORRIDOR',
-    'live.ais': 'AIS COVERAGE',
+    'live.traffic': 'MARINE TRAFFIC — MEDITERRANEAN LIVE',
     // Platform
     'platform.label': 'Live Intelligence Platform',
     'plat.h2': 'The <span>Mediterranean Watch</span><br>Command Interface',
@@ -1764,7 +1848,7 @@ const translations = {
     'why.c1.title': 'Predictive, Not Reactive',
     'why.c1.text': 'Our AI engine synthesizes cross-domain signals — geopolitical, cyber, military, environmental — to deliver early-warning triggers before risk events materialize in mainstream reporting.',
     'why.c2.title': 'Mediterranean-Native Expertise',
-    'why.c2.text': 'Headquartered in Olbia, Sardinia. We operate within the maritime ecosystem we analyze — embedded in port communities, forums, and institutional networks that generalist firms cannot replicate.',
+    'why.c2.text': 'Embedded in the port communities, forums, and institutional networks that generalist firms cannot replicate — operating within the maritime ecosystem we analyze.',
     'why.c3.title': 'Proprietary Intelligence Engine',
     'why.c3.text': 'A vertically-trained LLM purpose-built for maritime risk intelligence — not a generic AI wrapper. Cross-domain pattern detection across commercial shipping, naval activity, infrastructure, and energy corridors.',
     'why.c4.title': 'Subscription Efficiency',
@@ -1862,7 +1946,7 @@ const translations = {
     'cta.btn2': 'Advisory Inquiry',
     // Footer
     "footer.brand": "Mediterranean maritime intelligence. AI-driven risk intelligence for shipping operators, logistics firms, and institutional investors navigating the world's most strategically complex sea.",
-    'footer.hq': '// HQ: Olbia, Sardinia, Italy',
+    'footer.hq': '// HQ: Brussels, Belgium',
     'footer.h.services': 'Services',
     'footer.h.coverage': 'Coverage',
     'footer.h.contact': 'Contact',
@@ -1885,7 +1969,7 @@ const translations = {
     'nav.clients': 'Clienti',
     'nav.cta': 'Richiedi Accesso',
     // Hero
-    'hero.tag': 'Piattaforma OSINT Mediterranea · Est. Olbia, Sardegna',
+    'hero.tag': 'PIATTAFORMA DI INTELLIGENCE IBRIDA MARITTIMA · Est. Bruxelles, Belgio',
     'hero.h1': 'Intelligence che<br>si Muove <span>Prima</span><br>della Disruption',
     'hero.desc': 'Sentinella Mare fornisce intelligence marittima basata su AI e advisory sul rischio geopolitico per armatori, aziende logistiche e istituzioni di investimento che operano nel bacino mediterraneo.',
     'hero.btn1': 'Visualizza Dashboard Live',
@@ -1917,11 +2001,9 @@ const translations = {
     's2.f6': 'Advisory sul panorama normativo e sanzionatorio',
     's2.f7': 'Strutture di incarico a retainer o per progetto',
     // Live status bar
-    'live.feed': 'FEED LIVE ATTIVO',
+    'live.feed': 'CAM DI SORVEGLIANZA PORTUALE LIVE',
     'live.vessels': 'NAVI TRACCIATE',
-    'live.threat': 'ZONA MINACCIA: STRETTO DI SICILIA —',
-    'live.alert': 'ALLERTA ATTIVA: CORRIDOIO MED OCCIDENTALE',
-    'live.ais': 'COPERTURA AIS',
+    'live.traffic': 'TRAFFICO MARINO — MEDITERRANEO LIVE',
     // Platform
     'platform.label': 'Piattaforma di Intelligence Live',
     'plat.h2': 'La <span>Mediterranean Watch</span><br>Command Interface',
@@ -1957,7 +2039,7 @@ const translations = {
     'why.c1.title': 'Predittivo, Non Reattivo',
     'why.c1.text': 'Il nostro motore AI sintetizza segnali multi-dominio — geopolitici, cyber, militari, ambientali — per fornire trigger di early-warning prima che gli eventi di rischio si materializzino nei report mainstream.',
     'why.c2.title': 'Expertise Mediterraneo-Nativa',
-    'why.c2.text': 'Sede a Olbia, Sardegna. Operiamo nell\'ecosistema marittimo che analizziamo — radicati nelle comunità portuali, forum e reti istituzionali che le aziende generaliste non possono replicare.',
+    'why.c2.text': 'Radicati nelle comunità portuali, forum e reti istituzionali che le aziende generaliste non possono replicare — operando nell\'ecosistema marittimo che analizziamo.',
     'why.c3.title': 'Motore di Intelligence Proprietario',
     'why.c3.text': 'Un LLM addestrato verticalmente per l\'intelligence del rischio marittimo — non un wrapper AI generico. Rilevamento di pattern multi-dominio su shipping commerciale, attività navale, infrastrutture e corridoi energetici.',
     'why.c4.title': 'Efficienza dell\'Abbonamento',
@@ -2055,7 +2137,7 @@ const translations = {
     'cta.btn2': 'Richiesta Advisory',
     // Footer
     'footer.brand': "Intelligence marittima mediterranea. Risk intelligence basata su AI per armatori, aziende logistiche e investitori istituzionali che navigano nel mare strategicamente più complesso del mondo.",
-    'footer.hq': '// QG: Olbia, Sardegna, Italia',
+    'footer.hq': '// QG: Bruxelles, Belgio',
     'footer.h.services': 'Servizi',
     'footer.h.coverage': 'Copertura',
     'footer.h.contact': 'Contatto',
@@ -2078,7 +2160,7 @@ const translations = {
     'nav.clients': 'العملاء',
     'nav.cta': 'طلب الوصول',
     // Hero
-    'hero.tag': 'منصة OSINT البحرية المتوسطية · تأسست في أولبيا، سردينيا',
+    'hero.tag': 'منصة استخبارات التهديدات الهجينة البحرية · تأسست في بروكسل، بلجيكا',
     'hero.h1': 'استخبارات تتحرك<br><span>قبل</span><br>حدوث الاضطراب',
     'hero.desc': 'تقدم Sentinella Mare استخبارات بحرية مدعومة بالذكاء الاصطناعي واستشارات مخاطر جيوسياسية لشركات الشحن والشركات اللوجستية والمؤسسات الاستثمارية التي تعمل في حوض البحر الأبيض المتوسط.',
     'hero.btn1': 'عرض لوحة التحكم المباشرة',
@@ -2110,11 +2192,9 @@ const translations = {
     's2.f6': 'استشارات المشهد التنظيمي والعقوبات',
     's2.f7': 'هياكل مشاركة قائمة على الاتفاقية الاستشارية أو المشروع',
     // Live status bar
-    'live.feed': 'التغذية المباشرة نشطة',
+    'live.feed': 'كاميرات مراقبة الموانئ المباشرة',
     'live.vessels': 'السفن المتتبعة',
-    'live.threat': 'منطقة التهديد: مضيق صقلية —',
-    'live.alert': 'تنبيه نشط: ممر غرب المتوسط',
-    'live.ais': 'تغطية AIS',
+    'live.traffic': 'الحركة البحرية — البحر المتوسط مباشرة',
     // Platform
     'platform.label': 'منصة الاستخبارات المباشرة',
     'plat.h2': '<span>Mediterranean Watch</span><br>واجهة القيادة',
@@ -2150,7 +2230,7 @@ const translations = {
     'why.c1.title': 'تنبؤي وليس تفاعلي',
     'why.c1.text': 'يقوم محرك الذكاء الاصطناعي لدينا بتوليف إشارات متعددة المجالات — جيوسياسية، سيبرانية، عسكرية، بيئية — لتقديم محفزات إنذار مبكر قبل أن تتحقق أحداث المخاطر في التقارير السائدة.',
     'why.c2.title': 'خبرة متوسطية أصيلة',
-    'why.c2.text': 'مقرها في أولبيا، سردينيا. نعمل داخل النظام البيئي البحري الذي نحلله — مندمجون في مجتمعات الموانئ والمنتديات والشبكات المؤسسية التي لا تستطيع الشركات العامة تكرارها.',
+    'why.c2.text': 'مندمجون في مجتمعات الموانئ والمنتديات والشبكات المؤسسية التي لا تستطيع الشركات العامة تكرارها — نعمل داخل النظام البيئي البحري الذي نحلله.',
     'why.c3.title': 'محرك استخبارات خاص',
     'why.c3.text': 'نموذج لغوي مُدرَّب رأسياً لاستخبارات مخاطر بحرية — وليس مجرد غلاف ذكاء اصطناعي عام. كشف الأنماط متعدد المجالات عبر الشحن التجاري والنشاط البحري والبنية التحتية وممرات الطاقة.',
     'why.c4.title': 'كفاءة الاشتراك',
@@ -2248,7 +2328,7 @@ const translations = {
     'cta.btn2': 'طلب استشارة',
     // Footer
     'footer.brand': 'استخبارات بحرية متوسطية. استخبارات مخاطر مدعومة بالذكاء الاصطناعي لشركات الشحن والشركات اللوجستية والمستثمرين المؤسسيين الذين يبحرون في أكثر بحار العالم تعقيداً من الناحية الاستراتيجية.',
-    'footer.hq': '// المقر: أولبيا، سردينيا، إيطاليا',
+    'footer.hq': '// المقر: بروكسل، بلجيكا',
     'footer.h.services': 'الخدمات',
     'footer.h.coverage': 'التغطية',
     'footer.h.contact': 'اتصل',
@@ -2271,7 +2351,7 @@ const translations = {
     'nav.clients': 'Πελάτες',
     'nav.cta': 'Αίτηση Πρόσβασης',
     // Hero
-    'hero.tag': 'Πλατφόρμα OSINT Μεσογείου · Ίδρ. Όλβια, Σαρδηνία',
+    'hero.tag': 'ΠΛΑΤΦΌΡΜΑ ΥΒΡΙΔΙΚΗΣ ΝΑΥΤΙΚΗΣ ΠΛΗΡΟΦΟΡΙΑΚΗΣ ΑΠΕΙΛΗΣ · Ίδρ. Βρυξέλλες, Βέλγιο',
     'hero.h1': 'Πληροφόρηση που<br>Κινείται <span>Πριν</span><br>από την Αναστάτωση',
     'hero.desc': 'Η Sentinella Mare παρέχει ναυτιλιακή πληροφόρηση με τεχνητή νοημοσύνη και συμβουλευτική γεωπολιτικού κινδύνου σε ναυτιλιακές εταιρείες, εταιρείες logistics και επενδυτικά ιδρύματα που δραστηριοποιούνται στη Μεσόγειο.',
     'hero.btn1': 'Προβολή Ζωντανής Οθόνης',
@@ -2303,11 +2383,9 @@ const translations = {
     's2.f6': 'Συμβουλευτική κανονιστικού και κυρωτικού πλαισίου',
     's2.f7': 'Δομές δέσμευσης βάσει συμβολαίου ή έργου',
     // Live status bar
-    'live.feed': 'ΖΩΝΤΑΝΗ ΤΡΟΦΟΔΟΣΙΑ ΕΝΕΡΓΗ',
+    'live.feed': 'ΖΩΝΤΑΝΕΣ ΚΑΜΕΡΕΣ ΠΑΡΑΚΟΛΟΥΘΗΣΗΣ ΛΙΜΑΝΙΩΝ',
     'live.vessels': 'ΠΛΟΙΑ ΥΠΟ ΠΑΡΑΚΟΛΟΥΘΗΣΗ',
-    'live.threat': 'ΖΩΝΗ ΑΠΕΙΛΗΣ: ΣΤΕΝΟ ΣΙΚΕΛΙΑΣ —',
-    'live.alert': 'ΕΝΕΡΓΗ ΕΙΔΟΠΟΙΗΣΗ: ΔΥΤΙΚΟΣ ΜΕΣΟΓΕΙΑΚΟΣ ΔΙΑΔΡΟΜΟΣ',
-    'live.ais': 'ΚΑΛΥΨΗ AIS',
+    'live.traffic': 'ΝΑΥΤΙΚΗ ΚΙΝΗΣΗ — ΜΕΣΟΓΕΙΟΣ LIVE',
     // Platform
     'platform.label': 'Ζωντανή Πλατφόρμα Πληροφόρησης',
     'plat.h2': 'Η <span>Mediterranean Watch</span><br>Command Interface',
@@ -2343,7 +2421,7 @@ const translations = {
     'why.c1.title': 'Προβλεπτικό, Όχι Αντιδραστικό',
     'why.c1.text': 'Η μηχανή AI μας συνθέτει σήματα πολλαπλών τομέων — γεωπολιτικά, κυβερνο-, στρατιωτικά, περιβαλλοντικά — για να παρέχει ερεθίσματα έγκαιρης προειδοποίησης πριν τα γεγονότα κινδύνου εμφανιστούν στις mainstream αναφορές.',
     'why.c2.title': 'Μεσογειακή Εγγενής Εμπειρογνωμοσύνη',
-    'why.c2.text': 'Έδρα στην Όλβια, Σαρδηνία. Λειτουργούμε εντός του ναυτιλιακού οικοσυστήματος που αναλύουμε — ενσωματωμένοι σε λιμενικές κοινότητες, φόρα και θεσμικά δίκτυα που οι γενικές εταιρείες δεν μπορούν να αντιγράψουν.',
+    'why.c2.text': 'Ενσωματωμένοι σε λιμενικές κοινότητες, φόρα και θεσμικά δίκτυα που οι γενικές εταιρείες δεν μπορούν να αντιγράψουν — λειτουργούμε εντός του ναυτιλιακού οικοσυστήματος που αναλύουμε.',
     'why.c3.title': 'Ιδιόκτητη Μηχανή Πληροφόρησης',
     'why.c3.text': 'Ένα κάθετα εκπαιδευμένο LLM ειδικά για ναυτιλιακή πληροφόρηση κινδύνου — όχι γενικό AI wrapper. Ανίχνευση προτύπων πολλαπλών τομέων σε εμπορική ναυτιλία, ναυτική δραστηριότητα, υποδομές και ενεργειακούς διαδρόμους.',
     'why.c4.title': 'Αποδοτικότητα Συνδρομής',
@@ -2441,7 +2519,7 @@ const translations = {
     'cta.btn2': 'Συμβουλευτική Αίτηση',
     // Footer
     'footer.brand': 'Ναυτιλιακή πληροφόρηση Μεσογείου. Πληροφόρηση κινδύνου με τεχνητή νοημοσύνη για ναυτιλιακούς χειριστές, εταιρείες logistics και θεσμικούς επενδυτές που πλέουν στη στρατηγικά πιο πολύπλοκη θάλασσα του κόσμου.',
-    'footer.hq': '// ΕΔΡ: Όλβια, Σαρδηνία, Ιταλία',
+    'footer.hq': '// ΕΔΡ: Βρυξέλλες, Βέλγιο',
     'footer.h.services': 'Υπηρεσίες',
     'footer.h.coverage': 'Κάλυψη',
     'footer.h.contact': 'Επικοινωνία',

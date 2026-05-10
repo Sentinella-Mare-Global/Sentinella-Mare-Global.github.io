@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Leadership — Sentinella Global</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&family=Noto+Sans:wght@400;600;700&subset=greek&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #060f18;
+    --navy-2: #0d1b2a;
+    --navy-3: #112336;
+    --navy-4: #1a3450;
+    --green: #2d7a3a;
+    --green-mid: #3aab4a;
+    --green-glow: #4fd962;
+    --green-dim: #1d5228;
+    --gold: #c9a84c;
+    --text: #f0f5fc;
+    --text-dim: #c8d8ec;
+    --white: #eef3f8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  img { max-width: 100%; height: auto; }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 120px;
+  }
+
+  body {
+    background: var(--navy);
+    color: var(--text);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 64px;
+    background: rgba(8,19,30,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(45,122,58,0.18);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .nav-logo img { height: 90px; max-width: 160px; }
+  .nav-brand { display: flex; flex-direction: column; line-height: 1; }
+  .nav-brand .n1 {
+    font-family: 'Cinzel', serif; font-size: 18px; font-weight: 700;
+    color: var(--white); letter-spacing: 3px;
+  }
+  .nav-brand .n2 {
+    font-family: 'Share Tech Mono', monospace; font-size: 9px;
+    color: var(--green-mid); letter-spacing: 4px; margin-top: 3px;
+  }
+  .nav-links { display: flex; align-items: center; gap: 32px; }
+  .nav-links a {
+    color: var(--text); text-decoration: none;
+    font-size: 12px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+    transition: color 0.25s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: var(--green-glow); }
+  .btn-nav {
+    border: 1px solid var(--green); color: var(--green-mid) !important;
+    padding: 8px 20px !important; letter-spacing: 2px !important;
+    transition: all 0.25s !important;
+  }
+  .btn-nav:hover {
+    background: var(--green) !important; color: white !important;
+    box-shadow: 0 0 24px rgba(79,217,98,0.25) !important;
+  }
+  .nav-toggle {
+    display: none; flex-direction: column; justify-content: center; gap: 5px;
+    cursor: pointer; padding: 8px; background: none; border: none; z-index: 1001;
+  }
+  .nav-toggle span {
+    display: block; width: 24px; height: 2px;
+    background: var(--green-mid); transition: all 0.3s;
+  }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ── LANGUAGE SWITCHER ── */
+  .lang-dropdown { position: relative; display: flex; align-items: center; }
+  .lang-globe {
+    background: none; border: none; cursor: pointer;
+    color: #fff; padding: 4px 6px; line-height: 1;
+    transition: color 0.2s; display: flex; align-items: center;
+  }
+  .lang-globe:hover { color: var(--green-glow); }
+  .lang-menu {
+    display: none; position: absolute; right: 0; top: calc(100% + 10px);
+    background: rgba(6,15,24,0.98); border: 1px solid rgba(45,122,58,0.3);
+    border-radius: 4px; flex-direction: column; min-width: 64px;
+    overflow: hidden; z-index: 1100;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  }
+  .lang-dropdown.open .lang-menu { display: flex; }
+  .lang-menu .lang-btn {
+    background: none; border: none; border-bottom: 1px solid rgba(45,122,58,0.15);
+    cursor: pointer; color: rgba(200,216,236,0.55);
+    font-family: 'Share Tech Mono', monospace; font-size: 11px;
+    padding: 9px 16px; text-transform: uppercase; text-align: center;
+    transition: color 0.2s, background 0.2s; letter-spacing: 2px;
+  }
+  .lang-menu .lang-btn:last-child { border-bottom: none; }
+  .lang-menu .lang-btn:hover { color: var(--green-glow); background: rgba(45,122,58,0.1); }
+  .lang-menu .lang-btn.active { color: var(--green-mid); }
+
+  /* ── RTL SUPPORT ── */
+  html[dir="rtl"] nav { flex-direction: row-reverse; }
+
+  /* ── PAGE HERO ── */
+  .page-hero {
+    padding: 160px 64px 80px;
+    position: relative;
+    background: var(--navy);
+    overflow: hidden;
+  }
+  .page-hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 60% 60% at 80% 50%, rgba(45,122,58,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .page-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px; letter-spacing: 3px; color: var(--green-mid);
+    text-transform: uppercase; margin-bottom: 20px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .page-label::before {
+    content: ''; display: block;
+    width: 30px; height: 1px; background: var(--green-mid);
+  }
+  .page-hero h1 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(36px, 5vw, 60px);
+    font-weight: 700; letter-spacing: 2px;
+    color: var(--white); line-height: 1.15;
+  }
+  .page-hero h1 span { color: var(--green-glow); }
+
+  /* ── LEADERSHIP SECTION ── */
+  .leadership-section {
+    background: var(--navy-2);
+    padding: 80px 64px;
+  }
+  .leadership-card {
+    max-width: 860px;
+    background: var(--navy-3);
+    border: 1px solid rgba(45,122,58,0.18);
+    border-radius: 4px;
+    padding: 56px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .leadership-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: linear-gradient(to bottom, var(--green-mid), transparent);
+  }
+  .leader-header {
+    display: flex; align-items: flex-start; gap: 36px;
+    margin-bottom: 36px;
+  }
+  .leader-headshot {
+    width: 140px; height: 140px;
+    border-radius: 4px;
+    object-fit: cover; object-position: top;
+    border: 2px solid rgba(45,122,58,0.35);
+    flex-shrink: 0;
+  }
+  .leader-meta { display: flex; flex-direction: column; justify-content: center; }
+  .leader-name {
+    font-family: 'Cinzel', serif;
+    font-size: 28px; font-weight: 700;
+    color: var(--white); letter-spacing: 1.5px;
+    margin-bottom: 8px;
+  }
+  .leader-title {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px; letter-spacing: 3px;
+    color: var(--green-mid); text-transform: uppercase;
+  }
+  .leader-bio p {
+    font-size: 17px; line-height: 1.8;
+    color: var(--text-dim);
+    margin-bottom: 20px;
+  }
+  .leader-bio p:last-child { margin-bottom: 0; }
+  .leader-divider {
+    width: 48px; height: 2px;
+    background: var(--green-mid);
+    margin: 28px 0;
+    opacity: 0.6;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--navy-2);
+    border-top: 1px solid rgba(45,122,58,0.12);
+    padding: 56px 64px 32px;
+  }
+  .footer-top {
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px; margin-bottom: 60px;
+  }
+  .footer-brand { display: flex; flex-direction: row; align-items: flex-start; gap: 20px; }
+  .footer-brand-text { display: flex; flex-direction: column; gap: 12px; }
+  .footer-brand img { height: 100px; width: fit-content; }
+  .footer-brand p {
+    font-size: 13px; line-height: 1.7; color: var(--text-dim);
+    max-width: 280px;
+  }
+  .footer-brand .hq {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px; letter-spacing: 3px; color: var(--green-mid);
+    text-transform: uppercase;
+  }
+  .footer-col h5 {
+    font-family: 'Cinzel', serif;
+    font-size: 13px; font-weight: 600;
+    color: var(--white); letter-spacing: 1px;
+    margin-bottom: 20px;
+  }
+  .footer-col a, .footer-col p {
+    display: block; color: var(--text-dim); text-decoration: none;
+    font-size: 13px; line-height: 1.6; margin-bottom: 10px;
+  }
+  .footer-col a:hover { color: var(--green-mid); }
+  .footer-contact-btn { display: inline-block; width: fit-content; }
+  .footer-bottom {
+    border-top: 1px solid rgba(45,122,58,0.1);
+    padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 12px;
+  }
+  .footer-bottom p {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px; letter-spacing: 2px;
+    color: var(--text-dim); text-transform: uppercase;
+  }
+  .btn-primary {
+    background: var(--green); color: #fff;
+    padding: 14px 36px; font-family: 'Rajdhani', sans-serif;
+    font-size: 13px; font-weight: 700; letter-spacing: 2.5px;
+    text-transform: uppercase; text-decoration: none;
+    border: none; cursor: pointer;
+    transition: all 0.3s; display: inline-block;
+  }
+  .btn-primary:hover {
+    background: var(--green-mid);
+    box-shadow: 0 0 32px rgba(79,217,98,0.3);
+  }
+
+  /* ── TOUCH OPTIMIZATIONS ── */
+  a, button, [role="button"],
+  .btn-primary, .btn-nav, .nav-toggle,
+  .lang-globe, .lang-btn {
+    -webkit-tap-highlight-color: transparent;
+  }
+  .btn-primary, .btn-nav, .nav-toggle,
+  .lang-globe, .lang-btn {
+    touch-action: manipulation;
+  }
+
+  /* ── GREEK FONT OVERRIDES ── */
+  html[lang="el"] body,
+  html[lang="el"] p,
+  html[lang="el"] li,
+  html[lang="el"] a,
+  html[lang="el"] button {
+    font-family: 'Noto Sans', -apple-system, 'Segoe UI', sans-serif;
+  }
+  html[lang="el"] h1,
+  html[lang="el"] h2,
+  html[lang="el"] h3,
+  html[lang="el"] .leader-name,
+  html[lang="el"] .leader-title {
+    font-family: 'Noto Sans', -apple-system, 'Segoe UI', sans-serif;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── RTL SUPPORT (Arabic) ── */
+  html[dir="rtl"] nav { flex-direction: row-reverse; }
+  html[dir="rtl"] .nav-links { flex-direction: row-reverse; }
+  html[dir="rtl"] .leader-header { flex-direction: row-reverse; }
+  html[dir="rtl"] .leader-bio p { text-align: right; }
+  html[dir="rtl"] .page-label { flex-direction: row-reverse; }
+  html[dir="rtl"] .footer-brand { flex-direction: row-reverse; }
+  html[dir="rtl"] .footer-col { text-align: right; }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 1024px) {
+    nav { padding: 14px 32px; }
+    .page-hero { padding: 132px 32px 64px; }
+    .leadership-section { padding: 64px 32px; }
+    footer { padding: 48px 32px 28px; }
+    .footer-top { grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
+    .footer-brand { grid-column: 1 / -1; }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 12px 20px; }
+    .nav-logo img { height: 70px; }
+    .nav-toggle { display: flex; }
+    .nav-links {
+      display: none; position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw; height: 100vh; height: 100dvh;
+      background: var(--navy);
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 32px; z-index: 1000;
+      overflow-y: auto; padding: 80px 20px 40px;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { font-size: 16px; letter-spacing: 3px; }
+    .nav-links.open .lang-dropdown .lang-menu {
+      position: static; display: flex; flex-direction: row; gap: 4px;
+      box-shadow: none; background: transparent; border: none; padding: 4px 0;
+    }
+    .lang-dropdown { order: 10; }
+    .page-hero { padding: 120px 20px 48px; }
+    .leadership-section { padding: 48px 20px; }
+    .leadership-card { padding: 36px 28px; }
+    .leader-header { gap: 24px; }
+    .leader-headshot { width: 110px; height: 110px; }
+    .leader-name { font-size: 22px; }
+    .leader-bio p { font-size: 16px; }
+    footer { padding: 36px 20px 24px; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .footer-brand { grid-column: 1 / -1; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .footer-contact-btn { width: 100%; text-align: center; }
+  }
+
+  @media (max-width: 480px) {
+    nav { padding: 10px 16px; }
+    .nav-logo img { height: 56px; }
+    .nav-brand .n1 { font-size: 12px; letter-spacing: 1px; }
+    .nav-brand .n2 { display: none; }
+    .page-hero { padding: 100px 16px 40px; }
+    .leadership-section { padding: 36px 16px; }
+    .leadership-card { padding: 28px 20px; }
+    .leader-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .leader-headshot { width: 100px; height: 100px; }
+    .leader-name { font-size: 20px; }
+    .leader-bio p { font-size: 15px; }
+    footer { padding: 28px 16px 20px; }
+    .footer-top { grid-template-columns: 1fr; gap: 20px; }
+    .footer-brand { flex-direction: column; grid-column: auto; }
+    .footer-brand img { height: 80px; }
+    .footer-col a, .footer-col p { font-size: 12px; }
+  }
+
+  /* ── Extra small phones (≤ 360px) ── */
+  @media (max-width: 360px) {
+    nav { padding: 8px 12px; }
+    .nav-logo img { height: 46px; }
+    .page-hero { padding: 90px 12px 32px; }
+    .leadership-section { padding: 28px 12px; }
+    .leadership-card { padding: 24px 16px; }
+  }
+
+  /* ── iOS safe-area insets ── */
+  @supports (padding: max(0px)) {
+    nav {
+      padding-top: max(14px, env(safe-area-inset-top));
+      padding-left: max(20px, env(safe-area-inset-left));
+      padding-right: max(20px, env(safe-area-inset-right));
+    }
+    footer { padding-bottom: max(32px, env(safe-area-inset-bottom)); }
+    @media (max-width: 480px) {
+      nav {
+        padding-top: max(10px, env(safe-area-inset-top));
+        padding-left: max(16px, env(safe-area-inset-left));
+        padding-right: max(16px, env(safe-area-inset-right));
+      }
+      footer { padding-bottom: max(20px, env(safe-area-inset-bottom)); }
+    }
+  }
+
+  /* ── Touch: skip hover effects ── */
+  @media (hover: none) and (pointer: coarse) {
+    nav { backdrop-filter: none; -webkit-backdrop-filter: none; }
+  }
+
+  /* ── Reduced motion ── */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="../">
+    <img src="../Sentinella Mare Logo_White.png" alt="Sentinella Mare">
+    <div class="nav-brand">
+      <span class="n1">SENTINELLA MARE</span>
+      <span class="n2" data-i18n="nav.tagline">Mediterranean Intelligence</span>
+    </div>
+  </a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navLinks">
+    <a href="../#services" data-i18n="nav.services" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Services</a>
+    <a href="../#platform" data-i18n="nav.platform" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Live Platform</a>
+    <a href="../#advisory" data-i18n="nav.advisory" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Advisory</a>
+    <a href="../#pricing" data-i18n="nav.pricing" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Subscription</a>
+    <a href="../#clients" data-i18n="nav.clients" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Clients</a>
+    <a href="/Leadership" class="active" data-i18n="nav.leadership" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Leadership</a>
+    <div class="lang-dropdown" id="langDropdown">
+      <button class="lang-globe" onclick="document.getElementById('langDropdown').classList.toggle('open')" aria-label="Select language">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <ellipse cx="12" cy="12" rx="4" ry="10"/>
+          <line x1="2" y1="12" x2="22" y2="12"/>
+        </svg>
+      </button>
+      <div class="lang-menu">
+        <button class="lang-btn active" onclick="setLang('en'); document.getElementById('langDropdown').classList.remove('open')" id="btn-en">EN</button>
+        <button class="lang-btn" onclick="setLang('it'); document.getElementById('langDropdown').classList.remove('open')" id="btn-it">IT</button>
+        <button class="lang-btn" onclick="setLang('ar'); document.getElementById('langDropdown').classList.remove('open')" id="btn-ar">AR</button>
+        <button class="lang-btn" onclick="setLang('el'); document.getElementById('langDropdown').classList.remove('open')" id="btn-el">EL</button>
+      </div>
+    </div>
+    <a href="../#contact" class="btn-nav" data-i18n="nav.cta" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Request Access</a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-label" data-i18n="leadership.label">Sentinella Global</div>
+  <h1 data-i18n-html="true" data-i18n="leadership.h1">Our <span>Leadership</span></h1>
+</div>
+
+<!-- LEADERSHIP CONTENT -->
+<section class="leadership-section">
+  <div class="leadership-card">
+    <div class="leader-header">
+      <img src="../James Davies_Headshot.jpeg" alt="James Davies" class="leader-headshot">
+      <div class="leader-meta">
+        <div class="leader-name" data-i18n="leader.name">James Davies</div>
+        <div class="leader-title" data-i18n="leader.title">Founder &amp; CEO</div>
+      </div>
+    </div>
+    <div class="leader-bio">
+      <p data-i18n="leader.bio1">Founder and CEO of Sentinella Global. James leads the company's strategic direction, the development of its intelligence framework, and its institutional partnerships across the Mediterranean.</p>
+      <div class="leader-divider"></div>
+      <p data-i18n="leader.bio2">He brings more than a decade of federal law enforcement and hybrid threat intelligence experience to the role, with deep coverage of both Latin America and Russia and fluency in Spanish and Russian. His operational background spans all-source intelligence collection, virtual operations, protective intelligence, and disinformation campaigns. That cross-domain experience is the foundation of the MHTES framework that powers Sentinella Mare — a single, operationally validated exposure score that synthesises five threat vectors into one continuously updated picture.</p>
+      <p data-i18n="leader.bio3">James founded Sentinella Global to bring the integrated, all-source craft developed inside federal service to the commercial maritime operators who increasingly need it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="../Sentinella Mare Logo_White.png" alt="Sentinella Mare">
+      <div class="footer-brand-text">
+        <p data-i18n="footer.brand">Mediterranean maritime intelligence. AI-driven risk intelligence for shipping operators, logistics firms, and institutional investors navigating the world's most strategically complex sea.</p>
+        <span class="hq" data-i18n="footer.hq">// HQ: Brussels, Belgium</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h5 data-i18n="footer.h.services">Services</h5>
+      <a href="../#services" data-i18n="footer.l.dashboard">Mediterranean Watch Dashboard</a>
+      <a href="../#advisory" data-i18n="footer.l.investment">Investment Advisory</a>
+      <a href="../#advisory" data-i18n="footer.l.supply">Supply Chain Risk</a>
+      <a href="../#pricing" data-i18n="footer.l.tiers">Subscription Tiers</a>
+    </div>
+    <div class="footer-col">
+      <h5 data-i18n="footer.h.coverage">Coverage</h5>
+      <p data-i18n="footer.geo.1">Strait of Gibraltar</p>
+      <p data-i18n="footer.geo.2">Tyrrhenian Sea</p>
+      <p data-i18n="footer.geo.3">Strait of Sicily</p>
+      <p data-i18n="footer.geo.4">Adriatic Sea</p>
+      <p data-i18n="footer.geo.5">Eastern Mediterranean</p>
+    </div>
+    <div class="footer-col">
+      <a href="mailto:james@sentinellaglobal.com" class="btn-primary footer-contact-btn" data-i18n="footer.h.contact">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p data-i18n="footer.copy">© 2025 Sentinella Global. All rights reserved.</p>
+    <p data-i18n="footer.platform">MARITIME HYBRID THREAT INTELLIGENCE PLATFORM</p>
+  </div>
+</footer>
+
+<script>
+let currentLang = 'en';
+
+const translations = {
+  en: {
+    'nav.tagline': 'Mediterranean Intelligence',
+    'nav.services': 'Services',
+    'nav.platform': 'Live Platform',
+    'nav.advisory': 'Advisory',
+    'nav.pricing': 'Subscription',
+    'nav.clients': 'Clients',
+    'nav.leadership': 'Leadership',
+    'nav.cta': 'Request Access',
+    'leadership.label': 'Sentinella Global',
+    'leadership.h1': 'Our <span>Leadership</span>',
+    'leader.name': 'James Davies',
+    'leader.title': 'Founder & CEO',
+    'leader.bio1': 'Founder and CEO of Sentinella Global. James leads the company\'s strategic direction, the development of its intelligence framework, and its institutional partnerships across the Mediterranean.',
+    'leader.bio2': 'He brings more than a decade of federal law enforcement and hybrid threat intelligence experience to the role, with deep coverage of both Latin America and Russia and fluency in Spanish and Russian. His operational background spans all-source intelligence collection, virtual operations, protective intelligence, and disinformation campaigns. That cross-domain experience is the foundation of the MHTES framework that powers Sentinella Mare — a single, operationally validated exposure score that synthesises five threat vectors into one continuously updated picture.',
+    'leader.bio3': 'James founded Sentinella Global to bring the integrated, all-source craft developed inside federal service to the commercial maritime operators who increasingly need it.',
+    'footer.brand': 'Mediterranean maritime intelligence. AI-driven risk intelligence for shipping operators, logistics firms, and institutional investors navigating the world\'s most strategically complex sea.',
+    'footer.hq': '// HQ: Brussels, Belgium',
+    'footer.h.services': 'Services',
+    'footer.l.dashboard': 'Mediterranean Watch Dashboard',
+    'footer.l.investment': 'Investment Advisory',
+    'footer.l.supply': 'Supply Chain Risk',
+    'footer.l.tiers': 'Subscription Tiers',
+    'footer.h.coverage': 'Coverage',
+    'footer.geo.1': 'Strait of Gibraltar',
+    'footer.geo.2': 'Tyrrhenian Sea',
+    'footer.geo.3': 'Strait of Sicily',
+    'footer.geo.4': 'Adriatic Sea',
+    'footer.geo.5': 'Eastern Mediterranean',
+    'footer.h.contact': 'Contact',
+    'footer.copy': '© 2025 Sentinella Global. All rights reserved.',
+    'footer.platform': 'MARITIME HYBRID THREAT INTELLIGENCE PLATFORM',
+  },
+  it: {
+    'nav.tagline': 'Intelligence Mediterranea',
+    'nav.services': 'Servizi',
+    'nav.platform': 'Piattaforma Live',
+    'nav.advisory': 'Advisory',
+    'nav.pricing': 'Abbonamento',
+    'nav.clients': 'Clienti',
+    'nav.leadership': 'Leadership',
+    'nav.cta': 'Richiedi Accesso',
+    'leadership.label': 'Sentinella Global',
+    'leadership.h1': 'La Nostra <span>Leadership</span>',
+    'leader.name': 'James Davies',
+    'leader.title': 'Fondatore e CEO',
+    'leader.bio1': 'Fondatore e CEO di Sentinella Global. James guida la direzione strategica dell\'azienda, lo sviluppo del suo framework di intelligence e le sue partnership istituzionali nel Mediterraneo.',
+    'leader.bio2': 'Porta al ruolo più di un decennio di esperienza nelle forze dell\'ordine federali e nell\'intelligence sulle minacce ibride, con una copertura approfondita sia dell\'America Latina che della Russia e con la padronanza dello spagnolo e del russo. Il suo background operativo abbraccia la raccolta di intelligence da tutte le fonti, le operazioni virtuali, l\'intelligence protettiva e le campagne di disinformazione. Questa esperienza multidisciplinare è il fondamento del framework MHTES che alimenta Sentinella Mare — un unico punteggio di esposizione operativamente validato che sintetizza cinque vettori di minaccia in un quadro aggiornato continuamente.',
+    'leader.bio3': 'James ha fondato Sentinella Global per portare il lavoro di intelligence integrata, da tutte le fonti, sviluppato nel servizio federale agli operatori marittimi commerciali che ne hanno sempre più bisogno.',
+    'footer.brand': 'Intelligence marittima mediterranea. Intelligence del rischio basata sull\'IA per operatori di spedizioni, società di logistica e investitori istituzionali.',
+    'footer.hq': '// QG: Bruxelles, Belgio',
+    'footer.h.services': 'Servizi',
+    'footer.l.dashboard': 'Mediterranean Watch Dashboard',
+    'footer.l.investment': 'Advisory sugli Investimenti',
+    'footer.l.supply': 'Rischio della Supply Chain',
+    'footer.l.tiers': 'Livelli di Abbonamento',
+    'footer.h.coverage': 'Copertura',
+    'footer.geo.1': 'Stretto di Gibilterra',
+    'footer.geo.2': 'Mar Tirreno',
+    'footer.geo.3': 'Stretto di Sicilia',
+    'footer.geo.4': 'Mar Adriatico',
+    'footer.geo.5': 'Mediterraneo Orientale',
+    'footer.h.contact': 'Contatto',
+    'footer.copy': '© 2025 Sentinella Global. Tutti i diritti riservati.',
+    'footer.platform': 'PIATTAFORMA DI INTELLIGENCE IBRIDA MARITTIMA',
+  },
+  ar: {
+    'nav.tagline': 'الاستخبارات المتوسطية',
+    'nav.services': 'الخدمات',
+    'nav.platform': 'المنصة المباشرة',
+    'nav.advisory': 'الاستشارات',
+    'nav.pricing': 'الاشتراك',
+    'nav.clients': 'العملاء',
+    'nav.leadership': 'القيادة',
+    'nav.cta': 'طلب الوصول',
+    'leadership.label': 'سينتينيلا غلوبال',
+    'leadership.h1': '<span>قيادتنا</span>',
+    'leader.name': 'جيمس ديفيز',
+    'leader.title': 'المؤسس والرئيس التنفيذي',
+    'leader.bio1': 'مؤسس والرئيس التنفيذي لشركة Sentinella Global. يقود جيمس التوجه الاستراتيجي للشركة، وتطوير إطارها الاستخباراتي، وشراكاتها المؤسسية عبر منطقة البحر المتوسط.',
+    'leader.bio2': 'يجلب إلى هذا الدور أكثر من عقد من الخبرة في مجال تطبيق القانون الفيدرالي واستخبارات التهديدات الهجينة، مع تغطية معمّقة لكل من أمريكا اللاتينية وروسيا وإتقان اللغتين الإسبانية والروسية. تمتد خلفيته العملياتية لتشمل جمع المعلومات الاستخباراتية من جميع المصادر، والعمليات الافتراضية، والاستخبارات الوقائية، وحملات التضليل. هذه الخبرة متعددة المجالات هي أساس إطار MHTES الذي يشغّل Sentinella Mare — درجة تعرض مُتحققة عملياتياً تجمع خمسة متجهات تهديد في صورة واحدة محدّثة باستمرار.',
+    'leader.bio3': 'أسس جيمس Sentinella Global لإيصال الحرفة الاستخباراتية المتكاملة من جميع المصادر، التي طُوِّرت داخل الخدمة الفيدرالية، إلى مشغّلي النقل البحري التجاري الذين يحتاجونها بشكل متزايد.',
+    'footer.brand': 'استخبارات بحرية متوسطية. استخبارات المخاطر المدعومة بالذكاء الاصطناعي لمشغلي الشحن والشركات اللوجستية والمستثمرين المؤسسيين.',
+    'footer.hq': '// المقر: بروكسل، بلجيكا',
+    'footer.h.services': 'الخدمات',
+    'footer.l.dashboard': 'لوحة مراقبة البحر المتوسط',
+    'footer.l.investment': 'استشارات الاستثمار',
+    'footer.l.supply': 'مخاطر سلسلة التوريد',
+    'footer.l.tiers': 'مستويات الاشتراك',
+    'footer.h.coverage': 'التغطية',
+    'footer.geo.1': 'مضيق جبل طارق',
+    'footer.geo.2': 'البحر التيراني',
+    'footer.geo.3': 'مضيق صقلية',
+    'footer.geo.4': 'البحر الأدرياتيكي',
+    'footer.geo.5': 'شرق البحر المتوسط',
+    'footer.h.contact': 'تواصل',
+    'footer.copy': '© 2025 Sentinella Global. جميع الحقوق محفوظة.',
+    'footer.platform': 'منصة استخبارات التهديدات الهجينة البحرية',
+  },
+  el: {
+    'nav.tagline': 'Μεσογειακή Πληροφόρηση',
+    'nav.services': 'Υπηρεσίες',
+    'nav.platform': 'Ζωντανή Πλατφόρμα',
+    'nav.advisory': 'Συμβουλευτική',
+    'nav.pricing': 'Συνδρομή',
+    'nav.clients': 'Πελάτες',
+    'nav.leadership': 'Ηγεσία',
+    'nav.cta': 'Αίτηση Πρόσβασης',
+    'leadership.label': 'Sentinella Global',
+    'leadership.h1': 'Η <span>Ηγεσία</span> μας',
+    'leader.name': 'James Davies',
+    'leader.title': 'Ιδρυτής & Διευθύνων Σύμβουλος',
+    'leader.bio1': 'Ιδρυτής και Διευθύνων Σύμβουλος της Sentinella Global. Ο James ηγείται της στρατηγικής κατεύθυνσης της εταιρείας, της ανάπτυξης του πλαισίου πληροφόρησής της και των θεσμικών συνεργασιών της σε ολόκληρη τη Μεσόγειο.',
+    'leader.bio2': 'Φέρνει στον ρόλο περισσότερο από μια δεκαετία εμπειρίας στην ομοσπονδιακή επιβολή νόμου και στις υβριδικές απειλές, με βαθιά κάλυψη τόσο της Λατινικής Αμερικής όσο και της Ρωσίας, και άριστη γνώση ισπανικών και ρωσικών. Το επιχειρησιακό του υπόβαθρο περιλαμβάνει συλλογή πληροφοριών από όλες τις πηγές, εικονικές επιχειρήσεις, προστατευτική πληροφόρηση και εκστρατείες παραπληροφόρησης. Αυτή η διατομεακή εμπειρία αποτελεί τη βάση του πλαισίου MHTES που τροφοδοτεί το Sentinella Mare — ένα ενιαίο, επιχειρησιακά επαληθευμένο σκορ έκθεσης που συνθέτει πέντε φορείς απειλών σε μία συνεχώς ενημερωμένη εικόνα.',
+    'leader.bio3': 'Ο James ίδρυσε την Sentinella Global για να φέρει την ολοκληρωμένη, πολυπηγαία τέχνη που αναπτύχθηκε εντός της ομοσπονδιακής υπηρεσίας στους εμπορικούς ναυτιλιακούς χειριστές που τη χρειάζονται όλο και περισσότερο.',
+    'footer.brand': 'Μεσογειακή ναυτική πληροφόρηση. Πληροφόρηση κινδύνου με τεχνητή νοημοσύνη για ναυτιλιακούς χειριστές, εταιρείες logistics και θεσμικούς επενδυτές.',
+    'footer.hq': '// ΕΔΡ: Βρυξέλλες, Βέλγιο',
+    'footer.h.services': 'Υπηρεσίες',
+    'footer.l.dashboard': 'Πίνακας Παρακολούθησης Μεσογείου',
+    'footer.l.investment': 'Επενδυτική Συμβουλευτική',
+    'footer.l.supply': 'Κίνδυνος Εφοδιαστικής Αλυσίδας',
+    'footer.l.tiers': 'Επίπεδα Συνδρομής',
+    'footer.h.coverage': 'Κάλυψη',
+    'footer.geo.1': 'Στενό του Γιβραλτάρ',
+    'footer.geo.2': 'Τυρρηνική Θάλασσα',
+    'footer.geo.3': 'Στενό της Σικελίας',
+    'footer.geo.4': 'Αδριατική Θάλασσα',
+    'footer.geo.5': 'Ανατολική Μεσόγειος',
+    'footer.h.contact': 'Επικοινωνία',
+    'footer.copy': '© 2025 Sentinella Global. Με επιφύλαξη παντός δικαιώματος.',
+    'footer.platform': 'ΠΛΑΤΦΌΡΜΑ ΥΒΡΙΔΙΚΗΣ ΝΑΥΤΙΚΗΣ ΠΛΗΡΟΦΟΡΙΑΚΗΣ ΑΠΕΙΛΗΣ',
+  },
+};
+
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+  document.getElementById('btn-' + lang).classList.add('active');
+  document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+  document.documentElement.setAttribute('lang', lang);
+  const t = translations[lang];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (t[key] !== undefined) {
+      if (el.getAttribute('data-i18n-html') === 'true') {
+        el.innerHTML = t[key];
+      } else {
+        el.textContent = t[key];
+      }
+    }
+  });
+  try { localStorage.setItem('smLang', lang); } catch(e) {}
+}
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(e) {
+  const dd = document.getElementById('langDropdown');
+  if (dd && !dd.contains(e.target)) dd.classList.remove('open');
+});
+
+// Restore saved language on load
+(function() {
+  try {
+    const saved = localStorage.getItem('smLang');
+    if (saved && translations[saved]) { setLang(saved); return; }
+  } catch(e) {}
+  const nav = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+  if (nav.startsWith('it')) setLang('it');
+  else if (nav.startsWith('ar')) setLang('ar');
+  else if (nav.startsWith('el')) setLang('el');
+  else setLang('en');
+})();
+</script>
+</body>
+</html>
