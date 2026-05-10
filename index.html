@@ -1028,7 +1028,7 @@
   /* ── Tablets (≤ 768px) ── */
   @media (max-width: 768px) {
     /* Layout & spacing */
-    nav { padding: 12px 20px; }
+    nav { padding: 12px 20px; backdrop-filter: none; -webkit-backdrop-filter: none; }
     .nav-logo img { height: 70px; }
     .nav-brand .n1 { font-size: 15px; letter-spacing: 2px; }
     .nav-brand .n2 { font-size: 8px; letter-spacing: 3px; }
@@ -1094,6 +1094,7 @@
       /* Prevent background from scrolling while nav is open */
       overscroll-behavior: contain;
       -webkit-overflow-scrolling: touch;
+
     }
     .nav-links.open { display: flex; }
     .nav-links a { font-size: 16px; letter-spacing: 3px; }
@@ -1121,6 +1122,7 @@
       min-height: 44px; display: inline-flex; align-items: center; justify-content: center;
     }
     .asset-tab { justify-content: flex-start; }
+
   }
 
   /* ── Small tablets / large phones (≤ 600px) ── */
@@ -1135,6 +1137,7 @@
     /* Footer columns: 2-col grid instead of 1 on medium phones */
     .footer-top { grid-template-columns: 1fr 1fr; gap: 24px; }
     .footer-brand { grid-column: 1 / -1; }
+
   }
 
   /* ── Phones (≤ 480px) ── */
@@ -1195,6 +1198,7 @@
     footer { padding: 28px 16px 20px; }
     .footer-top { grid-template-columns: 1fr; gap: 24px; }
     .footer-brand { flex-direction: column; align-items: flex-start; gap: 16px; grid-column: auto; }
+
     .footer-brand img { height: 64px; }
     .footer-brand p { font-size: 12px; max-width: 100%; }
     .footer-col a, .footer-col p { font-size: 12px; }
