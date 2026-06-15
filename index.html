@@ -781,6 +781,30 @@
     font-size: 10px; letter-spacing: 1.5px; color: var(--green-mid);
     opacity: 0.8; margin-bottom: 28px;
   }
+  .price-coverage {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px; letter-spacing: 2px; color: var(--gold);
+    text-transform: uppercase; margin-bottom: 20px;
+    border: 1px solid rgba(201,168,76,0.25); padding: 4px 10px;
+    display: inline-block; border-radius: 2px;
+  }
+  .feat-group {
+    font-family: 'Share Tech Mono', monospace !important;
+    font-size: 9px !important; letter-spacing: 3px;
+    color: var(--green-mid) !important; text-transform: uppercase;
+    padding: 14px 0 2px !important;
+    border-bottom: 1px solid rgba(45,122,58,0.15) !important;
+    font-weight: 400 !important; display: flex !important;
+  }
+  .feat-group::before { content: none !important; }
+  .price-features li.feat-star-item { color: var(--gold); }
+  .price-features li.feat-star-item::before { content: '★'; color: var(--gold); font-size: 10px; }
+  .tier-star-note {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px; letter-spacing: 1px;
+    color: rgba(201,168,76,0.5);
+    text-align: center; padding: 20px 0 0;
+  }
 
   /* ── ADVISORY ── */
   #advisory { background: var(--navy-2); }
@@ -1631,7 +1655,7 @@
   <div class="section-label" data-i18n="pricing.label">Subscription Platform</div>
   <h2 data-i18n="pricing.h2" data-i18n-html="true"><span>Mediterranean Watch</span><br>Subscription Tiers</h2>
   <p class="section-lead">
-    <span data-i18n="pricing.lead">Three asset-specific packages — Ports, Vessels, and Subsea Cables — each with three coverage levels: Exposure, Sentinel, and Command. Packages can be combined to match your operational footprint.</span>
+    Three asset packages — Ports, Vessels, and Subsea Cables — at three coverage levels: Exposure, Sentinel, and Command. All tiers include the complete intelligence feed stack. Asset coverage and compliance output capabilities are what distinguish them.
   </p>
 
   <!-- Asset type tabs -->
@@ -1643,161 +1667,208 @@
 
   <!-- PORT MONITORING -->
   <div class="asset-panel active" id="asset-port">
-    <div class="asset-subtitle" data-i18n="pricing.port.sub">Port authorities &amp; terminal operators</div>
+    <div class="asset-subtitle">Port authorities · AdSP jurisdictions · Terminal operators</div>
     <div class="pricing-grid">
       <div class="price-card">
         <div class="price-name" data-i18n="pricing.tier.exposure">Exposure</div>
-        <p class="price-best-for" data-i18n="pricing.port.exp.best">Best for port operators needing a clear baseline view of hybrid threat exposure across critical port assets.</p>
+        <div class="price-coverage">Up to 2 ports</div>
+        <p class="price-best-for">Full intelligence stack and compliance-ready export across up to 2 port assets.</p>
         <ul class="price-features">
-          <li data-i18n="pricing.f.mhtes.port">Live MHTES dashboard</li>
-          <li data-i18n="pricing.f.window72.port">72-hr exposure window</li>
-          <li data-i18n="pricing.f.ais.port">AIS &amp; grey fleet signals</li>
-          <li data-i18n="pricing.f.weekly">Weekly briefing digest</li>
-          <li class="na" data-i18n="pricing.f.geo.disinfo">Geopolitical &amp; disinfo feeds</li>
-          <li class="na" data-i18n="pricing.f.cyber">Cyber vulnerability signals</li>
-          <li class="na" data-i18n="pricing.f.pred">Predictive threat modeling</li>
-          <li class="na" data-i18n="pricing.f.alerts">Real-time exposure alerts</li>
-          <li class="na" data-i18n="pricing.f.custom">Custom intelligence reports</li>
-          <li class="na" data-i18n="pricing.f.api">API access &amp; data export</li>
-          <li class="na" data-i18n="pricing.f.analyst">Dedicated analyst support</li>
+          <li class="feat-group">Platform</li>
+          <li>Panel 1 — Asset Status (CAS / IAS)</li>
+          <li>Panel 2 — Hybrid Threat Awareness</li>
+          <li class="na">Panel 3 — Deep Simulation (MiroFish)</li>
+          <li class="feat-group">Intelligence — all feeds</li>
+          <li>Live P-MHTES scoring — 30-min refresh</li>
+          <li>72-hr exposure window</li>
+          <li>AIS, grey fleet &amp; chokepoint signals</li>
+          <li>Real-time exposure alerts</li>
+          <li>Geopolitical &amp; disinformation feeds</li>
+          <li>Cyber vulnerability signals (OT / IT)</li>
+          <li>AIS spoofing &amp; GPS jamming detection</li>
+          <li>Convergence alert — multi-signal</li>
+          <li>J3 / J35 response framework</li>
+          <li class="feat-group">Outputs</li>
+          <li>Compliance audit CSV — on demand</li>
+          <li>Panel report export</li>
+          <li class="na">Client SOP / response plan upload</li>
+          <li class="na">AI compliance report (PDF/A-1b)</li>
+          <li class="na">Deep Simulation prediction report</li>
         </ul>
         <a href="#contact" class="price-btn" data-i18n="pricing.btn.access">Request Access</a>
       </div>
       <div class="price-card featured">
         <div class="price-name" data-i18n="pricing.tier.sentinel">Sentinel</div>
-        <p class="price-best-for" data-i18n="pricing.port.sen.best">Best for teams that need live alerting, trend detection, and sharper visibility into changing port risk conditions.</p>
+        <div class="price-coverage">Up to 5 ports</div>
+        <p class="price-best-for">SOP management, NIS2 Art. 21 audit trail, and AI-generated compliance reports across up to 5 ports.</p>
         <ul class="price-features">
-          <li data-i18n="pricing.f.everything.exposure">Everything in Exposure</li>
-          <li data-i18n="pricing.f.geo.disinfo">Geopolitical &amp; disinfo feeds</li>
-          <li data-i18n="pricing.f.cyber">Cyber vulnerability signals</li>
-          <li data-i18n="pricing.f.pred">Predictive threat modeling</li>
-          <li data-i18n="pricing.f.alerts">Real-time exposure alerts</li>
-          <li class="na" data-i18n="pricing.f.custom">Custom intelligence reports</li>
-          <li class="na" data-i18n="pricing.f.api">API access &amp; data export</li>
-          <li class="na" data-i18n="pricing.f.analyst">Dedicated analyst support</li>
+          <li class="feat-group">Platform</li>
+          <li>Everything in Exposure</li>
+          <li class="feat-group">Intelligence — all feeds</li>
+          <li>Everything in Exposure</li>
+          <li class="feat-group">Outputs</li>
+          <li>Everything in Exposure</li>
+          <li>Client SOP / response plan upload</li>
+          <li>AI compliance report (PDF/A-1b)</li>
         </ul>
         <a href="#contact" class="price-btn active" data-i18n="pricing.btn.access">Request Access</a>
       </div>
       <div class="price-card">
         <div class="price-name" data-i18n="pricing.tier.command">Command</div>
-        <p class="price-best-for" data-i18n="pricing.port.cmd.best">Best for high-priority ports requiring predictive threat forecasting, executive reporting, and operational decision support.</p>
+        <div class="price-coverage">Unlimited</div>
+        <p class="price-best-for">Unlimited port coverage plus MiroFish Deep Simulation — 48-agent society modeling with no commercial equivalent.</p>
         <ul class="price-features">
-          <li data-i18n="pricing.f.everything.sentinel">Everything in Sentinel</li>
-          <li data-i18n="pricing.f.custom">Custom intelligence reports</li>
-          <li data-i18n="pricing.f.api">API access &amp; data export</li>
-          <li data-i18n="pricing.f.analyst">Dedicated analyst support</li>
+          <li class="feat-group">Platform</li>
+          <li>Everything in Sentinel</li>
+          <li class="feat-star-item">Panel 3 — Deep Simulation (MiroFish)</li>
+          <li class="feat-group">Intelligence — all feeds</li>
+          <li>Everything in Sentinel</li>
+          <li class="feat-group">Outputs</li>
+          <li>Everything in Sentinel</li>
+          <li class="feat-star-item">Deep Simulation prediction report</li>
         </ul>
         <a href="#contact" class="price-btn" data-i18n="pricing.btn.contact">Contact Us</a>
       </div>
     </div>
+    <div class="tier-star-note">★ Command-exclusive · No comparable capability in the commercial maritime intelligence market</div>
   </div>
 
   <!-- FLEET MONITORING -->
   <div class="asset-panel" id="asset-fleet">
-    <div class="asset-subtitle" data-i18n="pricing.fleet.sub">Ferry operators &amp; logistics companies</div>
+    <div class="asset-subtitle">Ferry operators · Logistics companies · Shipping lines</div>
     <div class="pricing-grid">
       <div class="price-card">
         <div class="price-name" data-i18n="pricing.tier.exposure">Exposure</div>
-        <p class="price-best-for" data-i18n="pricing.fleet.exp.best">Best for ferry, logistics, and vessel operators that need route-level exposure visibility without added analytical overhead.</p>
+        <div class="price-coverage">Up to 10 vessels</div>
+        <p class="price-best-for">Full intelligence stack and compliance-ready export across up to 10 vessels.</p>
         <ul class="price-features">
-          <li data-i18n="pricing.f.mhtes.fleet">Live MHTES per vessel</li>
-          <li data-i18n="pricing.f.route">Route strategic value scoring</li>
-          <li data-i18n="pricing.f.ais.fleet">AIS &amp; chokepoint alerts</li>
-          <li data-i18n="pricing.f.weekly">Weekly briefing digest</li>
-          <li class="na" data-i18n="pricing.f.spoof">AIS spoofing &amp; GPS jam detection</li>
-          <li class="na" data-i18n="pricing.f.geo.disinfo">Geopolitical &amp; disinfo feeds</li>
-          <li class="na" data-i18n="pricing.f.cyber">Cyber vulnerability signals</li>
-          <li class="na" data-i18n="pricing.f.window72.fleet">72-hr predictive window</li>
-          <li class="na" data-i18n="pricing.f.scenario.fleet">Scenario &amp; route analysis</li>
-          <li class="na" data-i18n="pricing.f.custom">Custom intelligence reports</li>
-          <li class="na" data-i18n="pricing.f.api">API access &amp; data export</li>
-          <li class="na" data-i18n="pricing.f.analyst">Dedicated analyst support</li>
+          <li class="feat-group">Platform</li>
+          <li>Panel 1 — Asset Status (F-MHTES per vessel)</li>
+          <li>Panel 2 — Hybrid Threat Awareness</li>
+          <li class="na">Panel 3 — Deep Simulation (MiroFish)</li>
+          <li class="feat-group">Intelligence — all feeds</li>
+          <li>Live F-MHTES scoring per vessel — 30-min refresh</li>
+          <li>Route strategic value scoring</li>
+          <li>AIS &amp; chokepoint alerts</li>
+          <li>Real-time exposure alerts</li>
+          <li>AIS spoofing &amp; GPS jamming detection</li>
+          <li>Geopolitical &amp; disinformation feeds</li>
+          <li>Cyber vulnerability signals (OT / IT)</li>
+          <li>72-hr predictive MHTES window</li>
+          <li>Convergence alert — multi-signal</li>
+          <li>J3 / J35 response framework</li>
+          <li class="feat-group">Outputs</li>
+          <li>Compliance audit CSV — on demand</li>
+          <li>Panel report export</li>
+          <li class="na">Client SOP / response plan upload</li>
+          <li class="na">AI compliance report (PDF/A-1b)</li>
+          <li class="na">Deep Simulation prediction report</li>
         </ul>
         <a href="#contact" class="price-btn" data-i18n="pricing.btn.access">Request Access</a>
       </div>
       <div class="price-card featured">
         <div class="price-name" data-i18n="pricing.tier.sentinel">Sentinel</div>
-        <p class="price-best-for" data-i18n="pricing.fleet.sen.best">Best for operators managing active routes who need early warning of geopolitical, cyber, weather, and gray-zone disruptions.</p>
+        <div class="price-coverage">Up to 30 vessels</div>
+        <p class="price-best-for">SOP management, NIS2 Art. 21 audit trail, and AI-generated compliance reports across up to 30 vessels.</p>
         <ul class="price-features">
-          <li data-i18n="pricing.f.everything.exposure">Everything in Exposure</li>
-          <li data-i18n="pricing.f.spoof">AIS spoofing &amp; GPS jam detection</li>
-          <li data-i18n="pricing.f.geo.disinfo">Geopolitical &amp; disinfo feeds</li>
-          <li data-i18n="pricing.f.cyber">Cyber vulnerability signals</li>
-          <li data-i18n="pricing.f.window72.fleet">72-hr predictive window</li>
-          <li class="na" data-i18n="pricing.f.scenario.fleet">Scenario &amp; route analysis</li>
-          <li class="na" data-i18n="pricing.f.custom">Custom intelligence reports</li>
-          <li class="na" data-i18n="pricing.f.api">API access &amp; data export</li>
-          <li class="na" data-i18n="pricing.f.analyst">Dedicated analyst support</li>
+          <li class="feat-group">Platform</li>
+          <li>Everything in Exposure</li>
+          <li class="feat-group">Intelligence — all feeds</li>
+          <li>Everything in Exposure</li>
+          <li class="feat-group">Outputs</li>
+          <li>Everything in Exposure</li>
+          <li>Client SOP / response plan upload</li>
+          <li>AI compliance report (PDF/A-1b)</li>
         </ul>
         <a href="#contact" class="price-btn active" data-i18n="pricing.btn.access">Request Access</a>
       </div>
       <div class="price-card">
         <div class="price-name" data-i18n="pricing.tier.command">Command</div>
-        <p class="price-best-for" data-i18n="pricing.fleet.cmd.best">Best for fleet operators requiring predictive routing intelligence, scenario analysis, and tailored risk briefings.</p>
+        <div class="price-coverage">Unlimited</div>
+        <p class="price-best-for">Unlimited vessel coverage plus MiroFish route and scenario simulation — predictive modeling across any fleet footprint.</p>
         <ul class="price-features">
-          <li data-i18n="pricing.f.everything.sentinel">Everything in Sentinel</li>
-          <li data-i18n="pricing.f.scenario.fleet">Scenario &amp; route analysis</li>
-          <li data-i18n="pricing.f.custom">Custom intelligence reports</li>
-          <li data-i18n="pricing.f.api">API access &amp; data export</li>
-          <li data-i18n="pricing.f.analyst">Dedicated analyst support</li>
+          <li class="feat-group">Platform</li>
+          <li>Everything in Sentinel</li>
+          <li class="feat-star-item">Panel 3 — Deep Simulation (MiroFish)</li>
+          <li class="feat-group">Intelligence — all feeds</li>
+          <li>Everything in Sentinel</li>
+          <li class="feat-group">Outputs</li>
+          <li>Everything in Sentinel</li>
+          <li class="feat-star-item">Deep Simulation prediction report</li>
         </ul>
         <a href="#contact" class="price-btn" data-i18n="pricing.btn.contact">Contact Us</a>
       </div>
     </div>
+    <div class="tier-star-note">★ Command-exclusive · No comparable capability in the commercial maritime intelligence market</div>
   </div>
 
   <!-- SUBSEA CABLE MONITORING -->
   <div class="asset-panel" id="asset-cable">
-    <div class="asset-subtitle" data-i18n="pricing.cable.sub">Cable operators &amp; infrastructure firms</div>
+    <div class="asset-subtitle">Cable operators · Subsea infrastructure firms · National telecom authorities</div>
     <div class="pricing-grid">
       <div class="price-card">
         <div class="price-name" data-i18n="pricing.tier.exposure">Exposure</div>
-        <p class="price-best-for" data-i18n="pricing.cable.exp.best">Best for subsea cable owners and infrastructure teams needing visibility into baseline exposure along key cable corridors.</p>
+        <div class="price-coverage">Up to 2 routes</div>
+        <p class="price-best-for">Full intelligence stack and compliance-ready export across up to 2 cable routes.</p>
         <ul class="price-features">
-          <li data-i18n="pricing.f.mhtes.cable">Live MHTES per cable route</li>
-          <li data-i18n="pricing.f.vessel">Vessel density pressure score</li>
-          <li data-i18n="pricing.f.anchor">Anchoring &amp; drag risk alerts</li>
-          <li data-i18n="pricing.f.weekly">Weekly briefing digest</li>
-          <li class="na" data-i18n="pricing.f.geo.hybrid">Geopolitical &amp; hybrid signals</li>
-          <li class="na" data-i18n="pricing.f.cyber.cable">Cyber &amp; infrastructure exposure</li>
-          <li class="na" data-i18n="pricing.f.disinfo">Disinformation monitoring</li>
-          <li class="na" data-i18n="pricing.f.window72.fleet">72-hr predictive window</li>
-          <li class="na" data-i18n="pricing.f.scenario.cable">Scenario &amp; sabotage modeling</li>
-          <li class="na" data-i18n="pricing.f.custom">Custom intelligence reports</li>
-          <li class="na" data-i18n="pricing.f.api">API access &amp; data export</li>
-          <li class="na" data-i18n="pricing.f.analyst">Dedicated analyst support</li>
+          <li class="feat-group">Platform</li>
+          <li>Panel 1 — Asset Status (C-MHTES per route)</li>
+          <li>Panel 2 — Hybrid Threat Awareness</li>
+          <li class="na">Panel 3 — Deep Simulation (MiroFish)</li>
+          <li class="feat-group">Intelligence — all feeds</li>
+          <li>Live C-MHTES scoring per route — 30-min refresh</li>
+          <li>Vessel density pressure score</li>
+          <li>Anchoring &amp; drag risk alerts</li>
+          <li>Real-time exposure alerts</li>
+          <li>Geopolitical &amp; hybrid threat signals</li>
+          <li>Cyber &amp; infrastructure exposure signals</li>
+          <li>Disinformation monitoring</li>
+          <li>72-hr predictive MHTES window</li>
+          <li>Convergence alert — multi-signal</li>
+          <li>J3 / J35 response framework</li>
+          <li class="feat-group">Outputs</li>
+          <li>Compliance audit CSV — on demand</li>
+          <li>Panel report export</li>
+          <li class="na">Client SOP / response plan upload</li>
+          <li class="na">AI compliance report (PDF/A-1b)</li>
+          <li class="na">Deep Simulation prediction report</li>
         </ul>
         <a href="#contact" class="price-btn" data-i18n="pricing.btn.access">Request Access</a>
       </div>
       <div class="price-card featured">
         <div class="price-name" data-i18n="pricing.tier.sentinel">Sentinel</div>
-        <p class="price-best-for" data-i18n="pricing.cable.sen.best">Best for teams monitoring vessel activity, anchoring risk, and regional instability near sensitive cable infrastructure.</p>
+        <div class="price-coverage">Up to 5 routes</div>
+        <p class="price-best-for">SOP management, NIS2 Art. 21 audit trail, and AI-generated compliance reports across up to 5 cable routes.</p>
         <ul class="price-features">
-          <li data-i18n="pricing.f.everything.exposure">Everything in Exposure</li>
-          <li data-i18n="pricing.f.geo.hybrid">Geopolitical &amp; hybrid signals</li>
-          <li data-i18n="pricing.f.cyber.cable">Cyber &amp; infrastructure exposure</li>
-          <li data-i18n="pricing.f.disinfo">Disinformation monitoring</li>
-          <li data-i18n="pricing.f.window72.fleet">72-hr predictive window</li>
-          <li class="na" data-i18n="pricing.f.scenario.cable">Scenario &amp; sabotage modeling</li>
-          <li class="na" data-i18n="pricing.f.custom">Custom intelligence reports</li>
-          <li class="na" data-i18n="pricing.f.api">API access &amp; data export</li>
-          <li class="na" data-i18n="pricing.f.analyst">Dedicated analyst support</li>
+          <li class="feat-group">Platform</li>
+          <li>Everything in Exposure</li>
+          <li class="feat-group">Intelligence — all feeds</li>
+          <li>Everything in Exposure</li>
+          <li class="feat-group">Outputs</li>
+          <li>Everything in Exposure</li>
+          <li>Client SOP / response plan upload</li>
+          <li>AI compliance report (PDF/A-1b)</li>
         </ul>
         <a href="#contact" class="price-btn active" data-i18n="pricing.btn.access">Request Access</a>
       </div>
       <div class="price-card">
         <div class="price-name" data-i18n="pricing.tier.command">Command</div>
-        <p class="price-best-for" data-i18n="pricing.cable.cmd.best">Best for critical infrastructure operators requiring predictive cable threat forecasting, escalation support, and strategic risk analysis.</p>
+        <div class="price-coverage">Unlimited</div>
+        <p class="price-best-for">Unlimited route coverage plus MiroFish sabotage and cascade scenario modeling — purpose-built for critical cable infrastructure.</p>
         <ul class="price-features">
-          <li data-i18n="pricing.f.everything.sentinel">Everything in Sentinel</li>
-          <li data-i18n="pricing.f.scenario.cable">Scenario &amp; sabotage modeling</li>
-          <li data-i18n="pricing.f.custom">Custom intelligence reports</li>
-          <li data-i18n="pricing.f.api">API access &amp; data export</li>
-          <li data-i18n="pricing.f.analyst">Dedicated analyst support</li>
+          <li class="feat-group">Platform</li>
+          <li>Everything in Sentinel</li>
+          <li class="feat-star-item">Panel 3 — Deep Simulation (MiroFish)</li>
+          <li class="feat-group">Intelligence — all feeds</li>
+          <li>Everything in Sentinel</li>
+          <li class="feat-group">Outputs</li>
+          <li>Everything in Sentinel</li>
+          <li class="feat-star-item">Deep Simulation prediction report</li>
         </ul>
         <a href="#contact" class="price-btn" data-i18n="pricing.btn.contact">Contact Us</a>
       </div>
     </div>
+    <div class="tier-star-note">★ Command-exclusive · No comparable capability in the commercial maritime intelligence market</div>
   </div>
 </section>
 
