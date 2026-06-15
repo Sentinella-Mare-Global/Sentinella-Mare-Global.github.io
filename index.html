@@ -1288,6 +1288,54 @@
       transition-duration: 0.01ms !important;
     }
   }
+
+  /* ── COMPLIANCE NAV DROPDOWN ── */
+  .nav-comp-wrap { position: relative; display: flex; align-items: center; }
+  .nav-comp-trigger {
+    background: none; border: none; cursor: pointer; padding: 0;
+    color: var(--text); font-family: 'Rajdhani', sans-serif;
+    font-size: 12px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+    display: flex; align-items: center; gap: 5px; transition: color 0.25s;
+  }
+  .nav-comp-trigger:hover { color: var(--green-glow); }
+  .nav-comp-trigger svg { transition: transform 0.2s; flex-shrink: 0; }
+  .nav-comp-wrap.open .nav-comp-trigger { color: var(--green-glow); }
+  .nav-comp-wrap.open .nav-comp-trigger svg { transform: rotate(180deg); }
+  .nav-comp-menu {
+    display: none; position: absolute;
+    top: calc(100% + 16px); left: 50%; transform: translateX(-50%);
+    background: rgba(6,15,24,0.98); border: 1px solid rgba(45,122,58,0.3);
+    border-radius: 4px; min-width: 220px; z-index: 1100;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5); overflow: hidden;
+  }
+  .nav-comp-wrap.open .nav-comp-menu { display: block; }
+  .nav-comp-menu a {
+    display: block; padding: 12px 20px;
+    color: rgba(200,216,236,0.7);
+    font-family: 'Share Tech Mono', monospace; font-size: 10px;
+    letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
+    border-bottom: 1px solid rgba(45,122,58,0.12);
+    transition: color 0.2s, background 0.2s;
+  }
+  .nav-comp-menu a:last-child { border-bottom: none; }
+  .nav-comp-menu a:hover { color: var(--green-glow); background: rgba(45,122,58,0.08); }
+  .nav-comp-menu .comp-link-label {
+    display: block; font-size: 8px; color: rgba(45,122,58,0.6);
+    letter-spacing: 1.5px; margin-top: 2px;
+  }
+  @media (max-width: 768px) {
+    .nav-comp-wrap { flex-direction: column; width: 100%; align-items: center; }
+    .nav-comp-trigger { font-size: 16px; letter-spacing: 3px; }
+    .nav-comp-menu {
+      position: static; transform: none; display: none;
+      background: transparent; border: none; box-shadow: none; min-width: auto;
+    }
+    .nav-comp-wrap.open .nav-comp-menu {
+      display: flex; flex-direction: column; align-items: center; gap: 0; padding: 6px 0;
+    }
+    .nav-comp-menu a { border: none; font-size: 11px; padding: 8px 0; text-align: center; }
+    .nav-comp-menu .comp-link-label { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -1311,6 +1359,24 @@
     <a href="#pricing" data-i18n="nav.pricing" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Subscription</a>
     <a href="#clients" data-i18n="nav.clients" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Clients</a>
     <a href="/Leadership" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Leadership</a>
+    <div class="nav-comp-wrap" id="complianceNav">
+      <button class="nav-comp-trigger" onclick="document.getElementById('complianceNav').classList.toggle('open')">
+        Compliance
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="nav-comp-menu">
+        <a href="/EUMaritimeComplianceCountdown" target="_blank" rel="noopener noreferrer">
+          Deadline Countdown
+          <span class="comp-link-label">NIS2 · CER · Circ. 177 live timers</span>
+        </a>
+        <a href="/EUMaritimeComplianceExplained" target="_blank" rel="noopener noreferrer">
+          Compliance Explained
+          <span class="comp-link-label">2026–2027 pressure window guide</span>
+        </a>
+      </div>
+    </div>
     <div class="lang-dropdown" id="langDropdown">
       <button class="lang-globe" onclick="document.getElementById('langDropdown').classList.toggle('open')" aria-label="Select language">
         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
@@ -2565,10 +2631,12 @@ function setLang(lang) {
   try { localStorage.setItem('smLang', lang); } catch(e) {}
 }
 
-// Close language dropdown when clicking outside
+// Close dropdowns when clicking outside
 document.addEventListener('click', function(e) {
   const dd = document.getElementById('langDropdown');
   if (dd && !dd.contains(e.target)) dd.classList.remove('open');
+  const cd = document.getElementById('complianceNav');
+  if (cd && !cd.contains(e.target)) cd.classList.remove('open');
 });
 
 // Asset type tab switching
