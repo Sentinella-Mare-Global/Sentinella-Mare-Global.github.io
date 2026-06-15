@@ -6,6 +6,16 @@
 <link rel="canonical" href="https://sentinellaglobal.com/">
 <title>Sentinella Mare — Mediterranean Maritime Intelligence</title>
 <meta name="description" content="Sentinella Mare delivers real-time maritime intelligence for Mediterranean ports, vessel fleets, and subsea cables — combining NIS2, CER Directive, and Circular 177/2025 compliance outputs with live threat monitoring.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sentinella Mare">
+<meta property="og:title" content="Sentinella Mare — Mediterranean Maritime Intelligence">
+<meta property="og:description" content="Real-time threat monitoring and EU regulatory compliance outputs for Mediterranean ports, vessel fleets, and subsea cable operators. NIS2, CER Directive, and Circular 177/2025 coverage.">
+<meta property="og:url" content="https://sentinellaglobal.com/">
+<meta property="og:image" content="https://sentinellaglobal.com/MARE%20Dashboard.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sentinella Mare — Mediterranean Maritime Intelligence">
+<meta name="twitter:description" content="Real-time threat monitoring and EU regulatory compliance for Mediterranean ports, fleets, and subsea cables.">
+<meta name="twitter:image" content="https://sentinellaglobal.com/MARE%20Dashboard.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&family=Noto+Sans:wght@400;600;700&subset=greek&display=swap" rel="stylesheet">
@@ -1079,6 +1089,40 @@
     .dash-body { grid-template-columns: 1fr 220px; }
   }
 
+  /* Heading-level corrections (semantic h3/h3 preserving visual h4/h5 sizes) */
+  h3.adv-heading { font-size: 16px !important; font-weight: 600 !important; letter-spacing: 0.5px !important; margin-bottom: 6px !important; text-align: left !important; }
+  h3.footer-nav-title { font-size: 13px !important; font-weight: 600 !important; letter-spacing: 1px !important; margin-bottom: 20px !important; text-align: left !important; }
+
+  /* ── iPad landscape — collapse nav to hamburger ── */
+  @media (max-width: 1100px) {
+    .nav-toggle { display: flex; }
+    .nav-links {
+      display: none; position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw; height: 100vh; height: 100dvh;
+      background: var(--navy);
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 28px; z-index: 1000;
+      overflow-y: auto; padding: 80px 20px 40px;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { font-size: 16px; letter-spacing: 3px; }
+    .lang-dropdown { order: 10; }
+    .nav-comp-wrap { flex-direction: column; width: 100%; align-items: center; }
+    .nav-comp-trigger { font-size: 16px; letter-spacing: 3px; }
+    .nav-comp-menu {
+      position: static; transform: none; display: none;
+      background: transparent; border: none; box-shadow: none; min-width: auto;
+    }
+    .nav-comp-wrap.open .nav-comp-menu {
+      display: flex; flex-direction: column; align-items: center; gap: 0; padding: 6px 0;
+    }
+    .nav-comp-menu a { border: none; font-size: 11px; padding: 8px 0; text-align: center; }
+    .nav-comp-menu .comp-link-label { display: none; }
+  }
+
   /* ── Tablets (≤ 768px) ── */
   @media (max-width: 768px) {
     /* Layout & spacing */
@@ -1391,6 +1435,27 @@
     .nav-comp-menu .comp-link-label { display: none; }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Sentinella Global",
+  "alternateName": "Sentinella Mare",
+  "url": "https://sentinellaglobal.com",
+  "logo": "https://sentinellaglobal.com/Sentinella%20Mare%20Logo_White.png",
+  "description": "Mediterranean maritime intelligence platform delivering real-time threat monitoring, geopolitical risk advisory, and EU regulatory compliance outputs for port authorities, vessel fleets, and subsea cable operators.",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Brussels",
+    "addressCountry": "BE"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "sales",
+    "url": "https://sentinellaglobal.com/#contact"
+  }
+}
+</script>
 </head>
 <body>
 
@@ -1612,28 +1677,28 @@
       <li>
         <div class="adv-icon">⚖</div>
         <div class="adv-content">
-          <h4 data-i18n="adv.s1.title">Investment Due Diligence</h4>
+          <h3 class="adv-heading" data-i18n="adv.s1.title">Investment Due Diligence</h3>
           <p data-i18n="adv.s1.desc">Port infrastructure investment, maritime logistics assets, and regional economic exposure analysis across the Mediterranean basin for PE, family offices, and institutional allocators.</p>
         </div>
       </li>
       <li>
         <div class="adv-icon">⛓</div>
         <div class="adv-content">
-          <h4 data-i18n="adv.s2.title">Supply Chain Stress Testing</h4>
+          <h3 class="adv-heading" data-i18n="adv.s2.title">Supply Chain Stress Testing</h3>
           <p data-i18n="adv.s2.desc">Map your operational dependencies across Mediterranean chokepoints. We simulate disruption scenarios across key corridors — Suez, Sicily, Gibraltar — and quantify exposure before it becomes a crisis.</p>
         </div>
       </li>
       <li>
         <div class="adv-icon">◎</div>
         <div class="adv-content">
-          <h4 data-i18n="adv.s3.title">Geopolitical Scenario Modeling</h4>
+          <h3 class="adv-heading" data-i18n="adv.s3.title">Geopolitical Scenario Modeling</h3>
           <p data-i18n="adv.s3.desc">Custom scenario frameworks for asset managers and operators assessing political volatility, sanctions risk, and hybrid threat escalation across Southern Mediterranean and North African markets.</p>
         </div>
       </li>
       <li>
         <div class="adv-icon">⚓&#xFE0E;</div>
         <div class="adv-content">
-          <h4 data-i18n="adv.s4.title">Marine Insurance Risk Profiling</h4>
+          <h3 class="adv-heading" data-i18n="adv.s4.title">Marine Insurance Risk Profiling</h3>
           <p data-i18n="adv.s4.desc">Underwriting support and risk profiling services for marine insurers and reinsurers requiring independent Mediterranean threat assessment aligned to specific route and cargo profiles.</p>
         </div>
       </li>
@@ -1917,14 +1982,14 @@
       </div>
     </div>
     <div class="footer-col">
-      <h5 data-i18n="footer.h.services">Services</h5>
+      <h3 class="footer-nav-title" data-i18n="footer.h.services">Services</h3>
       <a href="#services" data-i18n="footer.l.dashboard">Mediterranean Watch Dashboard</a>
       <a href="#advisory" data-i18n="footer.l.investment">Investment Advisory</a>
       <a href="#advisory" data-i18n="footer.l.supply">Supply Chain Risk</a>
       <a href="#pricing" data-i18n="footer.l.tiers">Subscription Tiers</a>
     </div>
     <div class="footer-col">
-      <h5 data-i18n="footer.h.coverage">Coverage</h5>
+      <h3 class="footer-nav-title" data-i18n="footer.h.coverage">Coverage</h3>
       <p data-i18n="footer.geo.1">Strait of Gibraltar</p>
       <p data-i18n="footer.geo.2">Tyrrhenian Sea</p>
       <p data-i18n="footer.geo.3">Strait of Sicily</p>

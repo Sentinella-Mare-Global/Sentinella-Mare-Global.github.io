@@ -6,6 +6,16 @@
 <link rel="canonical" href="https://sentinellaglobal.com/Leadership">
 <title>Leadership — Sentinella Global</title>
 <meta name="description" content="Meet the Sentinella Global leadership team — maritime intelligence professionals, security analysts, and compliance experts serving Mediterranean operators.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sentinella Mare">
+<meta property="og:title" content="Leadership — Sentinella Global">
+<meta property="og:description" content="Meet the Sentinella Global leadership team — maritime intelligence professionals, security analysts, and compliance experts serving Mediterranean operators.">
+<meta property="og:url" content="https://sentinellaglobal.com/Leadership">
+<meta property="og:image" content="https://sentinellaglobal.com/Sentinella%20Mare%20Logo_White.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Leadership — Sentinella Global">
+<meta name="twitter:description" content="The team behind Sentinella Mare — maritime intelligence professionals and compliance experts serving Mediterranean operators.">
+<meta name="twitter:image" content="https://sentinellaglobal.com/Sentinella%20Mare%20Logo_White.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&family=Noto+Sans:wght@400;600;700&subset=greek&display=swap" rel="stylesheet">
@@ -230,7 +240,7 @@
     font-size: 9px; letter-spacing: 3px; color: var(--green-mid);
     text-transform: uppercase;
   }
-  .footer-col h5 {
+  .footer-col .footer-nav-title {
     font-family: 'Cinzel', serif;
     font-size: 13px; font-weight: 600;
     color: var(--white); letter-spacing: 1px;
@@ -311,6 +321,25 @@
     footer { padding: 48px 32px 28px; }
     .footer-top { grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
     .footer-brand { grid-column: 1 / -1; }
+  }
+
+  /* iPad landscape — collapse nav to hamburger */
+  @media (max-width: 1100px) {
+    .nav-toggle { display: flex; }
+    .nav-links {
+      display: none; position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw; height: 100vh; height: 100dvh;
+      background: var(--navy);
+      flex-direction: column; align-items: center; justify-content: center;
+      gap: 32px; z-index: 1000;
+      overflow-y: auto; padding: 80px 20px 40px;
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { font-size: 16px; letter-spacing: 3px; }
+    .lang-dropdown { order: 10; }
   }
 
   @media (max-width: 768px) {
@@ -457,6 +486,20 @@
     .nav-comp-menu .comp-link-label { display: none; }
   }
 </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "Leadership — Sentinella Global",
+  "url": "https://sentinellaglobal.com/Leadership",
+  "description": "Meet the Sentinella Global leadership team — maritime intelligence professionals, security analysts, and compliance experts serving Mediterranean operators.",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Sentinella Mare",
+    "url": "https://sentinellaglobal.com"
+  }
+}
+</script>
 </head>
 <body>
 
@@ -552,14 +595,14 @@
       </div>
     </div>
     <div class="footer-col">
-      <h5 data-i18n="footer.h.services">Services</h5>
+      <h3 class="footer-nav-title" data-i18n="footer.h.services">Services</h3>
       <a href="../#services" data-i18n="footer.l.dashboard">Mediterranean Watch Dashboard</a>
       <a href="../#advisory" data-i18n="footer.l.investment">Investment Advisory</a>
       <a href="../#advisory" data-i18n="footer.l.supply">Supply Chain Risk</a>
       <a href="../#pricing" data-i18n="footer.l.tiers">Subscription Tiers</a>
     </div>
     <div class="footer-col">
-      <h5 data-i18n="footer.h.coverage">Coverage</h5>
+      <h3 class="footer-nav-title" data-i18n="footer.h.coverage">Coverage</h3>
       <p data-i18n="footer.geo.1">Strait of Gibraltar</p>
       <p data-i18n="footer.geo.2">Tyrrhenian Sea</p>
       <p data-i18n="footer.geo.3">Strait of Sicily</p>

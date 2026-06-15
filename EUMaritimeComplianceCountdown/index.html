@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
 <!-- ── PRIMARY SEO ── -->
 <title>EU Maritime Compliance Countdown | NIS2, CER Directive &amp; Circular 177/2025 Deadlines — Sentinella Mare</title>
@@ -19,6 +19,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="EU Maritime Compliance Countdown — NIS2, CER &amp; Circular 177/2025">
 <meta name="twitter:description" content="Live countdown to every EU maritime regulatory deadline in the 2026–2027 compliance window, from Sentinella Mare.">
+<meta name="twitter:image" content="https://sentinellaglobal.com/Sentinella%20Mare%20Logo_White.png">
 
 <!-- ── STRUCTURED DATA ── -->
 <script type="application/ld+json">
@@ -193,7 +194,7 @@ footer {
   text-transform: uppercase;
 }
 .footer-contact-btn { display: inline-block; width: fit-content; }
-.footer-col h5 {
+.footer-col .footer-nav-title {
   font-family: 'Cinzel', serif;
   font-size: 13px; font-weight: 600;
   color: var(--white); letter-spacing: 1px;
@@ -586,6 +587,36 @@ body {
 .page-footer-note .fn-sig { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: rgba(200,216,236,0.55); text-align: right; line-height: 1.9; }
 .page-footer-note .fn-sig .teal { color: #3aab4a; }
 
+/* iPad landscape — collapse nav to hamburger */
+@media (max-width: 1100px) {
+  .nav-toggle { display: flex; }
+  .nav-links {
+    display: none; position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100vw; height: 100vh; height: 100dvh;
+    background: var(--navy);
+    flex-direction: column; align-items: center; justify-content: center;
+    gap: 28px; z-index: 1000;
+    overflow-y: auto; padding: 80px 20px 40px;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  .nav-links.open { display: flex; }
+  .nav-links a { font-size: 16px; letter-spacing: 3px; }
+  .lang-dropdown { order: 10; }
+  .nav-comp-wrap { flex-direction: column; width: 100%; align-items: center; }
+  .nav-comp-trigger { font-size: 16px; letter-spacing: 3px; }
+  .nav-comp-menu {
+    position: static; transform: none; display: none;
+    background: transparent; border: none; box-shadow: none; min-width: auto;
+  }
+  .nav-comp-wrap.open .nav-comp-menu {
+    display: flex; flex-direction: column; align-items: center; gap: 0; padding: 6px 0;
+  }
+  .nav-comp-menu a { border: none; font-size: 11px; padding: 8px 0; text-align: center; }
+  .nav-comp-menu .comp-link-label { display: none; }
+}
+
 /* Mobile nav */
 @media (max-width: 768px) {
   nav { padding: 12px 20px; backdrop-filter: none; -webkit-backdrop-filter: none; }
@@ -779,14 +810,14 @@ a, button { -webkit-tap-highlight-color: transparent; }
       </div>
     </div>
     <div class="footer-col">
-      <h5>Services</h5>
+      <h3 class="footer-nav-title">Services</h3>
       <a href="/#services">Mediterranean Watch Dashboard</a>
       <a href="/#advisory">Investment Advisory</a>
       <a href="/#advisory">Supply Chain Risk</a>
       <a href="/#pricing">Subscription Tiers</a>
     </div>
     <div class="footer-col">
-      <h5>Coverage</h5>
+      <h3 class="footer-nav-title">Coverage</h3>
       <p>Strait of Gibraltar</p>
       <p>Tyrrhenian Sea</p>
       <p>Strait of Sicily</p>
