@@ -327,6 +327,32 @@
     color: var(--text-dim);
   }
   .reg-callout strong { color: var(--green-mid); }
+  .reg-deadline-strip {
+    display: flex; align-items: center; gap: 10px;
+    margin-top: 14px; padding-top: 12px;
+    border-top: 1px solid rgba(45,122,58,0.2);
+    flex-wrap: wrap;
+  }
+  .reg-deadline-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--green-glow);
+    box-shadow: 0 0 8px var(--green-glow);
+    animation: blink 1.5s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  #regDeadlineText {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px; letter-spacing: 1px;
+    color: var(--text);
+  }
+  .reg-deadline-link {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px; letter-spacing: 1px;
+    color: var(--green-mid); text-decoration: none;
+    transition: color 0.2s; white-space: nowrap;
+    margin-left: auto;
+  }
+  .reg-deadline-link:hover { color: var(--green-glow); }
 
   /* ── SERVICES ── */
   #services { background: var(--navy-2); position: relative; overflow: hidden; }
@@ -1458,6 +1484,11 @@
 
   <div class="reg-callout">
     <span data-i18n="services.callout" data-i18n-html="true"><strong>Aligned with European Maritime Regulation:</strong> MHTES delivers the integrated, all-hazards exposure picture that NIS2, the CER Directive, and Italy's Circular 177/2025 are increasingly oriented toward — built for operators preparing for the November 2026 convergence of these frameworks.</span>
+    <div class="reg-deadline-strip">
+      <span class="reg-deadline-dot"></span>
+      <span id="regDeadlineText">—</span>
+      <a href="/EUMaritimeComplianceCountdown" target="_blank" rel="noopener noreferrer" class="reg-deadline-link">View live countdown →</a>
+    </div>
   </div>
 
   <div class="services-grid">
@@ -2661,6 +2692,31 @@ document.querySelectorAll('.asset-tab').forEach(tab => {
   else if (nav.startsWith('ar')) setLang('ar');
   else if (nav.startsWith('el')) setLang('el');
   // default stays 'en'
+})();
+
+// Nearest compliance deadline in the reg-callout
+(function() {
+  const DEADLINES = [
+    { date: '2026-06-30', label: 'NIS2 First Audit', reg: 'NIS2' },
+    { date: '2026-07-17', label: 'CER Designation', reg: 'CER' },
+    { date: '2026-10-01', label: 'Italy Full NIS2', reg: 'NIS2' },
+    { date: '2026-11-01', label: 'Circolare 177 Binding', reg: 'Circ.177' },
+    { date: '2027-03-01', label: 'CER Risk Assessment', reg: 'CER' },
+    { date: '2027-05-17', label: 'CER Full Compliance', reg: 'CER' },
+  ];
+  const today = new Date(); today.setHours(0,0,0,0);
+  const upcoming = DEADLINES
+    .map(d => ({ ...d, days: Math.ceil((new Date(d.date) - today) / 86400000) }))
+    .filter(d => d.days >= 0)
+    .sort((a, b) => a.days - b.days);
+  const el = document.getElementById('regDeadlineText');
+  if (el && upcoming.length) {
+    const next = upcoming[0];
+    const dateStr = new Date(next.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+    el.textContent = next.days === 0
+      ? `NEXT DEADLINE TODAY — ${next.reg}: ${next.label}`
+      : `${next.days} days — ${next.reg}: ${next.label} · ${dateStr}`;
+  }
 })();
 </script>
 </body>

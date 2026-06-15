@@ -542,6 +542,19 @@ html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
 }
+.cross-link-strip {
+  text-align: center;
+  padding: 20px 40px;
+  border-top: 1px solid rgba(45,122,58,0.15);
+  background: #060f18;
+}
+.cross-link-strip a {
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  color: rgba(240,245,252,0.5); text-decoration: none;
+  transition: color 0.2s;
+}
+.cross-link-strip a:hover { color: #4fd962; }
 </style>
 </head>
 <body>
@@ -817,6 +830,10 @@ html { scroll-behavior: smooth; }
   <h2>The window is open. The clock is running.</h2>
   <p>Founding Client Programme — 6 slots across three tiers. Rate locked for up to five years.</p>
   <a class="cta-btn" href="mailto:james@sentinellaglobal.com">Request Access</a>
+</div>
+
+<div class="cross-link-strip">
+  <a href="/EUMaritimeComplianceCountdown" target="_blank" rel="noopener noreferrer">Track live deadlines →</a>
 </div>
 
 <!-- ── SITE FOOTER ── -->
