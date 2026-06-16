@@ -29,12 +29,12 @@
   "name": "EU Maritime Compliance Countdown 2026–2027",
   "description": "Live countdown to NIS2, CER Directive, and Italian Circular 177/2025 regulatory deadlines for Mediterranean maritime operators.",
   "itemListElement": [
-    {"@type":"Event","position":1,"name":"NIS2 First Audit Deadline","startDate":"2026-06-30","description":"First formal audit verifying NIS2 compliance for port authorities, PFSOs, ISM shipping companies, and subsea cable operators.","location":{"@type":"Place","name":"European Union"},"organizer":{"@type":"Organization","name":"Sentinella Mare","url":"https://sentinellaglobal.com"}},
-    {"@type":"Event","position":2,"name":"CER Critical Entity Designation","startDate":"2026-07-17","description":"Member states formally identify and notify critical maritime entities, starting the 10-month CER compliance clock.","location":{"@type":"Place","name":"European Union"},"organizer":{"@type":"Organization","name":"Sentinella Mare","url":"https://sentinellaglobal.com"}},
-    {"@type":"Event","position":3,"name":"Italy Full NIS2 Compliance","startDate":"2026-10-01","description":"Full NIS2 compliance obligations active under Italian Legislative Decree 138/2024.","location":{"@type":"Place","name":"Italy"},"organizer":{"@type":"Organization","name":"Sentinella Mare","url":"https://sentinellaglobal.com"}},
-    {"@type":"Event","position":4,"name":"Circolare 177/2025 Binding Date","startDate":"2026-11-01","description":"Italy's maritime hybrid threat regulation becomes fully enforceable for port facilities and ferry operators.","location":{"@type":"Place","name":"Italy"},"organizer":{"@type":"Organization","name":"Sentinella Mare","url":"https://sentinellaglobal.com"}},
-    {"@type":"Event","position":5,"name":"CER Risk Assessment Due","startDate":"2027-03-01","description":"Designated critical entities must submit completed all-hazards risk assessment to national competent authority.","location":{"@type":"Place","name":"European Union"},"organizer":{"@type":"Organization","name":"Sentinella Mare","url":"https://sentinellaglobal.com"}},
-    {"@type":"Event","position":6,"name":"CER Full Compliance Deadline","startDate":"2027-05-17","description":"Full CER resilience compliance required across all designated critical maritime entities.","location":{"@type":"Place","name":"European Union"},"organizer":{"@type":"Organization","name":"Sentinella Mare","url":"https://sentinellaglobal.com"}}
+    {"@type":"Event","position":1,"name":"NIS2 Annual Categorisation Deadline","startDate":"2026-06-30","description":"Annual categorisation submission to the ACN portal for port authorities, PFSOs, ISM shipping companies, and subsea cable operators. ACN's first on-site inspections begin from October 2026.","location":{"@type":"Place","name":"European Union"},"organizer":{"@type":"Organization","name":"Sentinella Mare","url":"https://sentinellaglobal.com"}},
+    {"@type":"Event","position":2,"name":"CER Critical Entity Designation","startDate":"2026-07-17","description":"Member states formally identify critical maritime entities. Formal notification, which starts the compliance clock, typically follows within weeks of designation.","location":{"@type":"Place","name":"European Union"},"organizer":{"@type":"Organization","name":"Sentinella Mare","url":"https://sentinellaglobal.com"}},
+    {"@type":"Event","position":3,"name":"Italy Full NIS2 Compliance","startDate":"2026-10-01","description":"Full NIS2 compliance obligations active under Italian Legislative Decree 138/2024. Exact date is entity-notification-dependent — approximately October–November 2026.","location":{"@type":"Place","name":"Italy"},"organizer":{"@type":"Organization","name":"Sentinella Mare","url":"https://sentinellaglobal.com"}},
+    {"@type":"Event","position":4,"name":"Circolare 177/2025 Binding Date","startDate":"2026-11-01","description":"Italy's maritime cyber risk circular, aligned with IMO MSC-FAL.1/Circ.3, becomes fully enforceable for port facilities and ferry operators.","location":{"@type":"Place","name":"Italy"},"organizer":{"@type":"Organization","name":"Sentinella Mare","url":"https://sentinellaglobal.com"}},
+    {"@type":"Event","position":5,"name":"CER Risk Assessment Due","startDate":"2027-05-17","description":"Designated critical entities must submit a completed all-hazards risk assessment to national competent authority, within approximately 9 months of formal notification.","location":{"@type":"Place","name":"European Union"},"organizer":{"@type":"Organization","name":"Sentinella Mare","url":"https://sentinellaglobal.com"}},
+    {"@type":"Event","position":6,"name":"CER Full Compliance Deadline","startDate":"2027-06-17","description":"Full CER resilience compliance required across all designated critical maritime entities, approximately 10 months after formal notification of designation.","location":{"@type":"Place","name":"European Union"},"organizer":{"@type":"Organization","name":"Sentinella Mare","url":"https://sentinellaglobal.com"}}
   ]
 }
 </script>
@@ -784,7 +784,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 
 <div class="page-footer-note">
   <div class="fn-text">
-    Deadlines computed live from today's date. All dates reflect EU-level transposition deadlines and Italy-specific implementation dates as published. NIS2: D.Lgs. 138/2024 (EU 2022/2555). CER: D.Lgs. 134/2024 (EU Directive 2022/2557). Circolare 177/2025: MIT / Guardia Costiera joint circular. Operators should confirm applicable obligations with their national competent authority or qualified legal counsel. Nothing here constitutes legal advice. Content reviewed June 2026.
+    Deadlines computed live from today's date. CER risk assessment, CER full compliance, and Italy full NIS2 dates are estimates pending formal notification timing and are marked "est." accordingly. NIS2: D.Lgs. 138/2024 (EU 2022/2555). CER: D.Lgs. 134/2024 (EU Directive 2022/2557). Circolare 177/2025: issued by the Capitanerie di Porto command (under MIT) as Italy's NIS transport sector authority. Operators should confirm applicable obligations with their national competent authority or qualified legal counsel. Nothing here constitutes legal advice. Content reviewed June 2026.
   </div>
   <div class="fn-sig">
     <span class="teal">SENTINELLA MARE</span><br>
@@ -838,11 +838,11 @@ const DEADLINES = [
     windowStart: "2026-01-01",
     reg: "NIS2",
     regClass: "reg-nis2",
-    title: "NIS2 First Audit Deadline",
+    title: "NIS2 Annual Categorisation Deadline",
     segments: ["Port Authority","PFSO","ISM / Shipping","Subsea Cable"],
-    desc: "First formal audit verifying NIS2 compliance. Entities must demonstrate a documented risk assessment process, incident reporting capability, supply chain security measures, and active governance. This is not a one-time document submission — auditors assess whether a risk management system is operational.",
-    consequence: "Non-compliance: up to €10M or 2% of global turnover. Personal director liability under ACN enforcement. Repeat non-compliance triggers mandatory public disclosure.",
-    sentinella: "The Asset Status panel is your daily risk management record — exactly what NIS2 Article 21 requires to demonstrate ongoing monitoring. P-MHTES and C-MHTES scores provide the external hybrid threat intelligence layer no internal IT tool produces. Compliance CSV and AI-generated PDF/A-1b export on demand — not assembled at audit time."
+    desc: "Annual entity categorisation submission to the ACN portal — not a formal audit. Entities must register their risk classification and confirm a documented risk assessment process, incident reporting capability, supply chain security measures, and active governance are in place. ACN's first on-site inspections begin from October 2026.",
+    consequence: "Non-compliance: up to €10M or 2% of global turnover. Personal director liability under ACN enforcement. Repeat non-compliance may result in authorities ordering public disclosure of the violation.",
+    sentinella: "The Asset Status panel is your daily risk management record — exactly what NIS2 Article 21 requires to demonstrate ongoing monitoring. P-MHTES and C-MHTES scores provide the external threat intelligence layer no internal IT tool produces. Compliance CSV and AI-generated PDF/A-1b export on demand — not assembled at audit time."
   },
   {
     id: "cer-designation",
@@ -852,9 +852,9 @@ const DEADLINES = [
     regClass: "reg-cer",
     title: "CER Critical Entity Designation",
     segments: ["Port Authority","PFSO","Ferry Operator","Subsea Cable"],
-    desc: "Member states formally identify and notify critical entities across 11 sectors including maritime transport and subsea infrastructure. Once notified, the 10-month compliance clock starts immediately. Entities arriving at this date without active monitoring in place face a compressed, reactive scramble.",
-    consequence: "Designation triggers mandatory all-hazards risk assessment (due March 2027) and full resilience compliance (due May 2027). Failing to demonstrate ongoing monitoring at designation is a credibility gap with competent authority from day one.",
-    sentinella: "Designation is not the starting gun — it's the checkpoint. Port authorities and cable operators expecting designation should have continuous monitoring already running. P-MHTES and C-MHTES scores are structured for the CER's all-hazards hybrid threat requirement. Founding Client pilots beginning now build a 10-month monitoring record before the risk assessment is due."
+    desc: "Member states formally identify critical entities across 11 sectors including maritime transport; subsea cable inclusion sits at member state discretion and is not explicitly named in the Directive Annex. Formal notification — which starts the compliance clock — typically follows within weeks of designation. Entities arriving at this date without active monitoring in place face a compressed, reactive scramble.",
+    consequence: "Designation and notification trigger a roughly 9-month clock to risk assessment (est. mid-May 2027) and a 10-month clock to full resilience compliance (est. June 2027), both running from notification rather than the designation date itself. Failing to demonstrate ongoing monitoring at designation is a credibility gap with competent authority from day one.",
+    sentinella: "Designation is not the starting gun — it's the checkpoint. Port authorities and cable operators expecting designation should have continuous monitoring already running. P-MHTES and C-MHTES scores are structured for the CER's all-hazards requirement. Founding Client pilots beginning now build a 10-month monitoring record before the risk assessment is due."
   },
   {
     id: "nis2-italy",
@@ -864,7 +864,7 @@ const DEADLINES = [
     regClass: "reg-nis2",
     title: "Italy Full NIS2 Compliance",
     segments: ["Port Authority","PFSO","ISM / Shipping","Subsea Cable"],
-    desc: "ACN (Italy's NIS2 national competent authority) requires full documentation of risk management measures, supply chain security, business continuity planning, and incident reporting procedures. The external threat intelligence component — hybrid maritime threats — is explicitly included in scope.",
+    desc: "ACN (Italy's NIS2 national competent authority) requires full documentation of risk management measures, supply chain security, business continuity planning, and incident reporting procedures. Exact timing is entity-notification-dependent — approximately October–November 2026, with some sources citing 31 October.",
     consequence: "ACN begins active enforcement proceedings. Entities without documented ongoing threat monitoring face remediation orders, fines, and potential operational restrictions. Port operators face additional scrutiny given Italy's critical infrastructure exposure.",
     sentinella: "NIS2 is a process obligation, not a report obligation. Auditors need to see that threat monitoring is continuous, not assembled on deadline day. The three-panel workflow — Asset Status, Hybrid Threat Awareness, compliance export — is designed around this distinction. Clients who signed pilots in July have three months of monitoring history on record by October."
   },
@@ -876,33 +876,33 @@ const DEADLINES = [
     regClass: "reg-c177",
     title: "Circolare 177/2025 Binding",
     segments: ["Port Authority","PFSO","Ferry Operator"],
-    desc: "Italy's maritime-specific hybrid threat regulation becomes fully enforceable. Port facilities, AdSP jurisdictions, and ferry operators face mandatory hybrid threat risk assessments under joint MIT and Guardia Costiera oversight. Circolare 177 explicitly targets the convergence of physical, cyber, and geopolitical threats — a definition no standard ISPS tool covers.",
-    consequence: "Enforcement by MIT and Guardia Costiera. Non-compliance triggers mandatory remediation and potential suspension of facility operations pending assessment. PFSO licence holders face personal accountability. This regulation was written for the exact threat environment Sentinella monitors.",
-    sentinella: "Sentinella is the only platform purpose-built for Circolare 177. P-MHTES scores are the risk assessment — scored continuously, not prepared once. The Hybrid Threat Awareness panel covers the ongoing monitoring obligation. When multiple threat signals converge on an asset simultaneously, the Convergence Alert fires before the incident occurs. That is what Circolare 177 asks operators to demonstrate they can do."
+    desc: "Italy's maritime cyber risk circular, aligned with IMO MSC-FAL.1/Circ.3, becomes fully enforceable. Port facilities, AdSP jurisdictions, and ferry operators face mandatory cyber risk assessments under the Capitanerie di Porto command (operating under MIT as Italy's NIS transport sector authority). Circolare 177 targets cyber risk to maritime OT/IT systems — narrower in scope than NIS2 or CER's hybrid/all-hazards coverage.",
+    consequence: "Enforcement by the Capitanerie di Porto command. Non-compliance triggers mandatory remediation orders. Personal director liability for inadequate risk management is a NIS2 Article 20 matter attaching to management bodies — not a PFSO-specific liability under Circolare 177 itself. This regulation was written for the cyber risk exposure across maritime OT/IT that Sentinella monitors.",
+    sentinella: "Sentinella's cyber vulnerability signals (OT/IT) and Asset Status panel map directly to Circolare 177's cyber risk assessment obligation — scored continuously, not prepared once. When cyber signals converge with other threat vectors on an asset, the Convergence Alert fires before the incident occurs — broader coverage than Circolare 177 requires alone."
   },
   {
     id: "cer-risk",
-    date: "2027-03-01",
-    windowStart: "2026-07-17",
-    reg: "CER",
-    regClass: "reg-cer",
-    title: "CER Risk Assessment Due",
-    segments: ["Port Authority","PFSO","Subsea Cable"],
-    desc: "Designated critical entities must submit a completed all-hazards risk assessment to national competent authority. The assessment must cover physical threats, cyber threats, insider threats, and hybrid/multi-vector scenarios — including threats to subsea infrastructure and port operations.",
-    consequence: "Incomplete or inadequate assessments trigger formal remediation orders and restart the compliance clock. Assessments submitted without an external threat intelligence component are routinely challenged as insufficient for hybrid threat coverage.",
-    sentinella: "Entities that began monitoring at designation in July 2026 arrive at March 2027 with 8 months of continuous P-MHTES and C-MHTES score history, documented threat events, and full audit trails. The risk assessment is not written — it is already recorded. Founding Client Programme members have this history by design."
-  },
-  {
-    id: "cer-full",
     date: "2027-05-17",
     windowStart: "2026-07-17",
     reg: "CER",
     regClass: "reg-cer",
-    title: "CER Full Compliance Deadline",
+    title: "CER Risk Assessment Due (est.)",
+    segments: ["Port Authority","PFSO","Subsea Cable"],
+    desc: "Designated critical entities must submit a completed all-hazards risk assessment to national competent authority, within approximately 9 months of formal notification (estimated mid-May 2027 for entities notified shortly after the 17 July 2026 designation date). The assessment must cover physical threats, cyber threats, insider threats, and hybrid/multi-vector scenarios. Subsea cable inclusion sits at member state discretion — not explicitly named in the Directive Annex, but likely in scope given Mediterranean exposure.",
+    consequence: "Incomplete or inadequate assessments trigger formal remediation orders and restart the compliance clock. Assessments submitted without an external threat intelligence component are routinely challenged as insufficient for hybrid threat coverage.",
+    sentinella: "Entities that began monitoring at designation in July 2026 arrive at the risk assessment deadline with approximately 10 months of continuous P-MHTES and C-MHTES score history, documented threat events, and full audit trails. The risk assessment is not written — it is already recorded. Founding Client Programme members have this history by design."
+  },
+  {
+    id: "cer-full",
+    date: "2027-06-17",
+    windowStart: "2026-07-17",
+    reg: "CER",
+    regClass: "reg-cer",
+    title: "CER Full Compliance Deadline (est.)",
     segments: ["Port Authority","PFSO","Ferry Operator","Subsea Cable"],
-    desc: "Full CER resilience compliance required across all designated critical entities. Resilience measures, incident response plans, ongoing monitoring capability, and supply chain security must all be demonstrably operational — not planned, not in progress, operational.",
-    consequence: "Entities failing full compliance face enforcement action, potential loss of operating authority, and mandatory public disclosure. After 10 months of regulatory scrutiny, there is no grace period and no goodwill for entities arriving unprepared.",
-    sentinella: "Founding Client Programme members who began in July 2026 reach May 2027 with a 10-month operational record, four years of rate-locked access, and compliance exports already structured for CER audit requirements. Full compliance is not a sprint finished in May — it is the record built since July. The difference between a client and a non-client at this date is ten months of documented process."
+    desc: "Full CER resilience compliance required across all designated critical entities, approximately 10 months after formal notification of designation — not the designation date itself. Resilience measures, incident response plans, ongoing monitoring capability, and supply chain security must all be demonstrably operational — not planned, not in progress, operational.",
+    consequence: "Entities failing full compliance face enforcement action and financial penalties under D.Lgs. 134/2024 — €25,000 to €125,000, tripling for repeat non-compliance. After roughly 10 months of regulatory scrutiny, there is no grace period and no goodwill for entities arriving unprepared.",
+    sentinella: "Founding Client Programme members who began in July 2026 reach full compliance with an 11-month operational record, four years of rate-locked access, and compliance exports already structured for CER audit requirements. Full compliance is not a sprint finished at the deadline — it is the record built since July. The difference between a client and a non-client at this date is months of documented process."
   }
 ];
 
