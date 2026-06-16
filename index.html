@@ -2837,22 +2837,35 @@ document.querySelectorAll('.asset-tab').forEach(tab => {
 // Nearest compliance deadline in the reg-callout
 (function() {
   const DEADLINES = [
-    { date: '2026-06-30', label: 'NIS2 First Audit', reg: 'NIS2' },
+    { date: '2026-06-30', label: 'NIS2 Annual Categorisation', reg: 'NIS2' },
     { date: '2026-07-17', label: 'CER Designation', reg: 'CER' },
-    { date: '2026-10-01', label: 'Italy Full NIS2', reg: 'NIS2' },
+    { date: '2026-10-01', label: 'Italy Full NIS2 (est.)', reg: 'NIS2' },
     { date: '2026-11-01', label: 'Circolare 177 Binding', reg: 'Circ.177' },
-    { date: '2027-03-01', label: 'CER Risk Assessment', reg: 'CER' },
-    { date: '2027-05-17', label: 'CER Full Compliance', reg: 'CER' },
+    { date: '2027-05-17', label: 'CER Risk Assessment (est.)', reg: 'CER' },
+    { date: '2027-06-17', label: 'CER Full Compliance (est.)', reg: 'CER' },
   ];
-  const today = new Date(); today.setHours(0,0,0,0);
+  function parseLocalDate(dateStr) {
+    const [y, m, d] = dateStr.split('-').map(Number);
+    return new Date(y, m - 1, d);
+  }
+  // These are EU regulatory deadlines — "today" must be Brussels (CET/CEST) calendar
+  // date, not the visitor's local date, so the countdown agrees for every visitor.
+  function euToday() {
+    const parts = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Europe/Brussels', year: 'numeric', month: '2-digit', day: '2-digit'
+    }).formatToParts(new Date());
+    const get = t => Number(parts.find(p => p.type === t).value);
+    return new Date(get('year'), get('month') - 1, get('day'));
+  }
+  const today = euToday();
   const upcoming = DEADLINES
-    .map(d => ({ ...d, days: Math.ceil((new Date(d.date) - today) / 86400000) }))
+    .map(d => ({ ...d, days: Math.ceil((parseLocalDate(d.date) - today) / 86400000) }))
     .filter(d => d.days >= 0)
     .sort((a, b) => a.days - b.days);
   const el = document.getElementById('regDeadlineText');
   if (el && upcoming.length) {
     const next = upcoming[0];
-    const dateStr = new Date(next.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+    const dateStr = parseLocalDate(next.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
     el.textContent = next.days === 0
       ? `NEXT DEADLINE TODAY — ${next.reg}: ${next.label}`
       : `${next.days} days — ${next.reg}: ${next.label} · ${dateStr}`;

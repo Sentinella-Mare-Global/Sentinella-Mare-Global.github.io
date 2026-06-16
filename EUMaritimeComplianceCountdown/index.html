@@ -910,15 +910,24 @@ function parseLocalDate(dateStr) {
   const [y, m, d] = dateStr.split('-').map(Number);
   return new Date(y, m - 1, d);
 }
+// These are EU regulatory deadlines — "today" must be Brussels (CET/CEST) calendar
+// date, not the visitor's local date, so the countdown agrees for every visitor.
+function euToday() {
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'Europe/Brussels', year: 'numeric', month: '2-digit', day: '2-digit'
+  }).formatToParts(new Date());
+  const get = t => Number(parts.find(p => p.type === t).value);
+  return new Date(get('year'), get('month') - 1, get('day'));
+}
 function daysFromNow(dateStr) {
-  const now = new Date(); now.setHours(0,0,0,0);
+  const now = euToday();
   const target = parseLocalDate(dateStr); target.setHours(0,0,0,0);
   return Math.ceil((target - now) / 86400000);
 }
 function burnPct(windowStart, dateStr) {
   const start = parseLocalDate(windowStart); start.setHours(0,0,0,0);
   const end = parseLocalDate(dateStr); end.setHours(0,0,0,0);
-  const now = new Date(); now.setHours(0,0,0,0);
+  const now = euToday();
   const total = end - start;
   const elapsed = now - start;
   return Math.min(100, Math.max(0, (elapsed / total) * 100));

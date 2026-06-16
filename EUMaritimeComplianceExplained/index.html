@@ -913,8 +913,17 @@ document.addEventListener('click', function(e) {
     var parts = dateStr.split('-').map(Number);
     return new Date(parts[0], parts[1] - 1, parts[2]);
   }
+  // These are EU regulatory deadlines — "today" must be Brussels (CET/CEST) calendar
+  // date, not the visitor's local date, so the countdown agrees for every visitor.
+  function euToday() {
+    var parts = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'Europe/Brussels', year: 'numeric', month: '2-digit', day: '2-digit'
+    }).formatToParts(new Date());
+    function get(t) { return Number(parts.filter(function (p) { return p.type === t; })[0].value); }
+    return new Date(get('year'), get('month') - 1, get('day'));
+  }
   function daysFrom(dateStr) {
-    var now = new Date(); now.setHours(0,0,0,0);
+    var now = euToday();
     var t = parseLocalDate(dateStr); t.setHours(0,0,0,0);
     return Math.ceil((t - now) / 86400000);
   }
@@ -926,7 +935,7 @@ document.addEventListener('click', function(e) {
     if (d === 0) return 'today';
     return 'in ' + d + ' day' + (d === 1 ? '' : 's');
   }
-  var today = new Date();
+  var today = euToday();
   var dateStr = today.toLocaleDateString('en-GB', {day:'numeric', month:'long', year:'numeric'});
   var parts = ['▸ Today: ' + dateStr];
   if (d1 >= 0) parts.push('NIS2 categorisation ' + fmt(d1));
