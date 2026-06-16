@@ -909,9 +909,13 @@ document.addEventListener('click', function(e) {
 
 // Live timeline note
 (function () {
+  function parseLocalDate(dateStr) {
+    var parts = dateStr.split('-').map(Number);
+    return new Date(parts[0], parts[1] - 1, parts[2]);
+  }
   function daysFrom(dateStr) {
     var now = new Date(); now.setHours(0,0,0,0);
-    var t = new Date(dateStr); t.setHours(0,0,0,0);
+    var t = parseLocalDate(dateStr); t.setHours(0,0,0,0);
     return Math.ceil((t - now) / 86400000);
   }
   var d1 = daysFrom('2026-06-30');

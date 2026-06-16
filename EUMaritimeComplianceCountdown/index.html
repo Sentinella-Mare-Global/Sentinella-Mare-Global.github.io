@@ -906,14 +906,18 @@ const DEADLINES = [
   }
 ];
 
+function parseLocalDate(dateStr) {
+  const [y, m, d] = dateStr.split('-').map(Number);
+  return new Date(y, m - 1, d);
+}
 function daysFromNow(dateStr) {
   const now = new Date(); now.setHours(0,0,0,0);
-  const target = new Date(dateStr); target.setHours(0,0,0,0);
+  const target = parseLocalDate(dateStr); target.setHours(0,0,0,0);
   return Math.ceil((target - now) / 86400000);
 }
 function burnPct(windowStart, dateStr) {
-  const start = new Date(windowStart); start.setHours(0,0,0,0);
-  const end = new Date(dateStr); end.setHours(0,0,0,0);
+  const start = parseLocalDate(windowStart); start.setHours(0,0,0,0);
+  const end = parseLocalDate(dateStr); end.setHours(0,0,0,0);
   const now = new Date(); now.setHours(0,0,0,0);
   const total = end - start;
   const elapsed = now - start;
@@ -963,7 +967,7 @@ function renderHero() {
   el.className = 'hero-days' + (days <= 30 ? ' pulse' : '') + (uc === 'urgent' ? ' urgent-color' : uc === 'appr' ? ' appr-color' : uc === 'upcoming' ? ' upcoming-color' : '');
   document.getElementById('hero-deadline').innerHTML =
     `<span class="hero-reg reg-badge ${next.regClass}">${next.reg}</span> ${next.title}`;
-  const date = new Date(next.date);
+  const date = parseLocalDate(next.date);
   const formatted = date.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
   document.getElementById('hero-sub').textContent = formatted + ' — ' + urgencyLabel(days);
 }
@@ -976,7 +980,7 @@ function renderTimeline() {
     const uc = urgencyClass(days);
     const burn = burnPct(d.windowStart, d.date);
     const visible = activeSeg === "All" || d.segments.includes(activeSeg);
-    const date = new Date(d.date);
+    const date = parseLocalDate(d.date);
     const formatted = date.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});
     const daysDisplay = days < 0 ? Math.abs(days) + ' days ago' : days;
     const daysLabelText = days < 0 ? 'ELAPSED' : 'DAYS LEFT';
