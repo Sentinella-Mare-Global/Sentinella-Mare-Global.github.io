@@ -369,6 +369,11 @@ body {
 .seg-btn:hover { border-color: #3aab4a; color: #3aab4a; }
 .seg-btn.active { background: #2d7a3a; border-color: #2d7a3a; color: #f0f5fc; }
 
+/* Larger tap targets on touch devices — visual size unchanged for mouse users */
+@media (hover: none) and (pointer: coarse) {
+  .seg-btn { padding: 13px 14px; min-height: 44px; }
+}
+
 /* Overlap strip */
 .overlap-strip {
   background: rgba(45,122,58,0.04);
@@ -811,7 +816,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
     </div>
     <div class="footer-col">
       <h3 class="footer-nav-title">Services</h3>
-      <a href="/#services">Mediterranean Watch Dashboard</a>
+      <a href="/#services">Mediterranean Watch Intelligence Terminal</a>
       <a href="/#advisory">Investment Advisory</a>
       <a href="/#advisory">Supply Chain Risk</a>
       <a href="/#pricing">Subscription Tiers</a>
