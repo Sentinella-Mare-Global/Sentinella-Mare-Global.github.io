@@ -2866,19 +2866,24 @@ document.querySelectorAll('.asset-tab').forEach(tab => {
     const get = t => Number(parts.find(p => p.type === t).value);
     return new Date(get('year'), get('month') - 1, get('day'));
   }
-  const today = euToday();
-  const upcoming = DEADLINES
-    .map(d => ({ ...d, days: Math.ceil((parseLocalDate(d.date) - today) / 86400000) }))
-    .filter(d => d.days >= 0)
-    .sort((a, b) => a.days - b.days);
-  const el = document.getElementById('regDeadlineText');
-  if (el && upcoming.length) {
-    const next = upcoming[0];
-    const dateStr = parseLocalDate(next.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
-    el.textContent = next.days === 0
-      ? `NEXT DEADLINE TODAY — ${next.reg}: ${next.label}`
-      : `${next.days} days — ${next.reg}: ${next.label} · ${dateStr}`;
+  function renderNextDeadline() {
+    const today = euToday();
+    const upcoming = DEADLINES
+      .map(d => ({ ...d, days: Math.ceil((parseLocalDate(d.date) - today) / 86400000) }))
+      .filter(d => d.days >= 0)
+      .sort((a, b) => a.days - b.days);
+    const el = document.getElementById('regDeadlineText');
+    if (el && upcoming.length) {
+      const next = upcoming[0];
+      const dateStr = parseLocalDate(next.date).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+      el.textContent = next.days === 0
+        ? `NEXT DEADLINE TODAY — ${next.reg}: ${next.label}`
+        : `${next.days} days — ${next.reg}: ${next.label} · ${dateStr}`;
+    }
   }
+  renderNextDeadline();
+  // Refresh so the callout rolls to the next deadline if a tab is left open past midnight CET/CEST.
+  setInterval(renderNextDeadline, 60000);
 })();
 </script>
 </body>
