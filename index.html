@@ -85,7 +85,8 @@
   .nav-links a:hover { color: var(--green-glow); }
   .nav-toggle {
     display: none; flex-direction: column; justify-content: center; gap: 5px;
-    cursor: pointer; padding: 8px; background: none; border: none; z-index: 1001;
+    cursor: pointer; padding: 14px 12px; background: none; border: none; z-index: 1001;
+    min-width: 44px; min-height: 44px;
   }
   .nav-toggle span {
     display: block; width: 24px; height: 2px;
@@ -464,10 +465,11 @@
   #platform { background: var(--navy); position: relative; overflow: hidden; }
   .platform-img-caption {
     font-size: 17px; line-height: 1.75;
-    color: var(--text); max-width: 720px;
+    color: var(--text); max-width: 100%;
     margin: 32px 0 16px;
+    text-align: center;
   }
-  .platform-img-caption strong { color: var(--white); }
+  .platform-img-caption strong { display: block; color: var(--white); margin-bottom: 4px; }
   .dash-wrap {
     margin-top: 60px;
     border: 1px solid rgba(45,122,58,0.2);
