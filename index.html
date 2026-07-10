@@ -771,7 +771,7 @@
   /* ── PRICING ── */
   #pricing { background: var(--navy); }
   .pricing-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
+    display: grid; grid-template-columns: repeat(4, 1fr);
     gap: 2px; margin-top: 60px; align-items: stretch;
   }
   .price-card {
@@ -794,6 +794,7 @@
     font-size: 9px; letter-spacing: 3px; color: white;
     padding: 5px 16px;
   }
+  .price-card.free-card::before { content: 'FREE'; }
   .price-tier {
     font-family: 'Share Tech Mono', monospace;
     font-size: 10px; letter-spacing: 4px; color: var(--green-mid);
@@ -894,11 +895,13 @@
   .feat-group::before { content: none !important; }
   .price-features li.feat-star-item { color: var(--gold); }
   .price-features li.feat-star-item::before { content: '★'; color: var(--gold); font-size: 10px; }
+  .cmd-footer { margin-top: auto; }
+  .cmd-footer .price-btn { margin-top: 0; }
   .tier-star-note {
     font-family: 'Share Tech Mono', monospace;
     font-size: 10px; letter-spacing: 1px;
     color: rgba(201,168,76,0.5);
-    text-align: center; padding: 20px 0 0;
+    text-align: left; padding: 0 0 14px;
   }
 
   /* ── ADVISORY ── */
@@ -1885,7 +1888,7 @@
   <div class="section-label" data-i18n="pricing.label">Subscription Platform</div>
   <h2 data-i18n="pricing.h2" data-i18n-html="true"><span>Mediterranean Watch</span><br>Subscription Tiers</h2>
   <p class="section-lead">
-    Three asset packages — Port, Fleet, and Subsea Cable — at three coverage levels: Exposure, Sentinel, and Command. All tiers include the complete intelligence feed stack. Asset coverage and compliance output capabilities are what distinguish them.
+    Four coverage levels — Basic (Free), Exposure, Sentinel, and Command — across three asset packages: Port, Fleet, and Subsea Cable. All tiers include the complete intelligence feed stack. Asset coverage and compliance output capabilities are what distinguish them.
   </p>
 
   <!-- Asset type tabs -->
@@ -1899,6 +1902,22 @@
   <div class="asset-panel active" id="asset-port">
     <div class="asset-subtitle">Port authorities · AdSP jurisdictions · Terminal operators</div>
     <div class="pricing-grid">
+      <div class="price-card featured free-card">
+        <div class="price-name" data-i18n="pricing.tier.basic">Basic</div>
+        <div class="price-coverage">1 asset</div>
+        <p class="price-best-for">Real-time MHTES scoring, AIS tracking, and geopolitical alerts across a single asset.</p>
+        <ul class="price-features">
+          <li class="feat-group">Platform</li>
+          <li>Panel 1 — Asset Status</li>
+          <li class="feat-group">Intelligence — all feeds</li>
+          <li>Live MHTES scoring — 30-min refresh</li>
+          <li>72-hr exposure window</li>
+          <li>AIS, grey fleet &amp; chokepoint signals</li>
+          <li>Real-time exposure alerts</li>
+          <li>Geopolitical &amp; disinformation feeds</li>
+        </ul>
+        <a href="https://mare.sentinellaglobal.com/" class="price-btn active" data-i18n="pricing.btn.launch" target="_blank" rel="noopener noreferrer">Launch Now</a>
+      </div>
       <div class="price-card">
         <div class="price-name" data-i18n="pricing.tier.exposure">Exposure</div>
         <div class="price-coverage">Up to 2 ports</div>
@@ -1957,8 +1976,10 @@
           <li>Everything in Sentinel</li>
           <li class="feat-star-item">Deep Simulation prediction report</li>
         </ul>
-        <a href="#contact" class="price-btn" data-i18n="pricing.btn.contact">Contact Us</a>
-        <div class="tier-star-note">★ Command-exclusive · No comparable capability in the commercial maritime intelligence market</div>
+        <div class="cmd-footer">
+          <div class="tier-star-note">★ Command-exclusive · No comparable capability in the commercial maritime intelligence market</div>
+          <a href="#contact" class="price-btn" data-i18n="pricing.btn.contact">Contact Us</a>
+        </div>
       </div>
     </div>
   </div>
@@ -1967,6 +1988,22 @@
   <div class="asset-panel" id="asset-fleet">
     <div class="asset-subtitle">Ferry operators · Logistics companies · Shipping lines</div>
     <div class="pricing-grid">
+      <div class="price-card featured free-card">
+        <div class="price-name" data-i18n="pricing.tier.basic">Basic</div>
+        <div class="price-coverage">1 asset</div>
+        <p class="price-best-for">Real-time MHTES scoring, AIS tracking, and geopolitical alerts across a single asset.</p>
+        <ul class="price-features">
+          <li class="feat-group">Platform</li>
+          <li>Panel 1 — Asset Status</li>
+          <li class="feat-group">Intelligence — all feeds</li>
+          <li>Live MHTES scoring — 30-min refresh</li>
+          <li>72-hr exposure window</li>
+          <li>AIS, grey fleet &amp; chokepoint signals</li>
+          <li>Real-time exposure alerts</li>
+          <li>Geopolitical &amp; disinformation feeds</li>
+        </ul>
+        <a href="https://mare.sentinellaglobal.com/" class="price-btn active" data-i18n="pricing.btn.launch" target="_blank" rel="noopener noreferrer">Launch Now</a>
+      </div>
       <div class="price-card">
         <div class="price-name" data-i18n="pricing.tier.exposure">Exposure</div>
         <div class="price-coverage">Up to 10 vessels</div>
@@ -2026,8 +2063,10 @@
           <li>Everything in Sentinel</li>
           <li class="feat-star-item">Deep Simulation prediction report</li>
         </ul>
-        <a href="#contact" class="price-btn" data-i18n="pricing.btn.contact">Contact Us</a>
-        <div class="tier-star-note">★ Command-exclusive · No comparable capability in the commercial maritime intelligence market</div>
+        <div class="cmd-footer">
+          <div class="tier-star-note">★ Command-exclusive · No comparable capability in the commercial maritime intelligence market</div>
+          <a href="#contact" class="price-btn" data-i18n="pricing.btn.contact">Contact Us</a>
+        </div>
       </div>
     </div>
   </div>
@@ -2036,6 +2075,22 @@
   <div class="asset-panel" id="asset-cable">
     <div class="asset-subtitle">Cable operators · Subsea infrastructure firms · National telecom authorities</div>
     <div class="pricing-grid">
+      <div class="price-card featured free-card">
+        <div class="price-name" data-i18n="pricing.tier.basic">Basic</div>
+        <div class="price-coverage">1 asset</div>
+        <p class="price-best-for">Real-time MHTES scoring, AIS tracking, and geopolitical alerts across a single asset.</p>
+        <ul class="price-features">
+          <li class="feat-group">Platform</li>
+          <li>Panel 1 — Asset Status</li>
+          <li class="feat-group">Intelligence — all feeds</li>
+          <li>Live MHTES scoring — 30-min refresh</li>
+          <li>72-hr exposure window</li>
+          <li>AIS, grey fleet &amp; chokepoint signals</li>
+          <li>Real-time exposure alerts</li>
+          <li>Geopolitical &amp; disinformation feeds</li>
+        </ul>
+        <a href="https://mare.sentinellaglobal.com/" class="price-btn active" data-i18n="pricing.btn.launch" target="_blank" rel="noopener noreferrer">Launch Now</a>
+      </div>
       <div class="price-card">
         <div class="price-name" data-i18n="pricing.tier.exposure">Exposure</div>
         <div class="price-coverage">Up to 2 routes</div>
@@ -2095,8 +2150,10 @@
           <li>Everything in Sentinel</li>
           <li class="feat-star-item">Deep Simulation prediction report</li>
         </ul>
-        <a href="#contact" class="price-btn" data-i18n="pricing.btn.contact">Contact Us</a>
-        <div class="tier-star-note">★ Command-exclusive · No comparable capability in the commercial maritime intelligence market</div>
+        <div class="cmd-footer">
+          <div class="tier-star-note">★ Command-exclusive · No comparable capability in the commercial maritime intelligence market</div>
+          <a href="#contact" class="price-btn" data-i18n="pricing.btn.contact">Contact Us</a>
+        </div>
       </div>
     </div>
   </div>
@@ -2267,6 +2324,10 @@ const translations = {
     'pricing.port.sub': 'Port authorities & terminal operators',
     'pricing.fleet.sub': 'Ferry operators & logistics companies',
     'pricing.cable.sub': 'Cable operators & infrastructure firms',
+    'pricing.tier.basic': 'Basic',
+    'pricing.tier.basic': 'Basic',
+    'pricing.tier.basic': 'Basic',
+    'pricing.tier.basic': 'Basic',
     'pricing.tier.exposure': 'Exposure',
     'pricing.tier.sentinel': 'Sentinel',
     'pricing.tier.command': 'Command',
@@ -2303,6 +2364,7 @@ const translations = {
     'pricing.f.cyber.cable': 'Cyber & infrastructure exposure',
     'pricing.f.disinfo': 'Disinformation monitoring',
     'pricing.f.scenario.cable': 'Scenario & sabotage modeling',
+    'pricing.btn.launch': 'Launch Now',
     'pricing.btn.access': 'Request Access',
     'pricing.btn.contact': 'Contact Us',
     // Advisory
@@ -2498,6 +2560,7 @@ const translations = {
     'pricing.f.cyber.cable': 'Esposizione cyber e infrastrutturale',
     'pricing.f.disinfo': 'Monitoraggio disinformazione',
     'pricing.f.scenario.cable': 'Modellazione scenari e sabotaggio',
+    'pricing.btn.launch': 'Lancia Ora',
     'pricing.btn.access': 'Richiedi Accesso',
     'pricing.btn.contact': 'Contattaci',
     // Advisory
@@ -2692,6 +2755,7 @@ const translations = {
     'pricing.f.cyber.cable': 'التعرض السيبراني والبنية التحتية',
     'pricing.f.disinfo': 'مراقبة التضليل الإعلامي',
     'pricing.f.scenario.cable': 'نمذجة السيناريوهات والتخريب',
+    'pricing.btn.launch': 'إطلاق الآن',
     'pricing.btn.access': 'طلب الوصول',
     'pricing.btn.contact': 'تواصل معنا',
     // Advisory
@@ -2886,6 +2950,7 @@ const translations = {
     'pricing.f.cyber.cable': 'Κυβερνο- και υποδομική έκθεση',
     'pricing.f.disinfo': 'Παρακολούθηση παραπληροφόρησης',
     'pricing.f.scenario.cable': 'Μοντελοποίηση σεναρίων και δολιοφθοράς',
+    'pricing.btn.launch': 'Εκκίνηση Τώρα',
     'pricing.btn.access': 'Αίτηση Πρόσβασης',
     'pricing.btn.contact': 'Επικοινωνήστε μαζί μας',
     // Advisory
