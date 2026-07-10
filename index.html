@@ -873,6 +873,19 @@
     top: 0; left: 0; right: 0; height: 2px;
     background: linear-gradient(90deg, var(--gold), transparent);
   }
+  .adv-launch-badge {
+    display: inline-block;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--gold); border: 1px solid rgba(201,168,76,0.4);
+    padding: 4px 10px; margin-bottom: 16px;
+  }
+  .adv-coming-eyebrow {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 11px; font-weight: 600; letter-spacing: 2px;
+    text-transform: uppercase; color: var(--text-dim);
+    margin-bottom: 4px; margin-top: 8px;
+  }
   .adv-right h3 {
     font-family: 'Cinzel', serif;
     font-size: 22px; margin-bottom: 20px;
@@ -1650,7 +1663,7 @@
   </div>
   <div class="svc-buttons-outer">
     <a href="#pricing" class="svc-cta" data-i18n="s1.cta" data-i18n-html="true">View Subscription Plans <span>→</span></a>
-    <a href="#advisory" class="svc-cta gold-cta" data-i18n="s2.cta" data-i18n-html="true">Explore Advisory Services <span>→</span> <span class="coming-soon-tag">(Coming Soon)</span></a>
+    <a href="#advisory" class="svc-cta gold-cta" data-i18n="s2.cta" data-i18n-html="true">Explore Advisory Services <span class="coming-soon-tag">(Coming Soon)</span> <span>→</span></a>
   </div>
 </section>
 
@@ -1739,16 +1752,17 @@
     </ul>
 
     <div class="adv-right">
+      <div class="adv-launch-badge" data-i18n="adv.engage.badge">Launching Soon</div>
       <h3 data-i18n="adv.engage.title">How We Engage</h3>
-      <p data-i18n="adv.engage.desc">Every advisory engagement is led by senior analysts. We do not delegate client work. Access is deliberately limited to ensure analytical depth and discretion.</p>
+      <p data-i18n="adv.engage.desc">Advisory services are launching soon. Every engagement will be led by senior analysts — client work will never be delegated. Access will be deliberately limited to ensure analytical depth and discretion.</p>
+      <div class="adv-coming-eyebrow" data-i18n="adv.engage.eyebrow">What's coming:</div>
       <ul class="engagement-types">
         <li data-i18n="adv.engage.1">Project-based engagements (2–8 weeks)</li>
         <li data-i18n="adv.engage.2">Quarterly retainer with recurring briefings</li>
-        <li data-i18n="adv.engage.3">Board and investor presentation support</li>
+        <li data-i18n="adv.engage.3">Executive advisory board access</li>
         <li data-i18n="adv.engage.6">Crisis response & rapid assessment</li>
       </ul>
-      <br>
-      <a href="#contact" class="btn-primary" style="display:inline-block;margin-top:12px;" data-i18n="adv.engage.btn">Schedule a Consultation</a>
+      <a href="mailto:james@sentinellaglobal.com" class="btn-primary" style="display:inline-block;margin-top:20px;" data-i18n="adv.engage.btn">Get Notified at Launch</a>
     </div>
   </div>
 </section>
@@ -2072,7 +2086,7 @@ const translations = {
     's2.tagline': 'Maritime Financial Intelligence',
     's2.title': 'Investment & Supply<br>Chain Risk Analysis',
     's2.desc': 'Analysis for institutional investors, private equity, and global supply chain operators requiring deep-domain geopolitical intelligence.',
-    's2.cta': 'Explore Advisory Services <span>→</span> <span class="coming-soon-tag">(Coming Soon)</span>',
+    's2.cta': 'Explore Advisory Services <span class="coming-soon-tag">(Coming Soon)</span> <span>→</span>',
     's2.f1': 'Port infrastructure and regional investment due diligence',
     's2.f2': 'Supply chain stress-testing across Mediterranean chokepoints',
     's2.f3': 'Geopolitical scenario modeling for asset exposure analysis',
@@ -2189,14 +2203,17 @@ const translations = {
     'adv.s4.title': 'Marine Insurance Risk Profiling',
     'adv.s4.desc': 'Underwriting support and risk profiling services for marine insurers and reinsurers requiring independent Mediterranean threat assessment aligned to specific route and cargo profiles.',
     'adv.engage.title': 'How We Engage',
-    'adv.engage.desc': 'Every advisory engagement is led by senior analysts. We do not delegate client work. Access is deliberately limited to ensure analytical depth and discretion.',
+    'adv.engage.badge': 'Launching Soon',
+    'adv.engage.eyebrow': "What's coming:",
+    'adv.engage.title': 'How We Engage',
+    'adv.engage.desc': 'Advisory services are launching soon. Every engagement will be led by senior analysts — client work will never be delegated. Access will be deliberately limited to ensure analytical depth and discretion.',
     'adv.engage.1': 'Project-based engagements (2–8 weeks)',
     'adv.engage.2': 'Quarterly retainer with recurring briefings',
     'adv.engage.3': 'Executive advisory board access',
     'adv.engage.4': 'Board and investor presentation support',
     'adv.engage.5': 'Regulatory & sanctions landscape guidance',
     'adv.engage.6': 'Crisis response & rapid assessment',
-    'adv.engage.btn': 'Schedule a Consultation',
+    'adv.engage.btn': 'Get Notified at Launch',
     // Clients
     'clients.label': 'Who We Serve',
     'clients.h2': 'Built for the People Who<br><span>Can\'t Get It Wrong.</span>',
@@ -2263,7 +2280,7 @@ const translations = {
     's2.tagline': 'Maritime Financial Intelligence',
     's2.title': 'Analisi del Rischio<br>Investimenti e Supply Chain',
     's2.desc': 'Analisi per investitori istituzionali, private equity e operatori globali della supply chain che richiedono intelligence geopolitica di dominio profondo.',
-    's2.cta': 'Esplora i Servizi Advisory <span>→</span> <span class="coming-soon-tag">(Coming Soon)</span>',
+    's2.cta': 'Esplora i Servizi Advisory <span class="coming-soon-tag">(Coming Soon)</span> <span>→</span>',
     's2.f1': 'Due diligence su infrastrutture portuali e investimenti regionali',
     's2.f2': 'Stress test della supply chain attraverso i chokepoint mediterranei',
     's2.f3': 'Scenario modeling geopolitico per l\'analisi dell\'esposizione degli asset',
@@ -2379,15 +2396,17 @@ const translations = {
     'adv.s3.desc': 'Framework di scenari personalizzati per gestori patrimoniali e operatori che valutano volatilità politica, rischio sanzioni ed escalation di minacce ibride nei mercati del Mediterraneo meridionale e Nord Africa.',
     'adv.s4.title': 'Profilazione del Rischio Assicurativo Marittimo',
     'adv.s4.desc': 'Servizi di supporto alla sottoscrizione e profilazione del rischio per assicuratori e riassicuratori marittimi che richiedono una valutazione indipendente delle minacce mediterranee allineata a specifici profili di rotta e cargo.',
+    'adv.engage.badge': 'Lancio Imminente',
+    'adv.engage.eyebrow': 'In arrivo:',
     'adv.engage.title': 'Come Operiamo',
-    "adv.engage.desc": "Ogni incarico advisory è guidato da analisti senior. Non deleghiamo il lavoro dei clienti. L'accesso è deliberatamente limitato per garantire profondità analitica e discrezione.",
+    "adv.engage.desc": "I servizi advisory saranno presto disponibili. Ogni incarico sarà guidato da analisti senior — il lavoro dei clienti non verrà mai delegato. L'accesso sarà deliberatamente limitato per garantire profondità analitica e discrezione.",
     'adv.engage.1': 'Incarichi a progetto (2–8 settimane)',
     'adv.engage.2': 'Retainer trimestrale con briefing ricorrenti',
     'adv.engage.3': 'Accesso al consiglio advisory esecutivo',
     'adv.engage.4': 'Supporto a presentazioni per board e investitori',
     'adv.engage.5': 'Guida sul panorama normativo e sanzionatorio',
     'adv.engage.6': 'Risposta a crisi e valutazione rapida',
-    'adv.engage.btn': 'Pianifica una Consulenza',
+    'adv.engage.btn': 'Ricevi Notifica al Lancio',
     // Clients
     'clients.label': 'Chi Serviamo',
     'clients.h2': 'Costruita per Chi<br><span>Non Può Sbagliare.</span>',
@@ -2454,7 +2473,7 @@ const translations = {
     's2.tagline': 'Maritime Financial Intelligence',
     's2.title': 'تحليل مخاطر الاستثمار<br>وسلسلة التوريد',
     's2.desc': 'تحليل للمستثمرين المؤسسيين وصناديق الأسهم الخاصة ومشغّلي سلاسل التوريد العالمية الذين يحتاجون إلى استخبارات جيوسياسية متخصصة.',
-    's2.cta': 'استكشاف الخدمات الاستشارية <span>→</span> <span class="coming-soon-tag">(Coming Soon)</span>',
+    's2.cta': 'استكشاف الخدمات الاستشارية <span class="coming-soon-tag">(Coming Soon)</span> <span>→</span>',
     's2.f1': 'العناية الواجبة في البنية التحتية للموانئ والاستثمارات الإقليمية',
     's2.f2': 'اختبار إجهاد سلسلة التوريد عبر نقاط الاختناق المتوسطية',
     's2.f3': 'نمذجة السيناريوهات الجيوسياسية لتحليل تعرض الأصول',
@@ -2570,15 +2589,17 @@ const translations = {
     'adv.s3.desc': 'أطر سيناريوهات مخصصة لمديري الأصول والمشغّلين الذين يقيّمون التقلبات السياسية ومخاطر العقوبات وتصعيد التهديدات الهجينة عبر أسواق جنوب المتوسط وشمال أفريقيا.',
     'adv.s4.title': 'تحديد ملف مخاطر التأمين البحري',
     'adv.s4.desc': 'خدمات دعم الاكتتاب وتحديد ملف المخاطر لشركات التأمين وإعادة التأمين البحري التي تتطلب تقييماً مستقلاً للتهديدات المتوسطية متوافقاً مع ملفات المسار والشحن المحددة.',
+    'adv.engage.badge': 'الإطلاق قريباً',
+    'adv.engage.eyebrow': 'ما هو قادم:',
     'adv.engage.title': 'كيف نتعامل',
-    'adv.engage.desc': 'كل مشاركة استشارية يقودها محللون كبار. لا نفوّض عمل العملاء. الوصول محدود عمداً لضمان العمق التحليلي والتقدير.',
+    'adv.engage.desc': 'خدمات الاستشارات ستُطلق قريباً. ستُقاد كل مشاركة من قِبل محللين كبار — لن يتم تفويض عمل العملاء أبداً. سيكون الوصول محدوداً عمداً لضمان العمق التحليلي والتقدير.',
     'adv.engage.1': 'مشاركات على أساس مشروع (2–8 أسابيع)',
     'adv.engage.2': 'أتعاب ثابتة ربع سنوية مع إحاطات متكررة',
     'adv.engage.3': 'الوصول إلى مجلس الاستشارات التنفيذي',
     'adv.engage.4': 'دعم تقديمات مجلس الإدارة والمستثمرين',
     'adv.engage.5': 'إرشادات المشهد التنظيمي والعقوبات',
     'adv.engage.6': 'الاستجابة للأزمات والتقييم السريع',
-    'adv.engage.btn': 'جدولة استشارة',
+    'adv.engage.btn': 'احصل على إشعار عند الإطلاق',
     // Clients
     'clients.label': 'من نخدم',
     'clients.h2': 'مبنية لمن<br><span>لا يمكنهم الخطأ</span>',
@@ -2645,7 +2666,7 @@ const translations = {
     's2.tagline': 'Maritime Financial Intelligence',
     's2.title': 'Ανάλυση Κινδύνου<br>Επενδύσεων & Εφοδιαστικής',
     's2.desc': 'Ανάλυση για θεσμικούς επενδυτές, private equity και παγκόσμιους χειριστές εφοδιαστικής αλυσίδας που χρειάζονται γεωπολιτική πληροφόρηση βαθιάς εξειδίκευσης.',
-    's2.cta': 'Εξερευνήστε τις Συμβουλευτικές Υπηρεσίες <span>→</span> <span class="coming-soon-tag">(Coming Soon)</span>',
+    's2.cta': 'Εξερευνήστε τις Συμβουλευτικές Υπηρεσίες <span class="coming-soon-tag">(Coming Soon)</span> <span>→</span>',
     's2.f1': 'Δέουσα επιμέλεια επενδύσεων σε λιμενικές υποδομές και περιφερειακές επενδύσεις',
     's2.f2': 'Stress testing εφοδιαστικής αλυσίδας στα μεσογειακά σημεία συμφόρησης',
     's2.f3': 'Γεωπολιτική μοντελοποίηση σεναρίων για ανάλυση έκθεσης περιουσιακών στοιχείων',
@@ -2761,15 +2782,17 @@ const translations = {
     'adv.s3.desc': 'Προσαρμοσμένα πλαίσια σεναρίων για διαχειριστές περιουσιακών στοιχείων και χειριστές που αξιολογούν πολιτική αστάθεια, κίνδυνο κυρώσεων και κλιμάκωση υβριδικών απειλών στις αγορές της Νότιας Μεσογείου και Βόρειας Αφρικής.',
     'adv.s4.title': 'Κατάρτιση Προφίλ Ναυτιλιακού Ασφαλιστικού Κινδύνου',
     'adv.s4.desc': 'Υπηρεσίες ανάληψης ασφάλισης και κατάρτισης προφίλ κινδύνου για ναυτιλιακούς ασφαλιστές και αντασφαλιστές που χρειάζονται ανεξάρτητη αξιολόγηση μεσογειακής απειλής εναρμονισμένη με συγκεκριμένα προφίλ διαδρομής και φορτίου.',
+    'adv.engage.badge': 'Σύντομα Διαθέσιμο',
+    'adv.engage.eyebrow': 'Τι έρχεται:',
     'adv.engage.title': 'Πώς Συνεργαζόμαστε',
-    'adv.engage.desc': 'Κάθε συμβουλευτική δέσμευση διευθύνεται από ανώτερους αναλυτές. Δεν αναθέτουμε τη δουλειά των πελατών. Η πρόσβαση είναι σκόπιμα περιορισμένη για να διασφαλίσουμε αναλυτικό βάθος και διακριτικότητα.',
+    'adv.engage.desc': 'Οι συμβουλευτικές υπηρεσίες ξεκινούν σύντομα. Κάθε δέσμευση θα διευθύνεται από ανώτερους αναλυτές — η εργασία των πελατών δεν θα ανατίθεται ποτέ. Η πρόσβαση θα είναι σκόπιμα περιορισμένη για να διασφαλιστεί αναλυτικό βάθος και διακριτικότητα.',
     'adv.engage.1': 'Δεσμεύσεις βάσει έργου (2–8 εβδομάδες)',
     'adv.engage.2': 'Τριμηνιαίο retainer με επαναλαμβανόμενες ενημερώσεις',
     'adv.engage.3': 'Πρόσβαση στο εκτελεστικό συμβουλευτικό συμβούλιο',
     'adv.engage.4': 'Υποστήριξη παρουσιάσεων για διοικητικό συμβούλιο και επενδυτές',
     'adv.engage.5': 'Καθοδήγηση κανονιστικού και κυρωτικού πλαισίου',
     'adv.engage.6': 'Αντίδραση σε κρίση και ταχεία αξιολόγηση',
-    'adv.engage.btn': 'Προγραμματίστε Συνεδρία Συμβουλευτικής',
+    'adv.engage.btn': 'Ειδοποιήστε με κατά την Εκκίνηση',
     // Clients
     'clients.label': 'Ποιους Εξυπηρετούμε',
     'clients.h2': 'Χτισμένη για τους Ανθρώπους<br><span>που Δεν Μπορούν να Κάνουν Λάθος.</span>',
