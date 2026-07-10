@@ -382,7 +382,7 @@
   }
   .service-card {
     background: var(--navy-3);
-    padding: 52px 48px;
+    padding: 52px 48px 28px;
     position: relative; overflow: hidden;
     transition: transform 0.3s;
   }
@@ -436,7 +436,7 @@
     font-size: 16px; line-height: 1.75;
     color: var(--text); margin-bottom: 36px;
   }
-  .svc-features { list-style: none; margin-bottom: 40px; }
+  .svc-features { list-style: none; margin-bottom: 0; }
   .svc-features li {
     display: flex; align-items: flex-start; gap: 12px;
     font-size: 14px; font-weight: 500; letter-spacing: 0.5px; line-height: 1.6;
@@ -460,6 +460,10 @@
   .svc-cta.gold-cta { color: var(--gold); }
   .svc-cta.gold-cta:hover { color: #e8c96a; }
   .svc-cta span { font-size: 18px; }
+  .nav-coming-soon { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 9px; font-style: italic; font-weight: 400; letter-spacing: 1px; color: var(--text-dim); line-height: 1; margin-top: 3px; text-transform: none; }
+  .svc-buttons-outer { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 24px 0 0 48px; }
+  .coming-soon-tag { font-style: italic; letter-spacing: 1px; font-weight: 400; text-transform: none; vertical-align: baseline; margin-left: 4px; }
+  .svc-cta .coming-soon-tag { font-size: 10px; }
 
   /* ── DASHBOARD MOCKUP ── */
   #platform { background: var(--navy); position: relative; overflow: hidden; }
@@ -1211,7 +1215,8 @@
     }
 
     .services-grid { grid-template-columns: 1fr; }
-    .service-card { padding: 40px 28px; }
+    .service-card { padding: 40px 28px 20px; }
+    .svc-buttons-outer { padding: 20px 0 0 28px; }
 
     /* Keep 2-col on tablets — drop to 1-col at 600px */
     .why-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1270,7 +1275,8 @@
 
     h3 { font-size: 18px; }
 
-    .service-card { padding: 36px 20px; }
+    .service-card { padding: 36px 20px 18px; }
+    .svc-buttons-outer { padding: 18px 0 0 20px; }
     .svc-num { font-size: 44px; right: 16px; top: 12px; }
     .svc-icon { font-size: 40px; margin-bottom: 20px; }
     .svc-desc { font-size: 14px; }
@@ -1480,10 +1486,25 @@
     <span></span><span></span><span></span>
   </button>
   <div class="nav-links" id="navLinks">
-    <a href="#services" data-i18n="nav.services" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Services</a>
+    <div class="nav-comp-wrap" id="servicesNav">
+      <button class="nav-comp-trigger" onclick="document.getElementById('servicesNav').classList.toggle('open')">
+        Services
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="nav-comp-menu">
+        <a href="#pricing" onclick="document.getElementById('servicesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">
+          Subscription
+          <span class="comp-link-label">Live Intelligence Platform</span>
+        </a>
+        <a href="#advisory" onclick="document.getElementById('servicesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">
+          Advisory
+          <span class="comp-link-label">(Coming Soon)</span>
+        </a>
+      </div>
+    </div>
     <a href="#platform" data-i18n="nav.platform" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Live Platform</a>
-    <a href="#advisory" data-i18n="nav.advisory" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Advisory</a>
-    <a href="#pricing" data-i18n="nav.pricing" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Subscription</a>
     <a href="#clients" data-i18n="nav.clients" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Clients</a>
     <a href="/Leadership" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Leadership</a>
     <div class="nav-comp-wrap" id="complianceNav">
@@ -1597,7 +1618,7 @@
     <div class="service-card s1">
       <div class="svc-num">01</div>
       <div class="svc-icon">⌖</div>
-      <div class="svc-tagline" data-i18n="s1.tagline">Subscription · Live Intelligence</div>
+      <div class="svc-tagline" data-i18n="s1.tagline">Hybrid Threat Intelligence</div>
       <h3 data-i18n="s1.title" data-i18n-html="true">Mediterranean Watch<br>Intelligence Terminal</h3>
       <p class="svc-desc">
         <span data-i18n="s1.desc">A continuously updated geopolitical and maritime operations intelligence terminal providing shipping companies and logistics operators with live situational awareness across the Mediterranean. Built on our proprietary predictive intelligence engine — not a report, a live signal.</span>
@@ -1608,26 +1629,28 @@
         <li data-i18n="s1.f3">Cross-domain alert engine: cyber, military, disinformation, weather, port disruption</li>
         <li data-i18n="s1.f4">Automated early-warning triggers with priority notification</li>
       </ul>
-      <a href="#pricing" class="svc-cta" data-i18n="s1.cta" data-i18n-html="true">View Subscription Plans <span>→</span></a>
     </div>
 
     <!-- Service 2 -->
     <div class="service-card s2">
       <div class="svc-num">02</div>
       <div class="svc-icon gold-icon">⚖</div>
-      <div class="svc-tagline gold" data-i18n="s2.tagline">Advisory · Bespoke Consulting</div>
-      <h3 data-i18n="s2.title" data-i18n-html="true">Investment & Supply<br>Chain Risk Advisory</h3>
+      <div class="svc-tagline gold" data-i18n="s2.tagline">Maritime Financial Intelligence</div>
+      <h3 data-i18n="s2.title" data-i18n-html="true">Investment & Supply<br>Chain Risk Analysis</h3>
       <p class="svc-desc">
-        <span data-i18n="s2.desc">Confidential advisory engagements for institutional investors, private equity, and global supply chain operators requiring deep-domain geopolitical intelligence. We translate Mediterranean risk complexity into actionable strategic guidance — before exposure crystallizes.</span>
+        <span data-i18n="s2.desc">Analysis for institutional investors, private equity, and global supply chain operators requiring deep-domain geopolitical intelligence.</span>
       </p>
       <ul class="svc-features">
         <li class="gold-li" data-i18n="s2.f1">Port infrastructure and regional investment due diligence</li>
         <li class="gold-li" data-i18n="s2.f2">Supply chain stress-testing across Mediterranean chokepoints</li>
         <li class="gold-li" data-i18n="s2.f3">Geopolitical scenario modeling for asset exposure analysis</li>
-        <li class="gold-li" data-i18n="s2.f4">Marine insurance risk profiling and underwriting support</li>
+        <li class="gold-li" data-i18n="s2.f4">Marine insurance risk profiling</li>
       </ul>
-      <a href="#advisory" class="svc-cta gold-cta" data-i18n="s2.cta" data-i18n-html="true">Explore Advisory Services <span>→</span></a>
     </div>
+  </div>
+  <div class="svc-buttons-outer">
+    <a href="#pricing" class="svc-cta" data-i18n="s1.cta" data-i18n-html="true">View Subscription Plans <span>→</span></a>
+    <a href="#advisory" class="svc-cta gold-cta" data-i18n="s2.cta" data-i18n-html="true">Explore Advisory Services <span>→</span> <span class="coming-soon-tag">(Coming Soon)</span></a>
   </div>
 </section>
 
@@ -1677,7 +1700,7 @@
 
 <!-- ADVISORY -->
 <section id="advisory">
-  <div class="section-label" data-i18n="adv.label">Investment & Supply Chain Advisory</div>
+  <div class="section-label" data-i18n="adv.label">Advisory (Coming Soon)</div>
   <h2 data-i18n="adv.h2" data-i18n-html="true">When Stakes Are High,<br><span>Expertise Must Be Higher</span></h2>
   <p class="section-lead">
     <span data-i18n="adv.lead">Confidential, senior-led engagements for investors and operators who need more than data — they need judgment.</span>
@@ -1974,11 +1997,11 @@
 <div class="cta-banner" id="contact">
   <div class="cta-text">
     <h2 data-i18n="cta.h2" data-i18n-html="true">The Mediterranean<br>Doesn't Wait. <span>Neither Should You.</span></h2>
-    <p data-i18n="cta.p">Request a platform demonstration or advisory consultation. We work with a limited number of clients to ensure analytical depth and discretion.</p>
+    <p data-i18n="cta.p">Request a platform demonstration or be notified when advisory consultation services launch.</p>
   </div>
   <div class="cta-actions">
     <a href="https://tally.so/r/WOloya" class="btn-primary" data-i18n="cta.btn1" target="_blank" rel="noopener noreferrer">Request Platform Demo</a>
-    <a href="mailto:james@sentinellaglobal.com" class="btn-secondary" data-i18n="cta.btn2">Advisory Inquiry</a>
+    <a href="mailto:james@sentinellaglobal.com" class="btn-secondary" data-i18n="cta.btn2">Get Notified of Advisory Launch</a>
   </div>
 </div>
 
@@ -1995,7 +2018,7 @@
     <div class="footer-col">
       <h3 class="footer-nav-title" data-i18n="footer.h.services">Services</h3>
       <a href="#services" data-i18n="footer.l.dashboard">Mediterranean Watch Intelligence Terminal</a>
-      <a href="#advisory" data-i18n="footer.l.investment">Investment Advisory</a>
+      <a href="#advisory" data-i18n="footer.l.investment">Advisory (Coming Soon)</a>
       <a href="#advisory" data-i18n="footer.l.supply">Supply Chain Risk</a>
       <a href="#pricing" data-i18n="footer.l.tiers">Subscription Tiers</a>
     </div>
@@ -2020,7 +2043,7 @@ const translations = {
     // Nav
     'nav.services': 'Services',
     'nav.platform': 'Live Platform',
-    'nav.advisory': 'Advisory',
+    'nav.advisory': 'Advisory<span class="nav-coming-soon">(Coming Soon)</span>',
     'nav.pricing': 'Subscription',
     'nav.clients': 'Clients',
     'nav.cta': 'Request Access',
@@ -2035,7 +2058,7 @@ const translations = {
     'services.h2': 'Two Missions.<br><span>One Platform.</span>',
     'services.lead': 'Real-time geospatial intelligence and deep analytical expertise — built for operational and strategic clients across the Mediterranean corridor. Underpinning both offerings is the <strong>Maritime Hybrid Threat Exposure Score (MHTES)</strong>: a 72-hour predictive score that fuses cyber, geopolitical, grey fleet, disinformation, and weather signals into a single actionable risk metric per asset.',
     'services.callout': '<strong>Aligned with European Maritime Regulation:</strong> MHTES delivers the integrated, all-hazards exposure picture that NIS2, the CER Directive, and Italy\'s Circular 177/2025 are increasingly oriented toward — built for operators preparing for the November 2026 convergence of these frameworks.',
-    's1.tagline': 'Subscription · Live Intelligence',
+    's1.tagline': 'Hybrid Threat Intelligence',
     's1.title': 'Mediterranean Watch<br>Intelligence Terminal',
     's1.desc': 'A continuously updated geopolitical and maritime operations intelligence terminal providing shipping companies and logistics operators with live situational awareness across the Mediterranean. Built on our proprietary predictive intelligence engine — not a report, a live signal.',
     's1.cta': 'View Subscription Plans <span>→</span>',
@@ -2046,14 +2069,14 @@ const translations = {
     's1.f5': 'Energy corridor & fiber-optic cable vulnerability monitoring',
     's1.f6': 'Decision-support analytics tailored to operator routing needs',
     's1.f7': 'Tiered access: Sentinel, Guardian, and Command tiers',
-    's2.tagline': 'Advisory · Bespoke Consulting',
-    's2.title': 'Investment & Supply<br>Chain Risk Advisory',
-    's2.desc': 'Confidential advisory engagements for institutional investors, private equity, and global supply chain operators requiring deep-domain geopolitical intelligence. We translate Mediterranean risk complexity into actionable strategic guidance — before exposure crystallizes.',
-    's2.cta': 'Explore Advisory Services <span>→</span>',
+    's2.tagline': 'Maritime Financial Intelligence',
+    's2.title': 'Investment & Supply<br>Chain Risk Analysis',
+    's2.desc': 'Analysis for institutional investors, private equity, and global supply chain operators requiring deep-domain geopolitical intelligence.',
+    's2.cta': 'Explore Advisory Services <span>→</span> <span class="coming-soon-tag">(Coming Soon)</span>',
     's2.f1': 'Port infrastructure and regional investment due diligence',
     's2.f2': 'Supply chain stress-testing across Mediterranean chokepoints',
     's2.f3': 'Geopolitical scenario modeling for asset exposure analysis',
-    's2.f4': 'Marine insurance risk profiling and underwriting support',
+    's2.f4': 'Marine insurance risk profiling',
     's2.f5': 'Bespoke threat briefings for executive leadership',
     's2.f6': 'Regulatory and sanctions landscape advisory',
     's2.f7': 'Retainer or project-based engagement structures',
@@ -2154,7 +2177,7 @@ const translations = {
     'pricing.btn.access': 'Request Access',
     'pricing.btn.contact': 'Contact Us',
     // Advisory
-    'adv.label': 'Investment & Supply Chain Advisory',
+    'adv.label': 'Advisory (Coming Soon)',
     'adv.h2': 'When Stakes Are High,<br><span>Expertise Must Be Higher</span>',
     'adv.lead': 'Confidential, senior-led engagements for investors and operators who need more than data — they need judgment.',
     'adv.s1.title': 'Investment Due Diligence',
@@ -2189,9 +2212,9 @@ const translations = {
     'client.10': 'Government Agencies',
     // CTA
     'cta.h2': 'The Mediterranean Doesn\'t Wait.<br><span>Neither Should You.</span>',
-    'cta.p': 'Request a platform demonstration or advisory consultation. We work with a limited number of clients to ensure analytical depth and discretion.',
+    'cta.p': 'Request a platform demonstration or be notified when advisory consultation services launch.',
     'cta.btn1': 'Request Platform Demo',
-    'cta.btn2': 'Advisory Inquiry',
+    'cta.btn2': 'Get Notified of Advisory Launch',
     // Footer
     "footer.brand": "Mediterranean maritime intelligence. AI-driven risk intelligence for shipping operators, logistics firms, and institutional investors navigating the world's most strategically complex sea.",
     'footer.hq': '// HQ: Brussels, Belgium',
@@ -2199,7 +2222,7 @@ const translations = {
     'footer.h.coverage': 'Coverage',
     'footer.h.contact': 'Contact',
     'footer.l.dashboard': 'Mediterranean Watch Intelligence Terminal',
-    'footer.l.investment': 'Investment Advisory',
+    'footer.l.investment': 'Advisory (Coming Soon)',
     'footer.l.supply': 'Supply Chain Risk',
     'footer.l.tiers': 'Subscription Tiers',
     'footer.geo.1': 'Strait of Gibraltar',
@@ -2212,7 +2235,7 @@ const translations = {
     // Nav
     'nav.services': 'Servizi',
     'nav.platform': 'Piattaforma Live',
-    'nav.advisory': 'Advisory',
+    'nav.advisory': 'Advisory<span class="nav-coming-soon">(Coming Soon)</span>',
     'nav.pricing': 'Abbonamento',
     'nav.clients': 'Clienti',
     'nav.cta': 'Richiedi Accesso',
@@ -2226,7 +2249,7 @@ const translations = {
     'services.label': 'Servizi Principali',
     'services.h2': 'Due Missioni.<br><span>Una Piattaforma.</span>',
     'services.lead': 'Intelligence geospaziale in tempo reale e profonda competenza analitica — per clienti operativi e strategici lungo il corridoio mediterraneo. Alla base di entrambe le offerte vi è il <strong>Maritime Hybrid Threat Exposure Score (MHTES)</strong>: un punteggio predittivo a 72 ore che fonde segnali cyber, geopolitici, gray-zone, illeciti e di disinformazione in un unico indicatore di rischio per asset.',
-    's1.tagline': 'Abbonamento · Intelligence in Tempo Reale',
+    's1.tagline': 'Hybrid Threat Intelligence',
     's1.title': 'Terminale Intelligence di Sorveglianza<br>del Mediterraneo',
     "s1.desc": "Un terminale di intelligence geopolitico e operativo marittimo aggiornato continuamente, che fornisce a compagnie di navigazione e operatori logistici un quadro situazionale in tempo reale sul Mediterraneo. Basato sul nostro motore proprietario di intelligence predittiva — non un report, un segnale vivo.",
     's1.cta': 'Visualizza i Piani di Abbonamento <span>→</span>',
@@ -2237,14 +2260,14 @@ const translations = {
     's1.f5': 'Monitoraggio vulnerabilità corridoi energetici e cavi in fibra ottica',
     's1.f6': 'Analytics di supporto decisionale per le esigenze di routing degli operatori',
     's1.f7': 'Accesso a livelli: Sentinel, Guardian e Command',
-    's2.tagline': 'Advisory · Consulenza Su Misura',
-    's2.title': 'Advisory su Investimenti<br>e Rischio della Supply Chain',
-    's2.desc': 'Incarichi advisory riservati per investitori istituzionali, private equity e operatori globali della supply chain che richiedono intelligence geopolitica di dominio profondo. Traduciamo la complessità del rischio mediterraneo in guidance strategica — prima che l\'esposizione si cristallizzi.',
-    's2.cta': 'Esplora i Servizi Advisory <span>→</span>',
+    's2.tagline': 'Maritime Financial Intelligence',
+    's2.title': 'Analisi del Rischio<br>Investimenti e Supply Chain',
+    's2.desc': 'Analisi per investitori istituzionali, private equity e operatori globali della supply chain che richiedono intelligence geopolitica di dominio profondo.',
+    's2.cta': 'Esplora i Servizi Advisory <span>→</span> <span class="coming-soon-tag">(Coming Soon)</span>',
     's2.f1': 'Due diligence su infrastrutture portuali e investimenti regionali',
     's2.f2': 'Stress test della supply chain attraverso i chokepoint mediterranei',
     's2.f3': 'Scenario modeling geopolitico per l\'analisi dell\'esposizione degli asset',
-    's2.f4': 'Risk profiling e supporto alla sottoscrizione per l\'assicurazione marittima',
+    's2.f4': 'Risk profiling per l\'assicurazione marittima',
     's2.f5': 'Briefing personalizzati per la leadership esecutiva',
     's2.f6': 'Advisory sul panorama normativo e sanzionatorio',
     's2.f7': 'Strutture di incarico a retainer o per progetto',
@@ -2345,7 +2368,7 @@ const translations = {
     'pricing.btn.access': 'Richiedi Accesso',
     'pricing.btn.contact': 'Contattaci',
     // Advisory
-    'adv.label': 'Consulenza su Investimenti e Supply Chain',
+    'adv.label': 'Advisory (Coming Soon)',
     "adv.h2": "Quando la Posta è Alta,<br><span>L'Expertise Deve Essere Superiore</span>",
     'adv.lead': 'Incarichi di consulenza riservati e guidati da senior per investitori e operatori che necessitano di più dei dati — necessitano di giudizio.',
     'adv.s1.title': 'Due Diligence sugli Investimenti',
@@ -2380,9 +2403,9 @@ const translations = {
     'client.10': 'Agenzie Governative',
     // CTA
     'cta.h2': 'Il Mediterraneo Non Aspetta.<br><span>Nemmeno Tu Dovresti.</span>',
-    'cta.p': "Richiedi una dimostrazione della piattaforma o una consulenza advisory. Lavoriamo con un numero limitato di clienti per garantire profondità analitica e discrezione.",
+    'cta.p': "Richiedi una dimostrazione della piattaforma o ricevi una notifica quando i servizi di consulenza advisory saranno disponibili.",
     'cta.btn1': 'Richiedi Demo Piattaforma',
-    'cta.btn2': 'Richiesta Advisory',
+    'cta.btn2': 'Get Notified of Advisory Launch',
     // Footer
     'footer.brand': "Intelligence marittima mediterranea. Risk intelligence basata su AI per armatori, aziende logistiche e investitori istituzionali che navigano nel mare strategicamente più complesso del mondo.",
     'footer.hq': '// QG: Bruxelles, Belgio',
@@ -2390,7 +2413,7 @@ const translations = {
     'footer.h.coverage': 'Copertura',
     'footer.h.contact': 'Contatto',
     'footer.l.dashboard': 'Terminale Intelligence Mediterranean Watch',
-    'footer.l.investment': 'Advisory Investimenti',
+    'footer.l.investment': 'Advisory (Coming Soon)',
     'footer.l.supply': 'Rischio Supply Chain',
     'footer.l.tiers': 'Livelli di Abbonamento',
     'footer.geo.1': 'Stretto di Gibilterra',
@@ -2403,7 +2426,7 @@ const translations = {
     // Nav
     'nav.services': 'الخدمات',
     'nav.platform': 'المنصة المباشرة',
-    'nav.advisory': 'الاستشارات',
+    'nav.advisory': 'الاستشارات<span class="nav-coming-soon">(Coming Soon)</span>',
     'nav.pricing': 'الاشتراك',
     'nav.clients': 'العملاء',
     'nav.cta': 'طلب الوصول',
@@ -2417,7 +2440,7 @@ const translations = {
     'services.label': 'الخدمات الأساسية',
     'services.h2': 'مهمتان.<br><span>منصة واحدة.</span>',
     'services.lead': 'ذكاء جيومكاني فوري وخبرة تحليلية عميقة — مبنية للعملاء التشغيليين والاستراتيجيين عبر الممر المتوسطي. يستند كلا العرضين إلى <strong>Maritime Hybrid Threat Exposure Score (MHTES)</strong>: نقاط تعرض تنبؤية لمدة 72 ساعة تدمج إشارات السيبرانية والجيوسياسية والمنطقة الرمادية والنشاط غير المشروع والتضليل الإعلامي في مقياس مخاطر واحد قابل للتنفيذ لكل أصل.',
-    's1.tagline': 'اشتراك · استخبارات مباشرة',
+    's1.tagline': 'Hybrid Threat Intelligence',
     's1.title': 'محطة استخبارات المراقبة<br>البحر الأبيض المتوسط',
     's1.desc': 'محطة استخبارات جيوسياسية وبحرية محدَّثة باستمرار، توفّر لشركات الشحن والمشغّلين اللوجستيين وعياً ظرفياً فورياً عبر المتوسط. مبنية على محرّك استخبارات تنبؤي خاص — وليست تقريراً، بل إشارة حية.',
     's1.cta': 'عرض خطط الاشتراك <span>→</span>',
@@ -2428,14 +2451,14 @@ const translations = {
     's1.f5': 'رصد نقاط ضعف ممرات الطاقة وكابلات الألياف الضوئية',
     's1.f6': 'تحليلات دعم القرار مُكيَّفة لاحتياجات التوجيه التشغيلي',
     's1.f7': 'وصول متدرج: مستويات Sentinel وGuardian وCommand',
-    's2.tagline': 'استشارات · استشارات مخصصة',
-    's2.title': 'استشارات الاستثمار<br>ومخاطر سلسلة التوريد',
-    's2.desc': 'مشاركات استشارية سرية للمستثمرين المؤسسيين وصناديق الأسهم الخاصة ومشغّلي سلاسل التوريد العالمية الذين يحتاجون إلى استخبارات جيوسياسية متخصصة. نترجم تعقيد مخاطر البحر الأبيض المتوسط إلى توجيه استراتيجي قابل للتنفيذ — قبل أن تتبلور المخاطر.',
-    's2.cta': 'استكشاف الخدمات الاستشارية <span>→</span>',
+    's2.tagline': 'Maritime Financial Intelligence',
+    's2.title': 'تحليل مخاطر الاستثمار<br>وسلسلة التوريد',
+    's2.desc': 'تحليل للمستثمرين المؤسسيين وصناديق الأسهم الخاصة ومشغّلي سلاسل التوريد العالمية الذين يحتاجون إلى استخبارات جيوسياسية متخصصة.',
+    's2.cta': 'استكشاف الخدمات الاستشارية <span>→</span> <span class="coming-soon-tag">(Coming Soon)</span>',
     's2.f1': 'العناية الواجبة في البنية التحتية للموانئ والاستثمارات الإقليمية',
     's2.f2': 'اختبار إجهاد سلسلة التوريد عبر نقاط الاختناق المتوسطية',
     's2.f3': 'نمذجة السيناريوهات الجيوسياسية لتحليل تعرض الأصول',
-    's2.f4': 'تحديد ملف مخاطر التأمين البحري ودعم الاكتتاب',
+    's2.f4': 'تحديد ملف مخاطر التأمين البحري',
     's2.f5': 'إحاطات مخاطر مخصصة للقيادة التنفيذية',
     's2.f6': 'استشارات المشهد التنظيمي والعقوبات',
     's2.f7': 'هياكل مشاركة قائمة على الاتفاقية الاستشارية أو المشروع',
@@ -2536,7 +2559,7 @@ const translations = {
     'pricing.btn.access': 'طلب الوصول',
     'pricing.btn.contact': 'تواصل معنا',
     // Advisory
-    'adv.label': 'الخدمات الاستشارية',
+    'adv.label': 'Advisory (Coming Soon)',
     'adv.h2': 'عندما تكون المخاطر عالية،<br><span>يجب أن تكون الخبرة أعلى</span>',
     'adv.lead': 'مشاركات سرية يقودها كبار المحللين للمستثمرين والمشغّلين الذين يحتاجون إلى أكثر من البيانات — يحتاجون إلى الحكم.',
     'adv.s1.title': 'العناية الواجبة للاستثمار',
@@ -2571,9 +2594,9 @@ const translations = {
     'client.10': 'الوكالات الحكومية',
     // CTA
     'cta.h2': 'البحر الأبيض المتوسط لا ينتظر.<br><span>ولا أنت يجب أن تنتظر.</span>',
-    'cta.p': 'اطلب عرضاً تجريبياً للمنصة أو استشارة advisory. نعمل مع عدد محدود من العملاء لضمان العمق التحليلي والتقدير.',
+    'cta.p': 'اطلب عرضاً تجريبياً للمنصة أو كن أول من يعلم عند إطلاق خدمات الاستشارة.',
     'cta.btn1': 'طلب عرض توضيحي للمنصة',
-    'cta.btn2': 'طلب استشارة',
+    'cta.btn2': 'Get Notified of Advisory Launch',
     // Footer
     'footer.brand': 'استخبارات بحرية متوسطية. استخبارات مخاطر مدعومة بالذكاء الاصطناعي لشركات الشحن والشركات اللوجستية والمستثمرين المؤسسيين الذين يبحرون في أكثر بحار العالم تعقيداً من الناحية الاستراتيجية.',
     'footer.hq': '// المقر: بروكسل، بلجيكا',
@@ -2581,7 +2604,7 @@ const translations = {
     'footer.h.coverage': 'التغطية',
     'footer.h.contact': 'اتصل',
     'footer.l.dashboard': 'محطة استخبارات Mediterranean Watch',
-    'footer.l.investment': 'الاستشارات الاستثمارية',
+    'footer.l.investment': 'Advisory (Coming Soon)',
     'footer.l.supply': 'مخاطر سلسلة التوريد',
     'footer.l.tiers': 'مستويات الاشتراك',
     'footer.geo.1': 'مضيق جبل طارق',
@@ -2594,7 +2617,7 @@ const translations = {
     // Nav
     'nav.services': 'Υπηρεσίες',
     'nav.platform': 'Ζωντανή Πλατφόρμα',
-    'nav.advisory': 'Συμβουλευτική',
+    'nav.advisory': 'Συμβουλευτική<span class="nav-coming-soon">(Coming Soon)</span>',
     'nav.pricing': 'Συνδρομή',
     'nav.clients': 'Πελάτες',
     'nav.cta': 'Αίτηση Πρόσβασης',
@@ -2608,7 +2631,7 @@ const translations = {
     'services.label': 'Βασικές Υπηρεσίες',
     'services.h2': 'Δύο Αποστολές.<br><span>Μία Πλατφόρμα.</span>',
     'services.lead': 'Γεωχωρική πληροφόρηση σε πραγματικό χρόνο και βαθιά αναλυτική εξειδίκευση — για επιχειρησιακούς και στρατηγικούς πελάτες στον μεσογειακό διάδρομο. Υπόβαθρο και των δύο προσφορών αποτελεί το <strong>Maritime Hybrid Threat Exposure Score (MHTES)</strong>: ένα προβλεπτικό σκορ 72 ωρών που συνδυάζει κυβερνο-, γεωπολιτικά, γκρίζας ζώνης, παράνομα και παραπληροφοριακά σήματα σε ένα ενιαίο μετρήσιμο δείκτη κινδύνου ανά περιουσιακό στοιχείο.',
-    's1.tagline': 'Συνδρομή · Ζωντανή Πληροφόρηση',
+    's1.tagline': 'Hybrid Threat Intelligence',
     's1.title': 'Τερματικό Πληροφοριών Παρακολούθησης<br>Μεσογείου',
     's1.desc': 'Ένα συνεχώς ενημερωμένο γεωπολιτικό και ναυτιλιακό τερματικό πληροφοριών που παρέχει σε ναυτιλιακές εταιρείες και logistics χειριστές ζωντανή κατάσταση σε όλη τη Μεσόγειο. Βασίζεται στη δική μας ιδιόκτητη μηχανή προβλεπτικής πληροφόρησης — όχι μια αναφορά, αλλά ζωντανό σήμα.',
     's1.cta': 'Δείτε τα Πλάνα Συνδρομής <span>→</span>',
@@ -2619,14 +2642,14 @@ const translations = {
     's1.f5': 'Παρακολούθηση ευπάθειας ενεργειακών διαδρόμων και καλωδίων οπτικών ινών',
     's1.f6': 'Αναλυτικά στοιχεία υποστήριξης αποφάσεων για ανάγκες δρομολόγησης χειριστών',
     's1.f7': 'Διαβαθμισμένη πρόσβαση: επίπεδα Sentinel, Guardian και Command',
-    's2.tagline': 'Συμβουλευτική · Εξατομικευμένη Παροχή',
-    's2.title': 'Συμβουλευτική Επενδύσεων<br>& Κινδύνου Εφοδιαστικής',
-    's2.desc': 'Εμπιστευτικές συμβουλευτικές δεσμεύσεις για θεσμικούς επενδυτές, private equity και παγκόσμιους χειριστές εφοδιαστικής αλυσίδας που χρειάζονται γεωπολιτική πληροφόρηση βαθιάς εξειδίκευσης. Μεταφράζουμε τη μεσογειακή πολυπλοκότητα κινδύνου σε στρατηγική καθοδήγηση — πριν κρυσταλλωθεί η έκθεση.',
-    's2.cta': 'Εξερευνήστε τις Συμβουλευτικές Υπηρεσίες <span>→</span>',
+    's2.tagline': 'Maritime Financial Intelligence',
+    's2.title': 'Ανάλυση Κινδύνου<br>Επενδύσεων & Εφοδιαστικής',
+    's2.desc': 'Ανάλυση για θεσμικούς επενδυτές, private equity και παγκόσμιους χειριστές εφοδιαστικής αλυσίδας που χρειάζονται γεωπολιτική πληροφόρηση βαθιάς εξειδίκευσης.',
+    's2.cta': 'Εξερευνήστε τις Συμβουλευτικές Υπηρεσίες <span>→</span> <span class="coming-soon-tag">(Coming Soon)</span>',
     's2.f1': 'Δέουσα επιμέλεια επενδύσεων σε λιμενικές υποδομές και περιφερειακές επενδύσεις',
     's2.f2': 'Stress testing εφοδιαστικής αλυσίδας στα μεσογειακά σημεία συμφόρησης',
     's2.f3': 'Γεωπολιτική μοντελοποίηση σεναρίων για ανάλυση έκθεσης περιουσιακών στοιχείων',
-    's2.f4': 'Κατάρτιση προφίλ κινδύνου ναυτιλιακής ασφάλισης και υποστήριξη αναδόχου',
+    's2.f4': 'Κατάρτιση προφίλ κινδύνου ναυτιλιακής ασφάλισης',
     's2.f5': 'Εξατομικευμένες ενημερώσεις απειλών για εκτελεστική ηγεσία',
     's2.f6': 'Συμβουλευτική κανονιστικού και κυρωτικού πλαισίου',
     's2.f7': 'Δομές δέσμευσης βάσει συμβολαίου ή έργου',
@@ -2727,7 +2750,7 @@ const translations = {
     'pricing.btn.access': 'Αίτηση Πρόσβασης',
     'pricing.btn.contact': 'Επικοινωνήστε μαζί μας',
     // Advisory
-    'adv.label': 'Συμβουλευτική Επενδύσεων & Εφοδιαστικής Αλυσίδας',
+    'adv.label': 'Advisory (Coming Soon)',
     'adv.h2': 'Όταν τα Διακυβεύματα Είναι Υψηλά,<br><span>η Εξειδίκευση Πρέπει να Είναι Ακόμη Υψηλότερη</span>',
     'adv.lead': 'Εξατομικευμένες συμβουλευτικές δεσμεύσεις για θεσμικούς επενδυτές, private equity και παγκόσμιους χειριστές που χρειάζονται γεωπολιτική πληροφόρηση με εγγενή μεσογειακή τεχνογνωσία και αξιολόγηση κινδύνου εφοδιαστικής αλυσίδας.',
     'adv.s1.title': 'Δέουσα Επιμέλεια Επενδύσεων',
@@ -2762,9 +2785,9 @@ const translations = {
     'client.10': 'Κυβερνητικοί Φορείς',
     // CTA
     'cta.h2': 'Έτοιμοι να Δείτε τη<br><span>Μεσόγειο Καθαρά;</span>',
-    'cta.p': 'Ζητήστε μια επίδειξη πλατφόρμας ή συμβουλευτική συνεδρία. Εργαζόμαστε με περιορισμένο αριθμό πελατών για να διασφαλίσουμε αναλυτικό βάθος και διακριτικότητα.',
+    'cta.p': 'Ζητήστε μια επίδειξη πλατφόρμας ή ειδοποιηθείτε όταν ξεκινήσουν οι υπηρεσίες συμβουλευτικής.',
     'cta.btn1': 'Αίτηση Demo Πλατφόρμας',
-    'cta.btn2': 'Συμβουλευτική Αίτηση',
+    'cta.btn2': 'Get Notified of Advisory Launch',
     // Footer
     'footer.brand': 'Ναυτιλιακή πληροφόρηση Μεσογείου. Πληροφόρηση κινδύνου με τεχνητή νοημοσύνη για ναυτιλιακούς χειριστές, εταιρείες logistics και θεσμικούς επενδυτές που πλέουν στη στρατηγικά πιο πολύπλοκη θάλασσα του κόσμου.',
     'footer.hq': '// ΕΔΡ: Βρυξέλλες, Βέλγιο',
@@ -2772,7 +2795,7 @@ const translations = {
     'footer.h.coverage': 'Κάλυψη',
     'footer.h.contact': 'Επικοινωνία',
     'footer.l.dashboard': 'Τερματικό Πληροφοριών Mediterranean Watch',
-    'footer.l.investment': 'Συμβουλευτική Επενδύσεων',
+    'footer.l.investment': 'Advisory (Coming Soon)',
     'footer.l.supply': 'Κίνδυνος Εφοδιαστικής Αλυσίδας',
     'footer.l.tiers': 'Επίπεδα Συνδρομής',
     'footer.geo.1': 'Στενό Γιβραλτάρ',
@@ -2819,6 +2842,8 @@ document.addEventListener('click', function(e) {
   if (dd && !dd.contains(e.target)) dd.classList.remove('open');
   const cd = document.getElementById('complianceNav');
   if (cd && !cd.contains(e.target)) cd.classList.remove('open');
+  const sd = document.getElementById('servicesNav');
+  if (sd && !sd.contains(e.target)) sd.classList.remove('open');
 });
 
 // Asset type tab switching
