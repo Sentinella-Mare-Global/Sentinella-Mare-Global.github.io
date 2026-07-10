@@ -1556,7 +1556,7 @@
         <button class="lang-btn" onclick="setLang('el'); document.getElementById('langDropdown').classList.remove('open')" id="btn-el">EL</button>
       </div>
     </div>
-    <a href="#contact" class="btn-nav" data-i18n="nav.cta" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Request Access</a>
+    <a href="https://mare.sentinellaglobal.com/" class="btn-primary" data-i18n="nav.cta" style="padding:8px 20px;font-size:11px;letter-spacing:2px;" target="_blank" rel="noopener noreferrer" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Launch Terminal</a>
   </div>
 </nav>
 
@@ -1680,6 +1680,9 @@
   <img src="Maria Screenshot 2.png" alt="Maria Screenshot" loading="lazy" decoding="async" style="width:100%; height:auto; display:block; border-radius:4px; box-shadow:0 8px 48px rgba(0,0,0,0.6); margin-bottom:16px;">
   <p class="platform-img-caption"><strong>Every feed. Every vessel. One screen.</strong> Connect your own live port camera feeds and watch them alongside AIS vessel tracking data — all in one place. Full situational awareness, zero system switching.</p>
   <img src="Dashboard Screenshot.png" alt="Mediterranean Watch Intelligence Terminal" loading="lazy" decoding="async" style="width:100%; height:auto; display:block; border-radius:4px; box-shadow:0 8px 48px rgba(0,0,0,0.6);">
+  <div style="margin-top:32px;">
+    <a href="https://mare.sentinellaglobal.com/" class="btn-primary" data-i18n="launch.btn" target="_blank" rel="noopener noreferrer">Launch Terminal</a>
+  </div>
 </section>
 
 <!-- WHY SENTINELLA -->
@@ -2014,9 +2017,10 @@
 <div class="cta-banner" id="contact">
   <div class="cta-text">
     <h2 data-i18n="cta.h2" data-i18n-html="true">The Mediterranean<br>Doesn't Wait. <span>Neither Should You.</span></h2>
-    <p data-i18n="cta.p">Request a platform demonstration or be notified when advisory consultation services launch.</p>
+    <p data-i18n="cta.p">Explore the intelligence terminal, request a platform demonstration, or be notified when advisory consultation services launch.</p>
   </div>
   <div class="cta-actions">
+    <a href="https://mare.sentinellaglobal.com/" class="btn-primary" data-i18n="launch.btn" target="_blank" rel="noopener noreferrer">Launch Terminal</a>
     <a href="https://tally.so/r/WOloya" class="btn-primary" data-i18n="cta.btn1" target="_blank" rel="noopener noreferrer">Request Platform Demo</a>
     <a href="mailto:james@sentinellaglobal.com" class="btn-secondary" data-i18n="cta.btn2">Get Notified of Advisory Launch</a>
   </div>
@@ -2063,12 +2067,13 @@ const translations = {
     'nav.advisory': 'Advisory<span class="nav-coming-soon">(Coming Soon)</span>',
     'nav.pricing': 'Pricing',
     'nav.clients': 'Clients',
-    'nav.cta': 'Request Access',
+    'nav.cta': 'Launch Terminal',
     // Hero
     'hero.tag': 'MARITIME HYBRID THREAT INTELLIGENCE PLATFORM · Est. Brussels, Belgium',
     'hero.h1': 'Intelligence That<br>Moves <span>Before</span><br>Disruption Does',
     'hero.desc': 'One score for Mediterranean hybrid-threat exposure across ports, fleets, and cables, refreshed continuously and built for EU compliance.',
     'hero.btn1': 'View Intelligence Terminal',
+    'launch.btn': 'Launch Terminal',
     'hero.btn2': 'Our Services',
     // Services
     'services.label': 'Core Services',
@@ -2232,7 +2237,7 @@ const translations = {
     'client.10': 'Government Agencies',
     // CTA
     'cta.h2': 'The Mediterranean Doesn\'t Wait.<br><span>Neither Should You.</span>',
-    'cta.p': 'Request a platform demonstration or be notified when advisory consultation services launch.',
+    'cta.p': 'Explore the intelligence terminal, request a platform demonstration, or be notified when advisory consultation services launch.',
     'cta.btn1': 'Request Platform Demo',
     'cta.btn2': 'Get Notified of Advisory Launch',
     // Footer
@@ -2258,12 +2263,13 @@ const translations = {
     'nav.advisory': 'Advisory<span class="nav-coming-soon">(Coming Soon)</span>',
     'nav.pricing': 'Prezzi',
     'nav.clients': 'Clienti',
-    'nav.cta': 'Richiedi Accesso',
+    'nav.cta': 'Lancia Terminale',
     // Hero
     'hero.tag': 'PIATTAFORMA DI INTELLIGENCE IBRIDA MARITTIMA · Est. Bruxelles, Belgio',
     'hero.h1': 'Intelligence che<br>si Muove <span>Prima</span><br>della Disruption',
     'hero.desc': 'Sentinella Mare fornisce intelligence marittima basata su AI e advisory sul rischio geopolitico per armatori, aziende logistiche e istituzioni di investimento che operano nel bacino mediterraneo.',
     'hero.btn1': 'Visualizza Terminale Intelligence Live',
+    'launch.btn': 'Lancia Terminale',
     'hero.btn2': 'I Nostri Servizi',
     // Services
     'services.label': 'Servizi Principali',
@@ -2425,7 +2431,7 @@ const translations = {
     'client.10': 'Agenzie Governative',
     // CTA
     'cta.h2': 'Il Mediterraneo Non Aspetta.<br><span>Nemmeno Tu Dovresti.</span>',
-    'cta.p': "Richiedi una dimostrazione della piattaforma o ricevi una notifica quando i servizi di consulenza advisory saranno disponibili.",
+    'cta.p': 'Esplora il terminale intelligence, richiedi una dimostrazione della piattaforma o ricevi una notifica quando i servizi di consulenza advisory saranno disponibili.',
     'cta.btn1': 'Richiedi Demo Piattaforma',
     'cta.btn2': 'Get Notified of Advisory Launch',
     // Footer
@@ -2451,12 +2457,13 @@ const translations = {
     'nav.advisory': 'الاستشارات<span class="nav-coming-soon">(Coming Soon)</span>',
     'nav.pricing': 'الأسعار',
     'nav.clients': 'العملاء',
-    'nav.cta': 'طلب الوصول',
+    'nav.cta': 'إطلاق الطرفية',
     // Hero
     'hero.tag': 'منصة استخبارات التهديدات الهجينة البحرية · تأسست في بروكسل، بلجيكا',
     'hero.h1': 'استخبارات تتحرك<br><span>قبل</span><br>حدوث الاضطراب',
     'hero.desc': 'تقدم Sentinella Mare استخبارات بحرية مدعومة بالذكاء الاصطناعي واستشارات مخاطر جيوسياسية لشركات الشحن والشركات اللوجستية والمؤسسات الاستثمارية التي تعمل في حوض البحر الأبيض المتوسط.',
     'hero.btn1': 'عرض محطة الاستخبارات المباشرة',
+    'launch.btn': 'إطلاق الطرفية',
     'hero.btn2': 'خدماتنا',
     // Services
     'services.label': 'الخدمات الأساسية',
@@ -2618,7 +2625,7 @@ const translations = {
     'client.10': 'الوكالات الحكومية',
     // CTA
     'cta.h2': 'البحر الأبيض المتوسط لا ينتظر.<br><span>ولا أنت يجب أن تنتظر.</span>',
-    'cta.p': 'اطلب عرضاً تجريبياً للمنصة أو كن أول من يعلم عند إطلاق خدمات الاستشارة.',
+    'cta.p': 'استكشف محطة الاستخبارات، اطلب عرضاً تجريبياً للمنصة أو كن أول من يعلم عند إطلاق خدمات الاستشارة.',
     'cta.btn1': 'طلب عرض توضيحي للمنصة',
     'cta.btn2': 'Get Notified of Advisory Launch',
     // Footer
@@ -2644,12 +2651,13 @@ const translations = {
     'nav.advisory': 'Συμβουλευτική<span class="nav-coming-soon">(Coming Soon)</span>',
     'nav.pricing': 'Τιμολόγηση',
     'nav.clients': 'Πελάτες',
-    'nav.cta': 'Αίτηση Πρόσβασης',
+    'nav.cta': 'Εκκίνηση Τερματικού',
     // Hero
     'hero.tag': 'ΠΛΑΤΦΌΡΜΑ ΥΒΡΙΔΙΚΗΣ ΝΑΥΤΙΚΗΣ ΠΛΗΡΟΦΟΡΙΑΚΗΣ ΑΠΕΙΛΗΣ · Ίδρ. Βρυξέλλες, Βέλγιο',
     'hero.h1': 'Πληροφόρηση που<br>Κινείται <span>Πριν</span><br>από την Αναστάτωση',
     'hero.desc': 'Η Sentinella Mare παρέχει ναυτιλιακή πληροφόρηση με τεχνητή νοημοσύνη και συμβουλευτική γεωπολιτικού κινδύνου σε ναυτιλιακές εταιρείες, εταιρείες logistics και επενδυτικά ιδρύματα που δραστηριοποιούνται στη Μεσόγειο.',
     'hero.btn1': 'Προβολή Ζωντανής Οθόνης',
+    'launch.btn': 'Εκκίνηση Τερματικού',
     'hero.btn2': 'Οι Υπηρεσίες μας',
     // Services
     'services.label': 'Βασικές Υπηρεσίες',
@@ -2811,7 +2819,7 @@ const translations = {
     'client.10': 'Κυβερνητικοί Φορείς',
     // CTA
     'cta.h2': 'Έτοιμοι να Δείτε τη<br><span>Μεσόγειο Καθαρά;</span>',
-    'cta.p': 'Ζητήστε μια επίδειξη πλατφόρμας ή ειδοποιηθείτε όταν ξεκινήσουν οι υπηρεσίες συμβουλευτικής.',
+    'cta.p': 'Εξερευνήστε το τερματικό πληροφόρησης, ζητήστε μια επίδειξη πλατφόρμας ή ειδοποιηθείτε όταν ξεκινήσουν οι υπηρεσίες συμβουλευτικής.',
     'cta.btn1': 'Αίτηση Demo Πλατφόρμας',
     'cta.btn2': 'Get Notified of Advisory Launch',
     // Footer
