@@ -467,6 +467,67 @@
 
   /* ── DASHBOARD MOCKUP ── */
   #platform { background: var(--navy); position: relative; overflow: hidden; }
+
+  /* ── MHTES METHODOLOGY TABLE ── */
+  .mhtes-wrap {
+    overflow-x: auto; margin-bottom: 16px;
+    border-radius: 4px; box-shadow: 0 8px 48px rgba(0,0,0,0.6);
+    background: var(--navy-2);
+  }
+  .mhtes-formula {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 18px; letter-spacing: 1.5px; font-weight: 700;
+    color: var(--text); padding: 22px 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .mhtes-formula .mhtes-accent {
+    color: var(--gold); letter-spacing: 2px;
+  }
+  .mhtes-tbl {
+    width: 100%; border-collapse: collapse;
+    font-family: 'Rajdhani', sans-serif; font-size: 16px;
+  }
+  .mhtes-tbl thead th {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    font-weight: 700; color: var(--white); padding: 16px 28px;
+    text-align: left; white-space: nowrap;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-right: 1px solid rgba(255,255,255,0.06);
+  }
+  .mhtes-tbl thead th:last-child { border-right: none; }
+  .mhtes-tbl tbody td {
+    padding: 20px 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-right: 1px solid rgba(255,255,255,0.06);
+    color: var(--text); vertical-align: top; line-height: 1.5;
+  }
+  .mhtes-tbl tbody td:last-child { border-right: none; }
+  .mhtes-tbl tbody tr:last-child td { border-bottom: none; }
+  .mhtes-tbl .asset-cell strong {
+    display: block; font-size: 20px; color: var(--white);
+    font-weight: 700; margin-bottom: 4px;
+  }
+  .mhtes-tbl .asset-cell span {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px; letter-spacing: 2px; color: var(--green-mid);
+  }
+  .mhtes-tbl .pillar-code {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 16px; font-weight: 700;
+    color: var(--white); display: block; margin-bottom: 4px;
+  }
+  .mhtes-tbl .pillar-desc { font-size: 15px; color: var(--text-dim); }
+  .mhtes-tbl td.cyber-col {
+    border-left: 2px solid rgba(45,122,58,0.35);
+  }
+  .mhtes-tbl .routes-note {
+    font-style: italic; color: var(--text-dim);
+    font-size: 15px; text-align: center;
+    vertical-align: middle; height: 72px;
+    padding: 20px 28px;
+  }
+
   .platform-img-caption {
     font-size: 17px; line-height: 1.75;
     color: var(--text); max-width: 100%;
@@ -1675,7 +1736,47 @@
   <div class="section-label" data-i18n="platform.label">Live Intelligence Platform</div>
   <h2 data-i18n="plat.h2" data-i18n-html="true">The <span>Mediterranean Watch</span><br>Intelligence Terminal</h2>
   <p class="platform-img-caption"><strong>Your risk, distilled to one number.</strong> MHTES gives every asset a single, continuously updated score — combining cyber, geopolitical, grey fleet, disinformation, and environmental signals into one number you can act on, 72 hours before disruption hits. Pipe it directly into your own platforms via API.</p>
-  <img src="Live Example.png" alt="Live Example" fetchpriority="high" decoding="async" style="width:100%; height:auto; display:block; border-radius:4px; box-shadow:0 8px 48px rgba(0,0,0,0.6); margin-bottom:16px;">
+  <div class="mhtes-wrap">
+    <div class="mhtes-formula">METHODOLOGY × PILLAR SLOTS — <span class="mhtes-accent">MHTES</span> = (P₁+P₂+P₃+P₄) ÷ 4</div>
+    <table class="mhtes-tbl">
+      <thead>
+        <tr>
+          <th>Asset Class</th>
+          <th>Slot 1 · Strategic</th>
+          <th>Slot 2</th>
+          <th>Slot 3 · Activity</th>
+          <th>Slot 4 · Cyber (Shared)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="asset-cell"><strong>Ports</strong><span>P-MHTES</span></td>
+          <td><span class="pillar-code">SV</span><span class="pillar-desc">Strategic Value</span></td>
+          <td><span class="pillar-code">FAP</span><span class="pillar-desc">Foreign Actor Presence</span></td>
+          <td><span class="pillar-code">IGA</span><span class="pillar-desc">Illicit &amp; Grey-Zone Activity</span></td>
+          <td class="cyber-col"><span class="pillar-code">CIV</span><span class="pillar-desc">Cyber &amp; Infra Vulnerability</span></td>
+        </tr>
+        <tr>
+          <td class="asset-cell"><strong>Cables</strong><span>C-MHTES</span></td>
+          <td><span class="pillar-code">SV</span><span class="pillar-desc">Strategic Value</span></td>
+          <td><span class="pillar-code">MAP</span><span class="pillar-desc">Maritime Activity Pressure</span></td>
+          <td><span class="pillar-code">IEV</span><span class="pillar-desc">Infra Exposure Vulnerability</span></td>
+          <td class="cyber-col"><span class="pillar-code">CIV</span><span class="pillar-desc">Cyber &amp; Infra Vulnerability</span></td>
+        </tr>
+        <tr>
+          <td class="asset-cell"><strong>Vessels</strong><span>V-MHTES</span></td>
+          <td><span class="pillar-code">RS</span><span class="pillar-desc">Route Strategic Value</span></td>
+          <td><span class="pillar-code">FAP</span><span class="pillar-desc">Foreign Actor Presence</span></td>
+          <td><span class="pillar-code">OEV</span><span class="pillar-desc">Operational Exposure &amp; Vuln.</span></td>
+          <td class="cyber-col"><span class="pillar-code">CIV</span><span class="pillar-desc">Cyber &amp; Infra Vulnerability</span></td>
+        </tr>
+        <tr>
+          <td class="asset-cell"><strong>Routes</strong><span>no MHTES</span></td>
+          <td colspan="4" class="routes-note">— scored by Corridor Risk (0–1, independent, event-driven) — not part of the MHTES pillar model —</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <p class="platform-img-caption"><strong>Intelligence anyone in the room can understand.</strong> Maria, our maritime AI, doesn't just flag threats — she calibrates supply chain stress testing and geopolitical scenario modeling to forecast probable outcomes.</p>
   <img src="Maria Screenshot 2.png" alt="Maria Screenshot" loading="lazy" decoding="async" style="width:100%; height:auto; display:block; border-radius:4px; box-shadow:0 8px 48px rgba(0,0,0,0.6); margin-bottom:16px;">
   <p class="platform-img-caption"><strong>Every feed. Every vessel. One screen.</strong> Connect your own live port camera feeds and watch them alongside AIS vessel tracking data — all in one place. Full situational awareness, zero system switching.</p>
