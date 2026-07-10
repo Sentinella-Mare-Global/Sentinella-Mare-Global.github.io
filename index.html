@@ -705,13 +705,14 @@
   #pricing { background: var(--navy); }
   .pricing-grid {
     display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 2px; margin-top: 60px; align-items: start;
+    gap: 2px; margin-top: 60px; align-items: stretch;
   }
   .price-card {
     background: var(--navy-3);
     padding: 44px 36px;
     position: relative;
     transition: transform 0.3s;
+    display: flex; flex-direction: column;
   }
   .price-card.featured {
     background: var(--navy-4);
@@ -775,6 +776,7 @@
     font-size: 12px; font-weight: 700; letter-spacing: 2.5px;
     text-transform: uppercase; text-decoration: none;
     cursor: pointer; transition: all 0.3s;
+    margin-top: auto;
   }
   .price-btn:hover, .price-btn.active {
     background: var(--green); border-color: var(--green);
@@ -1466,7 +1468,7 @@
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Sentinella Global",
+  "name": "Sentinella Mare",
   "alternateName": "Sentinella Mare",
   "url": "https://sentinellaglobal.com",
   "logo": "https://sentinellaglobal.com/Sentinella%20Mare%20Logo_White.png",
@@ -1518,6 +1520,7 @@
       </div>
     </div>
     <a href="#platform" data-i18n="nav.platform" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Live Platform</a>
+    <a href="#pricing" data-i18n="nav.pricing" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Pricing</a>
     <a href="#clients" data-i18n="nav.clients" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Clients</a>
     <a href="/Leadership" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Leadership</a>
     <div class="nav-comp-wrap" id="complianceNav">
@@ -2058,7 +2061,7 @@ const translations = {
     'nav.services': 'Services',
     'nav.platform': 'Live Platform',
     'nav.advisory': 'Advisory<span class="nav-coming-soon">(Coming Soon)</span>',
-    'nav.pricing': 'Subscription',
+    'nav.pricing': 'Pricing',
     'nav.clients': 'Clients',
     'nav.cta': 'Request Access',
     // Hero
@@ -2253,7 +2256,7 @@ const translations = {
     'nav.services': 'Servizi',
     'nav.platform': 'Piattaforma Live',
     'nav.advisory': 'Advisory<span class="nav-coming-soon">(Coming Soon)</span>',
-    'nav.pricing': 'Abbonamento',
+    'nav.pricing': 'Prezzi',
     'nav.clients': 'Clienti',
     'nav.cta': 'Richiedi Accesso',
     // Hero
@@ -2446,7 +2449,7 @@ const translations = {
     'nav.services': 'الخدمات',
     'nav.platform': 'المنصة المباشرة',
     'nav.advisory': 'الاستشارات<span class="nav-coming-soon">(Coming Soon)</span>',
-    'nav.pricing': 'الاشتراك',
+    'nav.pricing': 'الأسعار',
     'nav.clients': 'العملاء',
     'nav.cta': 'طلب الوصول',
     // Hero
@@ -2639,7 +2642,7 @@ const translations = {
     'nav.services': 'Υπηρεσίες',
     'nav.platform': 'Ζωντανή Πλατφόρμα',
     'nav.advisory': 'Συμβουλευτική<span class="nav-coming-soon">(Coming Soon)</span>',
-    'nav.pricing': 'Συνδρομή',
+    'nav.pricing': 'Τιμολόγηση',
     'nav.clients': 'Πελάτες',
     'nav.cta': 'Αίτηση Πρόσβασης',
     // Hero
