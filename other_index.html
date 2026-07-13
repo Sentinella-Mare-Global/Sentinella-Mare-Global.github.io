@@ -1,6 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) — Consent Mode v2 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6FPWJM34X1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Default all consent to denied — GA will not fire until the user accepts
+  gtag('consent', 'default', {
+    analytics_storage: 'denied',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
+    wait_for_update: 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-6FPWJM34X1');
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sentinella Mare — Mediterranean Maritime Intelligence</title>
@@ -807,6 +823,18 @@
     font-size: 9px; letter-spacing: 2px;
     color: var(--text-dim); text-transform: uppercase;
   }
+  .footer-legal-links {
+    display: flex; align-items: flex-start; gap: 16px; flex-wrap: wrap;
+  }
+  .footer-legal-link {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px; letter-spacing: 2px; color: rgba(240,245,252,0.65);
+    text-transform: uppercase; text-decoration: none;
+    background: none; border: none; cursor: pointer; padding: 0;
+    transition: color 0.2s;
+  }
+  .footer-legal-link:hover { color: #eef3f8; }
+
   .footer-bottom .clearance {
     display: flex; align-items: center; gap: 8px;
     font-family: 'Share Tech Mono', monospace;
@@ -1551,8 +1579,15 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p>© 2026 Sentinella Mare · All intelligence is proprietary · Unauthorized redistribution prohibited</p>
+    <p>© 2026 Sentinella LLC · 8 The Green STE A, Dover, DE 19901, USA · HQ: Brussels, Belgium</p>
     <div class="clearance">PLATFORM LIVE · FEEDS NOMINAL · 36 STATES MONITORED</div>
+  <div class="footer-legal-links">
+      <a href="/privacypolicy/" class="footer-legal-link">Privacy Policy</a>
+      <a href="/legalterms/" class="footer-legal-link">Terms</a>
+      <a href="/dpa/" class="footer-legal-link">DPA</a>
+      <a href="/legalnotice/" class="footer-legal-link">Legal Notice</a>
+      <button onclick="if(typeof smOpenCookieSettings==='function')smOpenCookieSettings();" class="footer-legal-link">Cookie Settings</button>
+    </div>
   </div>
 </footer>
 
@@ -1578,6 +1613,122 @@
       navLinks.classList.remove('mobile-active');
     }
   });
+</script>
+
+
+<!-- ── COOKIE CONSENT BANNER ── -->
+<style>
+#sm-cookie-banner {
+  display: none;
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+  background: #0d1b2a;
+  border-top: 1px solid rgba(45,122,58,0.4);
+  padding: 20px 48px;
+  box-shadow: 0 -8px 40px rgba(0,0,0,0.55);
+  font-family: 'Rajdhani', sans-serif;
+}
+.sm-cookie-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 32px; flex-wrap: wrap;
+}
+.sm-cookie-label {
+  display: block;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 10px; letter-spacing: 3px; color: #3aab4a;
+  text-transform: uppercase; margin-bottom: 7px;
+}
+.sm-cookie-text { font-size: 14px; line-height: 1.65; color: #c8d8ec; max-width: 680px; }
+.sm-cookie-actions { display: flex; gap: 12px; flex-shrink: 0; align-items: center; }
+.sm-cookie-btn {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; cursor: pointer;
+  padding: 11px 26px; border-radius: 0;
+  transition: all 0.25s; -webkit-tap-highlight-color: transparent;
+  white-space: nowrap;
+}
+.sm-cookie-reject {
+  background: transparent; color: #c8d8ec;
+  border: 1px solid rgba(200,216,236,0.35);
+}
+.sm-cookie-reject:hover { border-color: #eef3f8; color: #eef3f8; }
+.sm-cookie-accept {
+  background: #2d7a3a; color: #fff; border: 1px solid #2d7a3a;
+  clip-path: polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px));
+}
+.sm-cookie-accept:hover {
+  background: #3aab4a; border-color: #3aab4a;
+  box-shadow: 0 0 22px rgba(58,171,74,0.35);
+}
+@media (max-width: 768px) {
+  #sm-cookie-banner { padding: 18px 20px; }
+  .sm-cookie-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .sm-cookie-actions { width: 100%; }
+  .sm-cookie-btn { flex: 1; text-align: center; }
+}
+</style>
+
+<div id="sm-cookie-banner" role="dialog" aria-modal="false" aria-label="Cookie consent">
+  <div class="sm-cookie-inner">
+    <div>
+      <span class="sm-cookie-label">Cookie Settings</span>
+      <p class="sm-cookie-text">Sentinella Mare (data controller) uses Google Analytics to understand how visitors use this site. No advertising or third-party tracking cookies are used. <a href="/privacypolicy/" style="color:#3aab4a;">Privacy Policy</a>.</p>
+    </div>
+    <div class="sm-cookie-actions">
+      <button id="sm-cookie-reject" class="sm-cookie-btn sm-cookie-reject">Reject All</button>
+      <button id="sm-cookie-accept" class="sm-cookie-btn sm-cookie-accept">Accept Analytics</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var KEY = 'sm_cookie_consent';
+
+  function updateConsent(granted) {
+    if (typeof gtag !== 'function') return;
+    gtag('consent', 'update', {
+      analytics_storage: granted ? 'granted' : 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied'
+    });
+  }
+
+  function hideBanner() {
+    var b = document.getElementById('sm-cookie-banner');
+    if (b) b.style.display = 'none';
+  }
+
+  // Restore prior decision on every page load
+  var stored = localStorage.getItem(KEY);
+  if (stored === 'granted') {
+    updateConsent(true);
+  } else if (stored === 'denied') {
+    updateConsent(false);
+  } else {
+    // First visit — show banner
+    document.getElementById('sm-cookie-banner').style.display = 'block';
+  }
+
+  document.getElementById('sm-cookie-accept').addEventListener('click', function () {
+    localStorage.setItem(KEY, 'granted');
+    updateConsent(true);
+    hideBanner();
+  });
+
+  document.getElementById('sm-cookie-reject').addEventListener('click', function () {
+    localStorage.setItem(KEY, 'denied');
+    updateConsent(false);
+    hideBanner();
+  });
+
+  // Allow footer link to re-open the banner
+  window.smOpenCookieSettings = function () {
+    document.getElementById('sm-cookie-banner').style.display = 'block';
+  };
+})();
 </script>
 
 </body>

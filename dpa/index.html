@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Processing Agreement — Sentinella Mare</title>
+<meta name="description" content="Data Processing Agreement (DPA) for the Sentinella Mare platform, incorporating GDPR Article 28 processor terms.">
+<link rel="canonical" href="https://sentinellaglobal.com/dpa">
+<meta name="robots" content="index, follow">
+<!-- Google tag (gtag.js) — Consent Mode v2 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6FPWJM34X1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    analytics_storage: 'denied', ad_storage: 'denied',
+    ad_user_data: 'denied', ad_personalization: 'denied', wait_for_update: 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-6FPWJM34X1');
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&family=Playfair+Display:wght@700;900&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* ── Site nav ── */
+  nav.site-nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 48px; background: rgba(6,15,24,0.97);
+    border-bottom: 1px solid rgba(45,122,58,0.18);
+    position: sticky; top: 0; z-index: 99;
+  }
+  .nav-wordmark {
+    font-family: 'Cinzel', serif; font-size: 16px; font-weight: 700;
+    color: #eef3f8; letter-spacing: 3px; text-decoration: none;
+  }
+  .nav-back {
+    font-family: 'Share Tech Mono', monospace; font-size: 10px;
+    letter-spacing: 2px; color: #3aab4a; text-decoration: none;
+    text-transform: uppercase; transition: color 0.2s;
+  }
+  .nav-back:hover { color: #4fd962; }
+  /* ── Legal shared footer ── */
+  .legal-footer {
+    border-top: 1px solid rgba(14,181,175,0.15);
+    padding: 24px 48px; margin-top: 0;
+    display: flex; flex-direction: column; gap: 10px;
+    background: rgba(6,15,24,0.6);
+  }
+  .legal-footer-company {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px; letter-spacing: 1.5px; color: rgba(240,245,252,0.45);
+    text-transform: uppercase;
+  }
+  .legal-footer-links {
+    display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: flex-start;
+  }
+  .legal-footer-links a, .legal-footer-links button {
+    font-family: 'Share Tech Mono', monospace; font-size: 10px;
+    letter-spacing: 1.5px; text-transform: uppercase;
+    color: rgba(240,245,252,0.65); text-decoration: none;
+    background: none; border: none; cursor: pointer; padding: 0;
+    transition: color 0.2s;
+  }
+  .legal-footer-links a:hover, .legal-footer-links button:hover { color: #eef3f8; }
+  .lf-sep { color: rgba(14,181,175,0.2); }
+  @media (max-width: 640px) {
+    nav.site-nav { padding: 14px 20px; }
+    .legal-footer { padding: 20px; }
+  }
+
+  :root {
+    --bg: #060f18;
+    --panel: rgba(12, 20, 33, 0.7);
+    --rule: rgba(14, 181, 175, 0.15);
+    --teal: #0eb5af;
+    --gold: #c9a84c;
+    --text: #e8f0f8;
+    --text-mid: rgba(232, 240, 248, 0.72);
+    --text-dim: rgba(232, 240, 248, 0.45);
+    --display: 'Playfair Display', serif;
+    --body: 'Jost', sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: var(--body); font-weight: 300; line-height: 1.8; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 4rem 2rem 5rem; }
+  .eyebrow { color: var(--teal); font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 1rem; }
+  h1 { font-family: var(--display); font-size: 2.4rem; font-weight: 900; line-height: 1.2; margin-bottom: 0.75rem; }
+  .updated { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 3rem; }
+  h2 { font-family: var(--display); font-size: 1.35rem; font-weight: 700; color: var(--text); margin: 2.8rem 0 0.9rem; padding-top: 1.6rem; border-top: 1px solid var(--rule); }
+  h3 { font-size: 1rem; font-weight: 600; color: var(--teal); margin: 1.6rem 0 0.5rem; }
+  p { color: var(--text-mid); font-size: 0.95rem; margin-bottom: 1rem; }
+  ul, ol { color: var(--text-mid); font-size: 0.95rem; margin: 0 0 1rem 1.4rem; }
+  li { margin-bottom: 0.45rem; }
+  a { color: var(--teal); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.88rem; }
+  th { text-align: left; color: var(--teal); font-weight: 500; padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--rule); }
+  td { color: var(--text-mid); padding: 0.6rem 0.8rem; border-bottom: 1px solid rgba(14,181,175,0.07); vertical-align: top; }
+  .footer-nav { margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); font-size: 0.85rem; color: var(--text-dim); }
+
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a href="/" class="nav-wordmark">SENTINELLA MARE</a>
+  <a href="/" class="nav-back">← Back to Site</a>
+</nav>
+<div class="wrap">
+
+<div class="eyebrow">Legal</div>
+<h1>Data Processing Agreement</h1>
+<p class="updated">Last updated: 13 July 2026 · Effective date: 13 July 2026</p>
+
+<p>This Data Processing Agreement ("DPA") forms part of the agreement between Sentinella LLC, 8 The Green STE A, Dover, DE 19901, United States, with European headquarters in Brussels, Belgium ("Sentinella," the "Processor") and the customer identified in the applicable Order or subscription ("Customer," the "Controller") for the provision of the Sentinella Mare platform and related services (the "Services"), and is incorporated by reference into the <a href="/legalterms/">Terms &amp; Conditions</a> and each Order.</p>
+
+<p>This DPA applies to the extent Sentinella processes personal data on behalf of the Customer in the course of providing the Services ("Customer Personal Data"), within the scope of the GDPR (Regulation (EU) 2016/679) or equivalent applicable data protection law.</p>
+
+<h2>1. Roles and Scope</h2>
+<ul>
+  <li>For Customer Personal Data submitted to the Services, the Customer is the controller (or a processor acting on behalf of another controller) and Sentinella is the processor.</li>
+  <li>For data Sentinella collects for its own purposes — such as account, billing, and Site data — Sentinella acts as an independent controller as described in our <a href="/privacypolicy/">Privacy Policy</a>, and that processing is outside the scope of this DPA.</li>
+</ul>
+
+<h2>2. Details of Processing</h2>
+<table>
+  <tr><th>Item</th><th>Description</th></tr>
+  <tr><td>Subject matter</td><td>Provision of maritime hybrid threat intelligence services via the Sentinella Mare platform</td></tr>
+  <tr><td>Duration</td><td>The term of the applicable Order, plus the deletion period in Section 9</td></tr>
+  <tr><td>Nature and purpose</td><td>Hosting, monitoring, analysis, scoring, alerting, reporting, and related support as instructed by the Customer through the Services</td></tr>
+  <tr><td>Categories of data subjects</td><td>Customer's authorised users; Customer personnel; individuals whose data is contained in content the Customer submits to the Services</td></tr>
+  <tr><td>Categories of personal data</td><td>Name, business contact details, credentials, role/title; usage data; any personal data contained in Customer-submitted content or assistant queries</td></tr>
+  <tr><td>Special categories</td><td>None intended. The Customer agrees not to submit special category data (Art. 9 GDPR) to the Services.</td></tr>
+</table>
+
+<h2>3. Processor Obligations</h2>
+<p>Sentinella will:</p>
+<ol>
+  <li>Process Customer Personal Data only on the Customer's documented instructions — including as given through the Customer's configuration and use of the Services — unless required otherwise by EU or Member State law, in which case Sentinella will inform the Customer before processing unless legally prohibited (Art. 28(3)(a));</li>
+  <li>Ensure persons authorised to process Customer Personal Data are bound by confidentiality obligations (Art. 28(3)(b));</li>
+  <li>Implement appropriate technical and organisational measures as described in Annex II (Art. 32);</li>
+  <li>Respect the sub-processor conditions in Section 5 (Art. 28(3)(d));</li>
+  <li>Taking into account the nature of the processing, assist the Customer with data subject requests under Chapter III GDPR (Art. 28(3)(e));</li>
+  <li>Assist the Customer with its obligations under Articles 32–36 GDPR, including breach notification and data protection impact assessments, taking into account the nature of processing and information available to Sentinella (Art. 28(3)(f));</li>
+  <li>At the Customer's choice, delete or return Customer Personal Data at the end of the Services as set out in Section 9 (Art. 28(3)(g));</li>
+  <li>Make available information necessary to demonstrate compliance with Article 28 and allow and contribute to audits as set out in Section 8 (Art. 28(3)(h));</li>
+  <li>Inform the Customer immediately if, in Sentinella's opinion, an instruction infringes the GDPR or other applicable data protection law.</li>
+</ol>
+
+<h2>4. Customer Obligations</h2>
+<p>The Customer is responsible for: the lawfulness of Customer Personal Data and of its instructions; providing any required notices and establishing a lawful basis for the data it submits; configuring and using the Services appropriately for the sensitivity of its data; and not submitting special category data or data of minors to the Services.</p>
+
+<h2>5. Sub-processors</h2>
+<ul>
+  <li>The Customer provides general written authorisation for Sentinella to engage the sub-processors listed in Annex III, and for updates to that list.</li>
+  <li>Sentinella will provide at least fourteen (14) days' notice of any intended addition or replacement of a sub-processor (via the Site or email), during which the Customer may object on reasonable data protection grounds. If the parties cannot resolve an objection, the Customer may terminate the affected Services and receive a pro-rata refund of prepaid, unused fees.</li>
+  <li>Sentinella will impose data protection obligations on each sub-processor materially equivalent to those in this DPA and remains liable for its sub-processors' performance.</li>
+</ul>
+
+<h2>6. International Transfers</h2>
+<p>Where the provision of the Services involves a transfer of Customer Personal Data from the EEA, the UK, or Switzerland to a country without an adequacy decision (including to Sentinella LLC in the United States), the parties agree that the European Commission's Standard Contractual Clauses (Decision (EU) 2021/914), Module Two (controller-to-processor) or Module Three (processor-to-processor) as applicable, are incorporated into this DPA by reference, completed as follows: Clause 7 (docking) included; Clause 9(a) Option 2 with the notice period in Section 5; Clause 11 optional language not included; Clause 17 governed by Belgian law; Clause 18 courts of Brussels, Belgium; Annexes I–III of the SCCs completed by the Annexes to this DPA. Sentinella will implement supplementary measures where reasonably necessary to ensure an essentially equivalent level of protection.</p>
+
+<h2>7. Personal Data Breach</h2>
+<p>Sentinella will notify the Customer without undue delay after becoming aware of a personal data breach affecting Customer Personal Data, and will provide information reasonably available to assist the Customer in meeting its obligations under Articles 33–34 GDPR, followed by updates as the investigation progresses. Sentinella's notification is not an acknowledgement of fault or liability.</p>
+
+<h2>8. Audits</h2>
+<p>Sentinella will make available documentation reasonably necessary to demonstrate compliance with this DPA (including summaries of third-party audits or certifications where available). Where the Customer reasonably determines documentation is insufficient, the Customer may conduct an audit — at most once per 12-month period, on at least 30 days' notice, during business hours, without disrupting operations, subject to confidentiality obligations, and at the Customer's cost — or the parties may agree on a mutually acceptable independent auditor.</p>
+
+<h2>9. Return and Deletion</h2>
+<p>Upon termination or expiry of the Services, Sentinella will, at the Customer's choice, return Customer Personal Data in a commonly used format or delete it, and delete existing copies within ninety (90) days, unless EU or Member State law requires longer storage. Deletion from backups occurs in the ordinary backup rotation cycle, during which the data remains protected under this DPA.</p>
+
+<h2>10. Liability and Order of Precedence</h2>
+<p>Each party's liability under this DPA is subject to the limitations and exclusions of liability in the Terms &amp; Conditions or the applicable Order, to the maximum extent permitted by applicable law. Nothing in this Section limits either party's liability to data subjects under Article 82 GDPR. In case of conflict, the order of precedence is: (1) the SCCs, (2) this DPA, (3) the Order, (4) the Terms &amp; Conditions.</p>
+
+<h2>Annex I — Processing Details</h2>
+<p>As set out in Section 2 of this DPA. Data exporter: the Customer. Data importer: Sentinella LLC, 8 The Green STE A, Dover, DE 19901, USA; contact <a href="mailto:james@sentinellaglobal.com">james@sentinellaglobal.com</a>. Competent supervisory authority: the Belgian Data Protection Authority, unless otherwise determined under Clause 13 SCCs.</p>
+
+<h2>Annex II — Technical and Organisational Measures</h2>
+<ul>
+  <li>Encryption of data in transit (TLS) and at rest;</li>
+  <li>Access controls: role-based access, least privilege, unique credentials, and multi-factor authentication for administrative access;</li>
+  <li>Logical separation of customer data;</li>
+  <li>Logging and monitoring of production systems; vulnerability management and timely patching;</li>
+  <li>Secure development practices and code review;</li>
+  <li>Backup and recovery procedures; capacity and resilience measures;</li>
+  <li>Personnel confidentiality undertakings and security awareness;</li>
+  <li>Incident response procedures supporting Section 7;</li>
+  <li>Vendor due diligence for sub-processors.</li>
+</ul>
+<p>[NOTE: This Annex must be reviewed against the platform's actual production architecture before publication and updated as measures evolve.]</p>
+
+<h2>Annex III — Authorised Sub-processors</h2>
+<table>
+  <tr><th>Sub-processor</th><th>Purpose</th><th>Location</th></tr>
+  <tr><td>GitHub, Inc. (Microsoft)</td><td>Code hosting and website infrastructure</td><td>USA</td></tr>
+  <tr><td>Google LLC (Google Workspace)</td><td>Email and business correspondence</td><td>USA / EU</td></tr>
+  <tr><td>Stripe, Inc.</td><td>Payment processing</td><td>USA / EU</td></tr>
+  <tr><td>HubSpot, Inc.</td><td>Customer relationship management</td><td>USA / EU</td></tr>
+  <tr><td>Slack Technologies (Salesforce, Inc.)</td><td>Internal communications supporting service delivery and customer support</td><td>USA / EU</td></tr>
+  <tr><td>Anthropic, PBC</td><td>Large language model services powering the in-platform assistant ("Maria") [CONFIRM production LLM provider before publication]</td><td>USA</td></tr>
+  <tr><td>[HOSTING PROVIDER for the Platform production environment — CONFIRM: e.g. AWS / GCP / Azure / other]</td><td>Platform hosting and data storage</td><td>[CONFIRM]</td></tr>
+</table>
+
+</div>
+<footer class="legal-footer">
+  <p class="legal-footer-company">© 2026 Sentinella LLC &nbsp;·&nbsp; 8 The Green STE A, Dover, DE 19901, USA &nbsp;·&nbsp; HQ: Brussels, Belgium</p>
+  <div class="legal-footer-links">
+    <a href="/privacypolicy/">Privacy Policy</a>
+    <span class="lf-sep">·</span>
+    <a href="/legalterms/">Terms &amp; Conditions</a>
+    <span class="lf-sep">·</span>
+    <a href="/dpa/">DPA</a>
+    <span class="lf-sep">·</span>
+    <a href="/legalnotice/">Legal Notice</a>
+    <span class="lf-sep">·</span>
+    <button onclick="if(typeof smOpenCookieSettings==='function')smOpenCookieSettings();">Cookie Settings</button>
+    <span class="lf-sep">·</span>
+    <a href="/">sentinellaglobal.com</a>
+  </div>
+</footer>
+<!-- ── COOKIE CONSENT BANNER ── -->
+<style>
+#sm-cookie-banner {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+  background: #0d1b2a; border-top: 1px solid rgba(45,122,58,0.4);
+  padding: 20px 48px; box-shadow: 0 -8px 40px rgba(0,0,0,0.55);
+  font-family: 'Jost', 'Rajdhani', sans-serif;
+}
+.sm-cookie-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 32px; flex-wrap: wrap;
+}
+.sm-cookie-label {
+  display: block; font-family: 'Share Tech Mono', monospace;
+  font-size: 10px; letter-spacing: 3px; color: #3aab4a;
+  text-transform: uppercase; margin-bottom: 7px;
+}
+.sm-cookie-text { font-size: 14px; line-height: 1.65; color: #c8d8ec; max-width: 680px; }
+.sm-cookie-text a { color: #3aab4a; }
+.sm-cookie-text a:hover { color: #4fd962; }
+.sm-cookie-actions { display: flex; gap: 12px; flex-shrink: 0; align-items: center; }
+.sm-cookie-btn {
+  font-family: 'Rajdhani', 'Jost', sans-serif; font-size: 12px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase; cursor: pointer;
+  padding: 11px 26px; border-radius: 0; transition: all 0.25s;
+  -webkit-tap-highlight-color: transparent; white-space: nowrap;
+}
+.sm-cookie-reject { background: transparent; color: #c8d8ec; border: 1px solid rgba(200,216,236,0.35); }
+.sm-cookie-reject:hover { border-color: #eef3f8; color: #eef3f8; }
+.sm-cookie-accept {
+  background: #2d7a3a; color: #fff; border: 1px solid #2d7a3a;
+  clip-path: polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px));
+}
+.sm-cookie-accept:hover { background: #3aab4a; border-color: #3aab4a; box-shadow: 0 0 22px rgba(58,171,74,0.35); }
+@media (max-width: 768px) {
+  #sm-cookie-banner { padding: 18px 20px; }
+  .sm-cookie-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .sm-cookie-actions { width: 100%; }
+  .sm-cookie-btn { flex: 1; text-align: center; }
+}
+</style>
+<div id="sm-cookie-banner" role="dialog" aria-modal="false" aria-label="Cookie consent">
+  <div class="sm-cookie-inner">
+    <div>
+      <span class="sm-cookie-label">Cookie Settings</span>
+      <p class="sm-cookie-text">Sentinella Mare (data controller) uses Google Analytics to understand how visitors use this site. No advertising or third-party tracking cookies are used. <a href="/privacypolicy/">Privacy Policy</a>.</p>
+    </div>
+    <div class="sm-cookie-actions">
+      <button id="sm-cookie-reject" class="sm-cookie-btn sm-cookie-reject">Reject All</button>
+      <button id="sm-cookie-accept" class="sm-cookie-btn sm-cookie-accept">Accept Analytics</button>
+    </div>
+  </div>
+</div>
+<script>
+(function () {
+  var KEY = 'sm_cookie_consent';
+  function updateConsent(granted) {
+    if (typeof gtag !== 'function') return;
+    gtag('consent', 'update', {
+      analytics_storage: granted ? 'granted' : 'denied',
+      ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied'
+    });
+  }
+  function hideBanner() { var b = document.getElementById('sm-cookie-banner'); if (b) b.style.display = 'none'; }
+  var stored = localStorage.getItem(KEY);
+  if (stored === 'granted') { updateConsent(true); }
+  else if (stored === 'denied') { updateConsent(false); }
+  else { document.getElementById('sm-cookie-banner').style.display = 'block'; }
+  document.getElementById('sm-cookie-accept').addEventListener('click', function () {
+    localStorage.setItem(KEY, 'granted'); updateConsent(true); hideBanner();
+  });
+  document.getElementById('sm-cookie-reject').addEventListener('click', function () {
+    localStorage.setItem(KEY, 'denied'); updateConsent(false); hideBanner();
+  });
+  window.smOpenCookieSettings = function () {
+    document.getElementById('sm-cookie-banner').style.display = 'block';
+  };
+})();
+</script>
+</body>
+</html>
