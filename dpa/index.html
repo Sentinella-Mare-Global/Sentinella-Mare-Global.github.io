@@ -98,8 +98,8 @@
   table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.88rem; }
   th { text-align: left; color: var(--teal); font-weight: 500; padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--rule); }
   td { color: var(--text-mid); padding: 0.6rem 0.8rem; border-bottom: 1px solid rgba(14,181,175,0.07); vertical-align: top; }
-  .footer-nav { margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); font-size: 0.85rem; color: var(--text-dim); }
-
+  .notice { background: var(--panel); border: 1px solid var(--gold); border-radius: 8px; padding: 1.1rem 1.3rem; margin: 1.5rem 0; font-size: 0.9rem; color: var(--text-mid); }
+  .caps { text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.02em; }
 </style>
 </head>
 <body>
@@ -177,31 +177,34 @@
 <p>As set out in Section 2 of this DPA. Data exporter: the Customer. Data importer: Sentinella LLC, 8 The Green STE A, Dover, DE 19901, USA; contact <a href="mailto:james@sentinellaglobal.com">james@sentinellaglobal.com</a>. Competent supervisory authority: the Belgian Data Protection Authority, unless otherwise determined under Clause 13 SCCs.</p>
 
 <h2>Annex II — Technical and Organisational Measures</h2>
+<p>Sentinella implements the following measures, proportionate to the nature and risk of the processing, and will develop and strengthen these measures as the Services evolve:</p>
 <ul>
-  <li>Encryption of data in transit (TLS) and at rest;</li>
-  <li>Access controls: role-based access, least privilege, unique credentials, and multi-factor authentication for administrative access;</li>
-  <li>Logical separation of customer data;</li>
-  <li>Logging and monitoring of production systems; vulnerability management and timely patching;</li>
-  <li>Secure development practices and code review;</li>
-  <li>Backup and recovery procedures; capacity and resilience measures;</li>
-  <li>Personnel confidentiality undertakings and security awareness;</li>
-  <li>Incident response procedures supporting Section 7;</li>
-  <li>Vendor due diligence for sub-processors.</li>
+  <li>Encryption of data in transit: all Site and Platform traffic is served over HTTPS/TLS, enforced at the infrastructure level;</li>
+  <li>Managed cloud infrastructure: the Platform runs on established managed providers (Vercel, Upstash, Railway, Convex) whose platforms provide infrastructure-level security controls, physical security, and availability measures;</li>
+  <li>Access controls: production systems and administrative accounts are protected by unique credentials, with access limited to authorised personnel;</li>
+  <li>Data keying: customer billing and entitlement data is keyed and retrieved per individual user account;</li>
+  <li>Error monitoring and diagnostics (Sentry) to detect and remediate application faults;</li>
+  <li>Payment isolation: payment card data is collected and processed directly by Stripe and never stored on Sentinella systems;</li>
+  <li>Vendor selection: sub-processors are established providers operating under their own published security and compliance programmes;</li>
+  <li>Incident handling: faults and suspected security events are triaged by the engineering team, supporting the breach notification commitments in Section 7.</li>
 </ul>
-<p>[NOTE: This Annex must be reviewed against the platform's actual production architecture before publication and updated as measures evolve.]</p>
+<p>Sentinella reviews these measures periodically and updates this Annex as additional controls (including enhanced security monitoring, formalised access management, and audit processes) are implemented.</p>
 
 <h2>Annex III — Authorised Sub-processors</h2>
 <table>
   <tr><th>Sub-processor</th><th>Purpose</th><th>Location</th></tr>
-  <tr><td>GitHub, Inc. (Microsoft)</td><td>Code hosting and website infrastructure</td><td>USA</td></tr>
-  <tr><td>Google LLC (Google Workspace)</td><td>Email and business correspondence</td><td>USA / EU</td></tr>
+  <tr><td>Vercel Inc.</td><td>Platform and website hosting, API compute (Edge Functions), scheduled jobs, and infrastructure analytics</td><td>USA / EU</td></tr>
+  <tr><td>Upstash, Inc.</td><td>Managed caching layer for Platform data</td><td>USA / EU</td></tr>
+  <tr><td>Railway Corp.</td><td>Always-on relay services for real-time maritime data streams</td><td>USA</td></tr>
+  <tr><td>Convex, Inc.</td><td>Database services for email and waitlist registration</td><td>USA</td></tr>
+  <tr><td>Anthropic, PBC</td><td>Large language model API powering the in-platform assistant ("Maria"), processing user queries and associated dashboard context</td><td>USA</td></tr>
+  <tr><td>GitHub, Inc. (Microsoft)</td><td>Code repository and deployment pipeline</td><td>USA</td></tr>
+  <tr><td>Functional Software, Inc. (Sentry)</td><td>Error monitoring and application diagnostics</td><td>USA / EU</td></tr>
   <tr><td>Stripe, Inc.</td><td>Payment processing</td><td>USA / EU</td></tr>
   <tr><td>HubSpot, Inc.</td><td>Customer relationship management</td><td>USA / EU</td></tr>
+  <tr><td>Google LLC (Google Workspace)</td><td>Email and business correspondence</td><td>USA / EU</td></tr>
   <tr><td>Slack Technologies (Salesforce, Inc.)</td><td>Internal communications supporting service delivery and customer support</td><td>USA / EU</td></tr>
-  <tr><td>Anthropic, PBC</td><td>Large language model services powering the in-platform assistant ("Maria") [CONFIRM production LLM provider before publication]</td><td>USA</td></tr>
-  <tr><td>[HOSTING PROVIDER for the Platform production environment — CONFIRM: e.g. AWS / GCP / Azure / other]</td><td>Platform hosting and data storage</td><td>[CONFIRM]</td></tr>
 </table>
-
 </div>
 <footer class="legal-footer">
   <p class="legal-footer-company">© 2026 Sentinella LLC &nbsp;·&nbsp; 8 The Green STE A, Dover, DE 19901, USA &nbsp;·&nbsp; HQ: Brussels, Belgium</p>

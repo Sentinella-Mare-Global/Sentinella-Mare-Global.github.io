@@ -91,16 +91,15 @@
   h2 { font-family: var(--display); font-size: 1.35rem; font-weight: 700; color: var(--text); margin: 2.8rem 0 0.9rem; padding-top: 1.6rem; border-top: 1px solid var(--rule); }
   h3 { font-size: 1rem; font-weight: 600; color: var(--teal); margin: 1.6rem 0 0.5rem; }
   p { color: var(--text-mid); font-size: 0.95rem; margin-bottom: 1rem; }
-  ul { color: var(--text-mid); font-size: 0.95rem; margin: 0 0 1rem 1.4rem; }
+  ul, ol { color: var(--text-mid); font-size: 0.95rem; margin: 0 0 1rem 1.4rem; }
   li { margin-bottom: 0.45rem; }
   a { color: var(--teal); text-decoration: none; }
   a:hover { text-decoration: underline; }
   table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.88rem; }
   th { text-align: left; color: var(--teal); font-weight: 500; padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--rule); }
   td { color: var(--text-mid); padding: 0.6rem 0.8rem; border-bottom: 1px solid rgba(14,181,175,0.07); vertical-align: top; }
-  .notice { background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; padding: 1.1rem 1.3rem; margin: 1.5rem 0; font-size: 0.9rem; color: var(--text-mid); }
-  .footer-nav { margin-top: 4rem; padding-top: 1.5rem; border-top: 1px solid var(--rule); font-size: 0.85rem; color: var(--text-dim); }
-
+  .notice { background: var(--panel); border: 1px solid var(--gold); border-radius: 8px; padding: 1.1rem 1.3rem; margin: 1.5rem 0; font-size: 0.9rem; color: var(--text-mid); }
+  .caps { text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.02em; }
 </style>
 </head>
 <body>
@@ -173,8 +172,13 @@
   <tr><td>Tally B.V.</td><td>Contact and demo request forms</td><td>Belgium (EU)</td></tr>
   <tr><td>Stripe, Inc.</td><td>Payment processing for subscriptions</td><td>USA / EU</td></tr>
   <tr><td>HubSpot, Inc.</td><td>Customer relationship management</td><td>USA / EU</td></tr>
-  <tr><td>GitHub, Inc. (Microsoft)</td><td>Website hosting and code repository</td><td>USA</td></tr>
+  <tr><td>Vercel Inc.</td><td>Website and Platform hosting, API compute, and infrastructure analytics</td><td>USA / EU</td></tr>
+  <tr><td>Upstash, Inc.</td><td>Data caching infrastructure for the Platform</td><td>USA / EU</td></tr>
+  <tr><td>Railway Corp.</td><td>Real-time data relay infrastructure for the Platform</td><td>USA</td></tr>
+  <tr><td>Convex, Inc.</td><td>Database services for email and waitlist registration</td><td>USA</td></tr>
+  <tr><td>GitHub, Inc. (Microsoft)</td><td>Code repository and deployment pipeline</td><td>USA</td></tr>
   <tr><td>Anthropic, PBC</td><td>Large language model services powering the in-platform assistant ("Maria")</td><td>USA</td></tr>
+  <tr><td>Functional Software, Inc. (Sentry)</td><td>Error monitoring and application diagnostics</td><td>USA / EU</td></tr>
   <tr><td>Slack Technologies (Salesforce, Inc.)</td><td>Internal business communications, including handling of customer enquiries and support</td><td>USA / EU</td></tr>
 </table>
 <p>Payment card details are collected and processed directly by Stripe; we do not store full card numbers. We will update this list as our providers change.</p>
@@ -235,7 +239,6 @@
   8 The Green STE A, Dover, DE 19901, United States<br>
   <a href="mailto:james@sentinellaglobal.com">james@sentinellaglobal.com</a>
 </p>
-
 </div>
 <footer class="legal-footer">
   <p class="legal-footer-company">© 2026 Sentinella LLC &nbsp;·&nbsp; 8 The Green STE A, Dover, DE 19901, USA &nbsp;·&nbsp; HQ: Brussels, Belgium</p>
