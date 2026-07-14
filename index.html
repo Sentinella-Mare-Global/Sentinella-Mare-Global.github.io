@@ -912,9 +912,12 @@
   .indiv-cards {
     display: grid; grid-template-columns: 1fr 1fr;
     gap: 2px; margin-top: 2px;
+    max-width: 74%;
   }
   .indiv-cards .price-card { margin-bottom: 0; }
   .indiv-cards .price-card.featured { transform: none; }
+  /* Enterprise inner wrapper */
+  .ent-inner { max-width: 660px; margin: 0 auto; }
   /* Enterprise elements */
   .ent-features-card { background: var(--navy-3); padding: 24px 28px; margin-top: 2px; }
   .ent-features-title {
@@ -2028,6 +2031,7 @@
 
   <!-- ENTERPRISE panel -->
   <div class="pricing-panel" id="panel-enterprise">
+    <div class="ent-inner">
     <div class="ent-features-card">
       <div class="ent-features-title">What's included</div>
       <div class="ent-item">
@@ -2095,6 +2099,7 @@
       <span class="ent-sardinia-flag">SARDINIA SPECIAL</span>
       <div class="ent-sardinia-body"><strong>10–20% discount</strong> for Sardinian maritime operators.</div>
     </div>
+    </div><!-- /.ent-inner -->
   </div>
 
 </section>
