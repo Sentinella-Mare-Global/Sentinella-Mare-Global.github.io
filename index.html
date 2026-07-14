@@ -284,13 +284,13 @@
   /* Remove iOS blue flash on tap */
   a, button, [role="button"],
   .btn-primary, .btn-secondary, .btn-nav,
-  .nav-toggle, .asset-tab, .price-btn,
+  .nav-toggle, .pricing-tab, .price-btn,
   .lang-globe, .lang-btn, .svc-cta, .client-tag {
     -webkit-tap-highlight-color: transparent;
   }
   /* Faster tap response — skip 300ms delay on all interactive elements */
   .btn-primary, .btn-secondary, .btn-nav,
-  .nav-toggle, .asset-tab, .price-btn,
+  .nav-toggle, .pricing-tab, .price-btn,
   .lang-globe, .lang-btn {
     touch-action: manipulation;
   }
@@ -792,7 +792,7 @@
   }
   .price-card {
     background: var(--navy-3);
-    padding: 44px 36px;
+    padding: 28px 28px;
     position: relative;
     transition: transform 0.3s;
     display: flex; flex-direction: column;
@@ -822,9 +822,9 @@
     color: var(--white); margin-bottom: 8px;
   }
   .price-best-for {
-    font-size: 12px; line-height: 1.6;
+    font-size: 12px; line-height: 1.5;
     color: rgba(200,216,236,0.55);
-    margin: 0 0 20px 0; font-style: italic;
+    margin: 0 0 14px 0; font-style: italic;
   }
   .price-amt {
     font-family: 'Cinzel', serif;
@@ -838,16 +838,17 @@
     font-size: 11px; letter-spacing: 2px;
     color: var(--text); margin-bottom: 32px;
   }
-  .price-features { list-style: none; margin-bottom: 36px; }
+  .price-features { list-style: none; margin-bottom: 24px; }
   .price-features li {
     display: flex; align-items: flex-start; gap: 10px;
-    font-size: 14px; font-weight: 500; letter-spacing: 0.5px; line-height: 1.6;
-    color: var(--text); padding: 9px 0;
+    font-size: 13px; font-weight: 500; letter-spacing: 0.3px; line-height: 1.5;
+    color: var(--text); padding: 6px 0;
     border-bottom: 1px solid rgba(255,255,255,0.06);
   }
   .price-features li::before {
     content: '✓'; color: var(--green-mid);
     font-size: 12px; flex-shrink: 0;
+    width: 16px; text-align: center;
   }
   .price-features li.na { display: none; }
   .price-btn {
@@ -866,84 +867,64 @@
     background: var(--green); border-color: var(--green);
     color: white; box-shadow: 0 0 24px rgba(45,122,58,0.35);
   }
-  /* Pricing split layout */
-  .pricing-split {
-    display: grid; grid-template-columns: 1fr 60px 1fr;
-    gap: 0; margin-top: 60px; align-items: start;
+  /* Pricing tab layout */
+  .pricing-tabs {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2px; margin-top: 56px;
+    background: var(--navy-2);
   }
-  .pricing-col { padding: 0 8px; }
-  .pricing-col .price-card { margin-bottom: 2px; }
-  .pricing-col .price-card.featured { transform: none; }
-  .pricing-col-header {
-    padding: 28px 0 24px;
-    border-bottom: 2px solid rgba(255,255,255,0.06);
-    margin-bottom: 32px;
+  .pricing-tab {
+    background: transparent; border: none;
+    padding: 28px 40px; cursor: pointer;
+    text-align: left; transition: all 0.2s;
+    border-bottom: 3px solid transparent;
   }
-  .pricing-col-eyebrow {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px; letter-spacing: 4px;
-    text-transform: uppercase; margin-bottom: 10px;
-  }
-  .individual-header .pricing-col-eyebrow { color: var(--green-mid); }
-  .enterprise-header .pricing-col-eyebrow { color: var(--gold); }
-  .pricing-col-title {
+  .pricing-tab:hover:not(.active) { background: rgba(255,255,255,0.03); }
+  .pricing-tab.active { background: var(--navy-4); }
+  .pricing-tab.individual.active { border-bottom-color: var(--green); }
+  .pricing-tab.enterprise.active { border-bottom-color: var(--gold); }
+  .ptab-label {
     font-family: 'Cinzel', serif;
-    font-size: 20px; font-weight: 700;
-    color: var(--white); margin-bottom: 8px;
+    font-size: 30px; font-weight: 700;
+    color: rgba(240,245,252,0.35); display: block; margin-bottom: 6px;
+    transition: color 0.2s;
   }
-  .pricing-col-audience { font-size: 12px; color: var(--text-dim); line-height: 1.6; }
-  .pricing-divider { display: flex; justify-content: center; padding-top: 100px; }
-  .pricing-divider-line {
-    width: 1px; min-height: 500px;
-    background: repeating-linear-gradient(180deg, rgba(255,255,255,0.1) 0 6px, transparent 6px 12px);
+  .pricing-tab.active .ptab-label { color: var(--white); }
+  .pricing-tab.individual.active .ptab-label { color: var(--green-mid); }
+  .pricing-tab.enterprise.active .ptab-label { color: var(--gold); }
+  .ptab-sub {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px; font-weight: 600; letter-spacing: 1px;
+    color: rgba(200,216,236,0.25); display: block; margin-bottom: 5px;
+    transition: color 0.2s;
   }
+  .pricing-tab.active .ptab-sub { color: var(--text-dim); }
+  .ptab-audience {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px; letter-spacing: 0.5px;
+    color: rgba(200,216,236,0.15); display: block;
+    transition: color 0.2s;
+  }
+  .pricing-tab.active .ptab-audience { color: rgba(200,216,236,0.38); }
+  .pricing-panel { display: none; }
+  .pricing-panel.active { display: block; margin-top: 48px; }
+  /* Individual panel */
+  .indiv-cards {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 2px; margin-top: 2px;
+  }
+  .indiv-cards .price-card { margin-bottom: 0; }
+  .indiv-cards .price-card.featured { transform: none; }
   /* Enterprise elements */
-  .ent-formula {
-    background: var(--navy-4);
-    border: 1px solid rgba(45,122,58,0.2);
-    padding: 24px 28px; margin-bottom: 2px;
-  }
-  .ent-formula-label {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 9px; letter-spacing: 3px;
-    color: var(--gold); text-transform: uppercase; margin-bottom: 14px;
-  }
-  .ent-formula-eq {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 12px; line-height: 1.8;
-    display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
-  }
-  .ent-term {
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.15);
-    padding: 4px 10px; color: var(--white);
-  }
-  .ent-op { color: var(--gold); font-weight: 700; font-size: 14px; }
-  .ent-formula-note { font-size: 12px; color: var(--text-dim); margin-top: 14px; line-height: 1.6; }
-  .ent-sardinia {
-    background: rgba(201,168,76,0.07);
-    border: 1px solid rgba(201,168,76,0.25);
-    padding: 14px 20px;
-    display: flex; gap: 14px; align-items: flex-start;
-    margin-top: 2px; margin-bottom: 2px;
-  }
-  .ent-sardinia-flag {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 8px; letter-spacing: 2px;
-    background: var(--gold); color: var(--navy);
-    padding: 5px 10px; white-space: nowrap; flex-shrink: 0;
-  }
-  .ent-sardinia-body { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
-  .ent-sardinia-body strong { color: var(--white); }
-  .ent-features-card { background: var(--navy-3); padding: 28px; margin-top: 2px; }
+  .ent-features-card { background: var(--navy-3); padding: 24px 28px; margin-top: 2px; }
   .ent-features-title {
     font-family: 'Share Tech Mono', monospace;
     font-size: 9px; letter-spacing: 3px;
-    color: var(--green-mid); text-transform: uppercase; margin-bottom: 20px;
+    color: var(--green-mid); text-transform: uppercase; margin-bottom: 16px;
   }
   .ent-item {
     display: flex; gap: 14px; align-items: flex-start;
-    padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
   }
   .ent-item:last-child { border-bottom: none; }
   .ent-tag {
@@ -952,41 +933,55 @@
     background: rgba(45,122,58,0.18);
     border: 1px solid rgba(45,122,58,0.3);
     color: var(--green-mid);
-    padding: 3px 8px; white-space: nowrap; flex-shrink: 0; margin-top: 2px;
+    padding: 4px 10px; white-space: nowrap; flex-shrink: 0; margin-top: 2px;
   }
   .ent-tag.addon { background: rgba(201,168,76,0.1); border-color: rgba(201,168,76,0.3); color: var(--gold); }
   .ent-item-txt { display: flex; flex-direction: column; gap: 3px; }
   .ent-item-h { font-size: 13px; font-weight: 600; color: var(--white); letter-spacing: 0.3px; }
-  .ent-item-d { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+  .ent-item-d { font-size: 11px; color: var(--text-dim); line-height: 1.4; }
   .ent-fork-card {
-    background: var(--navy-3);
+    background: var(--navy-4);
     border: 1px solid rgba(201,168,76,0.15);
-    padding: 24px 28px; margin-top: 2px;
+    padding: 18px 28px; margin-top: 2px;
   }
   .ent-fork-title {
     font-family: 'Share Tech Mono', monospace;
     font-size: 9px; letter-spacing: 3px;
-    color: var(--gold); text-transform: uppercase; margin-bottom: 18px;
+    color: var(--gold); text-transform: uppercase; margin-bottom: 14px;
   }
-  .ent-fork { display: grid; grid-template-columns: 1fr 40px 1fr; align-items: center; }
+  .ent-fork { display: grid; grid-template-columns: 1fr 60px 1fr; align-items: center; }
   .ent-fork-option {
-    background: var(--navy-4);
+    background: var(--navy-3);
     border: 1px solid rgba(255,255,255,0.08);
-    padding: 16px; text-align: center;
+    padding: 14px 18px; text-align: center;
   }
-  .ent-fork-name { font-family: 'Cinzel', serif; font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
-  .ent-fork-desc { font-size: 11px; color: var(--text-dim); line-height: 1.5; }
+  .ent-fork-name { font-family: 'Cinzel', serif; font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .ent-fork-desc { font-size: 11px; color: var(--text-dim); line-height: 1.4; }
   .ent-fork-or { text-align: center; font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 2px; color: var(--gold); font-weight: 700; }
+  .ent-sardinia {
+    background: rgba(201,168,76,0.07);
+    border: 1px solid rgba(201,168,76,0.25);
+    padding: 12px 28px;
+    display: flex; gap: 14px; align-items: center;
+    margin-top: 2px;
+  }
+  .ent-sardinia-flag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 8px; letter-spacing: 2px;
+    background: var(--gold); color: var(--navy);
+    padding: 5px 12px; white-space: nowrap; flex-shrink: 0;
+  }
+  .ent-sardinia-body { font-size: 13px; color: var(--text-dim); }
+  .ent-sardinia-body strong { color: var(--white); }
   .feat-tbd {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 9px; letter-spacing: 1px;
-    color: var(--gold);
+    font-size: 9px; letter-spacing: 1px; color: var(--gold);
     border: 1px dashed rgba(201,168,76,0.4);
     padding: 1px 6px; margin-left: 6px;
   }
   @media (max-width: 900px) {
-    .pricing-split { grid-template-columns: 1fr; }
-    .pricing-divider { display: none; }
+    .pricing-tabs { grid-template-columns: 1fr; gap: 1px; }
+    .ent-fork { grid-template-columns: 1fr 44px 1fr; }
   }
 
   /* ── ADVISORY ── */
@@ -1365,9 +1360,10 @@
     .price-card.featured { transform: none; }
     .pricing-grid { grid-template-columns: 1fr; }
 
-    .asset-tabs { flex-direction: column; gap: 1px; }
-    .asset-tab { text-align: left; padding-left: 20px; border-bottom: 1px solid rgba(255,255,255,0.06); border-left: 3px solid transparent; }
-    .asset-tab.active { border-bottom-color: transparent; border-left-color: var(--green); color: var(--green-mid); }
+    .pricing-tabs { grid-template-columns: 1fr; gap: 1px; }
+    .pricing-tab { padding: 20px 24px; }
+    .ptab-label { font-size: 22px; }
+    .ptab-audience { display: none; }
 
     .adv-grid { grid-template-columns: 1fr; gap: 36px; }
     .dash-body { grid-template-columns: 1fr; min-height: auto; }
@@ -1412,10 +1408,10 @@
     .btn-nav { font-size: 14px !important; letter-spacing: 2px !important; padding: 12px 28px !important; }
     .btn-primary, .btn-secondary { padding: 12px 24px; font-size: 11px; }
 
-    .price-btn, .asset-tab, .lang-btn, .client-tag, .nav-links a {
-      min-height: 44px; display: inline-flex; align-items: center; justify-content: center;
+    .price-btn, .pricing-tab, .lang-btn, .client-tag, .nav-links a {
+      min-height: 44px;
     }
-    .asset-tab { justify-content: flex-start; }
+    .pricing-tab { display: flex; flex-direction: column; align-items: flex-start; }
 
   }
 
@@ -1989,16 +1985,23 @@
     Two paths to maritime intelligence. Individual plans give analysts, journalists, and researchers access to Sentinella Mare's proprietary MHTES scoring and real-time threat environment. Enterprise contracts are built around your assets — port, fleet, or subsea cable — with private ops mapping, customisable response plans, and optional deep simulation.
   </p>
 
-  <div class="pricing-split">
+  <!-- Pricing tabs -->
+  <div class="pricing-tabs">
+    <button class="pricing-tab individual active" data-panel="panel-individual">
+      <span class="ptab-label">Individual</span>
+      <span class="ptab-sub">Analysts &amp; General Users</span>
+      <span class="ptab-audience">Geopolitical analysts · financial analysts · journalists · researchers</span>
+    </button>
+    <button class="pricing-tab enterprise" data-panel="panel-enterprise">
+      <span class="ptab-label">Enterprise</span>
+      <span class="ptab-sub">Commercial Operators</span>
+      <span class="ptab-audience">Ports · cable operators · shipping &amp; ISM · ferry operators · insurers · defence</span>
+    </button>
+  </div>
 
-    <!-- INDIVIDUAL -->
-    <div class="pricing-col">
-      <div class="pricing-col-header individual-header">
-        <div class="pricing-col-eyebrow">Individual</div>
-        <div class="pricing-col-title">Analysts &amp; General Users</div>
-        <div class="pricing-col-audience">Geopolitical analysts · financial analysts · journalists · independent researchers</div>
-      </div>
-
+  <!-- INDIVIDUAL panel -->
+  <div class="pricing-panel active" id="panel-individual">
+    <div class="indiv-cards">
       <div class="price-card featured free-card">
         <div class="price-name">Basic</div>
         <p class="price-best-for">Entry-level access to Sentinella Mare's proprietary MHTES scoring and real-time maritime alerts.</p>
@@ -2009,7 +2012,6 @@
         </ul>
         <a href="https://mare.sentinellaglobal.com/" class="price-btn active" target="_blank" rel="noopener noreferrer">Launch Now</a>
       </div>
-
       <div class="price-card">
         <div class="price-name">Pro</div>
         <p class="price-best-for">Full platform access for professionals who need deeper intelligence and expanded MARIA interactions.</p>
@@ -2022,102 +2024,79 @@
         <a href="#contact" class="price-btn">Request Access</a>
       </div>
     </div>
-
-    <!-- DIVIDER -->
-    <div class="pricing-divider">
-      <div class="pricing-divider-line"></div>
-    </div>
-
-    <!-- ENTERPRISE -->
-    <div class="pricing-col">
-      <div class="pricing-col-header enterprise-header">
-        <div class="pricing-col-eyebrow">Enterprise</div>
-        <div class="pricing-col-title">Commercial Operators</div>
-        <div class="pricing-col-audience">Ports · cable operators · shipping &amp; ISM · ferry operators · insurers · defence</div>
-      </div>
-
-      <div class="ent-formula">
-        <div class="ent-formula-label">Pricing structure</div>
-        <div class="ent-formula-eq">
-          <span class="ent-term">Asset Count</span>
-          <span class="ent-op">×</span>
-          <span class="ent-term">Price / Asset Class</span>
-          <span class="ent-op">+</span>
-          <span class="ent-term">Response Plans / Add-ons</span>
-        </div>
-        <div class="ent-formula-note">One model across the full market — from a single-port operator to a large multi-asset fleet.</div>
-      </div>
-
-      <div class="ent-sardinia">
-        <span class="ent-sardinia-flag">SARDINIA SPECIAL</span>
-        <div class="ent-sardinia-body"><strong>10–20% discount</strong> for Sardinian maritime operators.</div>
-      </div>
-
-      <div class="ent-features-card">
-        <div class="ent-features-title">Platform features</div>
-        <div class="ent-item">
-          <span class="ent-tag">Included</span>
-          <div class="ent-item-txt">
-            <span class="ent-item-h">Threat environment reports</span>
-            <span class="ent-item-d">Custom date range — for your security team, board, or compliance auditor</span>
-          </div>
-        </div>
-        <div class="ent-item">
-          <span class="ent-tag">Included</span>
-          <div class="ent-item-txt">
-            <span class="ent-item-h">Alert Page — your assets</span>
-            <span class="ent-item-d">CAS + news, tailored status by asset class: Port, Cable, or Vessel</span>
-          </div>
-        </div>
-        <div class="ent-item">
-          <span class="ent-tag">Included</span>
-          <div class="ent-item-txt">
-            <span class="ent-item-h">Ops Map — private</span>
-            <span class="ent-item-d">Default view with your scored assets, visible to your team only</span>
-          </div>
-        </div>
-        <div class="ent-item">
-          <span class="ent-tag">Included</span>
-          <div class="ent-item-txt">
-            <span class="ent-item-h">Response plans — J3/35 default</span>
-            <span class="ent-item-d">Standard framework included at every level</span>
-          </div>
-        </div>
-        <div class="ent-item">
-          <span class="ent-tag addon">Add-on</span>
-          <div class="ent-item-txt">
-            <span class="ent-item-h">Proprietary response plans</span>
-            <span class="ent-item-d">Your own plans, built in</span>
-          </div>
-        </div>
-        <div class="ent-item">
-          <span class="ent-tag addon">Add-on</span>
-          <div class="ent-item-txt">
-            <span class="ent-item-h">Deep Simulation Page</span>
-            <span class="ent-item-d">Scenario modelling on your assets</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="ent-fork-card">
-        <div class="ent-fork-title">Platform or API — not both</div>
-        <div class="ent-fork">
-          <div class="ent-fork-option">
-            <div class="ent-fork-name">Platform</div>
-            <div class="ent-fork-desc">Full MARE interface, tailored &amp; private</div>
-          </div>
-          <div class="ent-fork-or">OR</div>
-          <div class="ent-fork-option">
-            <div class="ent-fork-name">API</div>
-            <div class="ent-fork-desc">Plugs directly into your existing C2</div>
-          </div>
-        </div>
-      </div>
-
-      <a href="#contact" class="price-btn active" style="margin-top: 10px; display: block;">Contact Us</a>
-    </div>
-
   </div>
+
+  <!-- ENTERPRISE panel -->
+  <div class="pricing-panel" id="panel-enterprise">
+    <div class="ent-features-card">
+      <div class="ent-features-title">What's included</div>
+      <div class="ent-item">
+        <span class="ent-tag">Included</span>
+        <div class="ent-item-txt">
+          <span class="ent-item-h">Threat environment reports</span>
+          <span class="ent-item-d">Custom date range — for your security team, board, or compliance auditor</span>
+        </div>
+      </div>
+      <div class="ent-item">
+        <span class="ent-tag">Included</span>
+        <div class="ent-item-txt">
+          <span class="ent-item-h">Alert Page — your assets</span>
+          <span class="ent-item-d">CAS + news, tailored status by asset class: Port, Cable, or Vessel</span>
+        </div>
+      </div>
+      <div class="ent-item">
+        <span class="ent-tag">Included</span>
+        <div class="ent-item-txt">
+          <span class="ent-item-h">Ops Map — private</span>
+          <span class="ent-item-d">Default view with your scored assets, visible to your team only</span>
+        </div>
+      </div>
+      <div class="ent-item">
+        <span class="ent-tag">Included</span>
+        <div class="ent-item-txt">
+          <span class="ent-item-h">Response plans — J3/35 default</span>
+          <span class="ent-item-d">Standard framework included at every level</span>
+        </div>
+      </div>
+      <div class="ent-item">
+        <span class="ent-tag addon">Add-on</span>
+        <div class="ent-item-txt">
+          <span class="ent-item-h">Proprietary response plans</span>
+          <span class="ent-item-d">Your own plans, built in</span>
+        </div>
+      </div>
+      <div class="ent-item">
+        <span class="ent-tag addon">Add-on</span>
+        <div class="ent-item-txt">
+          <span class="ent-item-h">Deep Simulation Page</span>
+          <span class="ent-item-d">Scenario modelling on your assets</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ent-fork-card">
+      <div class="ent-fork-title">Platform or API</div>
+      <div class="ent-fork">
+        <div class="ent-fork-option">
+          <div class="ent-fork-name">Platform</div>
+          <div class="ent-fork-desc">Full MARE interface, tailored &amp; private</div>
+        </div>
+        <div class="ent-fork-or">OR</div>
+        <div class="ent-fork-option">
+          <div class="ent-fork-name">API</div>
+          <div class="ent-fork-desc">Plugs directly into your existing C2</div>
+        </div>
+      </div>
+    </div>
+
+    <a href="#contact" class="price-btn active" style="margin-top: 2px; display: block;">Contact Us</a>
+
+    <div class="ent-sardinia">
+      <span class="ent-sardinia-flag">SARDINIA SPECIAL</span>
+      <div class="ent-sardinia-body"><strong>10–20% discount</strong> for Sardinian maritime operators.</div>
+    </div>
+  </div>
+
 </section>
 
 <!-- CLIENTS -->
@@ -3023,13 +3002,13 @@ document.addEventListener('click', function(e) {
   if (sd && !sd.contains(e.target)) sd.classList.remove('open');
 });
 
-// Asset type tab switching
-document.querySelectorAll('.asset-tab').forEach(tab => {
+// Pricing tab switching
+document.querySelectorAll('.pricing-tab').forEach(tab => {
   tab.addEventListener('click', function() {
-    document.querySelectorAll('.asset-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.asset-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.pricing-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.pricing-panel').forEach(p => p.classList.remove('active'));
     this.classList.add('active');
-    document.getElementById('asset-' + this.dataset.asset).classList.add('active');
+    document.getElementById(this.dataset.panel).classList.add('active');
   });
 });
 
