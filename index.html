@@ -866,58 +866,127 @@
     background: var(--green); border-color: var(--green);
     color: white; box-shadow: 0 0 24px rgba(45,122,58,0.35);
   }
-  /* Asset tabs */
-  .asset-tabs {
-    display: flex; gap: 2px; margin-top: 48px;
+  /* Pricing split layout */
+  .pricing-split {
+    display: grid; grid-template-columns: 1fr 60px 1fr;
+    gap: 0; margin-top: 60px; align-items: start;
   }
-  .asset-tab {
-    flex: 1; background: var(--navy-3); border: none;
-    color: var(--text); font-family: 'Rajdhani', sans-serif;
-    font-size: 13px; font-weight: 700; letter-spacing: 2px;
-    text-transform: uppercase; padding: 18px 24px;
-    cursor: pointer; transition: all 0.3s;
-    border-bottom: 2px solid transparent;
+  .pricing-col { padding: 0 8px; }
+  .pricing-col .price-card { margin-bottom: 2px; }
+  .pricing-col .price-card.featured { transform: none; }
+  .pricing-col-header {
+    padding: 28px 0 24px;
+    border-bottom: 2px solid rgba(255,255,255,0.06);
+    margin-bottom: 32px;
   }
-  .asset-tab:hover { background: var(--navy-4); color: var(--white); }
-  .asset-tab.active { background: var(--navy-4); color: var(--green-mid); border-bottom-color: var(--green); }
-  .asset-panel { display: none; }
-  .asset-panel.active { display: block; }
-  .asset-subtitle {
+  .pricing-col-eyebrow {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 10px; letter-spacing: 3px; color: var(--text-dim);
-    text-transform: uppercase; text-align: center;
-    padding: 28px 0 4px;
+    font-size: 10px; letter-spacing: 4px;
+    text-transform: uppercase; margin-bottom: 10px;
   }
-  .price-meta {
+  .individual-header .pricing-col-eyebrow { color: var(--green-mid); }
+  .enterprise-header .pricing-col-eyebrow { color: var(--gold); }
+  .pricing-col-title {
+    font-family: 'Cinzel', serif;
+    font-size: 20px; font-weight: 700;
+    color: var(--white); margin-bottom: 8px;
+  }
+  .pricing-col-audience { font-size: 12px; color: var(--text-dim); line-height: 1.6; }
+  .pricing-divider { display: flex; justify-content: center; padding-top: 100px; }
+  .pricing-divider-line {
+    width: 1px; min-height: 500px;
+    background: repeating-linear-gradient(180deg, rgba(255,255,255,0.1) 0 6px, transparent 6px 12px);
+  }
+  /* Enterprise elements */
+  .ent-formula {
+    background: var(--navy-4);
+    border: 1px solid rgba(45,122,58,0.2);
+    padding: 24px 28px; margin-bottom: 2px;
+  }
+  .ent-formula-label {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 10px; letter-spacing: 1.5px; color: var(--green-mid);
-    opacity: 0.8; margin-bottom: 28px;
+    font-size: 9px; letter-spacing: 3px;
+    color: var(--gold); text-transform: uppercase; margin-bottom: 14px;
   }
-  .price-coverage {
+  .ent-formula-eq {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 9px; letter-spacing: 2px; color: var(--gold);
-    text-transform: uppercase; margin-bottom: 20px;
-    border: 1px solid rgba(201,168,76,0.25); padding: 4px 10px;
-    display: inline-block; border-radius: 2px;
+    font-size: 12px; line-height: 1.8;
+    display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
   }
-  .feat-group {
-    font-family: 'Share Tech Mono', monospace !important;
-    font-size: 9px !important; letter-spacing: 3px;
-    color: var(--green-mid) !important; text-transform: uppercase;
-    padding: 14px 0 2px !important;
-    border-bottom: 1px solid rgba(45,122,58,0.15) !important;
-    font-weight: 400 !important; display: flex !important;
+  .ent-term {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 4px 10px; color: var(--white);
   }
-  .feat-group::before { content: none !important; }
-  .price-features li.feat-star-item { color: var(--gold); }
-  .price-features li.feat-star-item::before { content: '★'; color: var(--gold); font-size: 10px; }
-  .cmd-footer { margin-top: auto; }
-  .cmd-footer .price-btn { margin-top: 0; }
-  .tier-star-note {
+  .ent-op { color: var(--gold); font-weight: 700; font-size: 14px; }
+  .ent-formula-note { font-size: 12px; color: var(--text-dim); margin-top: 14px; line-height: 1.6; }
+  .ent-sardinia {
+    background: rgba(201,168,76,0.07);
+    border: 1px solid rgba(201,168,76,0.25);
+    padding: 14px 20px;
+    display: flex; gap: 14px; align-items: flex-start;
+    margin-top: 2px; margin-bottom: 2px;
+  }
+  .ent-sardinia-flag {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 10px; letter-spacing: 1px;
-    color: rgba(201,168,76,0.5);
-    text-align: left; padding: 0 0 14px;
+    font-size: 8px; letter-spacing: 2px;
+    background: var(--gold); color: var(--navy);
+    padding: 5px 10px; white-space: nowrap; flex-shrink: 0;
+  }
+  .ent-sardinia-body { font-size: 13px; color: var(--text-dim); line-height: 1.6; }
+  .ent-sardinia-body strong { color: var(--white); }
+  .ent-features-card { background: var(--navy-3); padding: 28px; margin-top: 2px; }
+  .ent-features-title {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px; letter-spacing: 3px;
+    color: var(--green-mid); text-transform: uppercase; margin-bottom: 20px;
+  }
+  .ent-item {
+    display: flex; gap: 14px; align-items: flex-start;
+    padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .ent-item:last-child { border-bottom: none; }
+  .ent-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 8px; letter-spacing: 2px; text-transform: uppercase;
+    background: rgba(45,122,58,0.18);
+    border: 1px solid rgba(45,122,58,0.3);
+    color: var(--green-mid);
+    padding: 3px 8px; white-space: nowrap; flex-shrink: 0; margin-top: 2px;
+  }
+  .ent-tag.addon { background: rgba(201,168,76,0.1); border-color: rgba(201,168,76,0.3); color: var(--gold); }
+  .ent-item-txt { display: flex; flex-direction: column; gap: 3px; }
+  .ent-item-h { font-size: 13px; font-weight: 600; color: var(--white); letter-spacing: 0.3px; }
+  .ent-item-d { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+  .ent-fork-card {
+    background: var(--navy-3);
+    border: 1px solid rgba(201,168,76,0.15);
+    padding: 24px 28px; margin-top: 2px;
+  }
+  .ent-fork-title {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px; letter-spacing: 3px;
+    color: var(--gold); text-transform: uppercase; margin-bottom: 18px;
+  }
+  .ent-fork { display: grid; grid-template-columns: 1fr 40px 1fr; align-items: center; }
+  .ent-fork-option {
+    background: var(--navy-4);
+    border: 1px solid rgba(255,255,255,0.08);
+    padding: 16px; text-align: center;
+  }
+  .ent-fork-name { font-family: 'Cinzel', serif; font-size: 14px; font-weight: 700; color: var(--white); margin-bottom: 6px; }
+  .ent-fork-desc { font-size: 11px; color: var(--text-dim); line-height: 1.5; }
+  .ent-fork-or { text-align: center; font-family: 'Share Tech Mono', monospace; font-size: 11px; letter-spacing: 2px; color: var(--gold); font-weight: 700; }
+  .feat-tbd {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px; letter-spacing: 1px;
+    color: var(--gold);
+    border: 1px dashed rgba(201,168,76,0.4);
+    padding: 1px 6px; margin-left: 6px;
+  }
+  @media (max-width: 900px) {
+    .pricing-split { grid-template-columns: 1fr; }
+    .pricing-divider { display: none; }
   }
 
   /* ── ADVISORY ── */
@@ -1917,274 +1986,137 @@
   <div class="section-label" data-i18n="pricing.label">Subscription Platform</div>
   <h2 data-i18n="pricing.h2" data-i18n-html="true"><span>Mediterranean Watch</span><br>Subscription Tiers</h2>
   <p class="section-lead">
-    Four coverage levels — Basic (Free), Exposure, Sentinel, and Command — across three asset packages: Port, Fleet, and Subsea Cable. All tiers include the complete intelligence feed stack. Asset coverage and compliance output capabilities are what distinguish them.
+    Two paths to maritime intelligence. Individual plans give analysts, journalists, and researchers access to Sentinella Mare's proprietary MHTES scoring and real-time threat environment. Enterprise contracts are built around your assets — port, fleet, or subsea cable — with private ops mapping, customisable response plans, and optional deep simulation.
   </p>
 
-  <!-- Asset type tabs -->
-  <div class="asset-tabs">
-    <button class="asset-tab active" data-asset="port" data-i18n="pricing.tab.port">Port Monitoring</button>
-    <button class="asset-tab" data-asset="fleet" data-i18n="pricing.tab.fleet">Fleet Monitoring</button>
-    <button class="asset-tab" data-asset="cable" data-i18n="pricing.tab.cable">Subsea Cable</button>
-  </div>
+  <div class="pricing-split">
 
-  <!-- PORT MONITORING -->
-  <div class="asset-panel active" id="asset-port">
-    <div class="asset-subtitle">Port authorities · AdSP jurisdictions · Terminal operators</div>
-    <div class="pricing-grid">
+    <!-- INDIVIDUAL -->
+    <div class="pricing-col">
+      <div class="pricing-col-header individual-header">
+        <div class="pricing-col-eyebrow">Individual</div>
+        <div class="pricing-col-title">Analysts &amp; General Users</div>
+        <div class="pricing-col-audience">Geopolitical analysts · financial analysts · journalists · independent researchers</div>
+      </div>
+
       <div class="price-card featured free-card">
-        <div class="price-name" data-i18n="pricing.tier.basic">Basic</div>
-        <div class="price-coverage">1 asset</div>
-        <p class="price-best-for">Real-time MHTES scoring, AIS tracking, and geopolitical alerts across a single asset.</p>
+        <div class="price-name">Basic</div>
+        <p class="price-best-for">Entry-level access to Sentinella Mare's proprietary MHTES scoring and real-time maritime alerts.</p>
         <ul class="price-features">
-          <li class="feat-group">Platform</li>
-          <li>Panel 1 — Asset Status</li>
-          <li class="feat-group">Intelligence — all feeds</li>
-          <li>Live MHTES scoring — 30-min refresh</li>
-          <li>72-hr exposure window</li>
-          <li>AIS, grey fleet &amp; chokepoint signals</li>
-          <li>Real-time exposure alerts</li>
-          <li>Geopolitical &amp; disinformation feeds</li>
+          <li>Default Alert Page</li>
+          <li>3 MARIA interactions / month</li>
+          <li>Port status <span class="feat-tbd">coming soon</span></li>
         </ul>
-        <a href="https://mare.sentinellaglobal.com/" class="price-btn active" data-i18n="pricing.btn.launch" target="_blank" rel="noopener noreferrer">Launch Now</a>
+        <a href="https://mare.sentinellaglobal.com/" class="price-btn active" target="_blank" rel="noopener noreferrer">Launch Now</a>
       </div>
+
       <div class="price-card">
-        <div class="price-name" data-i18n="pricing.tier.exposure">Exposure</div>
-        <div class="price-coverage">Up to 2 ports</div>
-        <p class="price-best-for">Full intelligence stack and compliance-ready export across up to 2 port assets.</p>
+        <div class="price-name">Pro</div>
+        <p class="price-best-for">Full platform access for professionals who need deeper intelligence and expanded MARIA interactions.</p>
         <ul class="price-features">
-          <li class="feat-group">Platform</li>
-          <li>Panel 1 — Asset Status (CAS / IAS)</li>
-          <li>Panel 2 — Hybrid Threat Awareness</li>
-          <li class="na">Panel 3 — Deep Simulation (MiroFish)</li>
-          <li class="feat-group">Intelligence — all feeds</li>
-          <li>Live P-MHTES scoring — 30-min refresh</li>
-          <li>72-hr exposure window</li>
-          <li>AIS, grey fleet &amp; chokepoint signals</li>
-          <li>Real-time exposure alerts</li>
-          <li>Geopolitical &amp; disinformation feeds</li>
-          <li>Cyber vulnerability signals (OT / IT)</li>
-          <li>AIS spoofing &amp; GPS jamming detection</li>
-          <li>Convergence alert — multi-signal</li>
-          <li>J3 / J35 response framework</li>
-          <li class="feat-group">Outputs</li>
-          <li>Compliance audit CSV — on demand</li>
-          <li>Panel report export</li>
-          <li class="na">Client SOP / response plan upload</li>
-          <li class="na">AI compliance report (PDF/A-1b)</li>
-          <li class="na">Deep Simulation prediction report</li>
+          <li>Default Alert Page</li>
+          <li>Default Ops Map — Mediterranean view</li>
+          <li>MARIA — expanded access</li>
+          <li>Port status — full tabs</li>
         </ul>
-        <a href="#contact" class="price-btn" data-i18n="pricing.btn.access">Request Access</a>
-      </div>
-      <div class="price-card featured">
-        <div class="price-name" data-i18n="pricing.tier.sentinel">Sentinel</div>
-        <div class="price-coverage">Up to 5 ports</div>
-        <p class="price-best-for">SOP management, NIS2 Art. 21 audit trail, and AI-generated compliance reports across up to 5 ports.</p>
-        <ul class="price-features">
-          <li class="feat-group">Platform</li>
-          <li>Everything in Exposure</li>
-          <li class="feat-group">Intelligence — all feeds</li>
-          <li>Everything in Exposure</li>
-          <li class="feat-group">Outputs</li>
-          <li>Everything in Exposure</li>
-          <li>Client SOP / response plan upload</li>
-          <li>AI compliance report (PDF/A-1b)</li>
-        </ul>
-        <a href="#contact" class="price-btn active" data-i18n="pricing.btn.access">Request Access</a>
-      </div>
-      <div class="price-card">
-        <div class="price-name" data-i18n="pricing.tier.command">Command</div>
-        <div class="price-coverage">Unlimited</div>
-        <p class="price-best-for">Unlimited port coverage plus MiroFish Deep Simulation — 48-agent society modeling with no commercial equivalent.</p>
-        <ul class="price-features">
-          <li class="feat-group">Platform</li>
-          <li>Everything in Sentinel</li>
-          <li class="feat-star-item">Panel 3 — Deep Simulation</li>
-          <li class="feat-group">Intelligence — all feeds</li>
-          <li>Everything in Sentinel</li>
-          <li class="feat-group">Outputs</li>
-          <li>Everything in Sentinel</li>
-          <li class="feat-star-item">Deep Simulation prediction report</li>
-        </ul>
-        <div class="cmd-footer">
-          <div class="tier-star-note">★ Command-exclusive · No comparable capability in the commercial maritime intelligence market</div>
-          <a href="#contact" class="price-btn" data-i18n="pricing.btn.contact">Contact Us</a>
-        </div>
+        <a href="#contact" class="price-btn">Request Access</a>
       </div>
     </div>
-  </div>
 
-  <!-- FLEET MONITORING -->
-  <div class="asset-panel" id="asset-fleet">
-    <div class="asset-subtitle">Ferry operators · Logistics companies · Shipping lines</div>
-    <div class="pricing-grid">
-      <div class="price-card featured free-card">
-        <div class="price-name" data-i18n="pricing.tier.basic">Basic</div>
-        <div class="price-coverage">1 asset</div>
-        <p class="price-best-for">Real-time MHTES scoring, AIS tracking, and geopolitical alerts across a single asset.</p>
-        <ul class="price-features">
-          <li class="feat-group">Platform</li>
-          <li>Panel 1 — Asset Status</li>
-          <li class="feat-group">Intelligence — all feeds</li>
-          <li>Live MHTES scoring — 30-min refresh</li>
-          <li>72-hr exposure window</li>
-          <li>AIS, grey fleet &amp; chokepoint signals</li>
-          <li>Real-time exposure alerts</li>
-          <li>Geopolitical &amp; disinformation feeds</li>
-        </ul>
-        <a href="https://mare.sentinellaglobal.com/" class="price-btn active" data-i18n="pricing.btn.launch" target="_blank" rel="noopener noreferrer">Launch Now</a>
+    <!-- DIVIDER -->
+    <div class="pricing-divider">
+      <div class="pricing-divider-line"></div>
+    </div>
+
+    <!-- ENTERPRISE -->
+    <div class="pricing-col">
+      <div class="pricing-col-header enterprise-header">
+        <div class="pricing-col-eyebrow">Enterprise</div>
+        <div class="pricing-col-title">Commercial Operators</div>
+        <div class="pricing-col-audience">Ports · cable operators · shipping &amp; ISM · ferry operators · insurers · defence</div>
       </div>
-      <div class="price-card">
-        <div class="price-name" data-i18n="pricing.tier.exposure">Exposure</div>
-        <div class="price-coverage">Up to 10 vessels</div>
-        <p class="price-best-for">Full intelligence stack and compliance-ready export across up to 10 vessels.</p>
-        <ul class="price-features">
-          <li class="feat-group">Platform</li>
-          <li>Panel 1 — Asset Status (F-MHTES per vessel)</li>
-          <li>Panel 2 — Hybrid Threat Awareness</li>
-          <li class="na">Panel 3 — Deep Simulation (MiroFish)</li>
-          <li class="feat-group">Intelligence — all feeds</li>
-          <li>Live F-MHTES scoring per vessel — 30-min refresh</li>
-          <li>Route strategic value scoring</li>
-          <li>AIS &amp; chokepoint alerts</li>
-          <li>Real-time exposure alerts</li>
-          <li>AIS spoofing &amp; GPS jamming detection</li>
-          <li>Geopolitical &amp; disinformation feeds</li>
-          <li>Cyber vulnerability signals (OT / IT)</li>
-          <li>72-hr predictive MHTES window</li>
-          <li>Convergence alert — multi-signal</li>
-          <li>J3 / J35 response framework</li>
-          <li class="feat-group">Outputs</li>
-          <li>Compliance audit CSV — on demand</li>
-          <li>Panel report export</li>
-          <li class="na">Client SOP / response plan upload</li>
-          <li class="na">AI compliance report (PDF/A-1b)</li>
-          <li class="na">Deep Simulation prediction report</li>
-        </ul>
-        <a href="#contact" class="price-btn" data-i18n="pricing.btn.access">Request Access</a>
+
+      <div class="ent-formula">
+        <div class="ent-formula-label">Pricing structure</div>
+        <div class="ent-formula-eq">
+          <span class="ent-term">Asset Count</span>
+          <span class="ent-op">×</span>
+          <span class="ent-term">Price / Asset Class</span>
+          <span class="ent-op">+</span>
+          <span class="ent-term">Response Plans / Add-ons</span>
+        </div>
+        <div class="ent-formula-note">One model across the full market — from a single-port operator to a large multi-asset fleet.</div>
       </div>
-      <div class="price-card featured">
-        <div class="price-name" data-i18n="pricing.tier.sentinel">Sentinel</div>
-        <div class="price-coverage">Up to 30 vessels</div>
-        <p class="price-best-for">SOP management, NIS2 Art. 21 audit trail, and AI-generated compliance reports across up to 30 vessels.</p>
-        <ul class="price-features">
-          <li class="feat-group">Platform</li>
-          <li>Everything in Exposure</li>
-          <li class="feat-group">Intelligence — all feeds</li>
-          <li>Everything in Exposure</li>
-          <li class="feat-group">Outputs</li>
-          <li>Everything in Exposure</li>
-          <li>Client SOP / response plan upload</li>
-          <li>AI compliance report (PDF/A-1b)</li>
-        </ul>
-        <a href="#contact" class="price-btn active" data-i18n="pricing.btn.access">Request Access</a>
+
+      <div class="ent-sardinia">
+        <span class="ent-sardinia-flag">SARDINIA SPECIAL</span>
+        <div class="ent-sardinia-body"><strong>10–20% discount</strong> for Sardinian maritime operators.</div>
       </div>
-      <div class="price-card">
-        <div class="price-name" data-i18n="pricing.tier.command">Command</div>
-        <div class="price-coverage">Unlimited</div>
-        <p class="price-best-for">Unlimited vessel coverage plus MiroFish route and scenario simulation — predictive modeling across any fleet footprint.</p>
-        <ul class="price-features">
-          <li class="feat-group">Platform</li>
-          <li>Everything in Sentinel</li>
-          <li class="feat-star-item">Panel 3 — Deep Simulation</li>
-          <li class="feat-group">Intelligence — all feeds</li>
-          <li>Everything in Sentinel</li>
-          <li class="feat-group">Outputs</li>
-          <li>Everything in Sentinel</li>
-          <li class="feat-star-item">Deep Simulation prediction report</li>
-        </ul>
-        <div class="cmd-footer">
-          <div class="tier-star-note">★ Command-exclusive · No comparable capability in the commercial maritime intelligence market</div>
-          <a href="#contact" class="price-btn" data-i18n="pricing.btn.contact">Contact Us</a>
+
+      <div class="ent-features-card">
+        <div class="ent-features-title">Platform features</div>
+        <div class="ent-item">
+          <span class="ent-tag">Included</span>
+          <div class="ent-item-txt">
+            <span class="ent-item-h">Threat environment reports</span>
+            <span class="ent-item-d">Custom date range — for your security team, board, or compliance auditor</span>
+          </div>
+        </div>
+        <div class="ent-item">
+          <span class="ent-tag">Included</span>
+          <div class="ent-item-txt">
+            <span class="ent-item-h">Alert Page — your assets</span>
+            <span class="ent-item-d">CAS + news, tailored status by asset class: Port, Cable, or Vessel</span>
+          </div>
+        </div>
+        <div class="ent-item">
+          <span class="ent-tag">Included</span>
+          <div class="ent-item-txt">
+            <span class="ent-item-h">Ops Map — private</span>
+            <span class="ent-item-d">Default view with your scored assets, visible to your team only</span>
+          </div>
+        </div>
+        <div class="ent-item">
+          <span class="ent-tag">Included</span>
+          <div class="ent-item-txt">
+            <span class="ent-item-h">Response plans — J3/35 default</span>
+            <span class="ent-item-d">Standard framework included at every level</span>
+          </div>
+        </div>
+        <div class="ent-item">
+          <span class="ent-tag addon">Add-on</span>
+          <div class="ent-item-txt">
+            <span class="ent-item-h">Proprietary response plans</span>
+            <span class="ent-item-d">Your own plans, built in</span>
+          </div>
+        </div>
+        <div class="ent-item">
+          <span class="ent-tag addon">Add-on</span>
+          <div class="ent-item-txt">
+            <span class="ent-item-h">Deep Simulation Page</span>
+            <span class="ent-item-d">Scenario modelling on your assets</span>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <!-- SUBSEA CABLE MONITORING -->
-  <div class="asset-panel" id="asset-cable">
-    <div class="asset-subtitle">Cable operators · Subsea infrastructure firms · National telecom authorities</div>
-    <div class="pricing-grid">
-      <div class="price-card featured free-card">
-        <div class="price-name" data-i18n="pricing.tier.basic">Basic</div>
-        <div class="price-coverage">1 asset</div>
-        <p class="price-best-for">Real-time MHTES scoring, AIS tracking, and geopolitical alerts across a single asset.</p>
-        <ul class="price-features">
-          <li class="feat-group">Platform</li>
-          <li>Panel 1 — Asset Status</li>
-          <li class="feat-group">Intelligence — all feeds</li>
-          <li>Live MHTES scoring — 30-min refresh</li>
-          <li>72-hr exposure window</li>
-          <li>AIS, grey fleet &amp; chokepoint signals</li>
-          <li>Real-time exposure alerts</li>
-          <li>Geopolitical &amp; disinformation feeds</li>
-        </ul>
-        <a href="https://mare.sentinellaglobal.com/" class="price-btn active" data-i18n="pricing.btn.launch" target="_blank" rel="noopener noreferrer">Launch Now</a>
-      </div>
-      <div class="price-card">
-        <div class="price-name" data-i18n="pricing.tier.exposure">Exposure</div>
-        <div class="price-coverage">Up to 2 routes</div>
-        <p class="price-best-for">Full intelligence stack and compliance-ready export across up to 2 cable routes.</p>
-        <ul class="price-features">
-          <li class="feat-group">Platform</li>
-          <li>Panel 1 — Asset Status (C-MHTES per route)</li>
-          <li>Panel 2 — Hybrid Threat Awareness</li>
-          <li class="na">Panel 3 — Deep Simulation (MiroFish)</li>
-          <li class="feat-group">Intelligence — all feeds</li>
-          <li>Live C-MHTES scoring per route — 30-min refresh</li>
-          <li>Vessel density pressure score</li>
-          <li>Anchoring &amp; drag risk alerts</li>
-          <li>Real-time exposure alerts</li>
-          <li>Geopolitical &amp; hybrid threat signals</li>
-          <li>Cyber &amp; infrastructure exposure signals</li>
-          <li>Disinformation monitoring</li>
-          <li>72-hr predictive MHTES window</li>
-          <li>Convergence alert — multi-signal</li>
-          <li>J3 / J35 response framework</li>
-          <li class="feat-group">Outputs</li>
-          <li>Compliance audit CSV — on demand</li>
-          <li>Panel report export</li>
-          <li class="na">Client SOP / response plan upload</li>
-          <li class="na">AI compliance report (PDF/A-1b)</li>
-          <li class="na">Deep Simulation prediction report</li>
-        </ul>
-        <a href="#contact" class="price-btn" data-i18n="pricing.btn.access">Request Access</a>
-      </div>
-      <div class="price-card featured">
-        <div class="price-name" data-i18n="pricing.tier.sentinel">Sentinel</div>
-        <div class="price-coverage">Up to 5 routes</div>
-        <p class="price-best-for">SOP management, NIS2 Art. 21 audit trail, and AI-generated compliance reports across up to 5 cable routes.</p>
-        <ul class="price-features">
-          <li class="feat-group">Platform</li>
-          <li>Everything in Exposure</li>
-          <li class="feat-group">Intelligence — all feeds</li>
-          <li>Everything in Exposure</li>
-          <li class="feat-group">Outputs</li>
-          <li>Everything in Exposure</li>
-          <li>Client SOP / response plan upload</li>
-          <li>AI compliance report (PDF/A-1b)</li>
-        </ul>
-        <a href="#contact" class="price-btn active" data-i18n="pricing.btn.access">Request Access</a>
-      </div>
-      <div class="price-card">
-        <div class="price-name" data-i18n="pricing.tier.command">Command</div>
-        <div class="price-coverage">Unlimited</div>
-        <p class="price-best-for">Unlimited route coverage plus MiroFish sabotage and cascade scenario modeling — purpose-built for critical cable infrastructure.</p>
-        <ul class="price-features">
-          <li class="feat-group">Platform</li>
-          <li>Everything in Sentinel</li>
-          <li class="feat-star-item">Panel 3 — Deep Simulation</li>
-          <li class="feat-group">Intelligence — all feeds</li>
-          <li>Everything in Sentinel</li>
-          <li class="feat-group">Outputs</li>
-          <li>Everything in Sentinel</li>
-          <li class="feat-star-item">Deep Simulation prediction report</li>
-        </ul>
-        <div class="cmd-footer">
-          <div class="tier-star-note">★ Command-exclusive · No comparable capability in the commercial maritime intelligence market</div>
-          <a href="#contact" class="price-btn" data-i18n="pricing.btn.contact">Contact Us</a>
+      <div class="ent-fork-card">
+        <div class="ent-fork-title">Platform or API — not both</div>
+        <div class="ent-fork">
+          <div class="ent-fork-option">
+            <div class="ent-fork-name">Platform</div>
+            <div class="ent-fork-desc">Full MARE interface, tailored &amp; private</div>
+          </div>
+          <div class="ent-fork-or">OR</div>
+          <div class="ent-fork-option">
+            <div class="ent-fork-name">API</div>
+            <div class="ent-fork-desc">Plugs directly into your existing C2</div>
+          </div>
         </div>
       </div>
+
+      <a href="#contact" class="price-btn active" style="margin-top: 10px; display: block;">Contact Us</a>
     </div>
+
   </div>
 </section>
 
