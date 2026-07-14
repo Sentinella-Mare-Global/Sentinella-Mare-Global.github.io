@@ -867,59 +867,45 @@
     background: var(--green); border-color: var(--green);
     color: white; box-shadow: 0 0 24px rgba(45,122,58,0.35);
   }
-  /* Pricing tab layout */
-  .pricing-tabs {
+  /* Pricing two-column layout */
+  .pricing-cols {
     display: grid; grid-template-columns: 1fr 1fr;
     gap: 2px; margin-top: 56px;
     background: var(--navy-2);
   }
-  .pricing-tab {
-    background: transparent; border: none;
-    padding: 28px 40px; cursor: pointer;
-    text-align: left; transition: all 0.2s;
+  .pcol { display: flex; flex-direction: column; }
+  .pcol-header {
+    padding: 28px 40px;
     border-bottom: 3px solid transparent;
   }
-  .pricing-tab:hover:not(.active) { background: rgba(255,255,255,0.03); }
-  .pricing-tab.active { background: var(--navy-4); }
-  .pricing-tab.individual.active { border-bottom-color: var(--green); }
-  .pricing-tab.enterprise.active { border-bottom-color: var(--gold); }
+  .pcol-individual .pcol-header { background: var(--navy-4); border-bottom-color: var(--green); }
+  .pcol-enterprise .pcol-header { background: var(--navy-4); border-bottom-color: var(--gold); }
   .ptab-label {
     font-family: 'Cinzel', serif;
     font-size: 30px; font-weight: 700;
-    color: rgba(240,245,252,0.35); display: block; margin-bottom: 6px;
-    transition: color 0.2s;
+    display: block; margin-bottom: 6px;
   }
-  .pricing-tab.active .ptab-label { color: var(--white); }
-  .pricing-tab.individual.active .ptab-label { color: var(--green-mid); }
-  .pricing-tab.enterprise.active .ptab-label { color: var(--gold); }
+  .pcol-individual .ptab-label { color: var(--green-mid); }
+  .pcol-enterprise .ptab-label { color: var(--gold); }
   .ptab-sub {
     font-family: 'Rajdhani', sans-serif;
     font-size: 14px; font-weight: 600; letter-spacing: 1px;
-    color: rgba(200,216,236,0.25); display: block; margin-bottom: 5px;
-    transition: color 0.2s;
+    color: var(--text-dim); display: block; margin-bottom: 5px;
   }
-  .pricing-tab.active .ptab-sub { color: var(--text-dim); }
   .ptab-audience {
     font-family: 'Share Tech Mono', monospace;
     font-size: 10px; letter-spacing: 0.5px;
-    color: rgba(200,216,236,0.15); display: block;
-    transition: color 0.2s;
+    color: rgba(200,216,236,0.38); display: block;
   }
-  .pricing-tab.active .ptab-audience { color: rgba(200,216,236,0.38); }
-  .pricing-panel { display: none; }
-  .pricing-panel.active { display: block; margin-top: 48px; }
-  /* Individual panel */
+  /* Individual cards — full column width, Basic + Pro side by side */
   .indiv-cards {
     display: grid; grid-template-columns: 1fr 1fr;
-    gap: 2px; margin-top: 2px;
-    max-width: 74%;
+    gap: 2px; margin-top: 48px;
   }
   .indiv-cards .price-card { margin-bottom: 0; }
   .indiv-cards .price-card.featured { transform: none; }
-  /* Enterprise inner wrapper */
-  .ent-inner { max-width: 660px; margin: 0 auto; }
   /* Enterprise elements */
-  .ent-features-card { background: var(--navy-3); padding: 24px 28px; margin-top: 2px; }
+  .ent-features-card { background: var(--navy-3); padding: 24px 28px; margin-top: 48px; }
   .ent-features-title {
     font-family: 'Share Tech Mono', monospace;
     font-size: 9px; letter-spacing: 3px;
@@ -983,7 +969,7 @@
     padding: 1px 6px; margin-left: 6px;
   }
   @media (max-width: 900px) {
-    .pricing-tabs { grid-template-columns: 1fr; gap: 1px; }
+    .pricing-cols { grid-template-columns: 1fr; gap: 1px; }
     .ent-fork { grid-template-columns: 1fr 44px 1fr; }
   }
 
@@ -1363,8 +1349,8 @@
     .price-card.featured { transform: none; }
     .pricing-grid { grid-template-columns: 1fr; }
 
-    .pricing-tabs { grid-template-columns: 1fr; gap: 1px; }
-    .pricing-tab { padding: 20px 24px; }
+    .pricing-cols { grid-template-columns: 1fr; gap: 1px; }
+    .pcol-header { padding: 20px 24px; }
     .ptab-label { font-size: 22px; }
     .ptab-audience { display: none; }
 
@@ -1988,118 +1974,114 @@
     Two paths to maritime intelligence. Individual plans give analysts, journalists, and researchers access to Sentinella Mare's proprietary MHTES scoring and real-time threat environment. Enterprise contracts are built around your assets — port, fleet, or subsea cable — with private ops mapping, customisable response plans, and optional deep simulation.
   </p>
 
-  <!-- Pricing tabs -->
-  <div class="pricing-tabs">
-    <button class="pricing-tab individual active" data-panel="panel-individual">
-      <span class="ptab-label">Individual</span>
-      <span class="ptab-sub">Analysts &amp; General Users</span>
-      <span class="ptab-audience">Geopolitical analysts · financial analysts · journalists · researchers</span>
-    </button>
-    <button class="pricing-tab enterprise" data-panel="panel-enterprise">
-      <span class="ptab-label">Enterprise</span>
-      <span class="ptab-sub">Commercial Operators</span>
-      <span class="ptab-audience">Ports · cable operators · shipping &amp; ISM · ferry operators · insurers · defence</span>
-    </button>
-  </div>
+  <!-- Pricing two-column layout -->
+  <div class="pricing-cols">
 
-  <!-- INDIVIDUAL panel -->
-  <div class="pricing-panel active" id="panel-individual">
-    <div class="indiv-cards">
-      <div class="price-card featured free-card">
-        <div class="price-name">Basic</div>
-        <p class="price-best-for">Entry-level access to Sentinella Mare's proprietary MHTES scoring and real-time maritime alerts.</p>
-        <ul class="price-features">
-          <li>Default Alert Page</li>
-          <li>3 MARIA interactions / month</li>
-          <li>Port status <span class="feat-tbd">coming soon</span></li>
-        </ul>
-        <a href="https://mare.sentinellaglobal.com/" class="price-btn active" target="_blank" rel="noopener noreferrer">Launch Now</a>
+    <!-- Individual column -->
+    <div class="pcol pcol-individual">
+      <div class="pcol-header">
+        <span class="ptab-label">Individual</span>
+        <span class="ptab-sub">Analysts &amp; General Users</span>
+        <span class="ptab-audience">Geopolitical analysts · financial analysts · journalists · researchers</span>
       </div>
-      <div class="price-card">
-        <div class="price-name">Pro</div>
-        <p class="price-best-for">Full platform access for professionals who need deeper intelligence and expanded MARIA interactions.</p>
-        <ul class="price-features">
-          <li>Default Alert Page</li>
-          <li>Default Ops Map — Mediterranean view</li>
-          <li>MARIA — expanded access</li>
-          <li>Port status — full tabs</li>
-        </ul>
-        <a href="#contact" class="price-btn">Request Access</a>
-      </div>
-    </div>
-  </div>
-
-  <!-- ENTERPRISE panel -->
-  <div class="pricing-panel" id="panel-enterprise">
-    <div class="ent-inner">
-    <div class="ent-features-card">
-      <div class="ent-features-title">What's included</div>
-      <div class="ent-item">
-        <span class="ent-tag">Included</span>
-        <div class="ent-item-txt">
-          <span class="ent-item-h">Threat environment reports</span>
-          <span class="ent-item-d">Custom date range — for your security team, board, or compliance auditor</span>
+      <div class="indiv-cards">
+        <div class="price-card featured free-card">
+          <div class="price-name">Basic</div>
+          <p class="price-best-for">Entry-level access to Sentinella Mare's proprietary MHTES scoring and real-time maritime alerts.</p>
+          <ul class="price-features">
+            <li>Default Alert Page</li>
+            <li>3 MARIA interactions / month</li>
+            <li>Port status <span class="feat-tbd">coming soon</span></li>
+          </ul>
+          <a href="https://mare.sentinellaglobal.com/" class="price-btn active" target="_blank" rel="noopener noreferrer">Launch Now</a>
         </div>
-      </div>
-      <div class="ent-item">
-        <span class="ent-tag">Included</span>
-        <div class="ent-item-txt">
-          <span class="ent-item-h">Alert Page — your assets</span>
-          <span class="ent-item-d">CAS + news, tailored status by asset class: Port, Cable, or Vessel</span>
-        </div>
-      </div>
-      <div class="ent-item">
-        <span class="ent-tag">Included</span>
-        <div class="ent-item-txt">
-          <span class="ent-item-h">Ops Map — private</span>
-          <span class="ent-item-d">Default view with your scored assets, visible to your team only</span>
-        </div>
-      </div>
-      <div class="ent-item">
-        <span class="ent-tag">Included</span>
-        <div class="ent-item-txt">
-          <span class="ent-item-h">Response plans — J3/35 default</span>
-          <span class="ent-item-d">Standard framework included at every level</span>
-        </div>
-      </div>
-      <div class="ent-item">
-        <span class="ent-tag addon">Add-on</span>
-        <div class="ent-item-txt">
-          <span class="ent-item-h">Proprietary response plans</span>
-          <span class="ent-item-d">Your own plans, built in</span>
-        </div>
-      </div>
-      <div class="ent-item">
-        <span class="ent-tag addon">Add-on</span>
-        <div class="ent-item-txt">
-          <span class="ent-item-h">Deep Simulation Page</span>
-          <span class="ent-item-d">Scenario modelling on your assets</span>
+        <div class="price-card">
+          <div class="price-name">Pro</div>
+          <p class="price-best-for">Full platform access for professionals who need deeper intelligence and expanded MARIA interactions.</p>
+          <ul class="price-features">
+            <li>Default Alert Page</li>
+            <li>Default Ops Map — Mediterranean view</li>
+            <li>MARIA — expanded access</li>
+            <li>Port status — full tabs</li>
+          </ul>
+          <a href="#contact" class="price-btn">Request Access</a>
         </div>
       </div>
     </div>
 
-    <div class="ent-fork-card">
-      <div class="ent-fork-title">Platform or API</div>
-      <div class="ent-fork">
-        <div class="ent-fork-option">
-          <div class="ent-fork-name">Platform</div>
-          <div class="ent-fork-desc">Full MARE interface, tailored &amp; private</div>
+    <!-- Enterprise column -->
+    <div class="pcol pcol-enterprise">
+      <div class="pcol-header">
+        <span class="ptab-label">Enterprise</span>
+        <span class="ptab-sub">Commercial Operators</span>
+        <span class="ptab-audience">Ports · cable operators · shipping &amp; ISM · ferry operators · insurers · defence</span>
+      </div>
+      <div class="ent-features-card">
+        <div class="ent-features-title">What's included</div>
+        <div class="ent-item">
+          <span class="ent-tag">Included</span>
+          <div class="ent-item-txt">
+            <span class="ent-item-h">Threat environment reports</span>
+            <span class="ent-item-d">Custom date range — for your security team, board, or compliance auditor</span>
+          </div>
         </div>
-        <div class="ent-fork-or">OR</div>
-        <div class="ent-fork-option">
-          <div class="ent-fork-name">API</div>
-          <div class="ent-fork-desc">Plugs directly into your existing C2</div>
+        <div class="ent-item">
+          <span class="ent-tag">Included</span>
+          <div class="ent-item-txt">
+            <span class="ent-item-h">Alert Page — your assets</span>
+            <span class="ent-item-d">CAS + news, tailored status by asset class: Port, Cable, or Vessel</span>
+          </div>
         </div>
+        <div class="ent-item">
+          <span class="ent-tag">Included</span>
+          <div class="ent-item-txt">
+            <span class="ent-item-h">Ops Map — private</span>
+            <span class="ent-item-d">Default view with your scored assets, visible to your team only</span>
+          </div>
+        </div>
+        <div class="ent-item">
+          <span class="ent-tag">Included</span>
+          <div class="ent-item-txt">
+            <span class="ent-item-h">Response plans — J3/35 default</span>
+            <span class="ent-item-d">Standard framework included at every level</span>
+          </div>
+        </div>
+        <div class="ent-item">
+          <span class="ent-tag addon">Add-on</span>
+          <div class="ent-item-txt">
+            <span class="ent-item-h">Proprietary response plans</span>
+            <span class="ent-item-d">Your own plans, built in</span>
+          </div>
+        </div>
+        <div class="ent-item">
+          <span class="ent-tag addon">Add-on</span>
+          <div class="ent-item-txt">
+            <span class="ent-item-h">Deep Simulation Page</span>
+            <span class="ent-item-d">Scenario modelling on your assets</span>
+          </div>
+        </div>
+      </div>
+      <div class="ent-fork-card">
+        <div class="ent-fork-title">Platform or API</div>
+        <div class="ent-fork">
+          <div class="ent-fork-option">
+            <div class="ent-fork-name">Platform</div>
+            <div class="ent-fork-desc">Full MARE interface, tailored &amp; private</div>
+          </div>
+          <div class="ent-fork-or">OR</div>
+          <div class="ent-fork-option">
+            <div class="ent-fork-name">API</div>
+            <div class="ent-fork-desc">Plugs directly into your existing C2</div>
+          </div>
+        </div>
+      </div>
+      <a href="#contact" class="price-btn active" style="margin-top: 2px; display: block;">Contact Us</a>
+      <div class="ent-sardinia">
+        <span class="ent-sardinia-flag">SARDINIA SPECIAL</span>
+        <div class="ent-sardinia-body"><strong>10–20% discount</strong> for Sardinian maritime operators.</div>
       </div>
     </div>
 
-    <a href="#contact" class="price-btn active" style="margin-top: 2px; display: block;">Contact Us</a>
-
-    <div class="ent-sardinia">
-      <span class="ent-sardinia-flag">SARDINIA SPECIAL</span>
-      <div class="ent-sardinia-body"><strong>10–20% discount</strong> for Sardinian maritime operators.</div>
-    </div>
-    </div><!-- /.ent-inner -->
   </div>
 
 </section>
@@ -3007,15 +2989,6 @@ document.addEventListener('click', function(e) {
   if (sd && !sd.contains(e.target)) sd.classList.remove('open');
 });
 
-// Pricing tab switching
-document.querySelectorAll('.pricing-tab').forEach(tab => {
-  tab.addEventListener('click', function() {
-    document.querySelectorAll('.pricing-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.pricing-panel').forEach(p => p.classList.remove('active'));
-    this.classList.add('active');
-    document.getElementById(this.dataset.panel).classList.add('active');
-  });
-});
 
 // Restore saved language on load
 (function() {
