@@ -117,7 +117,7 @@
 
 <div class="eyebrow">Legal</div>
 <h1>Data Processing Agreement</h1>
-<p class="updated">Last updated: 13 July 2026 · Effective date: 13 July 2026</p>
+<p class="updated">Last updated: 15 July 2026 · Effective date: 13 July 2026</p>
 
 <p>This Data Processing Agreement ("DPA") forms part of the agreement between Sentinella LLC, 8 The Green STE A, Dover, DE 19901, United States, with European headquarters in Brussels, Belgium ("Sentinella," the "Processor") and the customer identified in the applicable Order or subscription ("Customer," the "Controller") for the provision of the Sentinella Mare platform and related services (the "Services"), and is incorporated by reference into the <a href="/legalterms/">Terms &amp; Conditions</a> and each Order.</p>
 
@@ -186,7 +186,7 @@
 <p>Sentinella implements the following measures, proportionate to the nature and risk of the processing, and will develop and strengthen these measures as the Services evolve:</p>
 <ul>
   <li>Encryption of data in transit: all Site and Platform traffic is served over HTTPS/TLS, enforced at the infrastructure level;</li>
-  <li>Managed cloud infrastructure: the Platform runs on established managed providers (Vercel, Upstash, Railway, Convex) whose platforms provide infrastructure-level security controls, physical security, and availability measures;</li>
+  <li>Managed cloud infrastructure: the Platform runs on established managed providers (Vercel, Neon, Upstash, Railway, Convex) whose platforms provide infrastructure-level security controls, physical security, and availability measures;</li>
   <li>Access controls: production systems and administrative accounts are protected by unique credentials, with access limited to authorised personnel;</li>
   <li>Data keying: customer billing and entitlement data is keyed and retrieved per individual user account;</li>
   <li>Error monitoring and diagnostics (Sentry) to detect and remediate application faults;</li>
@@ -199,12 +199,13 @@
 <h2>Annex III — Authorised Sub-processors</h2>
 <table>
   <tr><th>Sub-processor</th><th>Purpose</th><th>Location</th></tr>
-  <tr><td>Vercel Inc.</td><td>Platform and website hosting, API compute (Edge Functions), scheduled jobs, and infrastructure analytics</td><td>USA / EU</td></tr>
+  <tr><td>Vercel Inc.</td><td>Frontend and Platform hosting, global content delivery (CDN), serverless functions, and scheduled jobs</td><td>USA / EU</td></tr>
+  <tr><td>Neon, Inc.</td><td>Serverless PostgreSQL database storing account, subscription, transaction, billing, churn, and conversion records</td><td>USA / EU</td></tr>
   <tr><td>Upstash, Inc.</td><td>Managed caching layer for Platform data</td><td>USA / EU</td></tr>
-  <tr><td>Railway Corp.</td><td>Always-on relay services for real-time maritime data streams</td><td>USA</td></tr>
+  <tr><td>Railway Corp.</td><td>Full-stack backend deployment and always-on persistent services, including background workers and real-time maritime data relays</td><td>USA</td></tr>
   <tr><td>Convex, Inc.</td><td>Database services for email and waitlist registration</td><td>USA</td></tr>
   <tr><td>Anthropic, PBC</td><td>Large language model API powering the in-platform assistant ("Maria"), processing user queries and associated dashboard context</td><td>USA</td></tr>
-  <tr><td>GitHub, Inc. (Microsoft)</td><td>Code repository and deployment pipeline</td><td>USA</td></tr>
+  <tr><td>GitHub, Inc. (Microsoft)</td><td>Source-code version control, collaboration, and CI/CD deployment automation</td><td>USA</td></tr>
   <tr><td>Functional Software, Inc. (Sentry)</td><td>Error monitoring and application diagnostics</td><td>USA / EU</td></tr>
   <tr><td>Stripe, Inc.</td><td>Payment processing</td><td>USA / EU</td></tr>
   <tr><td>HubSpot, Inc.</td><td>Customer relationship management</td><td>USA / EU</td></tr>
