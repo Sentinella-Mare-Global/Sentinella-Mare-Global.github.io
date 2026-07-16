@@ -29,6 +29,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
+  /* WCAG 2.2 SC 2.4.11 Focus Not Obscured: keep focused/anchor targets
+     clear of the fixed nav */
+  html { scroll-behavior: smooth; scroll-padding-top: 120px; }
   /* ── NAV (matches homepage) ── */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
@@ -42,11 +45,11 @@
   .nav-logo img { height: 90px; max-width: 160px; }
   .nav-brand { display: flex; flex-direction: column; line-height: 1; }
   .nav-brand .n1 { font-family: 'Cinzel', serif; font-size: 18px; font-weight: 700; color: #eef3f8; letter-spacing: 3px; }
-  .nav-brand .n2 { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: #3aab4a; letter-spacing: 4px; margin-top: 3px; }
+  .nav-brand .n2 { font-family: 'Share Tech Mono', monospace; font-size: 11px; color: #3aab4a; letter-spacing: 3px; margin-top: 3px; }
   .nav-links { display: flex; align-items: center; gap: 32px; }
   .nav-links a {
     color: #e8f0f8; text-decoration: none;
-    font-size: 12px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+    font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
     font-family: 'Rajdhani', sans-serif;
     transition: color 0.25s;
   }
@@ -73,7 +76,7 @@
   .nav-comp-trigger {
     background: none; border: none; cursor: pointer; padding: 0;
     color: #e8f0f8; font-family: 'Rajdhani', sans-serif;
-    font-size: 12px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+    font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
     display: flex; align-items: center; gap: 5px; transition: color 0.25s;
   }
   .nav-comp-trigger:hover { color: #4fd962; }
@@ -91,14 +94,14 @@
   .nav-comp-menu a {
     display: block; padding: 12px 20px;
     color: rgba(200,216,236,0.7);
-    font-family: 'Share Tech Mono', monospace; font-size: 10px;
-    letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
+    font-family: 'Share Tech Mono', monospace; font-size: 12px;
+    letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none;
     border-bottom: 1px solid rgba(45,122,58,0.12);
     transition: color 0.2s, background 0.2s;
   }
   .nav-comp-menu a:last-child { border-bottom: none; }
   .nav-comp-menu a:hover { color: #4fd962; background: rgba(45,122,58,0.08); }
-  .nav-comp-menu .comp-link-label { display: block; font-size: 8px; color: rgba(45,122,58,0.6); letter-spacing: 1.5px; margin-top: 2px; }
+  .nav-comp-menu .comp-link-label { display: block; font-size: 12px; color: var(--green-mid); letter-spacing: 0.5px; margin-top: 3px; text-transform: none; }
 
   /* ── FOOTER (matches homepage) ── */
   footer {
@@ -110,12 +113,12 @@
   .footer-brand { display: flex; flex-direction: row; align-items: flex-start; gap: 20px; }
   .footer-brand-text { display: flex; flex-direction: column; gap: 12px; }
   .footer-brand img { height: 100px; width: fit-content; }
-  .footer-brand p { font-family: 'Rajdhani', sans-serif; font-size: 13px; line-height: 1.7; color: rgba(232,240,248,0.72); max-width: 280px; }
-  .footer-brand .hq { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 3px; color: #3aab4a; text-transform: uppercase; }
+  .footer-brand p { font-family: 'Rajdhani', sans-serif; font-size: 14px; line-height: 1.7; color: rgba(232,240,248,0.72); max-width: 280px; }
+  .footer-brand .hq { font-family: 'Share Tech Mono', monospace; font-size: 12px; letter-spacing: 2px; color: #3aab4a; text-transform: uppercase; }
   .footer-col .footer-nav-title { font-family: 'Cinzel', serif; font-size: 13px; font-weight: 600; color: #eef3f8; letter-spacing: 1px; margin-bottom: 20px; }
   .footer-col a, .footer-col p {
     display: block; color: rgba(232,240,248,0.72); text-decoration: none;
-    font-family: 'Rajdhani', sans-serif; font-size: 13px; line-height: 1.6; margin-bottom: 10px;
+    font-family: 'Rajdhani', sans-serif; font-size: 14px; line-height: 1.6; margin-bottom: 10px;
   }
   .footer-col a:hover { color: #3aab4a; }
   .footer-contact-btn { display: inline-block; width: fit-content; }
@@ -124,10 +127,10 @@
     border-top: 1px solid rgba(45,122,58,0.1); padding-top: 24px;
     display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
   }
-  .footer-bottom p { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 2px; color: rgba(232,240,248,0.72); text-transform: uppercase; }
+  .footer-bottom p { font-family: 'Share Tech Mono', monospace; font-size: 12px; letter-spacing: 1.5px; color: rgba(232,240,248,0.72); text-transform: uppercase; }
   .footer-legal-links { display: flex; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
   .footer-legal-link {
-    font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 2px; color: rgba(240,245,252,0.65);
+    font-family: 'Share Tech Mono', monospace; font-size: 12px; letter-spacing: 1.5px; color: rgba(240,245,252,0.65);
     text-transform: uppercase; text-decoration: none;
     background: none; border: none; cursor: pointer; padding: 0;
     line-height: 1; vertical-align: top; transition: color 0.2s;
@@ -232,27 +235,27 @@
     --white: #eef3f8;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: var(--body); font-weight: 300; line-height: 1.8; }
+  body { background: var(--bg); color: var(--text); font-family: var(--body); font-weight: 400; line-height: 1.75; }
   .wrap { max-width: 860px; margin: 0 auto; padding: 160px 2rem 5rem; }
   @media (max-width: 1024px) { .wrap { padding-top: 132px; } }
   @media (max-width: 768px)  { .wrap { padding-top: 116px; } }
   @media (max-width: 480px)  { .wrap { padding-top: 96px; } }
   @media (max-width: 360px)  { .wrap { padding-top: 86px; } }
-  .eyebrow { color: var(--teal); font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 1rem; }
+  .eyebrow { color: var(--teal); font-size: 0.8125rem; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 1rem; }
   h1 { font-family: var(--display); font-size: 2.4rem; font-weight: 700; letter-spacing: 0.5px; line-height: 1.2; margin-bottom: 0.75rem; }
-  .updated { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 3rem; }
+  .updated { color: var(--text-dim); font-size: 0.95rem; margin-bottom: 3rem; }
   h2 { font-family: var(--display); font-size: 1.35rem; font-weight: 700; color: var(--text); margin: 2.8rem 0 0.9rem; padding-top: 1.6rem; border-top: 1px solid var(--rule); }
-  h3 { font-size: 1rem; font-weight: 600; color: var(--teal); margin: 1.6rem 0 0.5rem; }
-  p { color: var(--text-mid); font-size: 0.95rem; margin-bottom: 1rem; }
-  ul, ol { color: var(--text-mid); font-size: 0.95rem; margin: 0 0 1rem 1.4rem; }
+  h3 { font-size: 1.2rem; font-weight: 600; color: var(--teal); margin: 1.6rem 0 0.5rem; }
+  p { color: var(--text-mid); font-size: 1.0625rem; line-height: 1.75; margin-bottom: 1.15rem; }
+  ul, ol { color: var(--text-mid); font-size: 1.0625rem; line-height: 1.75; margin: 0 0 1rem 1.4rem; }
   li { margin-bottom: 0.45rem; }
   a { color: var(--teal); text-decoration: none; }
   a:hover { text-decoration: underline; }
-  table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 0.88rem; }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 1rem; line-height: 1.6; }
   th { text-align: left; color: var(--teal); font-weight: 500; padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--rule); }
   td { color: var(--text-mid); padding: 0.6rem 0.8rem; border-bottom: 1px solid rgba(14,181,175,0.07); vertical-align: top; }
-  .notice { background: var(--panel); border: 1px solid var(--gold); border-radius: 8px; padding: 1.1rem 1.3rem; margin: 1.5rem 0; font-size: 0.9rem; color: var(--text-mid); }
-  .caps { text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.02em; }
+  .notice { background: var(--panel); border: 1px solid var(--gold); border-radius: 8px; padding: 1.1rem 1.3rem; margin: 1.5rem 0; font-size: 1rem; line-height: 1.7; color: var(--text-mid); }
+  .caps { text-transform: uppercase; font-size: 1rem; line-height: 1.7; letter-spacing: 0.02em; }
 
   /* ── Accessibility: focus, skip link, in-text link cues ── */
   a:focus-visible, button:focus-visible, input:focus-visible,
@@ -524,10 +527,10 @@
 }
 .sm-cookie-label {
   display: block; font-family: 'Share Tech Mono', monospace;
-  font-size: 10px; letter-spacing: 3px; color: #3aab4a;
+  font-size: 12px; letter-spacing: 2px; color: #3aab4a;
   text-transform: uppercase; margin-bottom: 7px;
 }
-.sm-cookie-text { font-size: 14px; line-height: 1.65; color: #c8d8ec; max-width: 680px; }
+.sm-cookie-text { font-size: 15px; line-height: 1.65; color: #c8d8ec; max-width: 680px; }
 .sm-cookie-text a { color: #3aab4a; }
 .sm-cookie-text a:hover { color: #4fd962; }
 .sm-cookie-actions { display: flex; gap: 12px; flex-shrink: 0; align-items: center; }

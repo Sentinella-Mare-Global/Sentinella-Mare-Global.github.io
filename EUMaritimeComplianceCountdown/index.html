@@ -66,6 +66,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Rajdhani:wght@300;500;600;700&family=Share+Tech+Mono&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
+  /* WCAG 2.2 SC 2.4.11 Focus Not Obscured: keep focused/anchor targets
+     clear of the fixed nav */
+  html { scroll-behavior: smooth; scroll-padding-top: 120px; }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 /* ── SITE DESIGN TOKENS ── */
@@ -100,13 +103,13 @@ nav {
   color: var(--white); letter-spacing: 3px;
 }
 .nav-brand .n2 {
-  font-family: 'Share Tech Mono', monospace; font-size: 9px;
+  font-family: 'Share Tech Mono', monospace; font-size: 11px;
   color: var(--green-mid); letter-spacing: 4px; margin-top: 3px;
 }
 .nav-links { display: flex; align-items: center; gap: 32px; }
 .nav-links a {
   color: var(--text); text-decoration: none;
-  font-size: 12px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+  font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
   transition: color 0.25s;
 }
 .nav-links a:hover { color: var(--green-glow); }
@@ -163,7 +166,7 @@ nav {
 .nav-comp-trigger {
   background: none; border: none; cursor: pointer; padding: 0;
   color: var(--text); font-family: 'Rajdhani', sans-serif;
-  font-size: 12px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+  font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
   display: flex; align-items: center; gap: 5px; transition: color 0.25s;
 }
 .nav-comp-trigger:hover { color: var(--green-glow); }
@@ -181,7 +184,7 @@ nav {
 .nav-comp-menu a {
   display: block; padding: 12px 20px;
   color: rgba(200,216,236,0.7);
-  font-family: 'Share Tech Mono', monospace; font-size: 10px;
+  font-family: 'Share Tech Mono', monospace; font-size: 12px;
   letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
   border-bottom: 1px solid rgba(45,122,58,0.12);
   transition: color 0.2s, background 0.2s;
@@ -189,7 +192,7 @@ nav {
 .nav-comp-menu a:last-child { border-bottom: none; }
 .nav-comp-menu a:hover { color: var(--green-glow); background: rgba(45,122,58,0.08); }
 .nav-comp-menu .comp-link-label {
-  display: block; font-size: 8px; color: rgba(45,122,58,0.6);
+  display: block; font-size: 12px; color: rgba(45,122,58,0.6);
   letter-spacing: 1.5px; margin-top: 2px;
 }
 
@@ -207,12 +210,12 @@ footer {
 .footer-brand-text { display: flex; flex-direction: column; gap: 12px; }
 .footer-brand img { height: 100px; width: fit-content; }
 .footer-brand p {
-  font-size: 13px; line-height: 1.7; color: var(--text);
+  font-size: 14px; line-height: 1.7; color: var(--text);
   max-width: 280px; font-family: 'Rajdhani', sans-serif;
 }
 .footer-brand .hq {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 9px; letter-spacing: 3px; color: var(--green-mid);
+  font-size: 12px; letter-spacing: 3px; color: var(--green-mid);
   text-transform: uppercase;
 }
 .footer-contact-btn { display: inline-block; width: fit-content; }
@@ -224,7 +227,7 @@ footer {
   margin-bottom: 20px;
 }
 .footer-col a, .footer-col p {
-  display: block; font-size: 13px;
+  display: block; font-size: 14px;
   color: var(--text); text-decoration: none;
   margin-bottom: 10px; letter-spacing: 0.5px;
   transition: color 0.25s; font-family: 'Rajdhani', sans-serif;
@@ -250,7 +253,7 @@ body {
   background: #060f18;
   color: #f0f5fc;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.6;
   min-height: 100vh;
 }
@@ -292,7 +295,7 @@ body {
 }
 .wordmark {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 10px;
+  font-size: 12px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #3aab4a;
@@ -339,7 +342,7 @@ body {
 .hero-reg {
   display: inline-block;
   font-family: 'Share Tech Mono', monospace;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.12em;
   padding: 2px 8px;
@@ -351,7 +354,7 @@ body {
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.7} }
 .hero-sub {
   margin-top: 8px;
-  font-size: 12px;
+  font-size: 15px;
   color: rgba(200,216,236,0.55);
   font-family: 'Share Tech Mono', monospace;
   letter-spacing: 0.04em;
@@ -369,7 +372,7 @@ body {
 }
 .filter-label {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: rgba(200,216,236,0.55);
@@ -377,7 +380,7 @@ body {
 }
 .seg-btn {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -409,7 +412,7 @@ body {
 }
 .overlap-label {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 9px;
+  font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #3aab4a;
@@ -424,7 +427,7 @@ body {
 .overlap-count.low { color: #D97706; }
 .overlap-count.vlow { color: #3aab4a; }
 .overlap-text {
-  font-size: 12px;
+  font-size: 15px;
   color: rgba(200,216,236,0.55);
   max-width: 480px;
 }
@@ -474,7 +477,7 @@ body {
 .passed  .days-num { font-size: 22px; color: rgba(200,216,236,0.55); }
 .days-label {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 8px;
+  font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
@@ -486,7 +489,7 @@ body {
 .urgency-tag {
   display: block;
   font-family: 'Share Tech Mono', monospace;
-  font-size: 7px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -529,7 +532,7 @@ body {
 .card-top { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
 .reg-badge {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 8px;
+  font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.1em;
   padding: 3px 8px;
@@ -552,16 +555,16 @@ body {
 }
 .card-date {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 9px;
+  font-size: 12px;
   color: rgba(200,216,236,0.55);
   white-space: nowrap;
   margin-top: 4px;
 }
-.card-desc { font-size: 12px; color: rgba(200,216,236,0.55); margin-bottom: 12px; line-height: 1.6; }
+.card-desc { font-size: 15px; color: rgba(200,216,236,0.55); margin-bottom: 12px; line-height: 1.6; }
 .seg-chips { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; }
 .seg-chip {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 0.06em;
   padding: 2px 7px;
   border: 1px solid rgba(45,122,58,0.18);
@@ -577,13 +580,13 @@ body {
 }
 .consequence-label {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 8px;
+  font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #FC8181;
   margin-bottom: 3px;
 }
-.consequence-text { font-size: 11px; color: #FCA5A5; line-height: 1.55; }
+.consequence-text { font-size: 15px; color: #FCA5A5; line-height: 1.55; }
 .sentinella-block {
   background: rgba(45,122,58,0.05);
   border-left: 2px solid #3aab4a;
@@ -592,13 +595,13 @@ body {
 }
 .sentinella-label {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 8px;
+  font-size: 12px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #3aab4a;
   margin-bottom: 3px;
 }
-.sentinella-text { font-size: 11px; color: #c8f0cb; line-height: 1.6; }
+.sentinella-text { font-size: 15px; color: #c8f0cb; line-height: 1.6; }
 
 /* Page footer note */
 .page-footer-note {
@@ -611,8 +614,8 @@ body {
   gap: 16px;
   background: #0B1F3A;
 }
-.page-footer-note .fn-text { font-size: 10px; color: rgba(200,216,236,0.7); max-width: 540px; line-height: 1.7; }
-.page-footer-note .fn-sig { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: rgba(200,216,236,0.7); text-align: right; line-height: 1.9; }
+.page-footer-note .fn-text { font-size: 13px; color: rgba(200,216,236,0.7); max-width: 540px; line-height: 1.7; }
+.page-footer-note .fn-sig { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: rgba(200,216,236,0.7); text-align: right; line-height: 1.9; }
 .page-footer-note .fn-sig .teal { color: #3aab4a; }
 
 /* iPad landscape — collapse nav to hamburger */
@@ -641,7 +644,7 @@ body {
   .nav-comp-wrap.open .nav-comp-menu {
     display: flex; flex-direction: column; align-items: center; gap: 0; padding: 6px 0;
   }
-  .nav-comp-menu a { border: none; font-size: 11px; padding: 8px 0; text-align: center; }
+  .nav-comp-menu a { border: none; font-size: 13px; padding: 8px 0; text-align: center; }
   .nav-comp-menu .comp-link-label { display: none; }
 }
 
@@ -650,7 +653,7 @@ body {
   nav { padding: 12px 20px; backdrop-filter: none; -webkit-backdrop-filter: none; }
   .nav-logo img { height: 70px; }
   .nav-brand .n1 { font-size: 15px; letter-spacing: 2px; }
-  .nav-brand .n2 { font-size: 8px; letter-spacing: 3px; }
+  .nav-brand .n2 { font-size: 11px; letter-spacing: 3px; }
   .nav-toggle { display: flex; }
   .nav-links {
     display: none; position: fixed;
@@ -679,7 +682,7 @@ body {
   .nav-comp-wrap.open .nav-comp-menu {
     display: flex; flex-direction: column; align-items: center; gap: 0; padding: 6px 0;
   }
-  .nav-comp-menu a { border: none; font-size: 11px; padding: 8px 0; text-align: center; }
+  .nav-comp-menu a { border: none; font-size: 13px; padding: 8px 0; text-align: center; }
   .nav-comp-menu .comp-link-label { display: none; }
   .page-hero { padding: 36px 20px 28px; padding-top: 140px; }
   .timeline { padding: 20px 16px; }
@@ -697,8 +700,8 @@ body {
 @media (max-width: 480px) {
   nav { padding: 10px 16px; }
   .nav-logo img { height: 56px; }
-  .nav-brand .n1 { font-size: 12px; letter-spacing: 1px; }
-  .nav-brand .n2 { font-size: 7px; letter-spacing: 2px; display: none; }
+  .nav-brand .n1 { font-size: 13px; letter-spacing: 1px; }
+  .nav-brand .n2 { font-size: 12px; letter-spacing: 2px; display: none; }
 }
 
 a, button { -webkit-tap-highlight-color: transparent; }
@@ -714,7 +717,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 }
 .cross-link-strip a {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
   color: rgba(240,245,252,0.5); text-decoration: none;
   transition: color 0.2s;
 }
@@ -724,7 +727,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   }
   .footer-legal-link {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 10px; letter-spacing: 2px; color: rgba(240,245,252,0.65);
+    font-size: 12px; letter-spacing: 2px; color: rgba(240,245,252,0.65);
     text-transform: uppercase; text-decoration: none;
     background: none; border: none; cursor: pointer; padding: 0;
     line-height: 1; vertical-align: top;
@@ -910,7 +913,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
   </div>
 
   <div class="footer-bottom" style="display:flex;align-items:center;justify-content:space-between;padding:20px 0 0;border-top:1px solid rgba(255,255,255,0.07);">
-    <p style="font-family:'Share Tech Mono',monospace;font-size:9px;letter-spacing:2px;color:#f0f5fc;text-transform:uppercase;">© 2026 Sentinella LLC · 8 The Green STE A, Dover, DE 19901, USA · HQ: Brussels, Belgium</p>
+    <p style="font-family:'Share Tech Mono',monospace;font-size:12px;letter-spacing:1.5px;color:#f0f5fc;text-transform:uppercase;">© 2026 Sentinella LLC · 8 The Green STE A, Dover, DE 19901, USA · HQ: Brussels, Belgium</p>
     <div class="footer-legal-links">
       <a href="/privacypolicy/" class="footer-legal-link">Privacy Policy</a>
       <a href="/legalterms/" class="footer-legal-link">Terms</a>
@@ -1182,10 +1185,10 @@ setInterval(renderHero, 60000);
 .sm-cookie-label {
   display: block;
   font-family: 'Share Tech Mono', monospace;
-  font-size: 10px; letter-spacing: 3px; color: #3aab4a;
+  font-size: 12px; letter-spacing: 3px; color: #3aab4a;
   text-transform: uppercase; margin-bottom: 7px;
 }
-.sm-cookie-text { font-size: 14px; line-height: 1.65; color: #c8d8ec; max-width: 680px; }
+.sm-cookie-text { font-size: 15px; line-height: 1.65; color: #c8d8ec; max-width: 680px; }
 .sm-cookie-actions { display: flex; gap: 12px; flex-shrink: 0; align-items: center; }
 .sm-cookie-btn {
   font-family: 'Rajdhani', sans-serif;
