@@ -55,6 +55,9 @@
     --text: #f0f5fc;
     --text-dim: #c8d8ec;
     --white: #eef3f8;
+    /* Horizontal edge padding: 64px normally, growing to center content
+       at a 1440px max width on large monitors (backgrounds stay full-width) */
+    --edge: max(64px, calc((100% - 1440px) / 2));
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -81,8 +84,9 @@
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 999;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 14px 64px;
+    padding: 14px var(--edge);
     background: rgba(8,19,30,0.92);
+    -webkit-backdrop-filter: blur(16px);
     backdrop-filter: blur(16px);
     border-bottom: 1px solid rgba(45,122,58,0.18);
   }
@@ -135,9 +139,9 @@
 
   /* ── HERO ── */
   .hero {
-    min-height: 100svh; position: relative;
+    min-height: 100vh; min-height: 100svh; position: relative;
     display: flex; align-items: center;
-    padding: 148px 64px 80px;
+    padding: 148px var(--edge) 80px;
     overflow: hidden;
   }
   .hero-bg {
@@ -307,7 +311,7 @@
     background: rgba(13,27,42,0.95);
     border-top: 1px solid rgba(45,122,58,0.2);
     display: flex; align-items: center;
-    padding: 12px 64px; gap: 48px;
+    padding: 12px var(--edge); gap: 48px;
     overflow: hidden;
   }
   .live-item {
@@ -331,7 +335,7 @@
   .live-sep { color: rgba(45,122,58,0.3); }
 
   /* ── SECTION SHARED ── */
-  section { padding: 60px 64px; }
+  section { padding: 60px var(--edge); }
   .section-label {
     display: inline-flex; align-items: center; gap: 10px;
     font-family: 'Share Tech Mono', monospace;
@@ -1055,7 +1059,7 @@
     background: var(--navy-3);
     border-top: 1px solid rgba(45,122,58,0.15);
     border-bottom: 1px solid rgba(45,122,58,0.15);
-    padding: 80px 64px;
+    padding: 80px var(--edge);
     position: relative; overflow: hidden;
     display: flex; align-items: center; justify-content: space-between;
     gap: 48px;
@@ -1080,7 +1084,7 @@
   /* ── FOOTER ── */
   footer {
     background: var(--navy-2);
-    padding: 64px 64px 36px;
+    padding: 64px var(--edge) 36px;
     border-top: 1px solid rgba(45,122,58,0.12);
   }
   .footer-top {
@@ -1232,6 +1236,7 @@
 
   /* ── Large tablets / small desktops (≤ 1024px) ── */
   @media (max-width: 1024px) {
+    :root { --edge: 32px; }
     nav { padding: 14px 32px; }
     .hero { padding: 132px 32px 72px; }
     .live-bar { padding: 12px 32px; gap: 32px; }
@@ -1284,6 +1289,7 @@
 
   /* ── Tablets (≤ 768px) ── */
   @media (max-width: 768px) {
+    :root { --edge: 20px; }
     /* Layout & spacing */
     nav { padding: 12px 20px; backdrop-filter: none; -webkit-backdrop-filter: none; }
     .nav-logo img { height: 70px; }
@@ -1401,6 +1407,7 @@
 
   /* ── Phones (≤ 480px) ── */
   @media (max-width: 480px) {
+    :root { --edge: 16px; }
     nav { padding: 10px 16px; }
     .nav-logo img { height: 56px; }
     .nav-brand .n1 { font-size: 12px; letter-spacing: 1px; }
@@ -1489,6 +1496,7 @@
 
   /* ── Extra small phones (≤ 360px) ── */
   @media (max-width: 360px) {
+    :root { --edge: 12px; }
     nav { padding: 8px 12px; }
     .nav-logo img { height: 46px; }
     .nav-brand .n1 { font-size: 10px; }
@@ -1501,32 +1509,24 @@
   }
 
   /* ── iOS safe-area insets ── */
+  /* Floors reference --edge so notched devices add inset padding on top of
+     the normal responsive edge padding, without overriding it on desktop. */
   @supports (padding: max(0px)) {
     nav {
       padding-top: max(14px, env(safe-area-inset-top));
-      padding-left: max(20px, env(safe-area-inset-left));
-      padding-right: max(20px, env(safe-area-inset-right));
+      padding-left: max(var(--edge), env(safe-area-inset-left));
+      padding-right: max(var(--edge), env(safe-area-inset-right));
     }
     /* Prevent content from being hidden behind home indicator */
     footer {
       padding-bottom: max(36px, env(safe-area-inset-bottom));
     }
     .live-bar {
-      padding-left: max(64px, env(safe-area-inset-left));
-      padding-right: max(64px, env(safe-area-inset-right));
-    }
-    @media (max-width: 768px) {
-      .live-bar {
-        padding-left: max(20px, env(safe-area-inset-left));
-        padding-right: max(20px, env(safe-area-inset-right));
-      }
+      padding-left: max(var(--edge), env(safe-area-inset-left));
+      padding-right: max(var(--edge), env(safe-area-inset-right));
     }
     @media (max-width: 480px) {
-      nav {
-        padding-top: max(10px, env(safe-area-inset-top));
-        padding-left: max(16px, env(safe-area-inset-left));
-        padding-right: max(16px, env(safe-area-inset-right));
-      }
+      nav { padding-top: max(10px, env(safe-area-inset-top)); }
       footer { padding-bottom: max(20px, env(safe-area-inset-bottom)); }
     }
   }
@@ -1624,7 +1624,7 @@
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="#">
-    <img src="Sentinella Mare Logo_White.png" alt="Sentinella Mare" fetchpriority="high" decoding="async" style="height:90px;width:auto;">
+    <img src="Sentinella Mare Logo_White.png" alt="Sentinella Mare" fetchpriority="high" decoding="async">
     <div class="nav-brand">
       <span class="n1">SENTINELLA MARE</span>
       <span class="n2">Mediterranean Intelligence</span>
