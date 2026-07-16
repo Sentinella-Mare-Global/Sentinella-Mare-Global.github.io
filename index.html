@@ -1716,7 +1716,7 @@
         </svg>
       </button>
       <div class="lang-menu" id="langMenu">
-        <button class="lang-btn active" onclick="setLang('en'); document.getElementById('langDropdown').classList.remove('open')" id="btn-en">EN</button>
+        <button class="lang-btn active" aria-current="true" onclick="setLang('en'); document.getElementById('langDropdown').classList.remove('open')" id="btn-en">EN</button>
         <button class="lang-btn" onclick="setLang('it'); document.getElementById('langDropdown').classList.remove('open')" id="btn-it">IT</button>
         <button class="lang-btn" onclick="setLang('ar'); document.getElementById('langDropdown').classList.remove('open')" id="btn-ar">AR</button>
         <button class="lang-btn" onclick="setLang('el'); document.getElementById('langDropdown').classList.remove('open')" id="btn-el">EL</button>
@@ -1800,7 +1800,7 @@
   <div class="services-grid">
     <!-- Service 1 -->
     <div class="service-card s1">
-      <div class="svc-num">01</div>
+      <div class="svc-num" aria-hidden="true">01</div>
       <div class="svc-icon">⌖</div>
       <div class="svc-tagline" data-i18n="s1.tagline">Hybrid Threat Intelligence</div>
       <h3 data-i18n="s1.title" data-i18n-html="true">Mediterranean Watch<br>Intelligence Terminal</h3>
@@ -1817,7 +1817,7 @@
 
     <!-- Service 2 -->
     <div class="service-card s2">
-      <div class="svc-num">02</div>
+      <div class="svc-num" aria-hidden="true">02</div>
       <div class="svc-icon gold-icon">⚖</div>
       <div class="svc-tagline gold" data-i18n="s2.tagline">Maritime Financial Intelligence</div>
       <h3 data-i18n="s2.title" data-i18n-html="true">Investment & Supply<br>Chain Risk Analysis</h3>
@@ -2933,8 +2933,10 @@ function setLang(lang) {
   currentLang = lang;
 
   // Update button states
-  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-  document.getElementById('btn-' + lang).classList.add('active');
+  document.querySelectorAll('.lang-btn').forEach(btn => { btn.classList.remove('active'); btn.removeAttribute('aria-current'); });
+  const activeBtn = document.getElementById('btn-' + lang);
+  activeBtn.classList.add('active');
+  activeBtn.setAttribute('aria-current', 'true');
 
   // Set dir for RTL
   document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
@@ -2981,6 +2983,16 @@ document.addEventListener('click', function(e) {
   sync(langDd, langDd && langDd.querySelector('.lang-globe'));
   var toggle = document.getElementById('navToggle');
   sync(toggle, toggle);
+  // When the mobile menu opens, move keyboard focus into it (first item)
+  if (toggle) {
+    new MutationObserver(function() {
+      if (toggle.classList.contains('open')) {
+        var links = document.getElementById('navLinks');
+        var first = links && links.querySelector('button, a, [tabindex]');
+        if (first) first.focus();
+      }
+    }).observe(toggle, { attributes: true, attributeFilter: ['class'] });
+  }
   // Escape closes any open nav menu and returns focus to its trigger
   document.addEventListener('keydown', function(e) {
     if (e.key !== 'Escape') return;
@@ -3080,6 +3092,7 @@ document.addEventListener('click', function(e) {
   text-transform: uppercase; margin-bottom: 7px;
 }
 .sm-cookie-text { font-size: 14px; line-height: 1.65; color: #c8d8ec; max-width: 680px; }
+.sm-cookie-text a { color: #3aab4a; text-decoration: underline; }
 .sm-cookie-actions { display: flex; gap: 12px; flex-shrink: 0; align-items: center; }
 .sm-cookie-btn {
   font-family: 'Rajdhani', sans-serif;
