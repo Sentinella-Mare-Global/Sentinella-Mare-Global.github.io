@@ -1104,6 +1104,7 @@
     text-transform: uppercase;
   }
   .footer-contact-btn { display: inline-block; width: fit-content; }
+  .footer-col a.footer-contact-btn { color: #fff; }  /* WCAG 1.4.3: .footer-col a would otherwise win on specificity and dim this button's text */
   .footer-col h5 {
     font-family: 'Cinzel', serif;
     font-size: 13px; font-weight: 600;
@@ -1848,11 +1849,11 @@
     <table class="mhtes-tbl">
       <thead>
         <tr>
-          <th>Asset Class</th>
-          <th>Slot 1 · Strategic</th>
-          <th>Slot 2</th>
-          <th>Slot 3 · Activity</th>
-          <th>Slot 4 · Cyber (Shared)</th>
+          <th scope="col">Asset Class</th>
+          <th scope="col">Slot 1 · Strategic</th>
+          <th scope="col">Slot 2</th>
+          <th scope="col">Slot 3 · Activity</th>
+          <th scope="col">Slot 4 · Cyber (Shared)</th>
         </tr>
       </thead>
       <tbody>
@@ -2102,14 +2103,14 @@
       </div>
     </div>
     <div class="footer-col">
-      <h3 class="footer-nav-title" data-i18n="footer.h.services">Services</h3>
+      <p class="footer-nav-title" data-i18n="footer.h.services">Services</p>
       <a href="#services" data-i18n="footer.l.dashboard">Mediterranean Watch Intelligence Terminal</a>
       <a href="#advisory" data-i18n="footer.l.investment">Advisory (Coming Soon)</a>
       <a href="#advisory" data-i18n="footer.l.supply">Supply Chain Risk</a>
       <a href="#pricing" data-i18n="footer.l.tiers">Subscription Tiers</a>
     </div>
     <div class="footer-col">
-      <h3 class="footer-nav-title" data-i18n="footer.h.coverage">Coverage</h3>
+      <p class="footer-nav-title" data-i18n="footer.h.coverage">Coverage</p>
       <p data-i18n="footer.geo.1">Strait of Gibraltar</p>
       <p data-i18n="footer.geo.2">Tyrrhenian Sea</p>
       <p data-i18n="footer.geo.3">Strait of Sicily</p>

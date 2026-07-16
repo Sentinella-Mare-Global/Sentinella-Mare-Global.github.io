@@ -219,6 +219,7 @@ footer {
   text-transform: uppercase;
 }
 .footer-contact-btn { display: inline-block; width: fit-content; }
+  .footer-col a.footer-contact-btn { color: #fff; }  /* WCAG 1.4.3: .footer-col a would otherwise win on specificity and dim this button's text */
 .footer-col .footer-nav-title {
   font-family: 'Cinzel', serif;
   font-size: 13px; font-weight: 600;
@@ -279,7 +280,7 @@ body {
 }
 .page-hero h1 em { font-style: italic; color: #3aab4a; }
 .hero-sub {
-  font-size: 16px; color: #6a8aaa; max-width: 620px;
+  font-size: 16px; color: #8aa5bf; max-width: 620px;
   margin: 0 auto 40px; font-weight: 300; line-height: 1.8;
 }
 .hero-rule {
@@ -302,7 +303,7 @@ section { max-width: 980px; margin: 0 auto; padding: 60px 3rem; }
   margin-bottom: 16px; line-height: 1.2;
 }
 .section-body {
-  font-size: 15px; color: #6a8aaa; line-height: 1.85;
+  font-size: 15px; color: #8aa5bf; line-height: 1.85;
   max-width: 680px; font-weight: 300;
 }
 
@@ -332,15 +333,15 @@ hr.divider {
   font-family: 'Cinzel', serif; font-size: 18px; font-weight: 700;
   color: #f0f5fc; margin-bottom: 8px;
 }
-.fw-full { font-size: 11px; color: #6a8aaa; margin-bottom: 16px;
+.fw-full { font-size: 11px; color: #8aa5bf; margin-bottom: 16px;
   font-family: 'Share Tech Mono', monospace; letter-spacing: 0.04em; }
-.fw-body { font-size: 13px; color: #6a8aaa; line-height: 1.7; font-weight: 300; }
+.fw-body { font-size: 13px; color: #8aa5bf; line-height: 1.7; font-weight: 300; }
 .fw-dates { margin-top: 16px; display: flex; flex-direction: column; gap: 6px; }
 .fw-date { display: flex; justify-content: space-between; align-items: center;
   font-size: 11px; padding: 5px 0;
   border-bottom: 1px solid rgba(45,122,58,0.15); }
 .fw-date:last-child { border-bottom: none; }
-.fw-date-label { color: #6a8aaa; font-weight: 300; }
+.fw-date-label { color: #8aa5bf; font-weight: 300; }
 .fw-date-val { font-family: 'Share Tech Mono', monospace; font-size: 10px; }
 .nis2-val { color: #a78bfa; }
 .cer-val  { color: #0eb5af; }
@@ -370,7 +371,7 @@ hr.divider {
 }
 .tl-month {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 8px; color: #6a8aaa;
+  font-size: 8px; color: #8aa5bf;
   text-align: center; letter-spacing: 0.04em;
 }
 .tl-month.now { color: #3aab4a; font-weight: 400; }
@@ -409,7 +410,7 @@ hr.divider {
   font-size: 7px; color: #ef4444; white-space: nowrap;
 }
 .tl-note {
-  margin-top: 16px; font-size: 11px; color: #6a8aaa;
+  margin-top: 16px; font-size: 11px; color: #8aa5bf;
   font-family: 'Share Tech Mono', monospace; letter-spacing: 0.04em;
 }
 
@@ -425,14 +426,14 @@ hr.divider {
   font-size: 22px; font-weight: 700; color: #f0f5fc;
   margin-bottom: 16px;
 }
-.wh-body { font-size: 13px; color: #6a8aaa; line-height: 1.8; font-weight: 300; }
+.wh-body { font-size: 13px; color: #8aa5bf; line-height: 1.8; font-weight: 300; }
 .wh-list { margin-top: 16px; display: flex; flex-direction: column; gap: 10px; }
 .wh-item { display: flex; gap: 10px; align-items: flex-start; }
 .wh-bullet {
   width: 6px; height: 6px; border-radius: 50%;
   flex-shrink: 0; margin-top: 7px;
 }
-.wh-item-text { font-size: 13px; color: #6a8aaa; font-weight: 300; line-height: 1.7; }
+.wh-item-text { font-size: 13px; color: #8aa5bf; font-weight: 300; line-height: 1.7; }
 .wh-item-text strong { color: #ddeeff; font-weight: 500; }
 
 /* OVERLAP CALLOUT */
@@ -449,7 +450,7 @@ hr.divider {
   color: #c9a84c; margin-bottom: 10px;
 }
 .overlap-callout p {
-  font-size: 14px; color: #6a8aaa; font-weight: 300; line-height: 1.8;
+  font-size: 14px; color: #8aa5bf; font-weight: 300; line-height: 1.8;
 }
 .overlap-callout strong { color: #f0f5fc; font-weight: 500; }
 
@@ -476,7 +477,7 @@ hr.divider {
 .resp-card.nis2 .resp-name { color: #a78bfa; }
 .resp-card.cer  .resp-name { color: #0eb5af; }
 .resp-card.c177 .resp-name { color: #c9a84c; }
-.resp-body { font-size: 12.5px; color: #6a8aaa; line-height: 1.75; font-weight: 300; }
+.resp-body { font-size: 12.5px; color: #8aa5bf; line-height: 1.75; font-weight: 300; }
 .resp-body strong { color: #ddeeff; font-weight: 500; }
 
 /* CTA */
@@ -491,7 +492,7 @@ hr.divider {
   font-size: clamp(22px, 3vw, 30px); font-weight: 700;
   color: #f0f5fc; margin-bottom: 12px;
 }
-.cta-band p { font-size: 14px; color: #6a8aaa; font-weight: 300; margin-bottom: 28px; }
+.cta-band p { font-size: 14px; color: #8aa5bf; font-weight: 300; margin-bottom: 28px; }
 .cta-btn {
   display: inline-block;
   background: #2d7a3a; color: white;
@@ -846,7 +847,7 @@ html { scroll-behavior: smooth; }
             <div class="wh-item-text"><strong>Ferry and Ro-Ro operators</strong> — CER + Circolare 177. Designation in July starts the notification clock toward risk assessment.</div>
           </div>
           <div class="wh-item">
-            <div class="wh-bullet" style="background: #6a8aaa"></div>
+            <div class="wh-bullet" style="background: #8aa5bf"></div>
             <div class="wh-item-text"><strong>Subsea cable operators</strong> — NIS2 + likely CER. Cable inclusion under CER sits at member state discretion — not explicitly named in the Directive Annex — but Mediterranean exposure makes in-scope treatment likely.</div>
           </div>
         </div>
@@ -936,14 +937,14 @@ html { scroll-behavior: smooth; }
       </div>
     </div>
     <div class="footer-col">
-      <h3 class="footer-nav-title">Services</h3>
+      <p class="footer-nav-title">Services</p>
       <a href="/#services">Mediterranean Watch Intelligence Terminal</a>
       <a href="/#advisory">Investment Advisory</a>
       <a href="/#advisory">Supply Chain Risk</a>
       <a href="/#pricing">Subscription Tiers</a>
     </div>
     <div class="footer-col">
-      <h3 class="footer-nav-title">Coverage</h3>
+      <p class="footer-nav-title">Coverage</p>
       <p>Strait of Gibraltar</p>
       <p>Tyrrhenian Sea</p>
       <p>Strait of Sicily</p>

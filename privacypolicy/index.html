@@ -27,72 +27,219 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&family=Playfair+Display:wght@700;900&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
-  /* ── Site nav ── */
-  nav.site-nav {
+  /* ── NAV (matches homepage) ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 16px 48px; background: rgba(6,15,24,0.97);
+    padding: 14px 64px;
+    background: rgba(8,19,30,0.92);
+    -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
     border-bottom: 1px solid rgba(45,122,58,0.18);
-    position: sticky; top: 0; z-index: 99;
   }
-  .nav-wordmark {
-    font-family: 'Cinzel', serif; font-size: 16px; font-weight: 700;
-    color: #eef3f8; letter-spacing: 3px; text-decoration: none;
+  .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .nav-logo img { height: 90px; max-width: 160px; }
+  .nav-brand { display: flex; flex-direction: column; line-height: 1; }
+  .nav-brand .n1 { font-family: 'Cinzel', serif; font-size: 18px; font-weight: 700; color: #eef3f8; letter-spacing: 3px; }
+  .nav-brand .n2 { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: #3aab4a; letter-spacing: 4px; margin-top: 3px; }
+  .nav-links { display: flex; align-items: center; gap: 32px; }
+  .nav-links a {
+    color: #e8f0f8; text-decoration: none;
+    font-size: 12px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+    font-family: 'Rajdhani', sans-serif;
+    transition: color 0.25s;
   }
-  .nav-back {
-    font-family: 'Share Tech Mono', monospace; font-size: 10px;
-    letter-spacing: 2px; color: #3aab4a; text-decoration: none;
-    text-transform: uppercase; transition: color 0.2s;
+  .nav-links a:hover, .nav-links a.active { color: #4fd962; }
+  .btn-nav {
+    border: 1px solid #2d7a3a; color: #3aab4a !important;
+    padding: 8px 20px !important; letter-spacing: 2px !important;
+    font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 12px;
+    text-transform: uppercase; text-decoration: none;
+    transition: all 0.25s !important;
   }
-  .nav-back:hover { color: #4fd962; }
-  /* ── Legal shared footer ── */
-  .legal-footer {
-    border-top: 1px solid rgba(14,181,175,0.15);
-    padding: 24px 48px; margin-top: 0;
-    display: flex; flex-direction: column; gap: 10px;
-    background: rgba(6,15,24,0.6);
+  .btn-nav:hover { background: #2d7a3a !important; color: white !important; box-shadow: 0 0 24px rgba(79,217,98,0.25); }
+  .nav-toggle {
+    display: none; flex-direction: column; justify-content: center; gap: 5px;
+    cursor: pointer; padding: 8px; background: none; border: none; z-index: 1001;
   }
-  .legal-footer-company {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px; letter-spacing: 1.5px; color: rgba(240,245,252,0.45);
-    text-transform: uppercase;
-  }
-  .legal-footer-links {
-    display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: flex-start;
-  }
-  .legal-footer-links a, .legal-footer-links button {
-    font-family: 'Share Tech Mono', monospace; font-size: 10px;
-    letter-spacing: 1.5px; text-transform: uppercase;
-    color: rgba(240,245,252,0.65); text-decoration: none;
+  .nav-toggle span { display: block; width: 24px; height: 2px; background: #3aab4a; transition: all 0.3s; }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ── COMPLIANCE NAV DROPDOWN ── */
+  .nav-comp-wrap { position: relative; display: flex; align-items: center; }
+  .nav-comp-trigger {
     background: none; border: none; cursor: pointer; padding: 0;
-    line-height: 1; vertical-align: top;
-    transition: color 0.2s;
+    color: #e8f0f8; font-family: 'Rajdhani', sans-serif;
+    font-size: 12px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+    display: flex; align-items: center; gap: 5px; transition: color 0.25s;
   }
-  .legal-footer-links a:hover, .legal-footer-links button:hover { color: #eef3f8; }
-  .lf-sep { color: rgba(14,181,175,0.2); }
-  @media (max-width: 640px) {
-    nav.site-nav { padding: 14px 20px; }
-    .legal-footer { padding: 20px; }
+  .nav-comp-trigger:hover { color: #4fd962; }
+  .nav-comp-trigger svg { transition: transform 0.2s; flex-shrink: 0; }
+  .nav-comp-wrap.open .nav-comp-trigger { color: #4fd962; }
+  .nav-comp-wrap.open .nav-comp-trigger svg { transform: rotate(180deg); }
+  .nav-comp-menu {
+    display: none; position: absolute;
+    top: calc(100% + 16px); left: 50%; transform: translateX(-50%);
+    background: rgba(6,15,24,0.98); border: 1px solid rgba(45,122,58,0.3);
+    border-radius: 4px; min-width: 220px; z-index: 1100;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5); overflow: hidden;
+  }
+  .nav-comp-wrap.open .nav-comp-menu { display: block; }
+  .nav-comp-menu a {
+    display: block; padding: 12px 20px;
+    color: rgba(200,216,236,0.7);
+    font-family: 'Share Tech Mono', monospace; font-size: 10px;
+    letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
+    border-bottom: 1px solid rgba(45,122,58,0.12);
+    transition: color 0.2s, background 0.2s;
+  }
+  .nav-comp-menu a:last-child { border-bottom: none; }
+  .nav-comp-menu a:hover { color: #4fd962; background: rgba(45,122,58,0.08); }
+  .nav-comp-menu .comp-link-label { display: block; font-size: 8px; color: rgba(45,122,58,0.6); letter-spacing: 1.5px; margin-top: 2px; }
+
+  /* ── FOOTER (matches homepage) ── */
+  footer {
+    background: #0d1b2a;
+    border-top: 1px solid rgba(45,122,58,0.12);
+    padding: 56px 64px 32px;
+  }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 60px; }
+  .footer-brand { display: flex; flex-direction: row; align-items: flex-start; gap: 20px; }
+  .footer-brand-text { display: flex; flex-direction: column; gap: 12px; }
+  .footer-brand img { height: 100px; width: fit-content; }
+  .footer-brand p { font-family: 'Rajdhani', sans-serif; font-size: 13px; line-height: 1.7; color: rgba(232,240,248,0.72); max-width: 280px; }
+  .footer-brand .hq { font-family: 'Share Tech Mono', monospace; font-size: 9px; letter-spacing: 3px; color: #3aab4a; text-transform: uppercase; }
+  .footer-col .footer-nav-title { font-family: 'Cinzel', serif; font-size: 13px; font-weight: 600; color: #eef3f8; letter-spacing: 1px; margin-bottom: 20px; }
+  .footer-col a, .footer-col p {
+    display: block; color: rgba(232,240,248,0.72); text-decoration: none;
+    font-family: 'Rajdhani', sans-serif; font-size: 13px; line-height: 1.6; margin-bottom: 10px;
+  }
+  .footer-col a:hover { color: #3aab4a; }
+  .footer-contact-btn { display: inline-block; width: fit-content; }
+  .footer-col a.footer-contact-btn { color: #fff; }  /* WCAG 1.4.3: .footer-col a would otherwise win on specificity and dim this button's text */
+  .footer-bottom {
+    border-top: 1px solid rgba(45,122,58,0.1); padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
+  }
+  .footer-bottom p { font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 2px; color: rgba(232,240,248,0.72); text-transform: uppercase; }
+  .footer-legal-links { display: flex; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+  .footer-legal-link {
+    font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: 2px; color: rgba(240,245,252,0.65);
+    text-transform: uppercase; text-decoration: none;
+    background: none; border: none; cursor: pointer; padding: 0;
+    line-height: 1; vertical-align: top; transition: color 0.2s;
+  }
+  .footer-legal-link:hover { color: #eef3f8; }
+  .btn-primary {
+    background: #2d7a3a; color: #fff;
+    padding: 14px 36px; font-family: 'Rajdhani', sans-serif;
+    font-size: 13px; font-weight: 700; letter-spacing: 2.5px;
+    text-transform: uppercase; text-decoration: none;
+    border: none; cursor: pointer; transition: all 0.3s; display: inline-block;
+  }
+  .btn-primary:hover { background: #3aab4a; box-shadow: 0 0 32px rgba(79,217,98,0.3); }
+
+  /* ── Responsive: nav & footer ── */
+  @media (max-width: 1100px) {
+    .nav-toggle { display: flex; }
+    .nav-links {
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw; height: 100vh; height: 100dvh;
+      background: #060f18; flex-direction: column; align-items: center; justify-content: center;
+      gap: 32px; z-index: 1000; overflow-y: auto; padding: 80px 20px 40px;
+      overscroll-behavior: contain; -webkit-overflow-scrolling: touch;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { font-size: 16px; letter-spacing: 3px; }
+    .nav-comp-wrap { flex-direction: column; width: 100%; align-items: center; }
+    .nav-comp-trigger { font-size: 16px; letter-spacing: 3px; }
+    .nav-comp-menu { position: static; transform: none; display: none; background: transparent; border: none; box-shadow: none; min-width: auto; }
+    .nav-comp-wrap.open .nav-comp-menu { display: flex; flex-direction: column; align-items: center; gap: 0; padding: 6px 0; }
+    .nav-comp-menu a { border: none; font-size: 11px; padding: 8px 0; text-align: center; }
+    .nav-comp-menu .comp-link-label { display: none; }
+  }
+  @media (max-width: 1024px) {
+    nav { padding: 14px 32px; }
+    footer { padding: 48px 32px 28px; }
+    .footer-top { grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
+    .footer-brand { grid-column: 1 / -1; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 12px 20px; }
+    .nav-logo img { height: 70px; }
+    footer { padding: 36px 20px 24px; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .footer-brand { grid-column: 1 / -1; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .footer-contact-btn { width: 100%; text-align: center; }
+  }
+  @media (max-width: 480px) {
+    nav { padding: 10px 16px; }
+    .nav-logo img { height: 56px; }
+    .nav-brand .n1 { font-size: 12px; letter-spacing: 1px; }
+    .nav-brand .n2 { display: none; }
+    footer { padding: 28px 16px 20px; }
+    .footer-top { grid-template-columns: 1fr; gap: 20px; }
+    .footer-brand { flex-direction: column; grid-column: auto; }
+    .footer-brand img { height: 80px; }
+    .footer-col a, .footer-col p { font-size: 12px; }
+  }
+  @media (max-width: 360px) {
+    nav { padding: 8px 12px; }
+    .nav-logo img { height: 46px; }
+  }
+  @supports (padding: max(0px)) {
+    nav {
+      padding-top: max(14px, env(safe-area-inset-top));
+      padding-left: max(20px, env(safe-area-inset-left));
+      padding-right: max(20px, env(safe-area-inset-right));
+    }
+    footer { padding-bottom: max(32px, env(safe-area-inset-bottom)); }
+    @media (max-width: 480px) {
+      nav {
+        padding-top: max(10px, env(safe-area-inset-top));
+        padding-left: max(16px, env(safe-area-inset-left));
+        padding-right: max(16px, env(safe-area-inset-right));
+      }
+      footer { padding-bottom: max(20px, env(safe-area-inset-bottom)); }
+    }
+  }
+  @media (hover: none) and (pointer: coarse) {
+    nav { backdrop-filter: none; -webkit-backdrop-filter: none; }
   }
 
   :root {
     --bg: #060f18;
     --panel: rgba(12, 20, 33, 0.7);
     --rule: rgba(14, 181, 175, 0.15);
-    --teal: #0eb5af;
+    --teal: #3aab4a;
     --gold: #c9a84c;
     --text: #e8f0f8;
     --text-mid: rgba(232, 240, 248, 0.72);
-    --text-dim: rgba(232, 240, 248, 0.45);
-    --display: 'Playfair Display', serif;
-    --body: 'Jost', sans-serif;
+    --text-dim: rgba(232, 240, 248, 0.58);
+    --display: 'Cinzel', serif;
+    --body: 'Rajdhani', sans-serif;
+    --navy: #060f18;
+    --navy-2: #0d1b2a;
+    --navy-3: #112336;
+    --navy-4: #1a3450;
+    --green: #2d7a3a;
+    --green-mid: #3aab4a;
+    --green-glow: #4fd962;
+    --white: #eef3f8;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { background: var(--bg); color: var(--text); font-family: var(--body); font-weight: 300; line-height: 1.8; }
-  .wrap { max-width: 860px; margin: 0 auto; padding: 4rem 2rem 5rem; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 160px 2rem 5rem; }
+  @media (max-width: 1024px) { .wrap { padding-top: 132px; } }
+  @media (max-width: 768px)  { .wrap { padding-top: 116px; } }
+  @media (max-width: 480px)  { .wrap { padding-top: 96px; } }
+  @media (max-width: 360px)  { .wrap { padding-top: 86px; } }
   .eyebrow { color: var(--teal); font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; margin-bottom: 1rem; }
-  h1 { font-family: var(--display); font-size: 2.4rem; font-weight: 900; line-height: 1.2; margin-bottom: 0.75rem; }
+  h1 { font-family: var(--display); font-size: 2.4rem; font-weight: 700; letter-spacing: 0.5px; line-height: 1.2; margin-bottom: 0.75rem; }
   .updated { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 3rem; }
   h2 { font-family: var(--display); font-size: 1.35rem; font-weight: 700; color: var(--text); margin: 2.8rem 0 0.9rem; padding-top: 1.6rem; border-top: 1px solid var(--rule); }
   h3 { font-size: 1rem; font-weight: 600; color: var(--teal); margin: 1.6rem 0 0.5rem; }
@@ -130,9 +277,44 @@
 <body>
 
 <a href="#main" class="skip-link">Skip to content</a>
-<nav class="site-nav">
-  <a href="/" class="nav-wordmark">SENTINELLA MARE</a>
-  <a href="/" class="nav-back">← Back to Site</a>
+<nav>
+  <a class="nav-logo" href="/">
+    <img src="/Sentinella Mare Logo_White.png" alt="Sentinella Mare">
+    <div class="nav-brand">
+      <span class="n1">SENTINELLA MARE</span>
+      <span class="n2">Mediterranean Intelligence</span>
+    </div>
+  </a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navLinks">
+    <a href="/#services" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Services</a>
+    <a href="/#platform" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Live Platform</a>
+    <a href="/#advisory" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Advisory</a>
+    <a href="/#pricing" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Subscription</a>
+    <a href="/#clients" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Clients</a>
+    <a href="/Leadership" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Leadership</a>
+    <div class="nav-comp-wrap" id="complianceNav">
+      <button class="nav-comp-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="complianceMenu" onclick="document.getElementById('complianceNav').classList.toggle('open')">
+        Compliance
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="nav-comp-menu" id="complianceMenu">
+        <a href="/EUMaritimeComplianceCountdown" target="_blank" rel="noopener noreferrer">
+          Deadline Countdown
+          <span class="comp-link-label">NIS2 · CER · Circ. 177 live timers</span>
+        </a>
+        <a href="/EUMaritimeComplianceExplained" target="_blank" rel="noopener noreferrer">
+          Compliance Explained
+          <span class="comp-link-label">2026–2027 pressure window guide</span>
+        </a>
+      </div>
+    </div>
+    <a href="/#contact" class="btn-nav" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Request Access</a>
+  </div>
 </nav>
 
 <main id="main" tabindex="-1">
@@ -179,7 +361,7 @@
 
 <h2>3. Why We Process Your Data (Purposes and Legal Bases)</h2>
 <table>
-  <tr><th>Purpose</th><th>Legal basis (Art. 6 GDPR)</th></tr>
+  <tr><th scope="col">Purpose</th><th scope="col">Legal basis (Art. 6 GDPR)</th></tr>
   <tr><td>Responding to demo requests, enquiries, and correspondence</td><td>Legitimate interests (Art. 6(1)(f)) — responding to your request</td></tr>
   <tr><td>Providing and administering Platform subscriptions, including billing and support</td><td>Performance of a contract (Art. 6(1)(b))</td></tr>
   <tr><td>Sending newsletters, compliance updates, and marketing communications</td><td>Consent (Art. 6(1)(a)) — you may withdraw at any time</td></tr>
@@ -195,7 +377,7 @@
   <li><strong>Service providers (processors)</strong> who help us operate the Site and Platform, under contracts that comply with Article 28 GDPR. Our current sub-processors are:</li>
 </ul>
 <table>
-  <tr><th>Provider</th><th>Purpose</th><th>Location</th></tr>
+  <tr><th scope="col">Provider</th><th scope="col">Purpose</th><th scope="col">Location</th></tr>
   <tr><td>Google LLC (Google Analytics)</td><td>Site analytics (consent-based)</td><td>USA / EU</td></tr>
   <tr><td>Google LLC (Google Workspace / Gmail)</td><td>Email and business correspondence</td><td>USA / EU</td></tr>
   <tr><td>Tally B.V.</td><td>Contact and demo request forms</td><td>Belgium (EU)</td></tr>
@@ -246,7 +428,7 @@
 <h2>8. Cookies</h2>
 <p>The Site uses the following categories of cookies and similar technologies:</p>
 <table>
-  <tr><th>Category</th><th>Purpose</th><th>Basis</th></tr>
+  <tr><th scope="col">Category</th><th scope="col">Purpose</th><th scope="col">Basis</th></tr>
   <tr><td>Strictly necessary</td><td>Site operation and security</td><td>Legitimate interests — no consent required</td></tr>
   <tr><td>Analytics</td><td>Understanding how visitors use the Site so we can improve it</td><td>Consent (via cookie banner)</td></tr>
   <tr><td>Functional / embedded content</td><td>Embedded forms and scheduling tools (e.g. demo booking)</td><td>Consent (via cookie banner)</td></tr>
@@ -272,20 +454,43 @@
 </div>
 </main>
 
-<footer class="legal-footer">
-  <p class="legal-footer-company">© 2026 Sentinella LLC &nbsp;·&nbsp; 8 The Green STE A, Dover, DE 19901, USA &nbsp;·&nbsp; HQ: Brussels, Belgium</p>
-  <div class="legal-footer-links">
-    <a href="/privacypolicy/">Privacy Policy</a>
-    <span class="lf-sep">·</span>
-    <a href="/legalterms/">Terms &amp; Conditions</a>
-    <span class="lf-sep">·</span>
-    <a href="/dpa/">DPA</a>
-    <span class="lf-sep">·</span>
-    <a href="/legalnotice/">Legal Notice</a>
-    <span class="lf-sep">·</span>
-    <button onclick="if(typeof smOpenCookieSettings==='function')smOpenCookieSettings();">Cookie Settings</button>
-    <span class="lf-sep">·</span>
-    <a href="/">sentinellaglobal.com</a>
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="/Sentinella Mare Logo_White.png" alt="Sentinella Mare">
+      <div class="footer-brand-text">
+        <p>Mediterranean maritime intelligence. AI-driven risk intelligence for shipping operators, logistics firms, and institutional investors navigating the world's most strategically complex sea.</p>
+        <span class="hq">// HQ: Brussels, Belgium</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <p class="footer-nav-title">Services</p>
+      <a href="/#services">Mediterranean Watch Intelligence Terminal</a>
+      <a href="/#advisory">Advisory (Coming Soon)</a>
+      <a href="/#advisory">Supply Chain Risk</a>
+      <a href="/#pricing">Subscription Tiers</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-nav-title">Coverage</p>
+      <p>Strait of Gibraltar</p>
+      <p>Tyrrhenian Sea</p>
+      <p>Strait of Sicily</p>
+      <p>Adriatic Sea</p>
+      <p>Eastern Mediterranean</p>
+    </div>
+    <div class="footer-col">
+      <a href="mailto:james@sentinellaglobal.com" class="btn-primary footer-contact-btn">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Sentinella LLC &nbsp;·&nbsp; 8 The Green STE A, Dover, DE 19901, USA &nbsp;·&nbsp; HQ: Brussels, Belgium</p>
+    <div class="footer-legal-links">
+      <a href="/privacypolicy/" class="footer-legal-link">Privacy Policy</a>
+      <a href="/legalterms/" class="footer-legal-link">Terms</a>
+      <a href="/dpa/" class="footer-legal-link">DPA</a>
+      <a href="/legalnotice/" class="footer-legal-link">Legal Notice</a>
+      <button onclick="if(typeof smOpenCookieSettings==='function')smOpenCookieSettings();" class="footer-legal-link">Cookie Settings</button>
+    </div>
   </div>
 </footer>
 <!-- ── COOKIE CONSENT BANNER ── -->
@@ -368,5 +573,20 @@
   };
 })();
 </script>
+
+<script>
+(function(){
+  function sync(c,t){ if(!c||!t)return; var a=function(){t.setAttribute('aria-expanded',c.classList.contains('open')?'true':'false');}; a(); new MutationObserver(a).observe(c,{attributes:true,attributeFilter:['class']}); }
+  document.querySelectorAll('.nav-comp-wrap').forEach(function(w){ sync(w,w.querySelector('.nav-comp-trigger')); });
+  var tg=document.getElementById('navToggle'); sync(tg,tg);
+  if(tg){ new MutationObserver(function(){ if(tg.classList.contains('open')){ var l=document.getElementById('navLinks'); var f=l&&l.querySelector('button, a, [tabindex]'); if(f)f.focus(); } }).observe(tg,{attributes:true,attributeFilter:['class']}); }
+  document.addEventListener('keydown',function(e){ if(e.key!=='Escape')return; document.querySelectorAll('.nav-comp-wrap.open').forEach(function(w){ w.classList.remove('open'); var t=w.querySelector('.nav-comp-trigger'); if(t)t.focus(); }); var nt=document.getElementById('navToggle'); if(nt&&nt.classList.contains('open')){ nt.classList.remove('open'); document.getElementById('navLinks').classList.remove('open'); nt.focus(); } });
+  document.addEventListener('click', function(e) {
+    var cd = document.getElementById('complianceNav');
+    if (cd && !cd.contains(e.target)) cd.classList.remove('open');
+  });
+})();
+</script>
+
 </body>
 </html>

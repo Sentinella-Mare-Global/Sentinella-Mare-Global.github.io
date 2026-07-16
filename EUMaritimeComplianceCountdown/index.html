@@ -216,6 +216,7 @@ footer {
   text-transform: uppercase;
 }
 .footer-contact-btn { display: inline-block; width: fit-content; }
+  .footer-col a.footer-contact-btn { color: #fff; }  /* WCAG 1.4.3: .footer-col a would otherwise win on specificity and dim this button's text */
 .footer-col .footer-nav-title {
   font-family: 'Cinzel', serif;
   font-size: 13px; font-weight: 600;
@@ -477,11 +478,11 @@ body {
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
-.crit     .days-label { color: #FC8181; }
+.crit     .days-label { color: #FCA5A5; }
 .urgent   .days-label { color: #FCD34D; }
 .appr     .days-label { color: #FDE68A; }
 .upcoming .days-label { color: #3aab4a; }
-.passed   .days-label { color: rgba(200,216,236,0.55); }
+.passed   .days-label { color: rgba(200,216,236,0.7); }
 .urgency-tag {
   display: block;
   font-family: 'Share Tech Mono', monospace;
@@ -493,11 +494,11 @@ body {
   padding: 2px 6px;
   border-radius: 2px;
 }
-.crit .urgency-tag    { background: rgba(229,62,62,0.3); color: #FC8181; }
+.crit .urgency-tag    { background: rgba(229,62,62,0.3); color: #FCA5A5; }
 .urgent .urgency-tag  { background: rgba(217,119,6,0.3); color: #FCD34D; }
 .appr .urgency-tag    { background: rgba(180,83,9,0.3); color: #FDE68A; }
 .upcoming .urgency-tag{ background: rgba(45,122,58,0.25); color: #4fd962; }
-.passed .urgency-tag  { background: rgba(42,74,108,0.5); color: rgba(200,216,236,0.55); }
+.passed .urgency-tag  { background: rgba(42,74,108,0.5); color: rgba(200,216,236,0.7); }
 
 /* Right content column */
 .card-content {
@@ -610,8 +611,8 @@ body {
   gap: 16px;
   background: #0B1F3A;
 }
-.page-footer-note .fn-text { font-size: 10px; color: rgba(200,216,236,0.55); max-width: 540px; line-height: 1.7; }
-.page-footer-note .fn-sig { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: rgba(200,216,236,0.55); text-align: right; line-height: 1.9; }
+.page-footer-note .fn-text { font-size: 10px; color: rgba(200,216,236,0.7); max-width: 540px; line-height: 1.7; }
+.page-footer-note .fn-sig { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: rgba(200,216,236,0.7); text-align: right; line-height: 1.9; }
 .page-footer-note .fn-sig .teal { color: #3aab4a; }
 
 /* iPad landscape — collapse nav to hamburger */
@@ -873,14 +874,14 @@ a, button { -webkit-tap-highlight-color: transparent; }
       </div>
     </div>
     <div class="footer-col">
-      <h3 class="footer-nav-title">Services</h3>
+      <p class="footer-nav-title">Services</p>
       <a href="/#services">Mediterranean Watch Intelligence Terminal</a>
       <a href="/#advisory">Investment Advisory</a>
       <a href="/#advisory">Supply Chain Risk</a>
       <a href="/#pricing">Subscription Tiers</a>
     </div>
     <div class="footer-col">
-      <h3 class="footer-nav-title">Coverage</h3>
+      <p class="footer-nav-title">Coverage</p>
       <p>Strait of Gibraltar</p>
       <p>Tyrrhenian Sea</p>
       <p>Strait of Sicily</p>
