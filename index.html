@@ -481,11 +481,12 @@
   .svc-cta:hover { gap: 16px; color: var(--green-glow); }
   .svc-cta.gold-cta { color: var(--gold); }
   .svc-cta.gold-cta:hover { color: #e8c96a; }
-  .svc-cta span { font-size: 18px; }
+  .svc-cta > span:last-child { font-size: 18px; }
   .nav-coming-soon { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 9px; font-style: italic; font-weight: 400; letter-spacing: 1px; color: var(--text-dim); line-height: 1; margin-top: 3px; text-transform: none; }
   .svc-buttons-outer { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 24px 0 0 48px; }
   .coming-soon-tag { font-style: italic; letter-spacing: 1px; font-weight: 400; text-transform: none; vertical-align: baseline; margin-left: 4px; }
-  .svc-cta .coming-soon-tag { font-size: 10px; }
+  .svc-cta-text { display: inline; }
+  .svc-cta .coming-soon-tag { font-size: 10px; margin-left: 2px; }
 
   /* ── DASHBOARD MOCKUP ── */
   #platform { background: var(--navy); position: relative; overflow: hidden; }
@@ -828,9 +829,9 @@
     color: var(--white); margin-bottom: 8px;
   }
   .price-best-for {
-    font-size: 12px; line-height: 1.5;
-    color: rgba(200,216,236,0.55);
-    margin: 0 0 14px 0; font-style: italic;
+    font-size: 13.5px; line-height: 1.6;
+    color: rgba(200,216,236,0.82);
+    margin: 0 0 16px 0;
   }
   .price-amt {
     font-family: 'Cinzel', serif;
@@ -883,7 +884,7 @@
     content: ''; position: absolute; top: 0; bottom: 0;
     left: calc(66.666% + 4px);
     width: 1px;
-    background: linear-gradient(to bottom, transparent, rgba(200,216,236,0.28) 12%, rgba(200,216,236,0.28) 88%, transparent);
+    background: linear-gradient(to bottom, rgba(200,216,236,0.28) 0, rgba(200,216,236,0.28) 100%);
     pointer-events: none;
   }
   .pcol-header {
@@ -907,45 +908,48 @@
   }
   .ptab-audience {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 10px; letter-spacing: 0.5px;
-    color: rgba(200,216,236,0.38); display: block;
+    font-size: 10.5px; letter-spacing: 0.6px;
+    color: rgba(200,216,236,0.7); display: block;
   }
   /* Tier cards inside the pricing grid */
   .pricing-cols .price-card { margin-bottom: 0; }
   .pricing-cols .price-card.featured { transform: none; }
   .pricing-cols .price-features { flex: 1; margin-bottom: 24px; }
   .price-amount {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 11px; letter-spacing: 2px;
-    color: var(--green-mid); margin-bottom: 16px;
+    display: flex; align-items: baseline; gap: 8px;
+    margin-bottom: 18px;
   }
-  .ent-card .price-amount { color: var(--gold); }
+  .pa-num {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 20px; font-weight: 700; line-height: 1;
+    color: var(--white); letter-spacing: 0.5px;
+  }
+  .ent-card .pa-num { color: var(--gold); }
+  .pa-per {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px; font-weight: 600; letter-spacing: 0.5px;
+    color: rgba(200,216,236,0.6);
+  }
   .price-features li.feat-all { color: var(--white); font-weight: 700; }
   .price-features li.feat-all::before { content: '+'; font-weight: 700; }
-  .ent-sardinia {
-    background: linear-gradient(90deg, rgba(201,168,76,0.06), rgba(201,168,76,0));
-    border-left: 2px solid var(--gold);
-    padding: 10px 28px;
-    grid-column: 3 / 4;
-  }
-  .ent-sardinia-label {
-    display: block;
+  .price-features li.feat-addon { color: rgba(200,216,236,0.9); }
+  .price-features li.feat-addon::before { content: '+'; color: var(--gold); font-weight: 700; }
+  .feat-addon-tag {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 8px; letter-spacing: 3px; text-transform: uppercase;
-    color: var(--gold); margin-bottom: 6px;
+    font-size: 8px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--gold); border: 1px solid rgba(201,168,76,0.4);
+    padding: 2px 6px; border-radius: 2px; margin-left: 8px;
+    white-space: nowrap; vertical-align: middle;
   }
-  .ent-sardinia-body { font-size: 12px; color: var(--text-dim); line-height: 1.55; }
-  .ent-sardinia-body strong { color: var(--text); font-weight: 600; }
   @media (max-width: 900px) {
     .pricing-cols { grid-template-columns: 1fr; row-gap: 22px; }
     .pricing-cols::after { display: none; }
-    .ph-individual, .ph-enterprise, .ent-sardinia { grid-column: 1 / -1; }
+    .ph-individual, .ph-enterprise { grid-column: 1 / -1; }
     .ph-individual { order: 1; }
     .price-card.free-card { order: 2; }
     .pricing-cols .pro-card { order: 3; }
     .ph-enterprise { order: 4; }
     .pricing-cols .ent-card { order: 5; }
-    .ent-sardinia { order: 6; }
   }
 
   /* ── ADVISORY ── */
@@ -1566,18 +1570,18 @@
   }
   .nav-comp-wrap.open .nav-comp-menu { display: block; }
   .nav-comp-menu a {
-    display: block; padding: 12px 20px;
-    color: rgba(200,216,236,0.7);
-    font-family: 'Share Tech Mono', monospace; font-size: 10px;
-    letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
+    display: block; padding: 13px 22px;
+    color: rgba(232,240,250,0.92);
+    font-family: 'Share Tech Mono', monospace; font-size: 12px;
+    letter-spacing: 1px; text-transform: uppercase; text-decoration: none;
     border-bottom: 1px solid rgba(45,122,58,0.12);
     transition: color 0.2s, background 0.2s;
   }
   .nav-comp-menu a:last-child { border-bottom: none; }
   .nav-comp-menu a:hover { color: var(--green-glow); background: rgba(45,122,58,0.08); }
   .nav-comp-menu .comp-link-label {
-    display: block; font-size: 8px; color: rgba(45,122,58,0.6);
-    letter-spacing: 1.5px; margin-top: 2px;
+    display: block; font-size: 10px; color: var(--green-mid);
+    letter-spacing: 0.5px; margin-top: 4px; text-transform: none;
   }
   @media (max-width: 768px) {
     .nav-comp-wrap { flex-direction: column; width: 100%; align-items: center; }
@@ -1639,7 +1643,7 @@
       </button>
       <div class="nav-comp-menu">
         <a href="#pricing" onclick="document.getElementById('servicesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">
-          Subscription
+          Intelligence Terminal
           <span class="comp-link-label">Live Intelligence Platform</span>
         </a>
         <a href="#advisory" onclick="document.getElementById('servicesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">
@@ -1795,7 +1799,7 @@
   </div>
   <div class="svc-buttons-outer">
     <a href="#pricing" class="svc-cta" data-i18n="s1.cta" data-i18n-html="true">View Subscription Plans <span>→</span></a>
-    <a href="#advisory" class="svc-cta gold-cta" data-i18n="s2.cta" data-i18n-html="true">Explore Advisory Services <span class="coming-soon-tag">(Coming Soon)</span> <span>→</span></a>
+    <a href="#advisory" class="svc-cta gold-cta" data-i18n="s2.cta" data-i18n-html="true"><span class="svc-cta-text">Explore Advisory Services <span class="coming-soon-tag">(Coming Soon)</span></span> <span>→</span></a>
   </div>
 </section>
 
@@ -1937,7 +1941,7 @@
         <li data-i18n="adv.engage.3">Executive advisory board access</li>
         <li data-i18n="adv.engage.6">Crisis response & rapid assessment</li>
       </ul>
-      <a href="mailto:james@sentinellaglobal.com" class="btn-primary" style="display:inline-block;margin-top:20px;" data-i18n="adv.engage.btn">Get Notified at Launch</a>
+      <a href="https://tally.so/r/WOloya" class="btn-primary" style="display:inline-block;margin-top:20px;" data-i18n="adv.engage.btn" target="_blank" rel="noopener noreferrer">Get Notified at Launch</a>
     </div>
   </div>
 </section>
@@ -1947,7 +1951,7 @@
   <div class="section-label" data-i18n="pricing.label">Subscription Platform</div>
   <h2 data-i18n="pricing.h2" data-i18n-html="true"><span>Mediterranean Watch</span><br>Subscription Tiers</h2>
   <p class="section-lead">
-    Three cumulative tiers — each builds on the last. Basic is free: the live Alert Center for anyone monitoring the basin. Pro unlocks the full operational picture — Operations Map, vessel intelligence, and scenario simulation, with unlimited MARIA. Enterprise adds deep simulation, API and data access, compliance reporting, and an analyst advisory layer, tailored to your organisation.
+    Three tiers, one mission — stay ahead of what's coming. Start free with the live Alert Center, unlock the full operational picture with Pro, then scale to Enterprise for deep simulation, compliance-grade reporting, and a dedicated analyst layer. Intelligence built for the moments that can't go wrong.
   </p>
 
   <!-- Pricing three-tier layout -->
@@ -1968,7 +1972,7 @@
     <!-- Basic -->
     <div class="price-card featured free-card">
       <div class="price-name">Basic</div>
-      <div class="price-amount">$0</div>
+      <div class="price-amount"><span class="pa-num">$0</span></div>
       <p class="price-best-for">The live Alert Center — real-time maritime threat monitoring for anyone watching the basin.</p>
       <ul class="price-features">
         <li>Alert Center — live intelligence feed with trade &amp; hybrid-threat alerts</li>
@@ -1984,7 +1988,7 @@
     <!-- Pro -->
     <div class="price-card pro-card">
       <div class="price-name">Pro</div>
-      <div class="price-amount">$19.99 / month</div>
+      <div class="price-amount"><span class="pa-num">$19.99</span><span class="pa-per">/ month</span></div>
       <p class="price-best-for">The full operational picture for professional shipping, logistics, and cruise planners.</p>
       <ul class="price-features">
         <li class="feat-all">Everything in Basic</li>
@@ -1994,30 +1998,24 @@
         <li>Vessel movement replay &amp; vessel risk profiles</li>
         <li>Scenario Simulator — natural-language what-if modelling &amp; impact projections</li>
       </ul>
-      <a href="#contact" class="price-btn">Request Access</a>
+      <a href="https://tally.so/r/WOloya" class="price-btn" target="_blank" rel="noopener noreferrer">Request Access</a>
     </div>
 
     <!-- Enterprise -->
     <div class="price-card ent-card">
       <div class="price-name">Enterprise</div>
-      <div class="price-amount">Custom pricing</div>
+      <div class="price-amount"><span class="pa-num">Custom pricing</span></div>
       <p class="price-best-for">Tailored deployments for institutions, government, and large fleet operators.</p>
       <ul class="price-features">
         <li class="feat-all">Everything in Pro</li>
         <li>Deep Simulation — multi-agent scenario modelling, society graph &amp; agent interviews</li>
         <li>Security &amp; compliance reporting — PDF exports incl. NIS2 / CER</li>
         <li>Response plans — J3/J35 framework</li>
-        <li>API access, custom feeds &amp; integrations</li>
         <li>SSO &amp; team seats</li>
         <li>Advisory services, priority support &amp; SLA</li>
+        <li class="feat-addon">API access, custom feeds &amp; integrations <span class="feat-addon-tag">Add-on</span></li>
       </ul>
-      <a href="#contact" class="price-btn">Contact Us</a>
-    </div>
-
-    <!-- Regional programme note (Enterprise column) -->
-    <div class="ent-sardinia">
-      <span class="ent-sardinia-label">Regional Programme</span>
-      <div class="ent-sardinia-body">Preferential terms for maritime operators <strong>based in Sardinia</strong>.</div>
+      <a href="mailto:james@sentinellaglobal.com" class="price-btn">Contact Us</a>
     </div>
 
   </div>
@@ -2051,7 +2049,7 @@
   <div class="cta-actions">
     <a href="https://mare.sentinellaglobal.com/" class="btn-primary" data-i18n="launch.btn" target="_blank" rel="noopener noreferrer">Launch Terminal</a>
     <a href="https://tally.so/r/WOloya" class="btn-primary" data-i18n="cta.btn1" target="_blank" rel="noopener noreferrer">Request Platform Demo</a>
-    <a href="mailto:james@sentinellaglobal.com" class="btn-secondary" data-i18n="cta.btn2">Get Notified of Advisory Launch</a>
+    <a href="https://tally.so/r/WOloya" class="btn-secondary" data-i18n="cta.btn2" target="_blank" rel="noopener noreferrer">Get Notified of Advisory Launch</a>
   </div>
 </div>
 
@@ -2133,7 +2131,7 @@ const translations = {
     's2.tagline': 'Maritime Financial Intelligence',
     's2.title': 'Investment & Supply<br>Chain Risk Analysis',
     's2.desc': 'Analysis for institutional investors, private equity, and global supply chain operators requiring deep-domain geopolitical intelligence.',
-    's2.cta': 'Explore Advisory Services <span class="coming-soon-tag">(Coming Soon)</span> <span>→</span>',
+    's2.cta': '<span class="svc-cta-text">Explore Advisory Services <span class="coming-soon-tag">(Coming Soon)</span></span> <span>→</span>',
     's2.f1': 'Port infrastructure and regional investment due diligence',
     's2.f2': 'Supply chain stress-testing across Mediterranean chokepoints',
     's2.f3': 'Geopolitical scenario modeling for asset exposure analysis',
@@ -2333,7 +2331,7 @@ const translations = {
     's2.tagline': 'Maritime Financial Intelligence',
     's2.title': 'Analisi del Rischio<br>Investimenti e Supply Chain',
     's2.desc': 'Analisi per investitori istituzionali, private equity e operatori globali della supply chain che richiedono intelligence geopolitica di dominio profondo.',
-    's2.cta': 'Esplora i Servizi Advisory <span class="coming-soon-tag">(Coming Soon)</span> <span>→</span>',
+    's2.cta': '<span class="svc-cta-text">Esplora i Servizi Advisory <span class="coming-soon-tag">(Coming Soon)</span></span> <span>→</span>',
     's2.f1': 'Due diligence su infrastrutture portuali e investimenti regionali',
     's2.f2': 'Stress test della supply chain attraverso i chokepoint mediterranei',
     's2.f3': 'Scenario modeling geopolitico per l\'analisi dell\'esposizione degli asset',
@@ -2528,7 +2526,7 @@ const translations = {
     's2.tagline': 'Maritime Financial Intelligence',
     's2.title': 'تحليل مخاطر الاستثمار<br>وسلسلة التوريد',
     's2.desc': 'تحليل للمستثمرين المؤسسيين وصناديق الأسهم الخاصة ومشغّلي سلاسل التوريد العالمية الذين يحتاجون إلى استخبارات جيوسياسية متخصصة.',
-    's2.cta': 'استكشاف الخدمات الاستشارية <span class="coming-soon-tag">(Coming Soon)</span> <span>→</span>',
+    's2.cta': '<span class="svc-cta-text">استكشاف الخدمات الاستشارية <span class="coming-soon-tag">(Coming Soon)</span></span> <span>→</span>',
     's2.f1': 'العناية الواجبة في البنية التحتية للموانئ والاستثمارات الإقليمية',
     's2.f2': 'اختبار إجهاد سلسلة التوريد عبر نقاط الاختناق المتوسطية',
     's2.f3': 'نمذجة السيناريوهات الجيوسياسية لتحليل تعرض الأصول',
@@ -2723,7 +2721,7 @@ const translations = {
     's2.tagline': 'Maritime Financial Intelligence',
     's2.title': 'Ανάλυση Κινδύνου<br>Επενδύσεων & Εφοδιαστικής',
     's2.desc': 'Ανάλυση για θεσμικούς επενδυτές, private equity και παγκόσμιους χειριστές εφοδιαστικής αλυσίδας που χρειάζονται γεωπολιτική πληροφόρηση βαθιάς εξειδίκευσης.',
-    's2.cta': 'Εξερευνήστε τις Συμβουλευτικές Υπηρεσίες <span class="coming-soon-tag">(Coming Soon)</span> <span>→</span>',
+    's2.cta': '<span class="svc-cta-text">Εξερευνήστε τις Συμβουλευτικές Υπηρεσίες <span class="coming-soon-tag">(Coming Soon)</span></span> <span>→</span>',
     's2.f1': 'Δέουσα επιμέλεια επενδύσεων σε λιμενικές υποδομές και περιφερειακές επενδύσεις',
     's2.f2': 'Stress testing εφοδιαστικής αλυσίδας στα μεσογειακά σημεία συμφόρησης',
     's2.f3': 'Γεωπολιτική μοντελοποίηση σεναρίων για ανάλυση έκθεσης περιουσιακών στοιχείων',
