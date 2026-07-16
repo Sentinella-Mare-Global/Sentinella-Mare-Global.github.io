@@ -106,13 +106,36 @@
   td { color: var(--text-mid); padding: 0.6rem 0.8rem; border-bottom: 1px solid rgba(14,181,175,0.07); vertical-align: top; }
   .notice { background: var(--panel); border: 1px solid var(--gold); border-radius: 8px; padding: 1.1rem 1.3rem; margin: 1.5rem 0; font-size: 0.9rem; color: var(--text-mid); }
   .caps { text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.02em; }
+
+  /* ── Accessibility: focus, skip link, in-text link cues ── */
+  a:focus-visible, button:focus-visible, input:focus-visible,
+  select:focus-visible, textarea:focus-visible,
+  [tabindex]:not([tabindex="-1"]):focus-visible {
+    outline: 3px solid #4fd962; outline-offset: 3px; border-radius: 3px;
+  }
+  main:focus { outline: none; }
+  .skip-link {
+    position: absolute; left: 12px; top: -60px; z-index: 3000;
+    background: #2d7a3a; color: #fff; padding: 12px 20px; border-radius: 4px;
+    font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 13px;
+    letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
+    transition: top 0.2s;
+  }
+  .skip-link:focus { top: 12px; }
+  .sm-cookie-text a { text-decoration: underline; }
+  .wrap a { text-decoration: underline; }
+
 </style>
 </head>
 <body>
+
+<a href="#main" class="skip-link">Skip to content</a>
 <nav class="site-nav">
   <a href="/" class="nav-wordmark">SENTINELLA MARE</a>
   <a href="/" class="nav-back">← Back to Site</a>
 </nav>
+
+<main id="main" tabindex="-1">
 <div class="wrap">
 
 <div class="eyebrow">Legal</div>
@@ -247,6 +270,8 @@
   <a href="mailto:james@sentinellaglobal.com">james@sentinellaglobal.com</a>
 </p>
 </div>
+</main>
+
 <footer class="legal-footer">
   <p class="legal-footer-company">© 2026 Sentinella LLC &nbsp;·&nbsp; 8 The Green STE A, Dover, DE 19901, USA &nbsp;·&nbsp; HQ: Brussels, Belgium</p>
   <div class="legal-footer-links">

@@ -1084,9 +1084,29 @@
     text-align: center;
     padding: 12px;
   }
+
+  /* ── Accessibility: focus, skip link, in-text link cues ── */
+  a:focus-visible, button:focus-visible, input:focus-visible,
+  select:focus-visible, textarea:focus-visible,
+  [tabindex]:not([tabindex="-1"]):focus-visible {
+    outline: 3px solid #4fd962; outline-offset: 3px; border-radius: 3px;
+  }
+  main:focus { outline: none; }
+  .skip-link {
+    position: absolute; left: 12px; top: -60px; z-index: 3000;
+    background: #2d7a3a; color: #fff; padding: 12px 20px; border-radius: 4px;
+    font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 13px;
+    letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
+    transition: top 0.2s;
+  }
+  .skip-link:focus { top: 12px; }
+  .sm-cookie-text a { text-decoration: underline; }
+
 </style>
 </head>
 <body>
+
+<a href="#main" class="skip-link">Skip to content</a>
 
 <!-- NAV -->
 <nav>
@@ -1111,6 +1131,8 @@
     <span></span>
   </button>
 </nav>
+
+<main id="main" tabindex="-1">
 
 <!-- HERO -->
 <section class="hero">
@@ -1183,7 +1205,7 @@
   <div class="services-grid">
     <!-- Service 1 -->
     <div class="service-card s1">
-      <div class="svc-num">01</div>
+      <div class="svc-num" aria-hidden="true">01</div>
       <div class="svc-icon">⬡</div>
       <div class="svc-tagline">Subscription · Live Intelligence</div>
       <h3>Mediterranean Watch<br>Dashboard</h3>
@@ -1204,7 +1226,7 @@
 
     <!-- Service 2 -->
     <div class="service-card s2">
-      <div class="svc-num">02</div>
+      <div class="svc-num" aria-hidden="true">02</div>
       <div class="svc-icon gold-icon">◈</div>
       <div class="svc-tagline gold">Advisory · Bespoke Consulting</div>
       <h3>Investment & Supply<br>Chain Risk Advisory</h3>
@@ -1556,6 +1578,8 @@
 </div>
 
 <!-- FOOTER -->
+</main>
+
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
