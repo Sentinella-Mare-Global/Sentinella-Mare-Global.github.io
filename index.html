@@ -1549,6 +1549,37 @@
     }
   }
 
+  /* ── Visible keyboard focus indicator (WCAG 2.4.7) ── */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  [tabindex]:not([tabindex="-1"]):focus-visible {
+    outline: 3px solid var(--green-glow);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+  /* Skip-link target receives focus without an outline box around the page */
+  main:focus { outline: none; }
+  /* Extra contrast ring for controls that sit on a green fill */
+  .btn-primary:focus-visible,
+  .btn-secondary.btn-green:focus-visible,
+  .price-btn.active:focus-visible {
+    outline-color: #fff;
+  }
+
+  /* ── Skip to content link (WCAG 2.4.1) ── */
+  .skip-link {
+    position: absolute; left: 12px; top: -60px; z-index: 2000;
+    background: var(--green); color: #fff;
+    padding: 12px 20px; border-radius: 4px;
+    font-family: 'Rajdhani', sans-serif; font-weight: 700;
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    text-decoration: none; transition: top 0.2s;
+  }
+  .skip-link:focus { top: 12px; }
+
   /* ── COMPLIANCE NAV DROPDOWN ── */
   .nav-comp-wrap { position: relative; display: flex; align-items: center; }
   .nav-comp-trigger {
@@ -1621,6 +1652,8 @@
 </head>
 <body>
 
+<a href="#main" class="skip-link">Skip to content</a>
+
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="#">
@@ -1630,18 +1663,18 @@
       <span class="n2">Mediterranean Intelligence</span>
     </div>
   </a>
-  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open')">
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open')">
     <span></span><span></span><span></span>
   </button>
   <div class="nav-links" id="navLinks">
     <div class="nav-comp-wrap" id="servicesNav">
-      <button class="nav-comp-trigger" onclick="document.getElementById('servicesNav').classList.toggle('open')">
+      <button class="nav-comp-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="servicesMenu" onclick="document.getElementById('servicesNav').classList.toggle('open')">
         Services
         <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
-      <div class="nav-comp-menu">
+      <div class="nav-comp-menu" id="servicesMenu">
         <a href="#platform" onclick="document.getElementById('servicesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">
           Intelligence Terminal
           <span class="comp-link-label">Live Intelligence Platform</span>
@@ -1657,13 +1690,13 @@
     <a href="#clients" data-i18n="nav.clients" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Clients</a>
     <a href="/Leadership" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Leadership</a>
     <div class="nav-comp-wrap" id="complianceNav">
-      <button class="nav-comp-trigger" onclick="document.getElementById('complianceNav').classList.toggle('open')">
+      <button class="nav-comp-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="complianceMenu" onclick="document.getElementById('complianceNav').classList.toggle('open')">
         Compliance
         <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
-      <div class="nav-comp-menu">
+      <div class="nav-comp-menu" id="complianceMenu">
         <a href="/EUMaritimeComplianceCountdown" target="_blank" rel="noopener noreferrer">
           Deadline Countdown
           <span class="comp-link-label">NIS2 · CER · Circ. 177 live timers</span>
@@ -1675,14 +1708,14 @@
       </div>
     </div>
     <div class="lang-dropdown" id="langDropdown">
-      <button class="lang-globe" onclick="document.getElementById('langDropdown').classList.toggle('open')" aria-label="Select language">
+      <button class="lang-globe" onclick="document.getElementById('langDropdown').classList.toggle('open')" aria-label="Select language" aria-expanded="false" aria-haspopup="true" aria-controls="langMenu">
         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="10"/>
           <ellipse cx="12" cy="12" rx="4" ry="10"/>
           <line x1="2" y1="12" x2="22" y2="12"/>
         </svg>
       </button>
-      <div class="lang-menu">
+      <div class="lang-menu" id="langMenu">
         <button class="lang-btn active" onclick="setLang('en'); document.getElementById('langDropdown').classList.remove('open')" id="btn-en">EN</button>
         <button class="lang-btn" onclick="setLang('it'); document.getElementById('langDropdown').classList.remove('open')" id="btn-it">IT</button>
         <button class="lang-btn" onclick="setLang('ar'); document.getElementById('langDropdown').classList.remove('open')" id="btn-ar">AR</button>
@@ -1692,6 +1725,8 @@
     <a href="https://mare.sentinellaglobal.com/" class="btn-primary" data-i18n="nav.cta" style="padding:8px 20px;font-size:11px;letter-spacing:2px;" target="_blank" rel="noopener noreferrer" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Launch Terminal</a>
   </div>
 </nav>
+
+<main id="main" tabindex="-1">
 
 <!-- HERO -->
 <section class="hero">
@@ -2053,6 +2088,8 @@
     <a href="https://tally.so/r/WOloya" class="btn-secondary" data-i18n="cta.btn2" target="_blank" rel="noopener noreferrer">Get Notified of Advisory Launch</a>
   </div>
 </div>
+
+</main>
 
 <!-- FOOTER -->
 <footer>
@@ -2929,6 +2966,37 @@ document.addEventListener('click', function(e) {
   const sd = document.getElementById('servicesNav');
   if (sd && !sd.contains(e.target)) sd.classList.remove('open');
 });
+
+// Keep aria-expanded in sync with the .open state on every open/close path
+// (button click, menu-item click, outside click) so screen readers announce it.
+(function() {
+  function sync(container, trigger) {
+    if (!container || !trigger) return;
+    var apply = function() { trigger.setAttribute('aria-expanded', container.classList.contains('open') ? 'true' : 'false'); };
+    apply();
+    new MutationObserver(apply).observe(container, { attributes: true, attributeFilter: ['class'] });
+  }
+  document.querySelectorAll('.nav-comp-wrap').forEach(function(w) { sync(w, w.querySelector('.nav-comp-trigger')); });
+  var langDd = document.getElementById('langDropdown');
+  sync(langDd, langDd && langDd.querySelector('.lang-globe'));
+  var toggle = document.getElementById('navToggle');
+  sync(toggle, toggle);
+  // Escape closes any open nav menu and returns focus to its trigger
+  document.addEventListener('keydown', function(e) {
+    if (e.key !== 'Escape') return;
+    document.querySelectorAll('.nav-comp-wrap.open, #langDropdown.open').forEach(function(w) {
+      w.classList.remove('open');
+      var t = w.querySelector('.nav-comp-trigger, .lang-globe');
+      if (t) t.focus();
+    });
+    var nt = document.getElementById('navToggle');
+    if (nt && nt.classList.contains('open')) {
+      nt.classList.remove('open');
+      document.getElementById('navLinks').classList.remove('open');
+      nt.focus();
+    }
+  });
+})();
 
 
 // Restore saved language on load
