@@ -1125,6 +1125,10 @@
   .footer-col a:hover { color: var(--green-mid); }
   .footer-bottom {
     display: flex; align-items: center; justify-content: space-between;
+    /* space-between only holds these apart while there is slack. Below ~1500px
+       --edge narrows the content until there is none, and the copyright ran
+       into the legal links. A real column gap + wrap keeps them separated. */
+    flex-wrap: wrap; gap: 12px 48px;
     padding-top: 28px;
     border-top: 1px solid rgba(255,255,255,0.07);
   }
