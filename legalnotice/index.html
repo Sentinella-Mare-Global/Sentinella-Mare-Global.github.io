@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Legal Notice / Imprint — Sentinella Mare</title>
+<!-- Favicon -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="description" content="Legal notice and company identification for Sentinella LLC, operator of sentinellaglobal.com and the Sentinella Mare platform.">
+<link rel="canonical" href="https://sentinellaglobal.com/legalnotice">
+<meta name="robots" content="index, follow">
+<!-- Google Analytics — Consent Mode "basic".
+     The gtag.js tag is deliberately NOT loaded here. It is injected only after
+     the visitor grants consent (see the cookie banner script before </body>),
+     so no request reaches Google, and no IP address is disclosed to Google,
+     unless and until the visitor opts in. -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Queued only — inert until gtag.js is actually loaded post-consent.
+  gtag('consent', 'default', {
+    analytics_storage: 'denied',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied'
+  });
+</script>
+<!-- Self-hosted webfonts: no third-party request, so no visitor IP is
+     disclosed to Google before consent. See /fonts/OFL.txt for licensing. -->
+<link rel="stylesheet" href="/fonts/fonts.css">
+<style>
+  /* WCAG 2.2 SC 2.4.11 Focus Not Obscured: keep focused/anchor targets
+     clear of the fixed nav */
+  html { scroll-behavior: smooth; scroll-padding-top: 120px; }
+  /* ── NAV (matches homepage) ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    display: flex; align-items: center; justify-content: space-between;
+  gap: 40px; /* keep the wordmark from colliding with the nav links */
+    padding: 14px 64px;
+    background: rgba(8,19,30,0.92);
+    -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(45,122,58,0.18);
+  }
+  .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+  .nav-logo img { height: 90px; max-width: 160px; }
+  .nav-brand { display: flex; flex-direction: column; line-height: 1; }
+  .nav-brand .n1 { font-family: 'Cinzel', serif; font-size: 18px; font-weight: 700; color: #eef3f8; letter-spacing: 3px; }
+  .nav-brand .n2 { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: #3aab4a; letter-spacing: 2px; margin-top: 3px;  white-space: nowrap;}
+  .nav-links { display: flex; align-items: center; gap: 32px; }
+  .nav-links a {
+    color: #e8f0f8; text-decoration: none;
+    font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  white-space: nowrap;
+    font-family: 'Rajdhani', sans-serif;
+    transition: color 0.25s;
+  }
+  .nav-links a:hover, .nav-links a.active { color: #4fd962; }
+  .btn-nav {
+    border: 1px solid #2d7a3a; color: #3aab4a !important;
+    padding: 8px 20px !important; letter-spacing: 2px !important;
+    font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 14px;
+    text-transform: uppercase; text-decoration: none;
+    transition: all 0.25s !important;
+  }
+  .btn-nav:hover { background: #2d7a3a !important; color: white !important; box-shadow: 0 0 24px rgba(79,217,98,0.25); }
+  .nav-toggle {
+    display: none; flex-direction: column; justify-content: center; gap: 5px;
+    cursor: pointer; padding: 8px; background: none; border: none; z-index: 1001;
+  }
+  .nav-toggle span { display: block; width: 24px; height: 2px; background: #3aab4a; transition: all 0.3s; }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* ── COMPLIANCE NAV DROPDOWN ── */
+  .nav-comp-wrap { position: relative; display: flex; align-items: center; }
+  .nav-comp-trigger {
+    background: none; border: none; cursor: pointer; padding: 0;
+    color: #e8f0f8; font-family: 'Rajdhani', sans-serif;
+    font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  white-space: nowrap;
+    display: flex; align-items: center; gap: 5px; transition: color 0.25s;
+  }
+  .nav-comp-trigger:hover { color: #4fd962; }
+  .nav-comp-trigger svg { transition: transform 0.2s; flex-shrink: 0; }
+  .nav-comp-wrap.open .nav-comp-trigger { color: #4fd962; }
+  .nav-comp-wrap.open .nav-comp-trigger svg { transform: rotate(180deg); }
+  .nav-comp-menu {
+    display: none; position: absolute;
+    top: calc(100% + 16px); left: 50%; transform: translateX(-50%);
+    background: rgba(6,15,24,0.98); border: 1px solid rgba(45,122,58,0.3);
+    border-radius: 4px; min-width: 220px; z-index: 1100;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5); overflow: hidden;
+  }
+  .nav-comp-wrap.open .nav-comp-menu { display: block; }
+  .nav-comp-menu a {
+    display: block; padding: 12px 20px;
+    color: rgba(200,216,236,0.7);
+    font-family: 'Share Tech Mono', monospace; font-size: 13px;
+    letter-spacing: 1px; text-transform: uppercase; text-decoration: none;
+    border-bottom: 1px solid rgba(45,122,58,0.12);
+    transition: color 0.2s, background 0.2s;
+  }
+  .nav-comp-menu a:last-child { border-bottom: none; }
+  .nav-comp-menu a:hover { color: #4fd962; background: rgba(45,122,58,0.08); }
+  .nav-comp-menu .comp-link-label { display: block; font-size: 13px; color: var(--green-mid); letter-spacing: 0.5px; margin-top: 3px; text-transform: none; }
+
+  /* ── FOOTER (matches homepage) ── */
+  footer {
+    background: #0d1b2a;
+    border-top: 1px solid rgba(45,122,58,0.12);
+    padding: 56px 64px 32px;
+  }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 60px; }
+  .footer-brand { display: flex; flex-direction: row; align-items: flex-start; gap: 20px; }
+  .footer-brand-text { display: flex; flex-direction: column; gap: 12px; }
+  .footer-brand img { height: 100px; width: fit-content; }
+  .footer-brand p { font-family: 'Rajdhani', sans-serif; font-size: 14px; line-height: 1.7; color: rgba(232,240,248,0.72); max-width: 280px; }
+  .footer-brand .hq { font-family: 'Share Tech Mono', monospace; font-size: 13px; letter-spacing: 1.5px; color: #3aab4a; text-transform: uppercase; }
+  .footer-col .footer-nav-title { font-family: 'Cinzel', serif; font-size: 13px; font-weight: 600; color: #eef3f8; letter-spacing: 1px; margin-bottom: 20px; }
+  .footer-col a, .footer-col p {
+    display: block; color: rgba(232,240,248,0.72); text-decoration: none;
+    font-family: 'Rajdhani', sans-serif; font-size: 14px; line-height: 1.6; margin-bottom: 10px;
+  }
+  .footer-col a:hover { color: #3aab4a; }
+  .footer-contact-btn { display: inline-block; width: fit-content; }
+  .footer-col a.footer-contact-btn { color: #fff; }  /* WCAG 1.4.3: .footer-col a would otherwise win on specificity and dim this button's text */
+  .footer-bottom {
+    border-top: 1px solid rgba(45,122,58,0.1); padding-top: 24px;
+    display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px 48px;
+  }
+  .footer-bottom p { font-family: 'Share Tech Mono', monospace; font-size: 13px; letter-spacing: 1px; color: rgba(232,240,248,0.72); text-transform: uppercase; }
+  .footer-legal-links { display: flex; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+  .footer-legal-link {
+    font-family: 'Share Tech Mono', monospace; font-size: 13px; letter-spacing: 1px; color: rgba(240,245,252,0.65);
+    text-transform: uppercase; text-decoration: none;
+    background: none; border: none; cursor: pointer; padding: 6px 0;
+    line-height: 1; vertical-align: top; transition: color 0.2s;
+  }
+  .footer-legal-link:hover { color: #eef3f8; }
+  .btn-primary {
+    background: #2d7a3a; color: #fff;
+    padding: 14px 36px; font-family: 'Rajdhani', sans-serif;
+    font-size: 13px; font-weight: 700; letter-spacing: 2.5px;
+    text-transform: uppercase; text-decoration: none;
+    border: none; cursor: pointer; transition: all 0.3s; display: inline-block;
+  }
+  .btn-primary:hover { background: #3aab4a; box-shadow: 0 0 32px rgba(79,217,98,0.3); }
+
+  /* ── Responsive: nav & footer ── */
+  @media (max-width: 1300px) {
+    .nav-toggle { display: flex; }
+    .nav-links {
+      display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+      width: 100vw; height: 100vh; height: 100dvh;
+      background: #060f18; flex-direction: column; align-items: center; justify-content: center;
+      gap: 32px; z-index: 1000; overflow-y: auto; padding: 80px 20px 40px;
+      overscroll-behavior: contain; -webkit-overflow-scrolling: touch;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { font-size: 16px; letter-spacing: 3px; }
+    .nav-comp-wrap { flex-direction: column; width: 100%; align-items: center; }
+    .nav-comp-trigger { font-size: 16px; letter-spacing: 3px; }
+    .nav-comp-menu { position: static; transform: none; display: none; background: transparent; border: none; box-shadow: none; min-width: auto; }
+    .nav-comp-wrap.open .nav-comp-menu { display: flex; flex-direction: column; align-items: center; gap: 0; padding: 6px 0; }
+    .nav-comp-menu a { border: none; font-size: 13px; padding: 8px 0; text-align: center; }
+    .nav-comp-menu .comp-link-label { display: none; }
+  }
+  @media (max-width: 1024px) {
+    nav { padding: 14px 32px; }
+    footer { padding: 48px 32px 28px; }
+    .footer-top { grid-template-columns: 1fr 1fr 1fr; gap: 28px; }
+    .footer-brand { grid-column: 1 / -1; }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 12px 20px; }
+    .nav-logo img { height: 70px; }
+    footer { padding: 36px 20px 24px; }
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 24px; }
+    .footer-brand { grid-column: 1 / -1; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .footer-contact-btn { width: 100%; text-align: center; }
+  }
+  @media (max-width: 480px) {
+    nav { padding: 10px 16px; }
+    .nav-logo img { height: 56px; }
+    .nav-brand .n1 { font-size: 12px; letter-spacing: 1px; }
+    .nav-brand .n2 { display: none; }
+    footer { padding: 28px 16px 20px; }
+    .footer-top { grid-template-columns: 1fr; gap: 20px; }
+    .footer-brand { flex-direction: column; grid-column: auto; }
+    .footer-brand img { height: 80px; }
+    .footer-col a, .footer-col p { font-size: 12px; }
+  }
+  @media (max-width: 360px) {
+    nav { padding: 8px 12px; }
+    .nav-logo img { height: 46px; }
+  }
+  @supports (padding: max(0px)) {
+    nav {
+      padding-top: max(14px, env(safe-area-inset-top));
+      padding-left: max(20px, calc((100% - 1440px) / 2), env(safe-area-inset-left));
+      padding-right: max(20px, calc((100% - 1440px) / 2), env(safe-area-inset-right));
+    }
+    footer { padding-bottom: max(32px, env(safe-area-inset-bottom)); }
+    @media (max-width: 480px) {
+      nav {
+        padding-top: max(10px, env(safe-area-inset-top));
+        padding-left: max(16px, env(safe-area-inset-left));
+        padding-right: max(16px, env(safe-area-inset-right));
+      }
+      footer { padding-bottom: max(20px, env(safe-area-inset-bottom)); }
+    }
+  }
+  @media (hover: none) and (pointer: coarse) {
+    nav { backdrop-filter: none; -webkit-backdrop-filter: none; }
+  }
+
+  :root {
+    --bg: #060f18;
+    --panel: rgba(12, 20, 33, 0.7);
+    --rule: rgba(14, 181, 175, 0.15);
+    --teal: #3aab4a;
+    --gold: #c9a84c;
+    --text: #e8f0f8;
+    --text-mid: rgba(232, 240, 248, 0.72);
+    --text-dim: rgba(232, 240, 248, 0.58);
+    --display: 'Cinzel', serif;
+    --body: 'Rajdhani', sans-serif;
+    --navy: #060f18;
+    --navy-2: #0d1b2a;
+    --navy-3: #112336;
+    --navy-4: #1a3450;
+    --green: #2d7a3a;
+    --green-mid: #3aab4a;
+    --green-glow: #4fd962;
+    --white: #eef3f8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: var(--body); font-weight: 400; line-height: 1.75;
+    /* Stop iOS inflating text when the device rotates to landscape */
+    -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 160px 2rem 5rem; }
+  @media (max-width: 1024px) { .wrap { padding-top: 132px; } }
+  @media (max-width: 768px)  { .wrap { padding-top: 116px; } }
+  @media (max-width: 480px)  { .wrap { padding-top: 96px; } }
+  @media (max-width: 360px)  { .wrap { padding-top: 86px; } }
+  .eyebrow { color: var(--teal); font-size: 0.8125rem; letter-spacing: 0.22em; text-transform: uppercase; margin-bottom: 1rem; }
+  h1 { font-family: var(--display); font-size: 2.4rem; font-weight: 700; letter-spacing: 0.5px; line-height: 1.2; margin-bottom: 0.75rem; }
+  .updated { color: var(--text-dim); font-size: 0.95rem; margin-bottom: 3rem; }
+  h2 { font-family: var(--display); font-size: 1.35rem; font-weight: 700; color: var(--text); margin: 2.8rem 0 0.9rem; padding-top: 1.6rem; border-top: 1px solid var(--rule); }
+  h3 { font-size: 1.2rem; font-weight: 600; color: var(--teal); margin: 1.6rem 0 0.5rem; }
+  p { color: var(--text-mid); font-size: 1.0625rem; line-height: 1.75; margin-bottom: 1.15rem; }
+  ul, ol { color: var(--text-mid); font-size: 1.0625rem; line-height: 1.75; margin: 0 0 1rem 1.4rem; }
+  li { margin-bottom: 0.45rem; }
+  a { color: var(--teal); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 1rem; line-height: 1.6; }
+  th { text-align: left; color: var(--teal); font-weight: 500; padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--rule); }
+  td { color: var(--text-mid); padding: 0.6rem 0.8rem; border-bottom: 1px solid rgba(14,181,175,0.07); vertical-align: top; }
+  .notice { background: var(--panel); border: 1px solid var(--gold); border-radius: 8px; padding: 1.1rem 1.3rem; margin: 1.5rem 0; font-size: 1rem; line-height: 1.7; color: var(--text-mid); }
+  .caps { text-transform: uppercase; font-size: 1rem; line-height: 1.7; letter-spacing: 0.02em; }
+
+  /* ── Accessibility: focus, skip link, in-text link cues ── */
+  a:focus-visible, button:focus-visible, input:focus-visible,
+  select:focus-visible, textarea:focus-visible,
+  [tabindex]:not([tabindex="-1"]):focus-visible {
+    outline: 3px solid #4fd962; outline-offset: 3px; border-radius: 3px;
+  }
+  main:focus { outline: none; }
+  .skip-link {
+    position: absolute; left: 12px; top: -60px; z-index: 3000;
+    background: #2d7a3a; color: #fff; padding: 12px 20px; border-radius: 4px;
+    font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 13px;
+    letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
+    transition: top 0.2s;
+  }
+  .skip-link:focus { top: 12px; }
+  .sm-cookie-text a { text-decoration: underline; }
+  .wrap a { text-decoration: underline; }
+
+
+  /* WCAG 2.2 SC 2.5.8 Target Size */
+  .footer-col a { padding: 3px 0; }
+  /* .footer-col a wins on specificity over .btn-primary; restore button sizing/shape for the Contact CTA */
+  .footer-col a.footer-contact-btn {
+    display: inline-block; padding: 14px 36px; letter-spacing: 2px; margin-bottom: 0;
+  }
+  .footer-legal-links { row-gap: 4px; }
+  /* Primary nav links rendered 15-23px tall — under the 24px minimum, and not
+     covered by the inline-in-prose exception. Vertical padding only, so the nav
+     height (driven by the logo) is unchanged. */
+  .nav-links > a { padding: 5px 0; }
+  .nav-comp-trigger { padding: 5px 0; }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+<nav>
+  <a class="nav-logo" href="/">
+    <img src="/Sentinella Mare Logo_White.png" alt="Sentinella Mare">
+    <div class="nav-brand">
+      <span class="n1">SENTINELLA MARE</span>
+      <span class="n2">Mediterranean Intelligence</span>
+    </div>
+  </a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-links" id="navLinks">
+    <div class="nav-comp-wrap" id="servicesNav">
+      <button class="nav-comp-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="servicesMenu" onclick="document.getElementById('servicesNav').classList.toggle('open')">
+        Services
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="nav-comp-menu" id="servicesMenu">
+        <a href="/#platform" onclick="document.getElementById('servicesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">
+          Intelligence Terminal
+          <span class="comp-link-label">Live Intelligence Platform</span>
+        </a>
+        <a href="/#advisory" onclick="document.getElementById('servicesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">
+          Advisory
+          <span class="comp-link-label">(Coming Soon)</span>
+        </a>
+      </div>
+    </div>
+    <a href="/#platform" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Live Platform</a>
+    <a href="/#pricing" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Pricing</a>
+    <a href="/#clients" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Clients</a>
+    <a href="/Leadership" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Leadership</a>
+    <div class="nav-comp-wrap" id="complianceNav">
+      <button class="nav-comp-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="complianceMenu" onclick="document.getElementById('complianceNav').classList.toggle('open')">
+        Compliance
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="nav-comp-menu" id="complianceMenu">
+        <a href="/EUMaritimeComplianceCountdown" target="_blank" rel="noopener noreferrer">
+          Deadline Countdown
+          <span class="comp-link-label">NIS2 · CER · Circ. 177 live timers</span>
+        </a>
+        <a href="/EUMaritimeComplianceExplained" target="_blank" rel="noopener noreferrer">
+          Compliance Explained
+          <span class="comp-link-label">2026–2027 pressure window guide</span>
+        </a>
+      </div>
+    </div>
+    <a href="https://mare.sentinellaglobal.com/" class="btn-nav" target="_blank" rel="noopener noreferrer" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Launch Terminal</a>
+  </div>
+</nav>
+
+<main id="main" tabindex="-1">
+<div class="wrap">
+
+<div class="eyebrow">Legal</div>
+<h1>Legal Notice / Imprint</h1>
+<p class="updated">Last updated: 13 July 2026</p>
+
+<h2>Website Operator</h2>
+<p>
+  This website (sentinellaglobal.com) and the Sentinella Mare platform are operated by:<br><br>
+  <strong>Sentinella LLC</strong><br>
+  A limited liability company formed under the laws of the State of Delaware, United States<br>
+  Registered office: 8 The Green STE A, Dover, DE 19901, United States<br>
+  Registered agent: A Registered Agent, Inc., at the same address<br><br>
+  European headquarters: Brussels, Belgium
+</p>
+
+<h2>Contact</h2>
+<p>
+  Email: <a href="mailto:james@sentinellaglobal.com">james@sentinellaglobal.com</a><br>
+  Website: <a href="https://sentinellaglobal.com">sentinellaglobal.com</a>
+</p>
+
+<h2>Responsible for Content</h2>
+<p>James Davies, Founder &amp; CEO, Sentinella LLC (address as above).</p>
+
+<h2>Trademarks</h2>
+<p>"Sentinella," "Sentinella Global," "Sentinella Mare," and associated logos are trademarks or trade names of Sentinella LLC. All other marks are the property of their respective owners.</p>
+
+<h2>Disclaimer</h2>
+<p>The content of this website is provided for general information only and does not constitute legal, regulatory, financial, or professional advice. Regulatory information (including deadlines and obligations under NIS2, the CER Directive, and national instruments) is provided as an informational aid; operators should confirm applicable obligations with their national competent authority or qualified counsel. Use of this website and the Sentinella Mare platform is governed by our <a href="/legalterms/">Terms &amp; Conditions</a>, <a href="/privacypolicy/">Privacy Policy</a>, and, for platform customers, our <a href="/dpa/">Data Processing Agreement</a>.</p>
+
+<h2>External Links</h2>
+<p>This website may contain links to external websites. We have no influence over their content and accept no responsibility for it; the respective operators remain responsible for their own sites.</p>
+
+<h2>Online Dispute Resolution</h2>
+<p>The European Commission provides a platform for online dispute resolution at <a href="https://ec.europa.eu/consumers/odr" rel="noopener">ec.europa.eu/consumers/odr</a>. Our services are provided to business customers; we are neither obliged nor willing to participate in consumer dispute resolution proceedings before a consumer arbitration board.</p>
+</div>
+</main>
+
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="/Sentinella Mare Logo_White.png" alt="Sentinella Mare">
+      <div class="footer-brand-text">
+        <p>Mediterranean maritime intelligence. AI-driven risk intelligence for shipping operators, logistics firms, and institutional investors navigating the world's most strategically complex sea.</p>
+        <span class="hq">// HQ: Brussels, Belgium</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <p class="footer-nav-title">Services</p>
+      <a href="/#services">Mediterranean Watch Intelligence Terminal</a>
+      <a href="/#advisory">Advisory (Coming Soon)</a>
+      <a href="/#advisory">Supply Chain Risk</a>
+      <a href="/#pricing">Subscription Tiers</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-nav-title">Coverage</p>
+      <p>Strait of Gibraltar</p>
+      <p>Tyrrhenian Sea</p>
+      <p>Strait of Sicily</p>
+      <p>Adriatic Sea</p>
+      <p>Eastern Mediterranean</p>
+    </div>
+    <div class="footer-col">
+      <a href="mailto:james@sentinellaglobal.com" class="btn-primary footer-contact-btn">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Sentinella LLC &nbsp;·&nbsp; 8 The Green STE A, Dover, DE 19901, USA &nbsp;·&nbsp; HQ: Brussels, Belgium</p>
+    <div class="footer-legal-links">
+      <a href="/privacypolicy/" class="footer-legal-link">Privacy Policy</a>
+      <a href="/legalterms/" class="footer-legal-link">Terms</a>
+      <a href="/dpa/" class="footer-legal-link">DPA</a>
+      <a href="/legalnotice/" class="footer-legal-link">Legal Notice</a>
+      <a href="/accessibility/" class="footer-legal-link">Accessibility</a>
+      <button onclick="if(typeof smOpenCookieSettings==='function')smOpenCookieSettings();" class="footer-legal-link">Cookie Settings</button>
+    </div>
+  </div>
+</footer>
+<!-- ── COOKIE CONSENT BANNER ── -->
+<style>
+#sm-cookie-banner {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+  background: #0d1b2a; border-top: 1px solid rgba(45,122,58,0.4);
+  padding: 20px 48px; box-shadow: 0 -8px 40px rgba(0,0,0,0.55);
+  font-family: 'Rajdhani', sans-serif;
+  max-height: 85vh; overflow-y: auto;
+}
+[hidden] { display: none !important; }
+.sm-cookie-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 32px; flex-wrap: wrap;
+}
+.sm-cookie-label {
+  display: block; font-family: 'Share Tech Mono', monospace;
+  font-size: 13px; letter-spacing: 1.5px; color: #3aab4a;
+  text-transform: uppercase; margin-bottom: 7px;
+}
+.sm-cookie-text { font-size: 15px; line-height: 1.65; color: #c8d8ec; max-width: 680px; }
+.sm-cookie-text a { color: #3aab4a; }
+.sm-cookie-text a:hover { color: #4fd962; }
+.sm-cookie-actions { display: flex; gap: 12px; flex-shrink: 0; align-items: center; }
+.sm-cookie-btn {
+  font-family: 'Rajdhani', sans-serif; font-size: 14px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase; cursor: pointer;
+  padding: 11px 26px; border-radius: 0; transition: all 0.25s;
+  -webkit-tap-highlight-color: transparent; white-space: nowrap;
+}
+.sm-cookie-reject, .sm-cookie-manage {
+  background: transparent; color: #c8d8ec; border: 1px solid rgba(200,216,236,0.35);
+}
+.sm-cookie-reject:hover, .sm-cookie-manage:hover { border-color: #eef3f8; color: #eef3f8; }
+.sm-cookie-accept {
+  background: #2d7a3a; color: #fff; border: 1px solid #2d7a3a;
+  -webkit-clip-path: polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px));
+  clip-path: polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px));
+}
+.sm-cookie-accept:hover { background: #3aab4a; border-color: #3aab4a; box-shadow: 0 0 22px rgba(58,171,74,0.35); }
+
+/* ── Manage Preferences panel ── */
+.sm-cookie-prefs {
+  max-width: 1200px; margin: 18px auto 0; padding-top: 18px;
+  border-top: 1px solid rgba(45,122,58,0.25);
+}
+.sm-pref-row {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 24px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.sm-pref-row:last-of-type { border-bottom: none; }
+.sm-pref-name {
+  display: block; font-size: 15px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase; color: #eef3f8;
+}
+label.sm-pref-name { cursor: pointer; }
+.sm-pref-desc { font-size: 14px; line-height: 1.6; color: #c8d8ec; margin-top: 5px; max-width: 720px; }
+.sm-pref-control { flex-shrink: 0; display: flex; align-items: center; min-height: 24px; }
+.sm-pref-always {
+  font-family: 'Share Tech Mono', monospace; font-size: 13px;
+  letter-spacing: 1px; text-transform: uppercase; color: #3aab4a;
+}
+.sm-pref-toggle { width: 24px; height: 24px; accent-color: #2d7a3a; cursor: pointer; }
+.sm-pref-save { display: flex; justify-content: flex-end; padding-top: 16px; }
+@media (max-width: 768px) {
+  #sm-cookie-banner { padding: 18px 20px; }
+  .sm-cookie-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .sm-cookie-actions { width: 100%; flex-wrap: wrap; }
+  /* Labels are nowrap; tighter padding + wrap keeps them inside a 375px screen
+     and lets them stack full-width when they cannot share a row. */
+  .sm-cookie-btn { flex: 1 1 auto; text-align: center; padding: 11px 14px; }
+  .sm-pref-save { justify-content: stretch; }
+  .sm-pref-save .sm-cookie-btn { width: 100%; }
+}
+</style>
+<div id="sm-cookie-banner" role="dialog" aria-modal="false" aria-labelledby="sm-cookie-heading">
+  <div class="sm-cookie-inner">
+    <div>
+      <span class="sm-cookie-label" id="sm-cookie-heading">Cookie Settings</span>
+      <p class="sm-cookie-text">Sentinella Mare (data controller) uses Google Analytics to understand how visitors use this site. Google Analytics loads only if you accept &mdash; if you decline, nothing is sent to Google and no analytics cookies are set. No advertising or third-party tracking cookies are used. <a href="/privacypolicy/">Privacy Policy</a>.</p>
+    </div>
+    <div class="sm-cookie-actions">
+      <button id="sm-cookie-reject" class="sm-cookie-btn sm-cookie-reject">Reject All</button>
+      <button id="sm-cookie-manage" class="sm-cookie-btn sm-cookie-manage" aria-expanded="false" aria-controls="sm-cookie-prefs">Manage Preferences</button>
+      <button id="sm-cookie-accept" class="sm-cookie-btn sm-cookie-accept">Accept Analytics</button>
+    </div>
+  </div>
+  <div id="sm-cookie-prefs" class="sm-cookie-prefs" hidden>
+    <div class="sm-pref-row">
+      <div>
+        <span class="sm-pref-name">Strictly necessary</span>
+        <p class="sm-pref-desc">Required for the site to work and to remember your cookie choice. These are always active and cannot be switched off.</p>
+      </div>
+      <div class="sm-pref-control"><span class="sm-pref-always">Always on</span></div>
+    </div>
+    <div class="sm-pref-row">
+      <div>
+        <label class="sm-pref-name" for="sm-pref-analytics">Analytics</label>
+        <p class="sm-pref-desc">Google Analytics, used to count visits and see which pages are read. Switching this on loads Google Analytics and sets its cookies. Leaving it off means no request is made to Google at all.</p>
+      </div>
+      <div class="sm-pref-control">
+        <input type="checkbox" id="sm-pref-analytics" class="sm-pref-toggle">
+      </div>
+    </div>
+    <div class="sm-pref-save">
+      <button id="sm-cookie-save" class="sm-cookie-btn sm-cookie-accept">Save Preferences</button>
+    </div>
+  </div>
+</div>
+<script>
+(function () {
+  var KEY = 'sm_cookie_consent';
+  var GA_ID = 'G-6FPWJM34X1';
+  var gaLoaded = false;
+
+  // Consent Mode "basic": gtag.js is injected only once consent is granted, so
+  // no request reaches Google — and no IP is disclosed — until the user opts in.
+  function loadGA() {
+    if (gaLoaded) return;
+    gaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', GA_ID);
+  }
+
+  // Withdrawal must be as easy as consent: drop the _ga cookies on refusal.
+  function clearGaCookies() {
+    document.cookie.split(';').forEach(function (c) {
+      var n = c.split('=')[0].trim();
+      if (n.indexOf('_ga') !== 0) return;
+      var h = location.hostname;
+      ['', '; domain=' + h, '; domain=.' + h].forEach(function (d) {
+        document.cookie = n + '=; Max-Age=0; path=/' + d;
+      });
+    });
+  }
+
+  function apply(granted) {
+    if (typeof gtag === 'function') {
+      gtag('consent', 'update', {
+        analytics_storage: granted ? 'granted' : 'denied',
+        ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied'
+      });
+    }
+    if (granted) loadGA(); else clearGaCookies();
+  }
+
+  var banner = document.getElementById('sm-cookie-banner');
+  var prefs  = document.getElementById('sm-cookie-prefs');
+  var manage = document.getElementById('sm-cookie-manage');
+  var toggle = document.getElementById('sm-pref-analytics');
+
+  function read() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function openPrefs(open) {
+    prefs.hidden = !open;
+    manage.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (open) toggle.focus();
+  }
+  function save(granted) {
+    try { localStorage.setItem(KEY, granted ? 'granted' : 'denied'); } catch (e) {}
+    apply(granted);
+    openPrefs(false);
+    banner.style.display = 'none';
+  }
+
+  var stored = read();
+  if (stored === 'granted') { toggle.checked = true; apply(true); }
+  else if (stored === 'denied') { apply(false); }
+  else { banner.style.display = 'block'; }
+
+  manage.addEventListener('click', function () { openPrefs(prefs.hidden); });
+  document.getElementById('sm-cookie-accept').addEventListener('click', function () { toggle.checked = true; save(true); });
+  document.getElementById('sm-cookie-reject').addEventListener('click', function () { toggle.checked = false; save(false); });
+  document.getElementById('sm-cookie-save').addEventListener('click', function () { save(toggle.checked); });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !prefs.hidden) { openPrefs(false); manage.focus(); }
+  });
+
+  window.smOpenCookieSettings = function () {
+    toggle.checked = (read() === 'granted');
+    banner.style.display = 'block';
+    openPrefs(true);
+  };
+})();
+</script>
+
+<script>
+(function(){
+  function sync(c,t){ if(!c||!t)return; var a=function(){t.setAttribute('aria-expanded',c.classList.contains('open')?'true':'false');}; a(); new MutationObserver(a).observe(c,{attributes:true,attributeFilter:['class']}); }
+  document.querySelectorAll('.nav-comp-wrap').forEach(function(w){ sync(w,w.querySelector('.nav-comp-trigger')); });
+  var tg=document.getElementById('navToggle'); sync(tg,tg);
+  if(tg){ new MutationObserver(function(){ if(tg.classList.contains('open')){ var l=document.getElementById('navLinks'); var f=l&&l.querySelector('button, a, [tabindex]'); if(f)f.focus(); } }).observe(tg,{attributes:true,attributeFilter:['class']}); }
+  document.addEventListener('keydown',function(e){ if(e.key!=='Escape')return; document.querySelectorAll('.nav-comp-wrap.open').forEach(function(w){ w.classList.remove('open'); var t=w.querySelector('.nav-comp-trigger'); if(t)t.focus(); }); var nt=document.getElementById('navToggle'); if(nt&&nt.classList.contains('open')){ nt.classList.remove('open'); document.getElementById('navLinks').classList.remove('open'); nt.focus(); } });
+  document.addEventListener('click', function(e) {
+    var cd = document.getElementById('complianceNav');
+    if (cd && !cd.contains(e.target)) cd.classList.remove('open');
+  });
+})();
+</script>
+
+</body>
+</html>

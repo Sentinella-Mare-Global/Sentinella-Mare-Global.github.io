@@ -1,10 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google Analytics — Consent Mode "basic".
+     The gtag.js tag is deliberately NOT loaded here. It is injected only after
+     the visitor grants consent (see the cookie banner script before </body>),
+     so no request reaches Google, and no IP address is disclosed to Google,
+     unless and until the visitor opts in. -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Queued only — inert until gtag.js is actually loaded post-consent.
+  gtag('consent', 'default', {
+    analytics_storage: 'denied',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied'
+  });
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <link rel="canonical" href="https://sentinellaglobal.com/">
 <title>Sentinella Mare — Mediterranean Maritime Intelligence</title>
+<!-- Favicon -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <meta name="description" content="Sentinella Mare delivers real-time maritime intelligence for Mediterranean ports, vessel fleets, and subsea cables — combining NIS2, CER Directive, and Circular 177/2025 compliance outputs with live threat monitoring.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Sentinella Mare">
@@ -16,9 +38,9 @@
 <meta name="twitter:title" content="Sentinella Mare — Mediterranean Maritime Intelligence">
 <meta name="twitter:description" content="Real-time threat monitoring and EU regulatory compliance for Mediterranean ports, fleets, and subsea cables.">
 <meta name="twitter:image" content="https://sentinellaglobal.com/MARE%20Dashboard.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&family=Noto+Sans:wght@400;600;700&subset=greek&display=swap" rel="stylesheet">
+<!-- Self-hosted webfonts: no third-party request, so no visitor IP is
+     disclosed to Google before consent. See /fonts/OFL.txt for licensing. -->
+<link rel="stylesheet" href="/fonts/fonts.css">
 <style>
   :root {
     --navy: #060f18;
@@ -33,6 +55,9 @@
     --text: #f0f5fc;
     --text-dim: #c8d8ec;
     --white: #eef3f8;
+    /* Horizontal edge padding: 64px normally, growing to center content
+       at a 1440px max width on large monitors (backgrounds stay full-width) */
+    --edge: max(64px, calc((100% - 1440px) / 2));
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -59,8 +84,10 @@
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 999;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 14px 64px;
+    gap: 40px; /* keep the wordmark from colliding with the nav links */
+    padding: 14px var(--edge);
     background: rgba(8,19,30,0.92);
+    -webkit-backdrop-filter: blur(16px);
     backdrop-filter: blur(16px);
     border-bottom: 1px solid rgba(45,122,58,0.18);
   }
@@ -72,14 +99,16 @@
     color: var(--white); letter-spacing: 3px;
   }
   .nav-brand .n2 {
-    font-family: 'Share Tech Mono', monospace; font-size: 9px;
-    color: var(--green-mid); letter-spacing: 4px; margin-top: 3px;
+    font-family: 'Share Tech Mono', monospace; font-size: 12px;
+    color: var(--green-mid); letter-spacing: 2px; margin-top: 3px;
+    white-space: nowrap; /* never wrap the wordmark tagline */
   }
   .nav-logo img { max-height: 90px; width: auto; }
   .nav-links { display: flex; align-items: center; gap: 32px; }
   .nav-links a {
     color: var(--text); text-decoration: none;
-    font-size: 12px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+    font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+    white-space: nowrap; /* keep multi-word items like "Live Platform" on one line */
     transition: color 0.25s;
   }
   .nav-links a:hover { color: var(--green-glow); }
@@ -113,9 +142,9 @@
 
   /* ── HERO ── */
   .hero {
-    min-height: 100svh; position: relative;
+    min-height: 100vh; min-height: 100svh; position: relative;
     display: flex; align-items: center;
-    padding: 148px 64px 80px;
+    padding: 148px var(--edge) 80px;
     overflow: hidden;
   }
   .hero-bg {
@@ -209,7 +238,7 @@
   .hero-tag {
     display: inline-flex; align-items: center; gap: 10px;
     font-family: 'Share Tech Mono', monospace;
-    font-size: 11px; letter-spacing: 3px; color: var(--green-mid);
+    font-size: 13px; letter-spacing: 2px; color: var(--green-mid);
     text-transform: uppercase; margin-bottom: 28px;
     white-space: nowrap;
   }
@@ -234,9 +263,10 @@
   .btn-primary {
     background: var(--green); color: white;
     padding: 14px 36px; font-family: 'Rajdhani', sans-serif;
-    font-size: 13px; font-weight: 700; letter-spacing: 2.5px;
+    font-size: 14px; font-weight: 700; letter-spacing: 2px;
     text-transform: uppercase; text-decoration: none;
     border: none; cursor: pointer;
+    -webkit-clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
     clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
     transition: all 0.3s;
   }
@@ -248,7 +278,7 @@
   .btn-secondary {
     background: transparent; color: var(--text);
     padding: 14px 36px; font-family: 'Rajdhani', sans-serif;
-    font-size: 13px; font-weight: 700; letter-spacing: 2.5px;
+    font-size: 14px; font-weight: 700; letter-spacing: 2px;
     text-transform: uppercase; text-decoration: none;
     border: 1px solid var(--navy-4); cursor: pointer;
     transition: all 0.3s;
@@ -268,13 +298,13 @@
   /* Remove iOS blue flash on tap */
   a, button, [role="button"],
   .btn-primary, .btn-secondary, .btn-nav,
-  .nav-toggle, .asset-tab, .price-btn,
+  .nav-toggle, .pricing-tab, .price-btn,
   .lang-globe, .lang-btn, .svc-cta, .client-tag {
     -webkit-tap-highlight-color: transparent;
   }
   /* Faster tap response — skip 300ms delay on all interactive elements */
   .btn-primary, .btn-secondary, .btn-nav,
-  .nav-toggle, .asset-tab, .price-btn,
+  .nav-toggle, .pricing-tab, .price-btn,
   .lang-globe, .lang-btn {
     touch-action: manipulation;
   }
@@ -285,13 +315,13 @@
     background: rgba(13,27,42,0.95);
     border-top: 1px solid rgba(45,122,58,0.2);
     display: flex; align-items: center;
-    padding: 12px 64px; gap: 48px;
+    padding: 12px var(--edge); gap: 48px;
     overflow: hidden;
   }
   .live-item {
     display: flex; align-items: center; gap: 10px;
     font-family: 'Share Tech Mono', monospace;
-    font-size: 11px; letter-spacing: 1.5px;
+    font-size: 12px; letter-spacing: 1px;
     color: var(--text); white-space: nowrap;
   }
   .live-dot {
@@ -309,11 +339,11 @@
   .live-sep { color: rgba(45,122,58,0.3); }
 
   /* ── SECTION SHARED ── */
-  section { padding: 60px 64px; }
+  section { padding: 60px var(--edge); }
   .section-label {
     display: inline-flex; align-items: center; gap: 10px;
     font-family: 'Share Tech Mono', monospace;
-    font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+    font-size: 12px; letter-spacing: 3px; text-transform: uppercase;
     color: var(--green-mid); margin-bottom: 20px;
   }
   .section-label::before {
@@ -357,14 +387,15 @@
   }
   #regDeadlineText {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 11px; letter-spacing: 1px;
+    font-size: 13px; letter-spacing: 0.5px;
     color: var(--text);
   }
   .reg-deadline-link {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 11px; letter-spacing: 1px;
+    font-size: 13px; letter-spacing: 0.5px;
     color: var(--green-mid); text-decoration: none;
     transition: color 0.2s; white-space: nowrap;
+    padding: 4px 0; /* WCAG 2.2 SC 2.5.8 Target Size */
     margin-left: auto;
   }
   .reg-deadline-link:hover { color: var(--green-glow); }
@@ -382,7 +413,7 @@
   }
   .service-card {
     background: var(--navy-3);
-    padding: 52px 48px;
+    padding: 52px 48px 28px;
     position: relative; overflow: hidden;
     transition: transform 0.3s;
   }
@@ -427,7 +458,7 @@
   .service-card h3 { text-align: center; }
   .svc-tagline {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 10px; letter-spacing: 3px;
+    font-size: 13px; letter-spacing: 2px;
     color: var(--green-mid); text-transform: uppercase;
     margin-bottom: 20px; text-align: center;
   }
@@ -436,7 +467,7 @@
     font-size: 16px; line-height: 1.75;
     color: var(--text); margin-bottom: 36px;
   }
-  .svc-features { list-style: none; margin-bottom: 40px; }
+  .svc-features { list-style: none; margin-bottom: 0; }
   .svc-features li {
     display: flex; align-items: flex-start; gap: 12px;
     font-size: 14px; font-weight: 500; letter-spacing: 0.5px; line-height: 1.6;
@@ -451,7 +482,7 @@
   .svc-cta {
     display: inline-flex; align-items: center; gap: 10px;
     font-family: 'Rajdhani', sans-serif;
-    font-size: 12px; font-weight: 700; letter-spacing: 2.5px;
+    font-size: 14px; font-weight: 700; letter-spacing: 2px;
     text-transform: uppercase; text-decoration: none;
     color: var(--green-mid);
     transition: gap 0.25s;
@@ -459,17 +490,89 @@
   .svc-cta:hover { gap: 16px; color: var(--green-glow); }
   .svc-cta.gold-cta { color: var(--gold); }
   .svc-cta.gold-cta:hover { color: #e8c96a; }
-  .svc-cta span { font-size: 18px; }
+  .svc-cta > span:last-child { font-size: 18px; }
+  .nav-coming-soon { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); white-space: nowrap; font-size: 12px; font-style: italic; font-weight: 400; letter-spacing: 1px; color: var(--text-dim); line-height: 1; margin-top: 3px; text-transform: none; }
+  .svc-buttons-outer { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 24px 0 0 48px; }
+  .coming-soon-tag { font-style: italic; letter-spacing: 1px; font-weight: 400; text-transform: none; vertical-align: baseline; margin-left: 4px; }
+  .svc-cta-text { display: inline; }
+  .svc-cta .coming-soon-tag { font-size: 12px; margin-left: 2px; }
 
   /* ── DASHBOARD MOCKUP ── */
   #platform { background: var(--navy); position: relative; overflow: hidden; }
+
+  /* ── MHTES METHODOLOGY TABLE ── */
+  .mhtes-wrap {
+    overflow-x: auto; margin-bottom: 16px;
+    border-radius: 4px; box-shadow: 0 8px 48px rgba(0,0,0,0.6);
+    background: var(--navy-2);
+  }
+  .mhtes-formula {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 18px; letter-spacing: 1.5px; font-weight: 700;
+    color: var(--text); padding: 22px 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .mhtes-formula .mhtes-accent {
+    color: var(--gold); letter-spacing: 2px;
+  }
+  .mhtes-tbl {
+    width: 100%; border-collapse: collapse;
+    font-family: 'Rajdhani', sans-serif; font-size: 16px;
+  }
+  .mhtes-tbl thead th {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 14px; letter-spacing: 1.5px; text-transform: uppercase;
+    font-weight: 700; color: var(--white); padding: 16px 28px;
+    text-align: left; white-space: nowrap;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    border-right: 1px solid rgba(255,255,255,0.06);
+  }
+  .mhtes-tbl thead th:last-child { border-right: none; }
+  .mhtes-tbl tbody td {
+    padding: 20px 28px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    border-right: 1px solid rgba(255,255,255,0.06);
+    color: var(--text); vertical-align: top; line-height: 1.5;
+  }
+  .mhtes-tbl tbody td:last-child { border-right: none; }
+  .mhtes-tbl tbody tr:last-child td { border-bottom: none; }
+  .mhtes-tbl .asset-cell strong {
+    display: block; font-size: 20px; color: var(--white);
+    font-weight: 700; margin-bottom: 4px;
+  }
+  .mhtes-tbl .asset-cell span {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 12px; letter-spacing: 1.5px; color: var(--green-mid);
+  }
+  .mhtes-tbl .pillar-code {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 16px; font-weight: 700;
+    color: var(--white); display: block; margin-bottom: 4px;
+  }
+  .mhtes-tbl .pillar-desc { font-size: 15px; color: var(--text-dim); }
+  .mhtes-tbl td.cyber-col {
+    border-left: 2px solid rgba(45,122,58,0.35);
+  }
+  .mhtes-tbl .routes-note {
+    font-style: italic; color: var(--text-dim);
+    font-size: 15px; text-align: center;
+    vertical-align: middle; height: 72px;
+    padding: 20px 28px;
+  }
+
   .platform-img-caption {
-    font-size: 17px; line-height: 1.75;
+    font-size: 19px; line-height: 1.75;
     color: var(--text); max-width: 100%;
     margin: 32px 0 16px;
     text-align: center;
   }
-  .platform-img-caption strong { display: block; color: var(--white); margin-bottom: 4px; }
+  .platform-img-caption strong {
+    display: block; color: var(--white);
+    font-size: 26px; line-height: 1.3;
+    margin-bottom: 10px;
+    font-family: 'Cinzel', serif; font-weight: 600;
+    letter-spacing: 0.5px;
+  }
   .dash-wrap {
     margin-top: 60px;
     border: 1px solid rgba(45,122,58,0.2);
@@ -487,18 +590,18 @@
   }
   .dash-title {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 11px; letter-spacing: 3px; color: var(--green-mid);
+    font-size: 12px; letter-spacing: 2px; color: var(--green-mid);
     text-transform: uppercase;
   }
   .dash-status {
     display: flex; align-items: center; gap: 6px;
     font-family: 'Share Tech Mono', monospace;
-    font-size: 10px; color: var(--text-dim); letter-spacing: 1.5px;
+    font-size: 12px; color: var(--text-dim); letter-spacing: 1px;
   }
   .dash-status .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-glow); animation: blink 1.5s infinite; }
   .dash-time {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 11px; color: var(--text-dim); letter-spacing: 2px;
+    font-size: 12px; color: var(--text-dim); letter-spacing: 1.5px;
   }
   .dash-body {
     display: grid;
@@ -569,7 +672,7 @@
 
   .map-label {
     position: absolute; font-family: 'Share Tech Mono', monospace;
-    font-size: 9px; letter-spacing: 2px; color: var(--text-dim);
+    font-size: 12px; letter-spacing: 1.5px; color: var(--text-dim);
     text-transform: uppercase;
   }
   .ml1 { top: 16%; left: 8%; }
@@ -584,7 +687,7 @@
     border: 1px solid rgba(231,76,60,0.4);
     padding: 8px 14px;
     font-family: 'Share Tech Mono', monospace;
-    font-size: 9px; letter-spacing: 2px;
+    font-size: 12px; letter-spacing: 1.5px;
     color: #e74c3c;
     text-transform: uppercase;
     animation: alert-flash 2s ease-in-out infinite;
@@ -604,7 +707,7 @@
   }
   .panel-title {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 9px; letter-spacing: 3px; color: var(--text-dim);
+    font-size: 12px; letter-spacing: 3px; color: var(--text-dim);
     text-transform: uppercase; margin-bottom: 14px;
   }
   .threat-item {
@@ -619,11 +722,11 @@
   .threat-level.med { background: #f5a623; }
   .threat-level.low { background: var(--green-mid); }
   .threat-text {
-    font-size: 11px; line-height: 1.5; color: var(--text);
+    font-size: 12px; line-height: 1.5; color: var(--text);
   }
   .threat-text .zone {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 9px; color: var(--text-dim); letter-spacing: 1px;
+    font-size: 12px; color: var(--text-dim); letter-spacing: 1px;
   }
 
   .metric-row {
@@ -645,7 +748,7 @@
   .metric-val.amber { color: #f5a623; }
   .metric-lbl {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 8px; letter-spacing: 1.5px; color: var(--text-dim);
+    font-size: 12px; letter-spacing: 1px; color: var(--text-dim);
     margin-top: 4px; text-transform: uppercase;
   }
 
@@ -655,7 +758,7 @@
     padding: 14px 24px;
     display: flex; align-items: center; gap: 32px;
     font-family: 'Share Tech Mono', monospace;
-    font-size: 10px; letter-spacing: 2px; color: var(--text-dim);
+    font-size: 12px; letter-spacing: 2px; color: var(--text-dim);
   }
   .db-item span { color: var(--green-mid); margin-right: 6px; }
 
@@ -693,21 +796,22 @@
     letter-spacing: 0.5px;
   }
   .why-text {
-    font-size: 14px; line-height: 1.75;
+    font-size: 16px; line-height: 1.7;
     color: var(--text);
   }
 
   /* ── PRICING ── */
   #pricing { background: var(--navy); }
   .pricing-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 2px; margin-top: 60px; align-items: start;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    gap: 2px; margin-top: 60px; align-items: stretch;
   }
   .price-card {
     background: var(--navy-3);
-    padding: 44px 36px;
+    padding: 28px 28px;
     position: relative;
     transition: transform 0.3s;
+    display: flex; flex-direction: column;
   }
   .price-card.featured {
     background: var(--navy-4);
@@ -719,12 +823,13 @@
     position: absolute; top: -1px; left: 50%; transform: translateX(-50%);
     background: var(--green);
     font-family: 'Share Tech Mono', monospace;
-    font-size: 9px; letter-spacing: 3px; color: white;
-    padding: 5px 16px;
+    font-size: 12px; letter-spacing: 2px; color: white;
+    padding: 6px 18px; white-space: nowrap;
   }
+  .price-card.free-card::before { content: 'FREE'; }
   .price-tier {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 10px; letter-spacing: 4px; color: var(--green-mid);
+    font-size: 12px; letter-spacing: 4px; color: var(--green-mid);
     text-transform: uppercase; margin-bottom: 20px;
   }
   .price-name {
@@ -733,9 +838,9 @@
     color: var(--white); margin-bottom: 8px;
   }
   .price-best-for {
-    font-size: 12px; line-height: 1.6;
-    color: rgba(200,216,236,0.55);
-    margin: 0 0 20px 0; font-style: italic;
+    font-size: 16px; line-height: 1.65;
+    color: rgba(200,216,236,0.82);
+    margin: 0 0 16px 0;
   }
   .price-amt {
     font-family: 'Cinzel', serif;
@@ -746,19 +851,20 @@
   .price-amt sup { font-size: 22px; vertical-align: super; }
   .price-period {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 11px; letter-spacing: 2px;
+    font-size: 13px; letter-spacing: 1.5px;
     color: var(--text); margin-bottom: 32px;
   }
-  .price-features { list-style: none; margin-bottom: 36px; }
+  .price-features { list-style: none; margin-bottom: 24px; }
   .price-features li {
     display: flex; align-items: flex-start; gap: 10px;
-    font-size: 14px; font-weight: 500; letter-spacing: 0.5px; line-height: 1.6;
-    color: var(--text); padding: 9px 0;
+    font-size: 16px; font-weight: 500; letter-spacing: 0.3px; line-height: 1.6;
+    color: var(--text); padding: 6px 0;
     border-bottom: 1px solid rgba(255,255,255,0.06);
   }
   .price-features li::before {
     content: '✓'; color: var(--green-mid);
     font-size: 12px; flex-shrink: 0;
+    width: 16px; text-align: center;
   }
   .price-features li.na { display: none; }
   .price-btn {
@@ -768,64 +874,91 @@
     color: var(--text);
     padding: 13px 24px;
     font-family: 'Rajdhani', sans-serif;
-    font-size: 12px; font-weight: 700; letter-spacing: 2.5px;
+    font-size: 14px; font-weight: 700; letter-spacing: 1.5px;
     text-transform: uppercase; text-decoration: none;
     cursor: pointer; transition: all 0.3s;
+    margin-top: auto;
   }
   .price-btn:hover, .price-btn.active {
     background: var(--green); border-color: var(--green);
     color: white; box-shadow: 0 0 24px rgba(45,122,58,0.35);
   }
-  /* Asset tabs */
-  .asset-tabs {
-    display: flex; gap: 2px; margin-top: 48px;
+  /* Pricing three-tier layout: Individual (Basic + Pro) | Enterprise */
+  .pricing-cols {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    column-gap: 24px; row-gap: 26px; margin-top: 56px;
+    position: relative; align-items: stretch;
   }
-  .asset-tab {
-    flex: 1; background: var(--navy-3); border: none;
-    color: var(--text); font-family: 'Rajdhani', sans-serif;
-    font-size: 13px; font-weight: 700; letter-spacing: 2px;
-    text-transform: uppercase; padding: 18px 24px;
-    cursor: pointer; transition: all 0.3s;
-    border-bottom: 2px solid transparent;
+  .pricing-cols::after {
+    content: ''; position: absolute; top: 0; bottom: 0;
+    left: calc(66.666% + 4px);
+    width: 1px;
+    background: linear-gradient(to bottom, rgba(200,216,236,0.28) 0, rgba(200,216,236,0.28) 100%);
+    pointer-events: none;
   }
-  .asset-tab:hover { background: var(--navy-4); color: var(--white); }
-  .asset-tab.active { background: var(--navy-4); color: var(--green-mid); border-bottom-color: var(--green); }
-  .asset-panel { display: none; }
-  .asset-panel.active { display: block; }
-  .asset-subtitle {
+  .pcol-header {
+    padding: 28px 40px;
+    background: var(--navy-4);
+    border-bottom: 3px solid transparent;
+  }
+  .ph-individual { grid-column: 1 / 3; border-bottom-color: var(--green); }
+  .ph-enterprise { grid-column: 3 / 4; border-bottom-color: var(--gold); }
+  .ptab-label {
+    font-family: 'Cinzel', serif;
+    font-size: 30px; font-weight: 700;
+    display: block; margin-bottom: 6px;
+  }
+  .ph-individual .ptab-label { color: var(--green-mid); }
+  .ph-enterprise .ptab-label { color: var(--gold); }
+  .ptab-sub {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px; font-weight: 600; letter-spacing: 1px;
+    color: var(--text-dim); display: block; margin-bottom: 5px;
+  }
+  .ptab-audience {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 10px; letter-spacing: 3px; color: var(--text-dim);
-    text-transform: uppercase; text-align: center;
-    padding: 28px 0 4px;
+    font-size: 13px; letter-spacing: 0.4px;
+    color: rgba(200,216,236,0.7); display: block;
   }
-  .price-meta {
+  /* Tier cards inside the pricing grid */
+  .pricing-cols .price-card { margin-bottom: 0; }
+  .pricing-cols .price-card.featured { transform: none; }
+  .pricing-cols .price-features { flex: 1; margin-bottom: 24px; }
+  .price-amount {
+    display: flex; align-items: baseline; gap: 8px;
+    margin-bottom: 18px;
+  }
+  .pa-num {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 20px; font-weight: 700; line-height: 1;
+    color: var(--white); letter-spacing: 0.5px;
+  }
+  .ent-card .pa-num { color: var(--gold); }
+  .pa-per {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px; font-weight: 600; letter-spacing: 0.5px;
+    color: rgba(200,216,236,0.6);
+  }
+  .price-features li.feat-all { color: var(--white); font-weight: 700; }
+  .price-features li.feat-all::before { content: '+'; font-weight: 700; }
+  .price-features li.feat-addon { color: rgba(200,216,236,0.9); }
+  .price-features li.feat-addon::before { content: '+'; color: var(--gold); font-weight: 700; }
+  .feat-addon-tag {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 10px; letter-spacing: 1.5px; color: var(--green-mid);
-    opacity: 0.8; margin-bottom: 28px;
+    font-size: 12px; letter-spacing: 1px; text-transform: uppercase;
+    color: var(--gold); border: 1px solid rgba(201,168,76,0.4);
+    padding: 2px 6px; border-radius: 2px; margin-left: 8px;
+    white-space: nowrap; vertical-align: middle;
   }
-  .price-coverage {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 9px; letter-spacing: 2px; color: var(--gold);
-    text-transform: uppercase; margin-bottom: 20px;
-    border: 1px solid rgba(201,168,76,0.25); padding: 4px 10px;
-    display: inline-block; border-radius: 2px;
-  }
-  .feat-group {
-    font-family: 'Share Tech Mono', monospace !important;
-    font-size: 9px !important; letter-spacing: 3px;
-    color: var(--green-mid) !important; text-transform: uppercase;
-    padding: 14px 0 2px !important;
-    border-bottom: 1px solid rgba(45,122,58,0.15) !important;
-    font-weight: 400 !important; display: flex !important;
-  }
-  .feat-group::before { content: none !important; }
-  .price-features li.feat-star-item { color: var(--gold); }
-  .price-features li.feat-star-item::before { content: '★'; color: var(--gold); font-size: 10px; }
-  .tier-star-note {
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px; letter-spacing: 1px;
-    color: rgba(201,168,76,0.5);
-    text-align: center; padding: 20px 0 0;
+  @media (max-width: 900px) {
+    .pricing-cols { grid-template-columns: 1fr; row-gap: 22px; }
+    .pricing-cols::after { display: none; }
+    .ph-individual, .ph-enterprise { grid-column: 1 / -1; }
+    .ph-individual { order: 1; }
+    .price-card.free-card { order: 2; }
+    .pricing-cols .pro-card { order: 3; }
+    .ph-enterprise { order: 4; }
+    .pricing-cols .ent-card { order: 5; }
   }
 
   /* ── ADVISORY ── */
@@ -847,6 +980,7 @@
     color: var(--gold);
     line-height: 1;
     padding-top: 2px;
+    width: 44px; text-align: center;
   }
   .adv-content h4 {
     font-family: 'Cinzel', serif;
@@ -868,6 +1002,19 @@
     content: ''; position: absolute;
     top: 0; left: 0; right: 0; height: 2px;
     background: linear-gradient(90deg, var(--gold), transparent);
+  }
+  .adv-launch-badge {
+    display: inline-block;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--gold); border: 1px solid rgba(201,168,76,0.4);
+    padding: 4px 10px; margin-bottom: 16px;
+  }
+  .adv-coming-eyebrow {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 13px; font-weight: 600; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--text-dim);
+    margin-bottom: 4px; margin-top: 8px;
   }
   .adv-right h3 {
     font-family: 'Cinzel', serif;
@@ -900,7 +1047,7 @@
     border: 1px solid rgba(45,122,58,0.08);
     padding: 10px 16px;
     font-family: 'Share Tech Mono', monospace;
-    font-size: 11px; letter-spacing: 3px;
+    font-size: 14px; letter-spacing: 1.5px;
     color: var(--text); text-transform: uppercase;
     transition: all 0.3s; cursor: default; flex: 1;
     display: flex; align-items: center; justify-content: center;
@@ -917,7 +1064,7 @@
     background: var(--navy-3);
     border-top: 1px solid rgba(45,122,58,0.15);
     border-bottom: 1px solid rgba(45,122,58,0.15);
-    padding: 80px 64px;
+    padding: 80px var(--edge);
     position: relative; overflow: hidden;
     display: flex; align-items: center; justify-content: space-between;
     gap: 48px;
@@ -942,7 +1089,7 @@
   /* ── FOOTER ── */
   footer {
     background: var(--navy-2);
-    padding: 64px 64px 36px;
+    padding: 64px var(--edge) 36px;
     border-top: 1px solid rgba(45,122,58,0.12);
   }
   .footer-top {
@@ -953,15 +1100,16 @@
   .footer-brand-text { display: flex; flex-direction: column; gap: 12px; }
   .footer-brand img { height: 100px; width: auto; align-self: flex-start; }
   .footer-brand p {
-    font-size: 13px; line-height: 1.7; color: var(--text);
+    font-size: 14px; line-height: 1.7; color: var(--text);
     max-width: 280px;
   }
   .footer-brand .hq {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 9px; letter-spacing: 3px; color: var(--green-mid);
+    font-size: 12px; letter-spacing: 3px; color: var(--green-mid);
     text-transform: uppercase;
   }
   .footer-contact-btn { display: inline-block; width: fit-content; }
+  .footer-col a.footer-contact-btn { color: #fff; }  /* WCAG 1.4.3: .footer-col a would otherwise win on specificity and dim this button's text */
   .footer-col h5 {
     font-family: 'Cinzel', serif;
     font-size: 13px; font-weight: 600;
@@ -969,7 +1117,7 @@
     margin-bottom: 20px;
   }
   .footer-col a, .footer-col p {
-    display: block; font-size: 13px;
+    display: block; font-size: 14px;
     color: var(--text); text-decoration: none;
     margin-bottom: 10px; letter-spacing: 0.5px;
     transition: color 0.25s;
@@ -977,18 +1125,35 @@
   .footer-col a:hover { color: var(--green-mid); }
   .footer-bottom {
     display: flex; align-items: center; justify-content: space-between;
+    /* space-between only holds these apart while there is slack. Below ~1500px
+       --edge narrows the content until there is none, and the copyright ran
+       into the legal links. A real column gap + wrap keeps them separated. */
+    flex-wrap: wrap; gap: 12px 48px;
     padding-top: 28px;
     border-top: 1px solid rgba(255,255,255,0.07);
   }
   .footer-bottom p {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 9px; letter-spacing: 2px;
+    font-size: 13px; letter-spacing: 1px;
     color: var(--text); text-transform: uppercase;
   }
+  .footer-legal-links {
+    display: flex; align-items: flex-start; gap: 16px; flex-wrap: wrap;
+  }
+  .footer-legal-link {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px; letter-spacing: 1.5px; color: rgba(240,245,252,0.65);
+    text-transform: uppercase; text-decoration: none;
+    background: none; border: none; cursor: pointer; padding: 6px 0;
+    line-height: 1; vertical-align: top;
+    transition: color 0.2s;
+  }
+  .footer-legal-link:hover { color: #eef3f8; }
+
   .footer-bottom .clearance {
     display: flex; align-items: center; gap: 8px;
     font-family: 'Share Tech Mono', monospace;
-    font-size: 9px; letter-spacing: 2px; color: var(--text);
+    font-size: 12px; letter-spacing: 2px; color: var(--text);
   }
   .footer-bottom .clearance::before {
     content: ''; width: 6px; height: 6px; border-radius: 50%;
@@ -1014,7 +1179,7 @@
   .lang-menu .lang-btn {
     background: none; border: none; border-bottom: 1px solid rgba(45,122,58,0.15);
     cursor: pointer; color: rgba(200,216,236,0.55);
-    font-family: 'Share Tech Mono', monospace; font-size: 11px;
+    font-family: 'Share Tech Mono', monospace; font-size: 13px;
     padding: 9px 16px; text-transform: uppercase; text-align: center;
     transition: color 0.2s, background 0.2s; letter-spacing: 2px;
   }
@@ -1081,6 +1246,7 @@
 
   /* ── Large tablets / small desktops (≤ 1024px) ── */
   @media (max-width: 1024px) {
+    :root { --edge: 32px; }
     nav { padding: 14px 32px; }
     .hero { padding: 132px 32px 72px; }
     .live-bar { padding: 12px 32px; gap: 32px; }
@@ -1102,7 +1268,7 @@
   h3.footer-nav-title { font-size: 13px !important; font-weight: 600 !important; letter-spacing: 1px !important; margin-bottom: 20px !important; text-align: left !important; }
 
   /* ── iPad landscape — collapse nav to hamburger ── */
-  @media (max-width: 1100px) {
+  @media (max-width: 1300px) {
     .nav-toggle { display: flex; }
     .nav-links {
       display: none; position: fixed;
@@ -1127,27 +1293,28 @@
     .nav-comp-wrap.open .nav-comp-menu {
       display: flex; flex-direction: column; align-items: center; gap: 0; padding: 6px 0;
     }
-    .nav-comp-menu a { border: none; font-size: 11px; padding: 8px 0; text-align: center; }
+    .nav-comp-menu a { border: none; font-size: 13px; padding: 8px 0; text-align: center; }
     .nav-comp-menu .comp-link-label { display: none; }
   }
 
   /* ── Tablets (≤ 768px) ── */
   @media (max-width: 768px) {
+    :root { --edge: 20px; }
     /* Layout & spacing */
     nav { padding: 12px 20px; backdrop-filter: none; -webkit-backdrop-filter: none; }
     .nav-logo img { height: 70px; }
     .nav-brand .n1 { font-size: 15px; letter-spacing: 2px; }
-    .nav-brand .n2 { font-size: 8px; letter-spacing: 3px; }
+    .nav-brand .n2 { font-size: 12px; letter-spacing: 2px; }
 
     .hero { flex-direction: column; padding: 120px 20px 60px; text-align: center; }
     .hero-content { max-width: 100%; }
-    .hero-tag { justify-content: center; font-size: 9px; letter-spacing: 1.5px; }
+    .hero-tag { justify-content: center; font-size: 13px; letter-spacing: 1px; }
     .hero-tag::before { display: none; }
     h1 { font-size: clamp(28px, 6vw, 40px); }
-    .hero-desc { font-size: 16px; max-width: 100%; }
+    .hero-desc { font-size: 17px; max-width: 100%; }
     .hero-ctas { justify-content: center; }
     .hero-ctas .btn-primary,
-    .hero-ctas .btn-secondary { padding: 12px 24px; font-size: 11px; }
+    .hero-ctas .btn-secondary { padding: 12px 24px; font-size: 13px; }
 
     .live-bar {
       padding: 10px 20px; gap: 20px;
@@ -1155,7 +1322,7 @@
       mask-image: linear-gradient(to right, black 85%, transparent 100%);
       -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
     }
-    .live-item { font-size: 10px; flex-shrink: 0; }
+    .live-item { font-size: 12px; flex-shrink: 0; }
     .live-sep { flex-shrink: 0; }
 
     section { padding: 40px 20px; }
@@ -1178,9 +1345,10 @@
     .price-card.featured { transform: none; }
     .pricing-grid { grid-template-columns: 1fr; }
 
-    .asset-tabs { flex-direction: column; gap: 1px; }
-    .asset-tab { text-align: left; padding-left: 20px; border-bottom: 1px solid rgba(255,255,255,0.06); border-left: 3px solid transparent; }
-    .asset-tab.active { border-bottom-color: transparent; border-left-color: var(--green); color: var(--green-mid); }
+    .pricing-cols { grid-template-columns: 1fr; }
+    .pcol-header { padding: 20px 24px; }
+    .ptab-label { font-size: 22px; }
+    .ptab-audience { display: none; }
 
     .adv-grid { grid-template-columns: 1fr; gap: 36px; }
     .dash-body { grid-template-columns: 1fr; min-height: auto; }
@@ -1211,7 +1379,8 @@
     }
 
     .services-grid { grid-template-columns: 1fr; }
-    .service-card { padding: 40px 28px; }
+    .service-card { padding: 40px 28px 20px; }
+    .svc-buttons-outer { padding: 20px 0 0 28px; }
 
     /* Keep 2-col on tablets — drop to 1-col at 600px */
     .why-grid { grid-template-columns: repeat(2, 1fr); }
@@ -1222,12 +1391,12 @@
     .radar-wrap { opacity: 0.12; pointer-events: none; right: -15%; }
 
     .btn-nav { font-size: 14px !important; letter-spacing: 2px !important; padding: 12px 28px !important; }
-    .btn-primary, .btn-secondary { padding: 12px 24px; font-size: 11px; }
+    .btn-primary, .btn-secondary { padding: 12px 24px; font-size: 13px; }
 
-    .price-btn, .asset-tab, .lang-btn, .client-tag, .nav-links a {
-      min-height: 44px; display: inline-flex; align-items: center; justify-content: center;
+    .price-btn, .pricing-tab, .lang-btn, .client-tag, .nav-links a {
+      min-height: 44px;
     }
-    .asset-tab { justify-content: flex-start; }
+    .pricing-tab { display: flex; flex-direction: column; align-items: flex-start; }
 
   }
 
@@ -1248,33 +1417,35 @@
 
   /* ── Phones (≤ 480px) ── */
   @media (max-width: 480px) {
+    :root { --edge: 16px; }
     nav { padding: 10px 16px; }
     .nav-logo img { height: 56px; }
-    .nav-brand .n1 { font-size: 12px; letter-spacing: 1px; }
-    .nav-brand .n2 { font-size: 7px; letter-spacing: 2px; display: none; }
+    .nav-brand .n1 { font-size: 13px; letter-spacing: 1px; }
+    .nav-brand .n2 { font-size: 12px; letter-spacing: 2px; display: none; }
 
     .hero { padding: 100px 16px 40px; }
     h1 { font-size: clamp(22px, 7vw, 30px); }
-    .hero-desc { font-size: 14px; }
-    .hero-tag { font-size: 7.5px; letter-spacing: 1px; gap: 6px; white-space: normal; justify-content: center; text-align: center; }
+    .hero-desc { font-size: 17px; }
+    .hero-tag { font-size: 12px; letter-spacing: 0.5px; gap: 6px; white-space: normal; justify-content: center; text-align: center; }
 
     .live-bar { padding: 8px 16px; gap: 14px; }
-    .live-item { font-size: 9px; }
+    .live-item { font-size: 12px; }
     .live-dot { width: 5px; height: 5px; }
 
     section { padding: 32px 16px; }
 
-    .section-label { font-size: 9px; letter-spacing: 2px; }
+    .section-label { font-size: 13px; letter-spacing: 2px; }
     h2 { font-size: clamp(18px, 6vw, 24px); }
-    .section-lead { font-size: 14px; }
+    .section-lead { font-size: 16px; }
 
     h3 { font-size: 18px; }
 
-    .service-card { padding: 36px 20px; }
+    .service-card { padding: 36px 20px 18px; }
+    .svc-buttons-outer { padding: 18px 0 0 20px; }
     .svc-num { font-size: 44px; right: 16px; top: 12px; }
     .svc-icon { font-size: 40px; margin-bottom: 20px; }
-    .svc-desc { font-size: 14px; }
-    .svc-features li { font-size: 14px; padding: 8px 0; }
+    .svc-desc { font-size: 16px; }
+    .svc-features li { font-size: 16px; padding: 8px 0; }
 
     .dash-header { flex-direction: column; gap: 8px; align-items: flex-start; }
     .dash-body { grid-template-columns: 1fr; min-height: auto; }
@@ -1284,8 +1455,8 @@
     .why-grid { grid-template-columns: 1fr; }
     .why-card { padding: 24px 20px; }
     .why-num { width: 44px; height: 44px; font-size: 18px; }
-    .why-title { font-size: 15px; }
-    .why-text { font-size: 13px; }
+    .why-title { font-size: 16px; }
+    .why-text { font-size: 16px; }
 
     .pricing-grid { grid-template-columns: 1fr; }
     .price-card { padding: 32px 24px; }
@@ -1306,38 +1477,39 @@
     .footer-brand { flex-direction: column; align-items: flex-start; gap: 16px; grid-column: auto; }
 
     .footer-brand img { height: 64px; }
-    .footer-brand p { font-size: 12px; max-width: 100%; }
-    .footer-col a, .footer-col p { font-size: 12px; }
-    .footer-bottom p, .footer-bottom .clearance { font-size: 10px; letter-spacing: 1px; }
+    .footer-brand p { font-size: 14px; max-width: 100%; }
+    .footer-col a, .footer-col p { font-size: 14px; }
+    .footer-bottom p, .footer-bottom .clearance { font-size: 12px; letter-spacing: 1px; }
 
     .dash-header-left { flex-wrap: wrap; gap: 10px; }
 
     .vessel,
     .map-alert { display: none; }
 
-    .map-label { font-size: 7px; letter-spacing: 1px; }
+    .map-label { font-size: 12px; letter-spacing: 1px; }
 
-    .engagement-types li { font-size: 13px; }
-    .adv-content h4 { font-size: 14px; }
-    .adv-content p { font-size: 13px; }
+    .engagement-types li { font-size: 16px; }
+    .adv-content h4 { font-size: 16px; }
+    .adv-content p { font-size: 15px; }
 
     .btn-primary, .btn-secondary {
-      padding: 14px 24px; font-size: 12px;
+      padding: 14px 24px; font-size: 14px;
       min-height: 44px; display: inline-flex; align-items: center; justify-content: center;
     }
-    .hero-tagline { font-size: 13px; letter-spacing: 1.5px; margin-bottom: 32px; }
+    .hero-tagline { font-size: 14px; letter-spacing: 1.5px; margin-bottom: 32px; }
 
-    .price-best-for { font-size: 11px; }
-    .price-features li { font-size: 13px; padding: 11px 0; word-break: break-word; hyphens: auto; }
+    .price-best-for { font-size: 16px; }
+    .price-features li { font-size: 16px; padding: 11px 0; word-break: break-word; hyphens: auto; }
 
-    .client-tag { font-size: 9px; letter-spacing: 2px; padding: 8px 12px; }
+    .client-tag { font-size: 13px; letter-spacing: 1.5px; padding: 8px 12px; }
   }
 
   /* ── Extra small phones (≤ 360px) ── */
   @media (max-width: 360px) {
+    :root { --edge: 12px; }
     nav { padding: 8px 12px; }
     .nav-logo img { height: 46px; }
-    .nav-brand .n1 { font-size: 10px; }
+    .nav-brand .n1 { font-size: 12px; }
 
     .hero { padding: 90px 16px 32px; }
     h1 { font-size: clamp(20px, 6.5vw, 26px); }
@@ -1347,32 +1519,24 @@
   }
 
   /* ── iOS safe-area insets ── */
+  /* Floors reference --edge so notched devices add inset padding on top of
+     the normal responsive edge padding, without overriding it on desktop. */
   @supports (padding: max(0px)) {
     nav {
       padding-top: max(14px, env(safe-area-inset-top));
-      padding-left: max(20px, env(safe-area-inset-left));
-      padding-right: max(20px, env(safe-area-inset-right));
+      padding-left: max(20px, calc((100% - 1440px) / 2), env(safe-area-inset-left));
+      padding-right: max(20px, calc((100% - 1440px) / 2), env(safe-area-inset-right));
     }
     /* Prevent content from being hidden behind home indicator */
     footer {
       padding-bottom: max(36px, env(safe-area-inset-bottom));
     }
     .live-bar {
-      padding-left: max(64px, env(safe-area-inset-left));
-      padding-right: max(64px, env(safe-area-inset-right));
-    }
-    @media (max-width: 768px) {
-      .live-bar {
-        padding-left: max(20px, env(safe-area-inset-left));
-        padding-right: max(20px, env(safe-area-inset-right));
-      }
+      padding-left: max(var(--edge), env(safe-area-inset-left));
+      padding-right: max(var(--edge), env(safe-area-inset-right));
     }
     @media (max-width: 480px) {
-      nav {
-        padding-top: max(10px, env(safe-area-inset-top));
-        padding-left: max(16px, env(safe-area-inset-left));
-        padding-right: max(16px, env(safe-area-inset-right));
-      }
+      nav { padding-top: max(10px, env(safe-area-inset-top)); }
       footer { padding-bottom: max(20px, env(safe-area-inset-bottom)); }
     }
   }
@@ -1395,13 +1559,44 @@
     }
   }
 
+  /* ── Visible keyboard focus indicator (WCAG 2.4.7) ── */
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  [tabindex]:not([tabindex="-1"]):focus-visible {
+    outline: 3px solid var(--green-glow);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+  /* Skip-link target receives focus without an outline box around the page */
+  main:focus { outline: none; }
+  /* Extra contrast ring for controls that sit on a green fill */
+  .btn-primary:focus-visible,
+  .btn-secondary.btn-green:focus-visible,
+  .price-btn.active:focus-visible {
+    outline-color: #fff;
+  }
+
+  /* ── Skip to content link (WCAG 2.4.1) ── */
+  .skip-link {
+    position: absolute; left: 12px; top: -60px; z-index: 2000;
+    background: var(--green); color: #fff;
+    padding: 12px 20px; border-radius: 4px;
+    font-family: 'Rajdhani', sans-serif; font-weight: 700;
+    font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    text-decoration: none; transition: top 0.2s;
+  }
+  .skip-link:focus { top: 12px; }
+
   /* ── COMPLIANCE NAV DROPDOWN ── */
   .nav-comp-wrap { position: relative; display: flex; align-items: center; }
   .nav-comp-trigger {
     background: none; border: none; cursor: pointer; padding: 0;
     color: var(--text); font-family: 'Rajdhani', sans-serif;
-    font-size: 12px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
-    display: flex; align-items: center; gap: 5px; transition: color 0.25s;
+    font-size: 12px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+    display: flex; align-items: center; gap: 5px; white-space: nowrap; transition: color 0.25s;
   }
   .nav-comp-trigger:hover { color: var(--green-glow); }
   .nav-comp-trigger svg { transition: transform 0.2s; flex-shrink: 0; }
@@ -1416,18 +1611,18 @@
   }
   .nav-comp-wrap.open .nav-comp-menu { display: block; }
   .nav-comp-menu a {
-    display: block; padding: 12px 20px;
-    color: rgba(200,216,236,0.7);
-    font-family: 'Share Tech Mono', monospace; font-size: 10px;
-    letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
+    display: block; padding: 13px 22px;
+    color: rgba(232,240,250,0.92);
+    font-family: 'Share Tech Mono', monospace; font-size: 12px;
+    letter-spacing: 1px; text-transform: uppercase; text-decoration: none;
     border-bottom: 1px solid rgba(45,122,58,0.12);
     transition: color 0.2s, background 0.2s;
   }
   .nav-comp-menu a:last-child { border-bottom: none; }
   .nav-comp-menu a:hover { color: var(--green-glow); background: rgba(45,122,58,0.08); }
   .nav-comp-menu .comp-link-label {
-    display: block; font-size: 8px; color: rgba(45,122,58,0.6);
-    letter-spacing: 1.5px; margin-top: 2px;
+    display: block; font-size: 12px; color: var(--green-mid);
+    letter-spacing: 0.5px; margin-top: 4px; text-transform: none;
   }
   @media (max-width: 768px) {
     .nav-comp-wrap { flex-direction: column; width: 100%; align-items: center; }
@@ -1439,15 +1634,28 @@
     .nav-comp-wrap.open .nav-comp-menu {
       display: flex; flex-direction: column; align-items: center; gap: 0; padding: 6px 0;
     }
-    .nav-comp-menu a { border: none; font-size: 11px; padding: 8px 0; text-align: center; }
+    .nav-comp-menu a { border: none; font-size: 13px; padding: 8px 0; text-align: center; }
     .nav-comp-menu .comp-link-label { display: none; }
+  }
+
+  /* WCAG 2.2 SC 2.5.8 Target Size */
+  .footer-col a { padding: 3px 0; }
+  .footer-legal-links { row-gap: 4px; }
+  /* Primary nav links rendered 15-23px tall — under the 24px minimum, and not
+     covered by the inline-in-prose exception. Vertical padding only, so the nav
+     height (driven by the logo) is unchanged. */
+  .nav-links > a { padding: 5px 0; }
+  .nav-comp-trigger { padding: 5px 0; }
+  /* .footer-col a wins on specificity over .btn-primary; restore button sizing/shape for the Contact CTA */
+  .footer-col a.footer-contact-btn {
+    display: inline-block; padding: 14px 36px; letter-spacing: 2px; margin-bottom: 0;
   }
 </style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "name": "Sentinella Global",
+  "name": "Sentinella Mare",
   "alternateName": "Sentinella Mare",
   "url": "https://sentinellaglobal.com",
   "logo": "https://sentinellaglobal.com/Sentinella%20Mare%20Logo_White.png",
@@ -1467,33 +1675,51 @@
 </head>
 <body>
 
+<a href="#main" class="skip-link">Skip to content</a>
+
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="#">
-    <img src="Sentinella Mare Logo_White.png" alt="Sentinella Mare" fetchpriority="high" decoding="async" style="height:90px;width:auto;">
+    <img src="Sentinella Mare Logo_White.png" alt="Sentinella Mare" fetchpriority="high" decoding="async">
     <div class="nav-brand">
       <span class="n1">SENTINELLA MARE</span>
       <span class="n2">Mediterranean Intelligence</span>
     </div>
   </a>
-  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open')">
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open')">
     <span></span><span></span><span></span>
   </button>
   <div class="nav-links" id="navLinks">
-    <a href="#services" data-i18n="nav.services" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Services</a>
+    <div class="nav-comp-wrap" id="servicesNav">
+      <button class="nav-comp-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="servicesMenu" onclick="document.getElementById('servicesNav').classList.toggle('open')">
+        Services
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="nav-comp-menu" id="servicesMenu">
+        <a href="#platform" onclick="document.getElementById('servicesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">
+          Intelligence Terminal
+          <span class="comp-link-label">Live Intelligence Platform</span>
+        </a>
+        <a href="#advisory" onclick="document.getElementById('servicesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">
+          Advisory
+          <span class="comp-link-label">(Coming Soon)</span>
+        </a>
+      </div>
+    </div>
     <a href="#platform" data-i18n="nav.platform" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Live Platform</a>
-    <a href="#advisory" data-i18n="nav.advisory" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Advisory</a>
-    <a href="#pricing" data-i18n="nav.pricing" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Subscription</a>
+    <a href="#pricing" data-i18n="nav.pricing" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Pricing</a>
     <a href="#clients" data-i18n="nav.clients" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Clients</a>
     <a href="/Leadership" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Leadership</a>
     <div class="nav-comp-wrap" id="complianceNav">
-      <button class="nav-comp-trigger" onclick="document.getElementById('complianceNav').classList.toggle('open')">
+      <button class="nav-comp-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="complianceMenu" onclick="document.getElementById('complianceNav').classList.toggle('open')">
         Compliance
         <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
-      <div class="nav-comp-menu">
+      <div class="nav-comp-menu" id="complianceMenu">
         <a href="/EUMaritimeComplianceCountdown" target="_blank" rel="noopener noreferrer">
           Deadline Countdown
           <span class="comp-link-label">NIS2 · CER · Circ. 177 live timers</span>
@@ -1505,23 +1731,25 @@
       </div>
     </div>
     <div class="lang-dropdown" id="langDropdown">
-      <button class="lang-globe" onclick="document.getElementById('langDropdown').classList.toggle('open')" aria-label="Select language">
+      <button class="lang-globe" onclick="document.getElementById('langDropdown').classList.toggle('open')" aria-label="Select language" aria-expanded="false" aria-haspopup="true" aria-controls="langMenu">
         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="10"/>
           <ellipse cx="12" cy="12" rx="4" ry="10"/>
           <line x1="2" y1="12" x2="22" y2="12"/>
         </svg>
       </button>
-      <div class="lang-menu">
-        <button class="lang-btn active" onclick="setLang('en'); document.getElementById('langDropdown').classList.remove('open')" id="btn-en">EN</button>
+      <div class="lang-menu" id="langMenu">
+        <button class="lang-btn active" aria-current="true" onclick="setLang('en'); document.getElementById('langDropdown').classList.remove('open')" id="btn-en">EN</button>
         <button class="lang-btn" onclick="setLang('it'); document.getElementById('langDropdown').classList.remove('open')" id="btn-it">IT</button>
         <button class="lang-btn" onclick="setLang('ar'); document.getElementById('langDropdown').classList.remove('open')" id="btn-ar">AR</button>
         <button class="lang-btn" onclick="setLang('el'); document.getElementById('langDropdown').classList.remove('open')" id="btn-el">EL</button>
       </div>
     </div>
-    <a href="#contact" class="btn-nav" data-i18n="nav.cta" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Request Access</a>
+    <a href="https://mare.sentinellaglobal.com/" class="btn-primary" data-i18n="nav.cta" style="padding:8px 20px;font-size:13px;letter-spacing:1.5px;white-space:nowrap;" target="_blank" rel="noopener noreferrer" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Launch Terminal</a>
   </div>
 </nav>
+
+<main id="main" tabindex="-1">
 
 <!-- HERO -->
 <section class="hero">
@@ -1545,14 +1773,14 @@
   </div>
 
   <div class="hero-content">
-    <div class="hero-tag" data-i18n="hero.tag">MARITIME HYBRID THREAT INTELLIGENCE PLATFORM · Est. Brussels, Belgium</div>
-    <h1 data-i18n="hero.h1" data-i18n-html="true">Intelligence That<br>Moves <span>Before</span><br>Disruption Does</h1>
+    <div class="hero-tag" data-i18n="hero.tag">MARITIME HYBRID THREAT INTELLIGENCE PLATFORM · HQ: Brussels, Belgium</div>
+    <h1 data-i18n="hero.h1" data-i18n-html="true">Intelligence That <br>Moves <span>Before</span> <br>Disruption Does</h1>
     <p class="hero-desc">
       <span data-i18n="hero.desc">One score for Mediterranean hybrid-threat exposure across ports, fleets, and cables, refreshed continuously and built for EU compliance.</span>
     </p>
     <p class="hero-tagline">Beyond <span style="color: var(--white);">Monitoring.</span> Ahead <span style="color: var(--white);">of Threats.</span></p>
     <div class="hero-ctas">
-      <a href="#platform" class="btn-primary" data-i18n="hero.btn1">View Intelligence Terminal</a>
+      <a href="#platform" class="btn-primary" data-i18n="hero.btn1">View Live Platform</a>
       <a href="#services" class="btn-secondary btn-green" data-i18n="hero.btn2">Our Services</a>
     </div>
   </div>
@@ -1563,11 +1791,11 @@
       <div class="live-dot"></div>
       <span data-i18n="live.feed">LIVE PORT SURVEILLANCE CAMS</span>
     </div>
-    <div class="live-sep">|</div>
+    <div class="live-sep" aria-hidden="true">|</div>
     <div class="live-item">
       <span data-i18n="live.vessels">VESSELS TRACKED</span> <span class="live-val">285,163</span>
     </div>
-    <div class="live-sep">|</div>
+    <div class="live-sep" aria-hidden="true">|</div>
     <div class="live-item">
       <div class="live-dot amber"></div>
       <span data-i18n="live.traffic">MARINE TRAFFIC — MEDITERRANEAN LIVE</span>
@@ -1578,7 +1806,7 @@
 <!-- SERVICES -->
 <section id="services">
   <div class="section-label" data-i18n="services.label">Core Services</div>
-  <h2 data-i18n="services.h2" data-i18n-html="true">Two Missions.<br><span>One Platform.</span></h2>
+  <h2 data-i18n="services.h2" data-i18n-html="true">Two Missions. <br><span>One Platform.</span></h2>
   <p class="section-lead">
     <span data-i18n="services.lead" data-i18n-html="true">Real-time geospatial intelligence and deep analytical expertise — built for operational and strategic clients across the Mediterranean corridor. Underpinning both offerings is the <strong>Maritime Hybrid Threat Exposure Score (MHTES)</strong>: a 72-hour predictive score that fuses cyber, geopolitical, grey fleet, disinformation, and weather signals into a single actionable risk metric per asset.</span>
   </p>
@@ -1595,9 +1823,9 @@
   <div class="services-grid">
     <!-- Service 1 -->
     <div class="service-card s1">
-      <div class="svc-num">01</div>
+      <div class="svc-num" aria-hidden="true">01</div>
       <div class="svc-icon">⌖</div>
-      <div class="svc-tagline" data-i18n="s1.tagline">Subscription · Live Intelligence</div>
+      <div class="svc-tagline" data-i18n="s1.tagline">Hybrid Threat Intelligence</div>
       <h3 data-i18n="s1.title" data-i18n-html="true">Mediterranean Watch<br>Intelligence Terminal</h3>
       <p class="svc-desc">
         <span data-i18n="s1.desc">A continuously updated geopolitical and maritime operations intelligence terminal providing shipping companies and logistics operators with live situational awareness across the Mediterranean. Built on our proprietary predictive intelligence engine — not a report, a live signal.</span>
@@ -1608,45 +1836,91 @@
         <li data-i18n="s1.f3">Cross-domain alert engine: cyber, military, disinformation, weather, port disruption</li>
         <li data-i18n="s1.f4">Automated early-warning triggers with priority notification</li>
       </ul>
-      <a href="#pricing" class="svc-cta" data-i18n="s1.cta" data-i18n-html="true">View Subscription Plans <span>→</span></a>
     </div>
 
     <!-- Service 2 -->
     <div class="service-card s2">
-      <div class="svc-num">02</div>
+      <div class="svc-num" aria-hidden="true">02</div>
       <div class="svc-icon gold-icon">⚖</div>
-      <div class="svc-tagline gold" data-i18n="s2.tagline">Advisory · Bespoke Consulting</div>
-      <h3 data-i18n="s2.title" data-i18n-html="true">Investment & Supply<br>Chain Risk Advisory</h3>
+      <div class="svc-tagline gold" data-i18n="s2.tagline">Maritime Financial Intelligence</div>
+      <h3 data-i18n="s2.title" data-i18n-html="true">Investment & Supply<br>Chain Risk Analysis</h3>
       <p class="svc-desc">
-        <span data-i18n="s2.desc">Confidential advisory engagements for institutional investors, private equity, and global supply chain operators requiring deep-domain geopolitical intelligence. We translate Mediterranean risk complexity into actionable strategic guidance — before exposure crystallizes.</span>
+        <span data-i18n="s2.desc">Analysis for institutional investors, private equity, and global supply chain operators requiring deep-domain geopolitical intelligence.</span>
       </p>
       <ul class="svc-features">
         <li class="gold-li" data-i18n="s2.f1">Port infrastructure and regional investment due diligence</li>
         <li class="gold-li" data-i18n="s2.f2">Supply chain stress-testing across Mediterranean chokepoints</li>
         <li class="gold-li" data-i18n="s2.f3">Geopolitical scenario modeling for asset exposure analysis</li>
-        <li class="gold-li" data-i18n="s2.f4">Marine insurance risk profiling and underwriting support</li>
+        <li class="gold-li" data-i18n="s2.f4">Marine insurance risk profiling</li>
       </ul>
-      <a href="#advisory" class="svc-cta gold-cta" data-i18n="s2.cta" data-i18n-html="true">Explore Advisory Services <span>→</span></a>
     </div>
+  </div>
+  <div class="svc-buttons-outer">
+    <a href="#pricing" class="svc-cta" data-i18n="s1.cta" data-i18n-html="true">View Subscription Plans <span>→</span></a>
+    <a href="#advisory" class="svc-cta gold-cta" data-i18n="s2.cta" data-i18n-html="true"><span class="svc-cta-text">Explore Advisory Services <span class="coming-soon-tag">(Coming Soon)</span></span> <span>→</span></a>
   </div>
 </section>
 
 <!-- PLATFORM MOCKUP -->
 <section id="platform">
   <div class="section-label" data-i18n="platform.label">Live Intelligence Platform</div>
-  <h2 data-i18n="plat.h2" data-i18n-html="true">The <span>Mediterranean Watch</span><br>Intelligence Terminal</h2>
+  <h2 data-i18n="plat.h2" data-i18n-html="true">The <span>Mediterranean Watch</span> <br>Intelligence Terminal</h2>
   <p class="platform-img-caption"><strong>Your risk, distilled to one number.</strong> MHTES gives every asset a single, continuously updated score — combining cyber, geopolitical, grey fleet, disinformation, and environmental signals into one number you can act on, 72 hours before disruption hits. Pipe it directly into your own platforms via API.</p>
-  <img src="Live Example.png" alt="Live Example" fetchpriority="high" decoding="async" style="width:100%; height:auto; display:block; border-radius:4px; box-shadow:0 8px 48px rgba(0,0,0,0.6); margin-bottom:16px;">
+  <div class="mhtes-wrap">
+    <div class="mhtes-formula">METHODOLOGY × PILLAR SLOTS — <span class="mhtes-accent">MHTES</span> = (P₁+P₂+P₃+P₄) ÷ 4</div>
+    <table class="mhtes-tbl">
+      <thead>
+        <tr>
+          <th scope="col">Asset Class</th>
+          <th scope="col">Slot 1 · Strategic</th>
+          <th scope="col">Slot 2</th>
+          <th scope="col">Slot 3 · Activity</th>
+          <th scope="col">Slot 4 · Cyber (Shared)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="asset-cell"><strong>Ports</strong><span>P-MHTES</span></td>
+          <td><span class="pillar-code">SV</span><span class="pillar-desc">Strategic Value</span></td>
+          <td><span class="pillar-code">FAP</span><span class="pillar-desc">Foreign Actor Presence</span></td>
+          <td><span class="pillar-code">IGA</span><span class="pillar-desc">Illicit &amp; Grey-Zone Activity</span></td>
+          <td class="cyber-col"><span class="pillar-code">CIV</span><span class="pillar-desc">Cyber &amp; Infra Vulnerability</span></td>
+        </tr>
+        <tr>
+          <td class="asset-cell"><strong>Cables</strong><span>C-MHTES</span></td>
+          <td><span class="pillar-code">SV</span><span class="pillar-desc">Strategic Value</span></td>
+          <td><span class="pillar-code">MAP</span><span class="pillar-desc">Maritime Activity Pressure</span></td>
+          <td><span class="pillar-code">IEV</span><span class="pillar-desc">Infra Exposure Vulnerability</span></td>
+          <td class="cyber-col"><span class="pillar-code">CIV</span><span class="pillar-desc">Cyber &amp; Infra Vulnerability</span></td>
+        </tr>
+        <tr>
+          <td class="asset-cell"><strong>Vessels</strong><span>V-MHTES</span></td>
+          <td><span class="pillar-code">RS</span><span class="pillar-desc">Route Strategic Value</span></td>
+          <td><span class="pillar-code">FAP</span><span class="pillar-desc">Foreign Actor Presence</span></td>
+          <td><span class="pillar-code">OEV</span><span class="pillar-desc">Operational Exposure &amp; Vuln.</span></td>
+          <td class="cyber-col"><span class="pillar-code">CIV</span><span class="pillar-desc">Cyber &amp; Infra Vulnerability</span></td>
+        </tr>
+        <tr>
+          <td class="asset-cell"><strong>Routes</strong><span>no MHTES</span></td>
+          <td colspan="4" class="routes-note">— scored by Corridor Risk (0–1, independent, event-driven) — not part of the MHTES pillar model —</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
   <p class="platform-img-caption"><strong>Intelligence anyone in the room can understand.</strong> Maria, our maritime AI, doesn't just flag threats — she calibrates supply chain stress testing and geopolitical scenario modeling to forecast probable outcomes.</p>
-  <img src="Maria Screenshot 2.png" alt="Maria Screenshot" loading="lazy" decoding="async" style="width:100%; height:auto; display:block; border-radius:4px; box-shadow:0 8px 48px rgba(0,0,0,0.6); margin-bottom:16px;">
+  <img src="Maria Screenshot 2.png" alt="The MARIA assistant answering a natural-language question about Mediterranean supply chain risk, showing a written assessment alongside the vessel and port data it drew on." loading="lazy" decoding="async" style="width:100%; height:auto; display:block; border-radius:4px; box-shadow:0 8px 48px rgba(0,0,0,0.6); margin-bottom:16px;">
   <p class="platform-img-caption"><strong>Every feed. Every vessel. One screen.</strong> Connect your own live port camera feeds and watch them alongside AIS vessel tracking data — all in one place. Full situational awareness, zero system switching.</p>
   <img src="Dashboard Screenshot.png" alt="Mediterranean Watch Intelligence Terminal" loading="lazy" decoding="async" style="width:100%; height:auto; display:block; border-radius:4px; box-shadow:0 8px 48px rgba(0,0,0,0.6);">
+  <div style="margin-top:40px; display:flex; justify-content:center; align-items:center; gap:16px; flex-wrap:wrap;">
+    <a href="https://mare.sentinellaglobal.com/" class="btn-primary" data-i18n="launch.btn" target="_blank" rel="noopener noreferrer" style="padding:18px 56px; font-size:15px; letter-spacing:3px;">Launch Terminal</a>
+    <a href="#pricing" class="btn-secondary" data-i18n="plat.explore.btn" style="padding:18px 56px; font-size:15px; letter-spacing:3px;">Explore Subscriptions</a>
+  </div>
 </section>
 
 <!-- WHY SENTINELLA -->
 <section id="why">
   <div class="section-label" data-i18n="why.label">Why Sentinella Mare</div>
-  <h2 data-i18n="why.h2" data-i18n-html="true">Built for the <span>Professionals</span><br>Who Can't Afford Surprises</h2>
+  <h2 data-i18n="why.h2" data-i18n-html="true">Built for the <span>Professionals</span> <br>Who Can't Afford Surprises</h2>
   <p class="section-lead">
     <span data-i18n="why.lead">We are a technology-enabled intelligence company — not a report provider. Every signal we deliver is actionable, contextual, and ahead of disruption.</span>
   </p>
@@ -1677,8 +1951,8 @@
 
 <!-- ADVISORY -->
 <section id="advisory">
-  <div class="section-label" data-i18n="adv.label">Investment & Supply Chain Advisory</div>
-  <h2 data-i18n="adv.h2" data-i18n-html="true">When Stakes Are High,<br><span>Expertise Must Be Higher</span></h2>
+  <div class="section-label" data-i18n="adv.label">Advisory (Coming Soon)</div>
+  <h2 data-i18n="adv.h2" data-i18n-html="true">When Stakes Are High, <br><span>Expertise Must Be Higher</span></h2>
   <p class="section-lead">
     <span data-i18n="adv.lead">Confidential, senior-led engagements for investors and operators who need more than data — they need judgment.</span>
   </p>
@@ -1716,16 +1990,17 @@
     </ul>
 
     <div class="adv-right">
+      <div class="adv-launch-badge" data-i18n="adv.engage.badge">Launching Soon</div>
       <h3 data-i18n="adv.engage.title">How We Engage</h3>
-      <p data-i18n="adv.engage.desc">Every advisory engagement is led by senior analysts. We do not delegate client work. Access is deliberately limited to ensure analytical depth and discretion.</p>
+      <p data-i18n="adv.engage.desc">Advisory services are launching soon. Every engagement will be led by senior analysts — client work will never be delegated. Access will be deliberately limited to ensure analytical depth and discretion.</p>
+      <div class="adv-coming-eyebrow" data-i18n="adv.engage.eyebrow">What's coming:</div>
       <ul class="engagement-types">
         <li data-i18n="adv.engage.1">Project-based engagements (2–8 weeks)</li>
         <li data-i18n="adv.engage.2">Quarterly retainer with recurring briefings</li>
-        <li data-i18n="adv.engage.3">Board and investor presentation support</li>
+        <li data-i18n="adv.engage.3">Executive advisory board access</li>
         <li data-i18n="adv.engage.6">Crisis response & rapid assessment</li>
       </ul>
-      <br>
-      <a href="#contact" class="btn-primary" style="display:inline-block;margin-top:12px;" data-i18n="adv.engage.btn">Schedule a Consultation</a>
+      <a href="https://tally.so/r/WOloya" class="btn-primary" style="display:inline-block;margin-top:20px;" data-i18n="adv.engage.btn" target="_blank" rel="noopener noreferrer">Get Notified at Launch</a>
     </div>
   </div>
 </section>
@@ -1733,229 +2008,83 @@
 <!-- PRICING -->
 <section id="pricing">
   <div class="section-label" data-i18n="pricing.label">Subscription Platform</div>
-  <h2 data-i18n="pricing.h2" data-i18n-html="true"><span>Mediterranean Watch</span><br>Subscription Tiers</h2>
+  <h2 data-i18n="pricing.h2" data-i18n-html="true"><span>Mediterranean Watch</span> <br>Subscription Tiers</h2>
   <p class="section-lead">
-    Three asset packages — Port, Fleet, and Subsea Cable — at three coverage levels: Exposure, Sentinel, and Command. All tiers include the complete intelligence feed stack. Asset coverage and compliance output capabilities are what distinguish them.
+    Three tiers, one mission — stay ahead of what's coming. Start free with the live Alert Center, unlock the full operational picture with Pro, then scale to Enterprise for deep simulation, compliance-grade reporting, and a dedicated analyst layer. Intelligence built for the moments that can't go wrong.
   </p>
 
-  <!-- Asset type tabs -->
-  <div class="asset-tabs">
-    <button class="asset-tab active" data-asset="port" data-i18n="pricing.tab.port">Port Monitoring</button>
-    <button class="asset-tab" data-asset="fleet" data-i18n="pricing.tab.fleet">Fleet Monitoring</button>
-    <button class="asset-tab" data-asset="cable" data-i18n="pricing.tab.cable">Subsea Cable</button>
+  <!-- Pricing three-tier layout -->
+  <div class="pricing-cols">
+
+    <!-- Column-group headers -->
+    <div class="pcol-header ph-individual">
+      <span class="ptab-label">Individual</span>
+      <span class="ptab-sub">Analysts &amp; Professional Users</span>
+      <span class="ptab-audience">Individual operators · analysts · shipping, logistics &amp; cruise planners · researchers</span>
+    </div>
+    <div class="pcol-header ph-enterprise">
+      <span class="ptab-label">Enterprise</span>
+      <span class="ptab-sub">Institutions &amp; Commercial Operators</span>
+      <span class="ptab-audience">Government · large fleet operators · ports · cable operators · insurers</span>
+    </div>
+
+    <!-- Basic -->
+    <div class="price-card featured free-card">
+      <div class="price-name">Basic</div>
+      <div class="price-amount"><span class="pa-num">$0</span></div>
+      <p class="price-best-for">The live Alert Center — real-time maritime threat monitoring for anyone watching the basin.</p>
+      <ul class="price-features">
+        <li>Alert Center — live intelligence feed with trade &amp; hybrid-threat alerts</li>
+        <li>Port Status Board — live CAS scoring &amp; 72-hour trends</li>
+        <li>Port surveillance dock — live cameras + AIS mini-map</li>
+        <li>Dark-vessel detections &amp; route corridor risk</li>
+        <li>Threat convergence detection</li>
+        <li>MARIA AI assistant — limited daily quota</li>
+      </ul>
+      <a href="https://mare.sentinellaglobal.com/" class="price-btn active" target="_blank" rel="noopener noreferrer">Launch Now</a>
+    </div>
+
+    <!-- Pro -->
+    <div class="price-card pro-card">
+      <div class="price-name">Pro</div>
+      <div class="price-amount"><span class="pa-num">$19.99</span><span class="pa-per">/ month</span></div>
+      <p class="price-best-for">The full operational picture for professional shipping, logistics, and cruise planners.</p>
+      <ul class="price-features">
+        <li class="feat-all">Everything in Basic</li>
+        <li>MARIA unlimited — voice + chat with full dashboard context</li>
+        <li>Operations Map — layered asset, threat &amp; weather picture in 2D or 3D</li>
+        <li>Live asset intel feed with geolocated map markers</li>
+        <li>Vessel movement replay &amp; vessel risk profiles</li>
+        <li>Scenario Simulator — natural-language what-if modelling &amp; impact projections</li>
+      </ul>
+      <a href="https://tally.so/r/WOloya" class="price-btn" target="_blank" rel="noopener noreferrer">Request Access</a>
+    </div>
+
+    <!-- Enterprise -->
+    <div class="price-card ent-card">
+      <div class="price-name">Enterprise</div>
+      <div class="price-amount"><span class="pa-num">Custom pricing</span></div>
+      <p class="price-best-for">Tailored deployments for institutions, government, and large fleet operators.</p>
+      <ul class="price-features">
+        <li class="feat-all">Everything in Pro</li>
+        <li>Deep Simulation — multi-agent scenario modelling, society graph &amp; agent interviews</li>
+        <li>Security &amp; compliance reporting — PDF exports incl. NIS2 / CER</li>
+        <li>Response plans — J3/J35 framework</li>
+        <li>SSO &amp; team seats</li>
+        <li>Advisory services, priority support &amp; SLA</li>
+        <li class="feat-addon">API access, custom feeds &amp; integrations <span class="feat-addon-tag">Add-on</span></li>
+      </ul>
+      <a href="mailto:james@sentinellaglobal.com" class="price-btn">Contact Us</a>
+    </div>
+
   </div>
 
-  <!-- PORT MONITORING -->
-  <div class="asset-panel active" id="asset-port">
-    <div class="asset-subtitle">Port authorities · AdSP jurisdictions · Terminal operators</div>
-    <div class="pricing-grid">
-      <div class="price-card">
-        <div class="price-name" data-i18n="pricing.tier.exposure">Exposure</div>
-        <div class="price-coverage">Up to 2 ports</div>
-        <p class="price-best-for">Full intelligence stack and compliance-ready export across up to 2 port assets.</p>
-        <ul class="price-features">
-          <li class="feat-group">Platform</li>
-          <li>Panel 1 — Asset Status (CAS / IAS)</li>
-          <li>Panel 2 — Hybrid Threat Awareness</li>
-          <li class="na">Panel 3 — Deep Simulation (MiroFish)</li>
-          <li class="feat-group">Intelligence — all feeds</li>
-          <li>Live P-MHTES scoring — 30-min refresh</li>
-          <li>72-hr exposure window</li>
-          <li>AIS, grey fleet &amp; chokepoint signals</li>
-          <li>Real-time exposure alerts</li>
-          <li>Geopolitical &amp; disinformation feeds</li>
-          <li>Cyber vulnerability signals (OT / IT)</li>
-          <li>AIS spoofing &amp; GPS jamming detection</li>
-          <li>Convergence alert — multi-signal</li>
-          <li>J3 / J35 response framework</li>
-          <li class="feat-group">Outputs</li>
-          <li>Compliance audit CSV — on demand</li>
-          <li>Panel report export</li>
-          <li class="na">Client SOP / response plan upload</li>
-          <li class="na">AI compliance report (PDF/A-1b)</li>
-          <li class="na">Deep Simulation prediction report</li>
-        </ul>
-        <a href="#contact" class="price-btn" data-i18n="pricing.btn.access">Request Access</a>
-      </div>
-      <div class="price-card featured">
-        <div class="price-name" data-i18n="pricing.tier.sentinel">Sentinel</div>
-        <div class="price-coverage">Up to 5 ports</div>
-        <p class="price-best-for">SOP management, NIS2 Art. 21 audit trail, and AI-generated compliance reports across up to 5 ports.</p>
-        <ul class="price-features">
-          <li class="feat-group">Platform</li>
-          <li>Everything in Exposure</li>
-          <li class="feat-group">Intelligence — all feeds</li>
-          <li>Everything in Exposure</li>
-          <li class="feat-group">Outputs</li>
-          <li>Everything in Exposure</li>
-          <li>Client SOP / response plan upload</li>
-          <li>AI compliance report (PDF/A-1b)</li>
-        </ul>
-        <a href="#contact" class="price-btn active" data-i18n="pricing.btn.access">Request Access</a>
-      </div>
-      <div class="price-card">
-        <div class="price-name" data-i18n="pricing.tier.command">Command</div>
-        <div class="price-coverage">Unlimited</div>
-        <p class="price-best-for">Unlimited port coverage plus MiroFish Deep Simulation — 48-agent society modeling with no commercial equivalent.</p>
-        <ul class="price-features">
-          <li class="feat-group">Platform</li>
-          <li>Everything in Sentinel</li>
-          <li class="feat-star-item">Panel 3 — Deep Simulation</li>
-          <li class="feat-group">Intelligence — all feeds</li>
-          <li>Everything in Sentinel</li>
-          <li class="feat-group">Outputs</li>
-          <li>Everything in Sentinel</li>
-          <li class="feat-star-item">Deep Simulation prediction report</li>
-        </ul>
-        <a href="#contact" class="price-btn" data-i18n="pricing.btn.contact">Contact Us</a>
-        <div class="tier-star-note">★ Command-exclusive · No comparable capability in the commercial maritime intelligence market</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- FLEET MONITORING -->
-  <div class="asset-panel" id="asset-fleet">
-    <div class="asset-subtitle">Ferry operators · Logistics companies · Shipping lines</div>
-    <div class="pricing-grid">
-      <div class="price-card">
-        <div class="price-name" data-i18n="pricing.tier.exposure">Exposure</div>
-        <div class="price-coverage">Up to 10 vessels</div>
-        <p class="price-best-for">Full intelligence stack and compliance-ready export across up to 10 vessels.</p>
-        <ul class="price-features">
-          <li class="feat-group">Platform</li>
-          <li>Panel 1 — Asset Status (F-MHTES per vessel)</li>
-          <li>Panel 2 — Hybrid Threat Awareness</li>
-          <li class="na">Panel 3 — Deep Simulation (MiroFish)</li>
-          <li class="feat-group">Intelligence — all feeds</li>
-          <li>Live F-MHTES scoring per vessel — 30-min refresh</li>
-          <li>Route strategic value scoring</li>
-          <li>AIS &amp; chokepoint alerts</li>
-          <li>Real-time exposure alerts</li>
-          <li>AIS spoofing &amp; GPS jamming detection</li>
-          <li>Geopolitical &amp; disinformation feeds</li>
-          <li>Cyber vulnerability signals (OT / IT)</li>
-          <li>72-hr predictive MHTES window</li>
-          <li>Convergence alert — multi-signal</li>
-          <li>J3 / J35 response framework</li>
-          <li class="feat-group">Outputs</li>
-          <li>Compliance audit CSV — on demand</li>
-          <li>Panel report export</li>
-          <li class="na">Client SOP / response plan upload</li>
-          <li class="na">AI compliance report (PDF/A-1b)</li>
-          <li class="na">Deep Simulation prediction report</li>
-        </ul>
-        <a href="#contact" class="price-btn" data-i18n="pricing.btn.access">Request Access</a>
-      </div>
-      <div class="price-card featured">
-        <div class="price-name" data-i18n="pricing.tier.sentinel">Sentinel</div>
-        <div class="price-coverage">Up to 30 vessels</div>
-        <p class="price-best-for">SOP management, NIS2 Art. 21 audit trail, and AI-generated compliance reports across up to 30 vessels.</p>
-        <ul class="price-features">
-          <li class="feat-group">Platform</li>
-          <li>Everything in Exposure</li>
-          <li class="feat-group">Intelligence — all feeds</li>
-          <li>Everything in Exposure</li>
-          <li class="feat-group">Outputs</li>
-          <li>Everything in Exposure</li>
-          <li>Client SOP / response plan upload</li>
-          <li>AI compliance report (PDF/A-1b)</li>
-        </ul>
-        <a href="#contact" class="price-btn active" data-i18n="pricing.btn.access">Request Access</a>
-      </div>
-      <div class="price-card">
-        <div class="price-name" data-i18n="pricing.tier.command">Command</div>
-        <div class="price-coverage">Unlimited</div>
-        <p class="price-best-for">Unlimited vessel coverage plus MiroFish route and scenario simulation — predictive modeling across any fleet footprint.</p>
-        <ul class="price-features">
-          <li class="feat-group">Platform</li>
-          <li>Everything in Sentinel</li>
-          <li class="feat-star-item">Panel 3 — Deep Simulation</li>
-          <li class="feat-group">Intelligence — all feeds</li>
-          <li>Everything in Sentinel</li>
-          <li class="feat-group">Outputs</li>
-          <li>Everything in Sentinel</li>
-          <li class="feat-star-item">Deep Simulation prediction report</li>
-        </ul>
-        <a href="#contact" class="price-btn" data-i18n="pricing.btn.contact">Contact Us</a>
-        <div class="tier-star-note">★ Command-exclusive · No comparable capability in the commercial maritime intelligence market</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- SUBSEA CABLE MONITORING -->
-  <div class="asset-panel" id="asset-cable">
-    <div class="asset-subtitle">Cable operators · Subsea infrastructure firms · National telecom authorities</div>
-    <div class="pricing-grid">
-      <div class="price-card">
-        <div class="price-name" data-i18n="pricing.tier.exposure">Exposure</div>
-        <div class="price-coverage">Up to 2 routes</div>
-        <p class="price-best-for">Full intelligence stack and compliance-ready export across up to 2 cable routes.</p>
-        <ul class="price-features">
-          <li class="feat-group">Platform</li>
-          <li>Panel 1 — Asset Status (C-MHTES per route)</li>
-          <li>Panel 2 — Hybrid Threat Awareness</li>
-          <li class="na">Panel 3 — Deep Simulation (MiroFish)</li>
-          <li class="feat-group">Intelligence — all feeds</li>
-          <li>Live C-MHTES scoring per route — 30-min refresh</li>
-          <li>Vessel density pressure score</li>
-          <li>Anchoring &amp; drag risk alerts</li>
-          <li>Real-time exposure alerts</li>
-          <li>Geopolitical &amp; hybrid threat signals</li>
-          <li>Cyber &amp; infrastructure exposure signals</li>
-          <li>Disinformation monitoring</li>
-          <li>72-hr predictive MHTES window</li>
-          <li>Convergence alert — multi-signal</li>
-          <li>J3 / J35 response framework</li>
-          <li class="feat-group">Outputs</li>
-          <li>Compliance audit CSV — on demand</li>
-          <li>Panel report export</li>
-          <li class="na">Client SOP / response plan upload</li>
-          <li class="na">AI compliance report (PDF/A-1b)</li>
-          <li class="na">Deep Simulation prediction report</li>
-        </ul>
-        <a href="#contact" class="price-btn" data-i18n="pricing.btn.access">Request Access</a>
-      </div>
-      <div class="price-card featured">
-        <div class="price-name" data-i18n="pricing.tier.sentinel">Sentinel</div>
-        <div class="price-coverage">Up to 5 routes</div>
-        <p class="price-best-for">SOP management, NIS2 Art. 21 audit trail, and AI-generated compliance reports across up to 5 cable routes.</p>
-        <ul class="price-features">
-          <li class="feat-group">Platform</li>
-          <li>Everything in Exposure</li>
-          <li class="feat-group">Intelligence — all feeds</li>
-          <li>Everything in Exposure</li>
-          <li class="feat-group">Outputs</li>
-          <li>Everything in Exposure</li>
-          <li>Client SOP / response plan upload</li>
-          <li>AI compliance report (PDF/A-1b)</li>
-        </ul>
-        <a href="#contact" class="price-btn active" data-i18n="pricing.btn.access">Request Access</a>
-      </div>
-      <div class="price-card">
-        <div class="price-name" data-i18n="pricing.tier.command">Command</div>
-        <div class="price-coverage">Unlimited</div>
-        <p class="price-best-for">Unlimited route coverage plus MiroFish sabotage and cascade scenario modeling — purpose-built for critical cable infrastructure.</p>
-        <ul class="price-features">
-          <li class="feat-group">Platform</li>
-          <li>Everything in Sentinel</li>
-          <li class="feat-star-item">Panel 3 — Deep Simulation</li>
-          <li class="feat-group">Intelligence — all feeds</li>
-          <li>Everything in Sentinel</li>
-          <li class="feat-group">Outputs</li>
-          <li>Everything in Sentinel</li>
-          <li class="feat-star-item">Deep Simulation prediction report</li>
-        </ul>
-        <a href="#contact" class="price-btn" data-i18n="pricing.btn.contact">Contact Us</a>
-        <div class="tier-star-note">★ Command-exclusive · No comparable capability in the commercial maritime intelligence market</div>
-      </div>
-    </div>
-  </div>
 </section>
 
 <!-- CLIENTS -->
 <section id="clients">
   <div class="section-label" data-i18n="clients.label">Who We Serve</div>
-  <h2 data-i18n="clients.h2" data-i18n-html="true">Built for the People Who<br><span>Can't Get It Wrong.</span></h2>
+  <h2 data-i18n="clients.h2" data-i18n-html="true">Built for the People Who <br><span>Can't Get It Wrong.</span></h2>
   <div class="clients-row" style="margin-top:60px;">
     <div class="client-tag" data-i18n="client.1">Port Authorities</div>
     <div class="client-tag" data-i18n="client.2">Ferry Operators</div>
@@ -1973,14 +2102,17 @@
 <!-- CTA BANNER -->
 <div class="cta-banner" id="contact">
   <div class="cta-text">
-    <h2 data-i18n="cta.h2" data-i18n-html="true">The Mediterranean<br>Doesn't Wait. <span>Neither Should You.</span></h2>
-    <p data-i18n="cta.p">Request a platform demonstration or advisory consultation. We work with a limited number of clients to ensure analytical depth and discretion.</p>
+    <h2 data-i18n="cta.h2" data-i18n-html="true">The Mediterranean <br>Doesn't Wait. <span>Neither Should You.</span></h2>
+    <p data-i18n="cta.p">Explore the intelligence terminal, request a platform demonstration, or be notified when advisory consultation services launch.</p>
   </div>
   <div class="cta-actions">
+    <a href="https://mare.sentinellaglobal.com/" class="btn-primary" data-i18n="launch.btn" target="_blank" rel="noopener noreferrer">Launch Terminal</a>
     <a href="https://tally.so/r/WOloya" class="btn-primary" data-i18n="cta.btn1" target="_blank" rel="noopener noreferrer">Request Platform Demo</a>
-    <a href="mailto:james@sentinellaglobal.com" class="btn-secondary" data-i18n="cta.btn2">Advisory Inquiry</a>
+    <a href="https://tally.so/r/WOloya" class="btn-secondary" data-i18n="cta.btn2" target="_blank" rel="noopener noreferrer">Get Notified of Advisory Launch</a>
   </div>
 </div>
+
+</main>
 
 <!-- FOOTER -->
 <footer>
@@ -1993,14 +2125,14 @@
       </div>
     </div>
     <div class="footer-col">
-      <h3 class="footer-nav-title" data-i18n="footer.h.services">Services</h3>
+      <p class="footer-nav-title" data-i18n="footer.h.services">Services</p>
       <a href="#services" data-i18n="footer.l.dashboard">Mediterranean Watch Intelligence Terminal</a>
-      <a href="#advisory" data-i18n="footer.l.investment">Investment Advisory</a>
+      <a href="#advisory" data-i18n="footer.l.investment">Advisory (Coming Soon)</a>
       <a href="#advisory" data-i18n="footer.l.supply">Supply Chain Risk</a>
       <a href="#pricing" data-i18n="footer.l.tiers">Subscription Tiers</a>
     </div>
     <div class="footer-col">
-      <h3 class="footer-nav-title" data-i18n="footer.h.coverage">Coverage</h3>
+      <p class="footer-nav-title" data-i18n="footer.h.coverage">Coverage</p>
       <p data-i18n="footer.geo.1">Strait of Gibraltar</p>
       <p data-i18n="footer.geo.2">Tyrrhenian Sea</p>
       <p data-i18n="footer.geo.3">Strait of Sicily</p>
@@ -2011,6 +2143,17 @@
       <a href="mailto:james@sentinellaglobal.com" class="btn-primary footer-contact-btn" data-i18n="footer.h.contact">Contact</a>
     </div>
     </div>
+  <div class="footer-bottom">
+    <p>© 2026 Sentinella LLC · 8 The Green STE A, Dover, DE 19901, USA · HQ: Brussels, Belgium</p>
+    <div class="footer-legal-links">
+      <a href="/privacypolicy/" class="footer-legal-link">Privacy Policy</a>
+      <a href="/legalterms/" class="footer-legal-link">Terms</a>
+      <a href="/dpa/" class="footer-legal-link">DPA</a>
+      <a href="/legalnotice/" class="footer-legal-link">Legal Notice</a>
+      <a href="/accessibility/" class="footer-legal-link">Accessibility</a>
+      <button onclick="if(typeof smOpenCookieSettings==='function')smOpenCookieSettings();" class="footer-legal-link">Cookie Settings</button>
+    </div>
+  </div>
   </footer>
 
 <script>
@@ -2020,22 +2163,24 @@ const translations = {
     // Nav
     'nav.services': 'Services',
     'nav.platform': 'Live Platform',
-    'nav.advisory': 'Advisory',
-    'nav.pricing': 'Subscription',
+    'nav.advisory': 'Advisory<span class="nav-coming-soon">(Coming Soon)</span>',
+    'nav.pricing': 'Pricing',
     'nav.clients': 'Clients',
-    'nav.cta': 'Request Access',
+    'nav.cta': 'Launch Terminal',
     // Hero
-    'hero.tag': 'MARITIME HYBRID THREAT INTELLIGENCE PLATFORM · Est. Brussels, Belgium',
-    'hero.h1': 'Intelligence That<br>Moves <span>Before</span><br>Disruption Does',
+    'hero.tag': 'MARITIME HYBRID THREAT INTELLIGENCE PLATFORM · HQ: Brussels, Belgium',
+    'hero.h1': 'Intelligence That <br>Moves <span>Before</span> <br>Disruption Does',
     'hero.desc': 'One score for Mediterranean hybrid-threat exposure across ports, fleets, and cables, refreshed continuously and built for EU compliance.',
-    'hero.btn1': 'View Intelligence Terminal',
+    'hero.btn1': 'View Live Platform',
+    'launch.btn': 'Launch Terminal',
+    'plat.explore.btn': 'Explore Subscriptions',
     'hero.btn2': 'Our Services',
     // Services
     'services.label': 'Core Services',
-    'services.h2': 'Two Missions.<br><span>One Platform.</span>',
+    'services.h2': 'Two Missions. <br><span>One Platform.</span>',
     'services.lead': 'Real-time geospatial intelligence and deep analytical expertise — built for operational and strategic clients across the Mediterranean corridor. Underpinning both offerings is the <strong>Maritime Hybrid Threat Exposure Score (MHTES)</strong>: a 72-hour predictive score that fuses cyber, geopolitical, grey fleet, disinformation, and weather signals into a single actionable risk metric per asset.',
     'services.callout': '<strong>Aligned with European Maritime Regulation:</strong> MHTES delivers the integrated, all-hazards exposure picture that NIS2, the CER Directive, and Italy\'s Circular 177/2025 are increasingly oriented toward — built for operators preparing for the November 2026 convergence of these frameworks.',
-    's1.tagline': 'Subscription · Live Intelligence',
+    's1.tagline': 'Hybrid Threat Intelligence',
     's1.title': 'Mediterranean Watch<br>Intelligence Terminal',
     's1.desc': 'A continuously updated geopolitical and maritime operations intelligence terminal providing shipping companies and logistics operators with live situational awareness across the Mediterranean. Built on our proprietary predictive intelligence engine — not a report, a live signal.',
     's1.cta': 'View Subscription Plans <span>→</span>',
@@ -2046,14 +2191,14 @@ const translations = {
     's1.f5': 'Energy corridor & fiber-optic cable vulnerability monitoring',
     's1.f6': 'Decision-support analytics tailored to operator routing needs',
     's1.f7': 'Tiered access: Sentinel, Guardian, and Command tiers',
-    's2.tagline': 'Advisory · Bespoke Consulting',
-    's2.title': 'Investment & Supply<br>Chain Risk Advisory',
-    's2.desc': 'Confidential advisory engagements for institutional investors, private equity, and global supply chain operators requiring deep-domain geopolitical intelligence. We translate Mediterranean risk complexity into actionable strategic guidance — before exposure crystallizes.',
-    's2.cta': 'Explore Advisory Services <span>→</span>',
+    's2.tagline': 'Maritime Financial Intelligence',
+    's2.title': 'Investment & Supply<br>Chain Risk Analysis',
+    's2.desc': 'Analysis for institutional investors, private equity, and global supply chain operators requiring deep-domain geopolitical intelligence.',
+    's2.cta': '<span class="svc-cta-text">Explore Advisory Services <span class="coming-soon-tag">(Coming Soon)</span></span> <span>→</span>',
     's2.f1': 'Port infrastructure and regional investment due diligence',
     's2.f2': 'Supply chain stress-testing across Mediterranean chokepoints',
     's2.f3': 'Geopolitical scenario modeling for asset exposure analysis',
-    's2.f4': 'Marine insurance risk profiling and underwriting support',
+    's2.f4': 'Marine insurance risk profiling',
     's2.f5': 'Bespoke threat briefings for executive leadership',
     's2.f6': 'Regulatory and sanctions landscape advisory',
     's2.f7': 'Retainer or project-based engagement structures',
@@ -2063,7 +2208,7 @@ const translations = {
     'live.traffic': 'MARINE TRAFFIC — MEDITERRANEAN LIVE',
     // Platform
     'platform.label': 'Live Intelligence Platform',
-    'plat.h2': 'The <span>Mediterranean Watch</span><br>Intelligence Terminal',
+    'plat.h2': 'The <span>Mediterranean Watch</span> <br>Intelligence Terminal',
     'plat.lead': 'Our subscriber intelligence terminal delivers continuous situational awareness across the full Mediterranean basin — from Strait of Gibraltar to the Eastern Mediterranean.',
     'plat.chrome.title': '// SENTINELLA MARE · LIVE OPERATIONS',
     'plat.chrome.status': 'ALL SYSTEMS NOMINAL',
@@ -2091,7 +2236,7 @@ const translations = {
     'plat.map.sicily': 'STRAIT OF SICILY',
     // Why
     'why.label': 'Why Sentinella Mare',
-    'why.h2': "Built for the <span>Professionals</span><br>Who Can't Afford Surprises",
+    'why.h2': "Built for the <span>Professionals</span> <br>Who Can't Afford Surprises",
     'why.lead': 'We are a technology-enabled intelligence company — not a report provider. Every signal we deliver is actionable, contextual, and ahead of disruption.',
     'why.c1.title': 'Predictive, Not Reactive',
     'why.c1.text': 'Our AI engine synthesizes cross-domain signals — geopolitical, cyber, military, environmental — to deliver early-warning triggers before risk events materialize in mainstream reporting.',
@@ -2107,7 +2252,7 @@ const translations = {
     'why.c6.text': 'Beginning with the Sardinian maritime corridor and scaling outward across Western Mediterranean shipping lanes, Adriatic, Tyrrhenian, and Eastern Mediterranean as client base expands.',
     // Pricing
     'pricing.label': 'Subscription Platform',
-    'pricing.h2': '<span>Mediterranean Watch</span><br>Subscription Tiers',
+    'pricing.h2': '<span>Mediterranean Watch</span> <br>Subscription Tiers',
     'pricing.lead': 'Three asset-specific packages — Ports, Vessels, and Subsea Cables — each with three coverage levels: Exposure, Sentinel, and Command. Packages can be combined to match your operational footprint.',
     'pricing.tab.port': 'Port Monitoring',
     'pricing.tab.fleet': 'Fleet Monitoring',
@@ -2115,6 +2260,10 @@ const translations = {
     'pricing.port.sub': 'Port authorities & terminal operators',
     'pricing.fleet.sub': 'Ferry operators & logistics companies',
     'pricing.cable.sub': 'Cable operators & infrastructure firms',
+    'pricing.tier.basic': 'Basic',
+    'pricing.tier.basic': 'Basic',
+    'pricing.tier.basic': 'Basic',
+    'pricing.tier.basic': 'Basic',
     'pricing.tier.exposure': 'Exposure',
     'pricing.tier.sentinel': 'Sentinel',
     'pricing.tier.command': 'Command',
@@ -2151,11 +2300,12 @@ const translations = {
     'pricing.f.cyber.cable': 'Cyber & infrastructure exposure',
     'pricing.f.disinfo': 'Disinformation monitoring',
     'pricing.f.scenario.cable': 'Scenario & sabotage modeling',
+    'pricing.btn.launch': 'Launch Now',
     'pricing.btn.access': 'Request Access',
     'pricing.btn.contact': 'Contact Us',
     // Advisory
-    'adv.label': 'Investment & Supply Chain Advisory',
-    'adv.h2': 'When Stakes Are High,<br><span>Expertise Must Be Higher</span>',
+    'adv.label': 'Advisory (Coming Soon)',
+    'adv.h2': 'When Stakes Are High, <br><span>Expertise Must Be Higher</span>',
     'adv.lead': 'Confidential, senior-led engagements for investors and operators who need more than data — they need judgment.',
     'adv.s1.title': 'Investment Due Diligence',
     'adv.s1.desc': 'Port infrastructure investment, maritime logistics assets, and regional economic exposure analysis across the Mediterranean basin for PE, family offices, and institutional allocators.',
@@ -2166,17 +2316,20 @@ const translations = {
     'adv.s4.title': 'Marine Insurance Risk Profiling',
     'adv.s4.desc': 'Underwriting support and risk profiling services for marine insurers and reinsurers requiring independent Mediterranean threat assessment aligned to specific route and cargo profiles.',
     'adv.engage.title': 'How We Engage',
-    'adv.engage.desc': 'Every advisory engagement is led by senior analysts. We do not delegate client work. Access is deliberately limited to ensure analytical depth and discretion.',
+    'adv.engage.badge': 'Launching Soon',
+    'adv.engage.eyebrow': "What's coming:",
+    'adv.engage.title': 'How We Engage',
+    'adv.engage.desc': 'Advisory services are launching soon. Every engagement will be led by senior analysts — client work will never be delegated. Access will be deliberately limited to ensure analytical depth and discretion.',
     'adv.engage.1': 'Project-based engagements (2–8 weeks)',
     'adv.engage.2': 'Quarterly retainer with recurring briefings',
     'adv.engage.3': 'Executive advisory board access',
     'adv.engage.4': 'Board and investor presentation support',
     'adv.engage.5': 'Regulatory & sanctions landscape guidance',
     'adv.engage.6': 'Crisis response & rapid assessment',
-    'adv.engage.btn': 'Schedule a Consultation',
+    'adv.engage.btn': 'Get Notified at Launch',
     // Clients
     'clients.label': 'Who We Serve',
-    'clients.h2': 'Built for the People Who<br><span>Can\'t Get It Wrong.</span>',
+    'clients.h2': 'Built for the People Who <br><span>Can\'t Get It Wrong.</span>',
     'client.1': 'Port Authorities',
     'client.2': 'Ferry Operators',
     'client.3': 'Cruise Terminal Ops',
@@ -2188,10 +2341,10 @@ const translations = {
     'client.9': 'Critical Infrastructure',
     'client.10': 'Government Agencies',
     // CTA
-    'cta.h2': 'The Mediterranean Doesn\'t Wait.<br><span>Neither Should You.</span>',
-    'cta.p': 'Request a platform demonstration or advisory consultation. We work with a limited number of clients to ensure analytical depth and discretion.',
+    'cta.h2': 'The Mediterranean Doesn\'t Wait. <br><span>Neither Should You.</span>',
+    'cta.p': 'Explore the intelligence terminal, request a platform demonstration, or be notified when advisory consultation services launch.',
     'cta.btn1': 'Request Platform Demo',
-    'cta.btn2': 'Advisory Inquiry',
+    'cta.btn2': 'Get Notified of Advisory Launch',
     // Footer
     "footer.brand": "Mediterranean maritime intelligence. AI-driven risk intelligence for shipping operators, logistics firms, and institutional investors navigating the world's most strategically complex sea.",
     'footer.hq': '// HQ: Brussels, Belgium',
@@ -2199,7 +2352,7 @@ const translations = {
     'footer.h.coverage': 'Coverage',
     'footer.h.contact': 'Contact',
     'footer.l.dashboard': 'Mediterranean Watch Intelligence Terminal',
-    'footer.l.investment': 'Investment Advisory',
+    'footer.l.investment': 'Advisory (Coming Soon)',
     'footer.l.supply': 'Supply Chain Risk',
     'footer.l.tiers': 'Subscription Tiers',
     'footer.geo.1': 'Strait of Gibraltar',
@@ -2212,21 +2365,23 @@ const translations = {
     // Nav
     'nav.services': 'Servizi',
     'nav.platform': 'Piattaforma Live',
-    'nav.advisory': 'Advisory',
-    'nav.pricing': 'Abbonamento',
+    'nav.advisory': 'Advisory<span class="nav-coming-soon">(Coming Soon)</span>',
+    'nav.pricing': 'Prezzi',
     'nav.clients': 'Clienti',
-    'nav.cta': 'Richiedi Accesso',
+    'nav.cta': 'Lancia Terminale',
     // Hero
     'hero.tag': 'PIATTAFORMA DI INTELLIGENCE IBRIDA MARITTIMA · Est. Bruxelles, Belgio',
-    'hero.h1': 'Intelligence che<br>si Muove <span>Prima</span><br>della Disruption',
+    'hero.h1': 'Intelligence che <br>si Muove <span>Prima</span> <br>della Disruption',
     'hero.desc': 'Sentinella Mare fornisce intelligence marittima basata su AI e advisory sul rischio geopolitico per armatori, aziende logistiche e istituzioni di investimento che operano nel bacino mediterraneo.',
-    'hero.btn1': 'Visualizza Terminale Intelligence Live',
+    'hero.btn1': 'Visualizza Piattaforma Live',
+    'launch.btn': 'Lancia Terminale',
+    'plat.explore.btn': 'Esplora gli Abbonamenti',
     'hero.btn2': 'I Nostri Servizi',
     // Services
     'services.label': 'Servizi Principali',
-    'services.h2': 'Due Missioni.<br><span>Una Piattaforma.</span>',
+    'services.h2': 'Due Missioni. <br><span>Una Piattaforma.</span>',
     'services.lead': 'Intelligence geospaziale in tempo reale e profonda competenza analitica — per clienti operativi e strategici lungo il corridoio mediterraneo. Alla base di entrambe le offerte vi è il <strong>Maritime Hybrid Threat Exposure Score (MHTES)</strong>: un punteggio predittivo a 72 ore che fonde segnali cyber, geopolitici, gray-zone, illeciti e di disinformazione in un unico indicatore di rischio per asset.',
-    's1.tagline': 'Abbonamento · Intelligence in Tempo Reale',
+    's1.tagline': 'Hybrid Threat Intelligence',
     's1.title': 'Terminale Intelligence di Sorveglianza<br>del Mediterraneo',
     "s1.desc": "Un terminale di intelligence geopolitico e operativo marittimo aggiornato continuamente, che fornisce a compagnie di navigazione e operatori logistici un quadro situazionale in tempo reale sul Mediterraneo. Basato sul nostro motore proprietario di intelligence predittiva — non un report, un segnale vivo.",
     's1.cta': 'Visualizza i Piani di Abbonamento <span>→</span>',
@@ -2237,14 +2392,14 @@ const translations = {
     's1.f5': 'Monitoraggio vulnerabilità corridoi energetici e cavi in fibra ottica',
     's1.f6': 'Analytics di supporto decisionale per le esigenze di routing degli operatori',
     's1.f7': 'Accesso a livelli: Sentinel, Guardian e Command',
-    's2.tagline': 'Advisory · Consulenza Su Misura',
-    's2.title': 'Advisory su Investimenti<br>e Rischio della Supply Chain',
-    's2.desc': 'Incarichi advisory riservati per investitori istituzionali, private equity e operatori globali della supply chain che richiedono intelligence geopolitica di dominio profondo. Traduciamo la complessità del rischio mediterraneo in guidance strategica — prima che l\'esposizione si cristallizzi.',
-    's2.cta': 'Esplora i Servizi Advisory <span>→</span>',
+    's2.tagline': 'Maritime Financial Intelligence',
+    's2.title': 'Analisi del Rischio<br>Investimenti e Supply Chain',
+    's2.desc': 'Analisi per investitori istituzionali, private equity e operatori globali della supply chain che richiedono intelligence geopolitica di dominio profondo.',
+    's2.cta': '<span class="svc-cta-text">Esplora i Servizi Advisory <span class="coming-soon-tag">(Coming Soon)</span></span> <span>→</span>',
     's2.f1': 'Due diligence su infrastrutture portuali e investimenti regionali',
     's2.f2': 'Stress test della supply chain attraverso i chokepoint mediterranei',
     's2.f3': 'Scenario modeling geopolitico per l\'analisi dell\'esposizione degli asset',
-    's2.f4': 'Risk profiling e supporto alla sottoscrizione per l\'assicurazione marittima',
+    's2.f4': 'Risk profiling per l\'assicurazione marittima',
     's2.f5': 'Briefing personalizzati per la leadership esecutiva',
     's2.f6': 'Advisory sul panorama normativo e sanzionatorio',
     's2.f7': 'Strutture di incarico a retainer o per progetto',
@@ -2254,7 +2409,7 @@ const translations = {
     'live.traffic': 'TRAFFICO MARINO — MEDITERRANEO LIVE',
     // Platform
     'platform.label': 'Piattaforma di Intelligence Live',
-    'plat.h2': 'La <span>Mediterranean Watch</span><br>Terminale Intelligence',
+    'plat.h2': 'La <span>Mediterranean Watch</span> <br>Terminale Intelligence',
     'plat.lead': 'Il nostro terminale di intelligence per abbonati fornisce un\'awareness situazionale continua sull\'intero bacino mediterraneo — dallo Stretto di Gibilterra al Mediterraneo Orientale.',
     'plat.chrome.title': '// SENTINELLA MARE · OPERAZIONI LIVE',
     'plat.chrome.status': 'TUTTI I SISTEMI NOMINALI',
@@ -2282,7 +2437,7 @@ const translations = {
     'plat.map.sicily': 'STRETTO DI SICILIA',
     // Why
     'why.label': 'Perché Sentinella Mare',
-    'why.h2': "Costruita per i <span>Professionisti</span><br>Che Non Possono Permettersi Sorprese",
+    'why.h2': "Costruita per i <span>Professionisti</span> <br>Che Non Possono Permettersi Sorprese",
     'why.lead': 'Siamo un\'azienda di intelligence abilitata dalla tecnologia — non un fornitore di report. Ogni segnale che forniamo è attuabile, contestuale e in anticipo sulla disruption.',
     'why.c1.title': 'Predittivo, Non Reattivo',
     'why.c1.text': 'Il nostro motore AI sintetizza segnali multi-dominio — geopolitici, cyber, militari, ambientali — per fornire trigger di early-warning prima che gli eventi di rischio si materializzino nei report mainstream.',
@@ -2298,7 +2453,7 @@ const translations = {
     'why.c6.text': 'Iniziando dal corridoio marittimo sardo e scalando verso le rotte dello shipping del Mediterraneo Occidentale, Adriatico, Tirreno e Mediterraneo Orientale man mano che la base clienti si espande.',
     // Pricing
     'pricing.label': 'Piattaforma di Abbonamento',
-    'pricing.h2': '<span>Mediterranean Watch</span><br>Livelli di Abbonamento',
+    'pricing.h2': '<span>Mediterranean Watch</span> <br>Livelli di Abbonamento',
     'pricing.lead': 'Tre pacchetti specifici per asset — Porti, Navi e Cavi Sottomarini — ciascuno con tre livelli di copertura: Exposure, Sentinel e Command. I pacchetti possono essere combinati in base al vostro profilo operativo.',
     'pricing.tab.port': 'Monitoraggio Portuale',
     'pricing.tab.fleet': 'Monitoraggio Flotte',
@@ -2342,10 +2497,11 @@ const translations = {
     'pricing.f.cyber.cable': 'Esposizione cyber e infrastrutturale',
     'pricing.f.disinfo': 'Monitoraggio disinformazione',
     'pricing.f.scenario.cable': 'Modellazione scenari e sabotaggio',
+    'pricing.btn.launch': 'Lancia Ora',
     'pricing.btn.access': 'Richiedi Accesso',
     'pricing.btn.contact': 'Contattaci',
     // Advisory
-    'adv.label': 'Consulenza su Investimenti e Supply Chain',
+    'adv.label': 'Advisory (Coming Soon)',
     "adv.h2": "Quando la Posta è Alta,<br><span>L'Expertise Deve Essere Superiore</span>",
     'adv.lead': 'Incarichi di consulenza riservati e guidati da senior per investitori e operatori che necessitano di più dei dati — necessitano di giudizio.',
     'adv.s1.title': 'Due Diligence sugli Investimenti',
@@ -2356,18 +2512,20 @@ const translations = {
     'adv.s3.desc': 'Framework di scenari personalizzati per gestori patrimoniali e operatori che valutano volatilità politica, rischio sanzioni ed escalation di minacce ibride nei mercati del Mediterraneo meridionale e Nord Africa.',
     'adv.s4.title': 'Profilazione del Rischio Assicurativo Marittimo',
     'adv.s4.desc': 'Servizi di supporto alla sottoscrizione e profilazione del rischio per assicuratori e riassicuratori marittimi che richiedono una valutazione indipendente delle minacce mediterranee allineata a specifici profili di rotta e cargo.',
+    'adv.engage.badge': 'Lancio Imminente',
+    'adv.engage.eyebrow': 'In arrivo:',
     'adv.engage.title': 'Come Operiamo',
-    "adv.engage.desc": "Ogni incarico advisory è guidato da analisti senior. Non deleghiamo il lavoro dei clienti. L'accesso è deliberatamente limitato per garantire profondità analitica e discrezione.",
+    "adv.engage.desc": "I servizi advisory saranno presto disponibili. Ogni incarico sarà guidato da analisti senior — il lavoro dei clienti non verrà mai delegato. L'accesso sarà deliberatamente limitato per garantire profondità analitica e discrezione.",
     'adv.engage.1': 'Incarichi a progetto (2–8 settimane)',
     'adv.engage.2': 'Retainer trimestrale con briefing ricorrenti',
     'adv.engage.3': 'Accesso al consiglio advisory esecutivo',
     'adv.engage.4': 'Supporto a presentazioni per board e investitori',
     'adv.engage.5': 'Guida sul panorama normativo e sanzionatorio',
     'adv.engage.6': 'Risposta a crisi e valutazione rapida',
-    'adv.engage.btn': 'Pianifica una Consulenza',
+    'adv.engage.btn': 'Ricevi Notifica al Lancio',
     // Clients
     'clients.label': 'Chi Serviamo',
-    'clients.h2': 'Costruita per Chi<br><span>Non Può Sbagliare.</span>',
+    'clients.h2': 'Costruita per Chi <br><span>Non Può Sbagliare.</span>',
     'client.1': 'Autorità Portuali',
     'client.2': 'Operatori di Traghetti',
     'client.3': 'Operazioni Terminal Crociere',
@@ -2379,10 +2537,10 @@ const translations = {
     'client.9': 'Infrastrutture Critiche',
     'client.10': 'Agenzie Governative',
     // CTA
-    'cta.h2': 'Il Mediterraneo Non Aspetta.<br><span>Nemmeno Tu Dovresti.</span>',
-    'cta.p': "Richiedi una dimostrazione della piattaforma o una consulenza advisory. Lavoriamo con un numero limitato di clienti per garantire profondità analitica e discrezione.",
+    'cta.h2': 'Il Mediterraneo Non Aspetta. <br><span>Nemmeno Tu Dovresti.</span>',
+    'cta.p': 'Esplora il terminale intelligence, richiedi una dimostrazione della piattaforma o ricevi una notifica quando i servizi di consulenza advisory saranno disponibili.',
     'cta.btn1': 'Richiedi Demo Piattaforma',
-    'cta.btn2': 'Richiesta Advisory',
+    'cta.btn2': 'Get Notified of Advisory Launch',
     // Footer
     'footer.brand': "Intelligence marittima mediterranea. Risk intelligence basata su AI per armatori, aziende logistiche e investitori istituzionali che navigano nel mare strategicamente più complesso del mondo.",
     'footer.hq': '// QG: Bruxelles, Belgio',
@@ -2390,7 +2548,7 @@ const translations = {
     'footer.h.coverage': 'Copertura',
     'footer.h.contact': 'Contatto',
     'footer.l.dashboard': 'Terminale Intelligence Mediterranean Watch',
-    'footer.l.investment': 'Advisory Investimenti',
+    'footer.l.investment': 'Advisory (Coming Soon)',
     'footer.l.supply': 'Rischio Supply Chain',
     'footer.l.tiers': 'Livelli di Abbonamento',
     'footer.geo.1': 'Stretto di Gibilterra',
@@ -2403,21 +2561,23 @@ const translations = {
     // Nav
     'nav.services': 'الخدمات',
     'nav.platform': 'المنصة المباشرة',
-    'nav.advisory': 'الاستشارات',
-    'nav.pricing': 'الاشتراك',
+    'nav.advisory': 'الاستشارات<span class="nav-coming-soon">(Coming Soon)</span>',
+    'nav.pricing': 'الأسعار',
     'nav.clients': 'العملاء',
-    'nav.cta': 'طلب الوصول',
+    'nav.cta': 'إطلاق الطرفية',
     // Hero
     'hero.tag': 'منصة استخبارات التهديدات الهجينة البحرية · تأسست في بروكسل، بلجيكا',
-    'hero.h1': 'استخبارات تتحرك<br><span>قبل</span><br>حدوث الاضطراب',
+    'hero.h1': 'استخبارات تتحرك <br><span>قبل</span> <br>حدوث الاضطراب',
     'hero.desc': 'تقدم Sentinella Mare استخبارات بحرية مدعومة بالذكاء الاصطناعي واستشارات مخاطر جيوسياسية لشركات الشحن والشركات اللوجستية والمؤسسات الاستثمارية التي تعمل في حوض البحر الأبيض المتوسط.',
-    'hero.btn1': 'عرض محطة الاستخبارات المباشرة',
+    'hero.btn1': 'عرض المنصة المباشرة',
+    'launch.btn': 'إطلاق الطرفية',
+    'plat.explore.btn': 'استكشف الاشتراكات',
     'hero.btn2': 'خدماتنا',
     // Services
     'services.label': 'الخدمات الأساسية',
-    'services.h2': 'مهمتان.<br><span>منصة واحدة.</span>',
+    'services.h2': 'مهمتان. <br><span>منصة واحدة.</span>',
     'services.lead': 'ذكاء جيومكاني فوري وخبرة تحليلية عميقة — مبنية للعملاء التشغيليين والاستراتيجيين عبر الممر المتوسطي. يستند كلا العرضين إلى <strong>Maritime Hybrid Threat Exposure Score (MHTES)</strong>: نقاط تعرض تنبؤية لمدة 72 ساعة تدمج إشارات السيبرانية والجيوسياسية والمنطقة الرمادية والنشاط غير المشروع والتضليل الإعلامي في مقياس مخاطر واحد قابل للتنفيذ لكل أصل.',
-    's1.tagline': 'اشتراك · استخبارات مباشرة',
+    's1.tagline': 'Hybrid Threat Intelligence',
     's1.title': 'محطة استخبارات المراقبة<br>البحر الأبيض المتوسط',
     's1.desc': 'محطة استخبارات جيوسياسية وبحرية محدَّثة باستمرار، توفّر لشركات الشحن والمشغّلين اللوجستيين وعياً ظرفياً فورياً عبر المتوسط. مبنية على محرّك استخبارات تنبؤي خاص — وليست تقريراً، بل إشارة حية.',
     's1.cta': 'عرض خطط الاشتراك <span>→</span>',
@@ -2428,14 +2588,14 @@ const translations = {
     's1.f5': 'رصد نقاط ضعف ممرات الطاقة وكابلات الألياف الضوئية',
     's1.f6': 'تحليلات دعم القرار مُكيَّفة لاحتياجات التوجيه التشغيلي',
     's1.f7': 'وصول متدرج: مستويات Sentinel وGuardian وCommand',
-    's2.tagline': 'استشارات · استشارات مخصصة',
-    's2.title': 'استشارات الاستثمار<br>ومخاطر سلسلة التوريد',
-    's2.desc': 'مشاركات استشارية سرية للمستثمرين المؤسسيين وصناديق الأسهم الخاصة ومشغّلي سلاسل التوريد العالمية الذين يحتاجون إلى استخبارات جيوسياسية متخصصة. نترجم تعقيد مخاطر البحر الأبيض المتوسط إلى توجيه استراتيجي قابل للتنفيذ — قبل أن تتبلور المخاطر.',
-    's2.cta': 'استكشاف الخدمات الاستشارية <span>→</span>',
+    's2.tagline': 'Maritime Financial Intelligence',
+    's2.title': 'تحليل مخاطر الاستثمار<br>وسلسلة التوريد',
+    's2.desc': 'تحليل للمستثمرين المؤسسيين وصناديق الأسهم الخاصة ومشغّلي سلاسل التوريد العالمية الذين يحتاجون إلى استخبارات جيوسياسية متخصصة.',
+    's2.cta': '<span class="svc-cta-text">استكشاف الخدمات الاستشارية <span class="coming-soon-tag">(Coming Soon)</span></span> <span>→</span>',
     's2.f1': 'العناية الواجبة في البنية التحتية للموانئ والاستثمارات الإقليمية',
     's2.f2': 'اختبار إجهاد سلسلة التوريد عبر نقاط الاختناق المتوسطية',
     's2.f3': 'نمذجة السيناريوهات الجيوسياسية لتحليل تعرض الأصول',
-    's2.f4': 'تحديد ملف مخاطر التأمين البحري ودعم الاكتتاب',
+    's2.f4': 'تحديد ملف مخاطر التأمين البحري',
     's2.f5': 'إحاطات مخاطر مخصصة للقيادة التنفيذية',
     's2.f6': 'استشارات المشهد التنظيمي والعقوبات',
     's2.f7': 'هياكل مشاركة قائمة على الاتفاقية الاستشارية أو المشروع',
@@ -2445,7 +2605,7 @@ const translations = {
     'live.traffic': 'الحركة البحرية — البحر المتوسط مباشرة',
     // Platform
     'platform.label': 'منصة الاستخبارات المباشرة',
-    'plat.h2': '<span>Mediterranean Watch</span><br>محطة الاستخبارات',
+    'plat.h2': '<span>Mediterranean Watch</span> <br>محطة الاستخبارات',
     'plat.lead': 'توفر محطة استخبارات المشتركين لدينا وعياً ظرفياً مستمراً عبر حوض البحر الأبيض المتوسط بأكمله — من مضيق جبل طارق إلى شرق المتوسط.',
     'plat.chrome.title': '// SENTINELLA MARE · العمليات المباشرة',
     'plat.chrome.status': 'جميع الأنظمة طبيعية',
@@ -2473,7 +2633,7 @@ const translations = {
     'plat.map.sicily': 'مضيق صقلية',
     // Why
     'why.label': 'لماذا Sentinella Mare',
-    'why.h2': 'مبنية للمحترفين<br>الذين <span>لا يتحملون المفاجآت</span>',
+    'why.h2': 'مبنية للمحترفين <br>الذين <span>لا يتحملون المفاجآت</span>',
     'why.lead': 'نحن شركة استخبارات مدعومة بالتكنولوجيا — لسنا مزوداً للتقارير. كل إشارة نقدمها قابلة للتنفيذ وسياقية ومتقدمة على الاضطراب.',
     'why.c1.title': 'تنبؤي وليس تفاعلي',
     'why.c1.text': 'يقوم محرك الذكاء الاصطناعي لدينا بتوليف إشارات متعددة المجالات — جيوسياسية، سيبرانية، عسكرية، بيئية — لتقديم محفزات إنذار مبكر قبل أن تتحقق أحداث المخاطر في التقارير السائدة.',
@@ -2489,7 +2649,7 @@ const translations = {
     'why.c6.text': 'بدءاً من الممر البحري السردي والتوسع نحو مسارات الشحن في غرب المتوسط والأدرياتيك والتيراني وشرق المتوسط مع توسع قاعدة العملاء.',
     // Pricing
     'pricing.label': 'منصة الاشتراك',
-    'pricing.h2': '<span>Mediterranean Watch</span><br>مستويات الاشتراك',
+    'pricing.h2': '<span>Mediterranean Watch</span> <br>مستويات الاشتراك',
     'pricing.lead': 'ثلاث حزم خاصة بالأصول — الموانئ والسفن والكابلات البحرية — لكل منها ثلاثة مستويات تغطية: Exposure وSentinel وCommand. يمكن دمج الحزم لتتناسب مع نطاق عملياتك.',
     'pricing.tab.port': 'مراقبة الموانئ',
     'pricing.tab.fleet': 'مراقبة الأسطول',
@@ -2533,11 +2693,12 @@ const translations = {
     'pricing.f.cyber.cable': 'التعرض السيبراني والبنية التحتية',
     'pricing.f.disinfo': 'مراقبة التضليل الإعلامي',
     'pricing.f.scenario.cable': 'نمذجة السيناريوهات والتخريب',
+    'pricing.btn.launch': 'إطلاق الآن',
     'pricing.btn.access': 'طلب الوصول',
     'pricing.btn.contact': 'تواصل معنا',
     // Advisory
-    'adv.label': 'الخدمات الاستشارية',
-    'adv.h2': 'عندما تكون المخاطر عالية،<br><span>يجب أن تكون الخبرة أعلى</span>',
+    'adv.label': 'Advisory (Coming Soon)',
+    'adv.h2': 'عندما تكون المخاطر عالية، <br><span>يجب أن تكون الخبرة أعلى</span>',
     'adv.lead': 'مشاركات سرية يقودها كبار المحللين للمستثمرين والمشغّلين الذين يحتاجون إلى أكثر من البيانات — يحتاجون إلى الحكم.',
     'adv.s1.title': 'العناية الواجبة للاستثمار',
     'adv.s1.desc': 'استثمار في البنية التحتية للموانئ وأصول اللوجستيات البحرية وتحليل التعرض الاقتصادي الإقليمي عبر حوض البحر الأبيض المتوسط لصناديق PE ومكاتب العائلة والمخصصين المؤسسيين.',
@@ -2547,18 +2708,20 @@ const translations = {
     'adv.s3.desc': 'أطر سيناريوهات مخصصة لمديري الأصول والمشغّلين الذين يقيّمون التقلبات السياسية ومخاطر العقوبات وتصعيد التهديدات الهجينة عبر أسواق جنوب المتوسط وشمال أفريقيا.',
     'adv.s4.title': 'تحديد ملف مخاطر التأمين البحري',
     'adv.s4.desc': 'خدمات دعم الاكتتاب وتحديد ملف المخاطر لشركات التأمين وإعادة التأمين البحري التي تتطلب تقييماً مستقلاً للتهديدات المتوسطية متوافقاً مع ملفات المسار والشحن المحددة.',
+    'adv.engage.badge': 'الإطلاق قريباً',
+    'adv.engage.eyebrow': 'ما هو قادم:',
     'adv.engage.title': 'كيف نتعامل',
-    'adv.engage.desc': 'كل مشاركة استشارية يقودها محللون كبار. لا نفوّض عمل العملاء. الوصول محدود عمداً لضمان العمق التحليلي والتقدير.',
+    'adv.engage.desc': 'خدمات الاستشارات ستُطلق قريباً. ستُقاد كل مشاركة من قِبل محللين كبار — لن يتم تفويض عمل العملاء أبداً. سيكون الوصول محدوداً عمداً لضمان العمق التحليلي والتقدير.',
     'adv.engage.1': 'مشاركات على أساس مشروع (2–8 أسابيع)',
     'adv.engage.2': 'أتعاب ثابتة ربع سنوية مع إحاطات متكررة',
     'adv.engage.3': 'الوصول إلى مجلس الاستشارات التنفيذي',
     'adv.engage.4': 'دعم تقديمات مجلس الإدارة والمستثمرين',
     'adv.engage.5': 'إرشادات المشهد التنظيمي والعقوبات',
     'adv.engage.6': 'الاستجابة للأزمات والتقييم السريع',
-    'adv.engage.btn': 'جدولة استشارة',
+    'adv.engage.btn': 'احصل على إشعار عند الإطلاق',
     // Clients
     'clients.label': 'من نخدم',
-    'clients.h2': 'مبنية لمن<br><span>لا يمكنهم الخطأ</span>',
+    'clients.h2': 'مبنية لمن <br><span>لا يمكنهم الخطأ</span>',
     'client.1': 'سلطات الموانئ',
     'client.2': 'مشغّلو العبّارات',
     'client.3': 'عمليات محطات السفن السياحية',
@@ -2570,10 +2733,10 @@ const translations = {
     'client.9': 'البنية التحتية الحيوية',
     'client.10': 'الوكالات الحكومية',
     // CTA
-    'cta.h2': 'البحر الأبيض المتوسط لا ينتظر.<br><span>ولا أنت يجب أن تنتظر.</span>',
-    'cta.p': 'اطلب عرضاً تجريبياً للمنصة أو استشارة advisory. نعمل مع عدد محدود من العملاء لضمان العمق التحليلي والتقدير.',
+    'cta.h2': 'البحر الأبيض المتوسط لا ينتظر. <br><span>ولا أنت يجب أن تنتظر.</span>',
+    'cta.p': 'استكشف محطة الاستخبارات، اطلب عرضاً تجريبياً للمنصة أو كن أول من يعلم عند إطلاق خدمات الاستشارة.',
     'cta.btn1': 'طلب عرض توضيحي للمنصة',
-    'cta.btn2': 'طلب استشارة',
+    'cta.btn2': 'Get Notified of Advisory Launch',
     // Footer
     'footer.brand': 'استخبارات بحرية متوسطية. استخبارات مخاطر مدعومة بالذكاء الاصطناعي لشركات الشحن والشركات اللوجستية والمستثمرين المؤسسيين الذين يبحرون في أكثر بحار العالم تعقيداً من الناحية الاستراتيجية.',
     'footer.hq': '// المقر: بروكسل، بلجيكا',
@@ -2581,7 +2744,7 @@ const translations = {
     'footer.h.coverage': 'التغطية',
     'footer.h.contact': 'اتصل',
     'footer.l.dashboard': 'محطة استخبارات Mediterranean Watch',
-    'footer.l.investment': 'الاستشارات الاستثمارية',
+    'footer.l.investment': 'Advisory (Coming Soon)',
     'footer.l.supply': 'مخاطر سلسلة التوريد',
     'footer.l.tiers': 'مستويات الاشتراك',
     'footer.geo.1': 'مضيق جبل طارق',
@@ -2594,21 +2757,23 @@ const translations = {
     // Nav
     'nav.services': 'Υπηρεσίες',
     'nav.platform': 'Ζωντανή Πλατφόρμα',
-    'nav.advisory': 'Συμβουλευτική',
-    'nav.pricing': 'Συνδρομή',
+    'nav.advisory': 'Συμβουλευτική<span class="nav-coming-soon">(Coming Soon)</span>',
+    'nav.pricing': 'Τιμολόγηση',
     'nav.clients': 'Πελάτες',
-    'nav.cta': 'Αίτηση Πρόσβασης',
+    'nav.cta': 'Εκκίνηση Τερματικού',
     // Hero
     'hero.tag': 'ΠΛΑΤΦΌΡΜΑ ΥΒΡΙΔΙΚΗΣ ΝΑΥΤΙΚΗΣ ΠΛΗΡΟΦΟΡΙΑΚΗΣ ΑΠΕΙΛΗΣ · Ίδρ. Βρυξέλλες, Βέλγιο',
-    'hero.h1': 'Πληροφόρηση που<br>Κινείται <span>Πριν</span><br>από την Αναστάτωση',
+    'hero.h1': 'Πληροφόρηση που <br>Κινείται <span>Πριν</span> <br>από την Αναστάτωση',
     'hero.desc': 'Η Sentinella Mare παρέχει ναυτιλιακή πληροφόρηση με τεχνητή νοημοσύνη και συμβουλευτική γεωπολιτικού κινδύνου σε ναυτιλιακές εταιρείες, εταιρείες logistics και επενδυτικά ιδρύματα που δραστηριοποιούνται στη Μεσόγειο.',
-    'hero.btn1': 'Προβολή Ζωντανής Οθόνης',
+    'hero.btn1': 'Προβολή Ζωντανής Πλατφόρμας',
+    'launch.btn': 'Εκκίνηση Τερματικού',
+    'plat.explore.btn': 'Εξερευνήστε τις Συνδρομές',
     'hero.btn2': 'Οι Υπηρεσίες μας',
     // Services
     'services.label': 'Βασικές Υπηρεσίες',
-    'services.h2': 'Δύο Αποστολές.<br><span>Μία Πλατφόρμα.</span>',
+    'services.h2': 'Δύο Αποστολές. <br><span>Μία Πλατφόρμα.</span>',
     'services.lead': 'Γεωχωρική πληροφόρηση σε πραγματικό χρόνο και βαθιά αναλυτική εξειδίκευση — για επιχειρησιακούς και στρατηγικούς πελάτες στον μεσογειακό διάδρομο. Υπόβαθρο και των δύο προσφορών αποτελεί το <strong>Maritime Hybrid Threat Exposure Score (MHTES)</strong>: ένα προβλεπτικό σκορ 72 ωρών που συνδυάζει κυβερνο-, γεωπολιτικά, γκρίζας ζώνης, παράνομα και παραπληροφοριακά σήματα σε ένα ενιαίο μετρήσιμο δείκτη κινδύνου ανά περιουσιακό στοιχείο.',
-    's1.tagline': 'Συνδρομή · Ζωντανή Πληροφόρηση',
+    's1.tagline': 'Hybrid Threat Intelligence',
     's1.title': 'Τερματικό Πληροφοριών Παρακολούθησης<br>Μεσογείου',
     's1.desc': 'Ένα συνεχώς ενημερωμένο γεωπολιτικό και ναυτιλιακό τερματικό πληροφοριών που παρέχει σε ναυτιλιακές εταιρείες και logistics χειριστές ζωντανή κατάσταση σε όλη τη Μεσόγειο. Βασίζεται στη δική μας ιδιόκτητη μηχανή προβλεπτικής πληροφόρησης — όχι μια αναφορά, αλλά ζωντανό σήμα.',
     's1.cta': 'Δείτε τα Πλάνα Συνδρομής <span>→</span>',
@@ -2619,14 +2784,14 @@ const translations = {
     's1.f5': 'Παρακολούθηση ευπάθειας ενεργειακών διαδρόμων και καλωδίων οπτικών ινών',
     's1.f6': 'Αναλυτικά στοιχεία υποστήριξης αποφάσεων για ανάγκες δρομολόγησης χειριστών',
     's1.f7': 'Διαβαθμισμένη πρόσβαση: επίπεδα Sentinel, Guardian και Command',
-    's2.tagline': 'Συμβουλευτική · Εξατομικευμένη Παροχή',
-    's2.title': 'Συμβουλευτική Επενδύσεων<br>& Κινδύνου Εφοδιαστικής',
-    's2.desc': 'Εμπιστευτικές συμβουλευτικές δεσμεύσεις για θεσμικούς επενδυτές, private equity και παγκόσμιους χειριστές εφοδιαστικής αλυσίδας που χρειάζονται γεωπολιτική πληροφόρηση βαθιάς εξειδίκευσης. Μεταφράζουμε τη μεσογειακή πολυπλοκότητα κινδύνου σε στρατηγική καθοδήγηση — πριν κρυσταλλωθεί η έκθεση.',
-    's2.cta': 'Εξερευνήστε τις Συμβουλευτικές Υπηρεσίες <span>→</span>',
+    's2.tagline': 'Maritime Financial Intelligence',
+    's2.title': 'Ανάλυση Κινδύνου<br>Επενδύσεων & Εφοδιαστικής',
+    's2.desc': 'Ανάλυση για θεσμικούς επενδυτές, private equity και παγκόσμιους χειριστές εφοδιαστικής αλυσίδας που χρειάζονται γεωπολιτική πληροφόρηση βαθιάς εξειδίκευσης.',
+    's2.cta': '<span class="svc-cta-text">Εξερευνήστε τις Συμβουλευτικές Υπηρεσίες <span class="coming-soon-tag">(Coming Soon)</span></span> <span>→</span>',
     's2.f1': 'Δέουσα επιμέλεια επενδύσεων σε λιμενικές υποδομές και περιφερειακές επενδύσεις',
     's2.f2': 'Stress testing εφοδιαστικής αλυσίδας στα μεσογειακά σημεία συμφόρησης',
     's2.f3': 'Γεωπολιτική μοντελοποίηση σεναρίων για ανάλυση έκθεσης περιουσιακών στοιχείων',
-    's2.f4': 'Κατάρτιση προφίλ κινδύνου ναυτιλιακής ασφάλισης και υποστήριξη αναδόχου',
+    's2.f4': 'Κατάρτιση προφίλ κινδύνου ναυτιλιακής ασφάλισης',
     's2.f5': 'Εξατομικευμένες ενημερώσεις απειλών για εκτελεστική ηγεσία',
     's2.f6': 'Συμβουλευτική κανονιστικού και κυρωτικού πλαισίου',
     's2.f7': 'Δομές δέσμευσης βάσει συμβολαίου ή έργου',
@@ -2636,7 +2801,7 @@ const translations = {
     'live.traffic': 'ΝΑΥΤΙΚΗ ΚΙΝΗΣΗ — ΜΕΣΟΓΕΙΟΣ LIVE',
     // Platform
     'platform.label': 'Ζωντανή Πλατφόρμα Πληροφόρησης',
-    'plat.h2': 'Η <span>Mediterranean Watch</span><br>Τερματικό Πληροφοριών',
+    'plat.h2': 'Η <span>Mediterranean Watch</span> <br>Τερματικό Πληροφοριών',
     'plat.lead': 'Το τερματικό πληροφοριών συνδρομητών μας παρέχει συνεχή κατάσταση σε ολόκληρη τη μεσογειακή λεκάνη — από το Στενό του Γιβραλτάρ έως την Ανατολική Μεσόγειο.',
     'plat.chrome.title': '// SENTINELLA MARE · ΖΩΝΤΑΝΕΣ ΕΠΙΧΕΙΡΗΣΕΙΣ',
     'plat.chrome.status': 'ΟΛΑ ΤΑ ΣΥΣΤΗΜΑΤΑ ΚΑΝΟΝΙΚΑ',
@@ -2664,7 +2829,7 @@ const translations = {
     'plat.map.sicily': 'ΣΤΕΝΟ ΣΙΚΕΛΙΑΣ',
     // Why
     'why.label': 'Γιατί Sentinella Mare',
-    'why.h2': "Χτισμένη για τους <span>Επαγγελματίες</span><br>που Δεν Μπορούν να Αντέξουν Εκπλήξεις",
+    'why.h2': "Χτισμένη για τους <span>Επαγγελματίες</span> <br>που Δεν Μπορούν να Αντέξουν Εκπλήξεις",
     'why.lead': 'Είμαστε εταιρεία πληροφόρησης με τεχνολογική υποστήριξη — όχι πάροχος αναφορών. Κάθε σήμα που παρέχουμε είναι εφαρμόσιμο, συναφές και μπροστά από την αναστάτωση.',
     'why.c1.title': 'Προβλεπτικό, Όχι Αντιδραστικό',
     'why.c1.text': 'Η μηχανή AI μας συνθέτει σήματα πολλαπλών τομέων — γεωπολιτικά, κυβερνο-, στρατιωτικά, περιβαλλοντικά — για να παρέχει ερεθίσματα έγκαιρης προειδοποίησης πριν τα γεγονότα κινδύνου εμφανιστούν στις mainstream αναφορές.',
@@ -2680,7 +2845,7 @@ const translations = {
     'why.c6.text': 'Ξεκινώντας από τον σαρδηνιακό ναυτιλιακό διάδρομο και επεκτεινόμενοι στις ναυτιλιακές γραμμές της Δυτικής Μεσογείου, Αδριατικής, Τυρρηνικής και Ανατολικής Μεσογείου καθώς η πελατειακή βάση αναπτύσσεται.',
     // Pricing
     'pricing.label': 'Πλατφόρμα Συνδρομής',
-    'pricing.h2': '<span>Mediterranean Watch</span><br>Επίπεδα Συνδρομής',
+    'pricing.h2': '<span>Mediterranean Watch</span> <br>Επίπεδα Συνδρομής',
     'pricing.lead': 'Τρία πακέτα ειδικά ανά περιουσιακό στοιχείο — Λιμάνια, Πλοία και Υποθαλάσσια Καλώδια — με τρία επίπεδα κάλυψης: Exposure, Sentinel και Command. Τα πακέτα μπορούν να συνδυαστούν ανάλογα με το επιχειρησιακό σας αποτύπωμα.',
     'pricing.tab.port': 'Παρακολούθηση Λιμανιών',
     'pricing.tab.fleet': 'Παρακολούθηση Στόλου',
@@ -2724,11 +2889,12 @@ const translations = {
     'pricing.f.cyber.cable': 'Κυβερνο- και υποδομική έκθεση',
     'pricing.f.disinfo': 'Παρακολούθηση παραπληροφόρησης',
     'pricing.f.scenario.cable': 'Μοντελοποίηση σεναρίων και δολιοφθοράς',
+    'pricing.btn.launch': 'Εκκίνηση Τώρα',
     'pricing.btn.access': 'Αίτηση Πρόσβασης',
     'pricing.btn.contact': 'Επικοινωνήστε μαζί μας',
     // Advisory
-    'adv.label': 'Συμβουλευτική Επενδύσεων & Εφοδιαστικής Αλυσίδας',
-    'adv.h2': 'Όταν τα Διακυβεύματα Είναι Υψηλά,<br><span>η Εξειδίκευση Πρέπει να Είναι Ακόμη Υψηλότερη</span>',
+    'adv.label': 'Advisory (Coming Soon)',
+    'adv.h2': 'Όταν τα Διακυβεύματα Είναι Υψηλά, <br><span>η Εξειδίκευση Πρέπει να Είναι Ακόμη Υψηλότερη</span>',
     'adv.lead': 'Εξατομικευμένες συμβουλευτικές δεσμεύσεις για θεσμικούς επενδυτές, private equity και παγκόσμιους χειριστές που χρειάζονται γεωπολιτική πληροφόρηση με εγγενή μεσογειακή τεχνογνωσία και αξιολόγηση κινδύνου εφοδιαστικής αλυσίδας.',
     'adv.s1.title': 'Δέουσα Επιμέλεια Επενδύσεων',
     'adv.s1.desc': 'Επενδύσεις σε υποδομές λιμένων, ναυτιλιακά logistics assets και ανάλυση περιφερειακής οικονομικής έκθεσης στη μεσογειακή λεκάνη για PE, family offices και θεσμικούς επενδυτές.',
@@ -2738,18 +2904,20 @@ const translations = {
     'adv.s3.desc': 'Προσαρμοσμένα πλαίσια σεναρίων για διαχειριστές περιουσιακών στοιχείων και χειριστές που αξιολογούν πολιτική αστάθεια, κίνδυνο κυρώσεων και κλιμάκωση υβριδικών απειλών στις αγορές της Νότιας Μεσογείου και Βόρειας Αφρικής.',
     'adv.s4.title': 'Κατάρτιση Προφίλ Ναυτιλιακού Ασφαλιστικού Κινδύνου',
     'adv.s4.desc': 'Υπηρεσίες ανάληψης ασφάλισης και κατάρτισης προφίλ κινδύνου για ναυτιλιακούς ασφαλιστές και αντασφαλιστές που χρειάζονται ανεξάρτητη αξιολόγηση μεσογειακής απειλής εναρμονισμένη με συγκεκριμένα προφίλ διαδρομής και φορτίου.',
+    'adv.engage.badge': 'Σύντομα Διαθέσιμο',
+    'adv.engage.eyebrow': 'Τι έρχεται:',
     'adv.engage.title': 'Πώς Συνεργαζόμαστε',
-    'adv.engage.desc': 'Κάθε συμβουλευτική δέσμευση διευθύνεται από ανώτερους αναλυτές. Δεν αναθέτουμε τη δουλειά των πελατών. Η πρόσβαση είναι σκόπιμα περιορισμένη για να διασφαλίσουμε αναλυτικό βάθος και διακριτικότητα.',
+    'adv.engage.desc': 'Οι συμβουλευτικές υπηρεσίες ξεκινούν σύντομα. Κάθε δέσμευση θα διευθύνεται από ανώτερους αναλυτές — η εργασία των πελατών δεν θα ανατίθεται ποτέ. Η πρόσβαση θα είναι σκόπιμα περιορισμένη για να διασφαλιστεί αναλυτικό βάθος και διακριτικότητα.',
     'adv.engage.1': 'Δεσμεύσεις βάσει έργου (2–8 εβδομάδες)',
     'adv.engage.2': 'Τριμηνιαίο retainer με επαναλαμβανόμενες ενημερώσεις',
     'adv.engage.3': 'Πρόσβαση στο εκτελεστικό συμβουλευτικό συμβούλιο',
     'adv.engage.4': 'Υποστήριξη παρουσιάσεων για διοικητικό συμβούλιο και επενδυτές',
     'adv.engage.5': 'Καθοδήγηση κανονιστικού και κυρωτικού πλαισίου',
     'adv.engage.6': 'Αντίδραση σε κρίση και ταχεία αξιολόγηση',
-    'adv.engage.btn': 'Προγραμματίστε Συνεδρία Συμβουλευτικής',
+    'adv.engage.btn': 'Ειδοποιήστε με κατά την Εκκίνηση',
     // Clients
     'clients.label': 'Ποιους Εξυπηρετούμε',
-    'clients.h2': 'Χτισμένη για τους Ανθρώπους<br><span>που Δεν Μπορούν να Κάνουν Λάθος.</span>',
+    'clients.h2': 'Χτισμένη για τους Ανθρώπους <br><span>που Δεν Μπορούν να Κάνουν Λάθος.</span>',
     'client.1': 'Λιμενικές Αρχές',
     'client.2': 'Χειριστές Πορθμείων',
     'client.3': 'Λειτουργίες Κρουαζιέρας',
@@ -2761,10 +2929,10 @@ const translations = {
     'client.9': 'Κρίσιμες Υποδομές',
     'client.10': 'Κυβερνητικοί Φορείς',
     // CTA
-    'cta.h2': 'Έτοιμοι να Δείτε τη<br><span>Μεσόγειο Καθαρά;</span>',
-    'cta.p': 'Ζητήστε μια επίδειξη πλατφόρμας ή συμβουλευτική συνεδρία. Εργαζόμαστε με περιορισμένο αριθμό πελατών για να διασφαλίσουμε αναλυτικό βάθος και διακριτικότητα.',
+    'cta.h2': 'Έτοιμοι να Δείτε τη <br><span>Μεσόγειο Καθαρά;</span>',
+    'cta.p': 'Εξερευνήστε το τερματικό πληροφόρησης, ζητήστε μια επίδειξη πλατφόρμας ή ειδοποιηθείτε όταν ξεκινήσουν οι υπηρεσίες συμβουλευτικής.',
     'cta.btn1': 'Αίτηση Demo Πλατφόρμας',
-    'cta.btn2': 'Συμβουλευτική Αίτηση',
+    'cta.btn2': 'Get Notified of Advisory Launch',
     // Footer
     'footer.brand': 'Ναυτιλιακή πληροφόρηση Μεσογείου. Πληροφόρηση κινδύνου με τεχνητή νοημοσύνη για ναυτιλιακούς χειριστές, εταιρείες logistics και θεσμικούς επενδυτές που πλέουν στη στρατηγικά πιο πολύπλοκη θάλασσα του κόσμου.',
     'footer.hq': '// ΕΔΡ: Βρυξέλλες, Βέλγιο',
@@ -2772,7 +2940,7 @@ const translations = {
     'footer.h.coverage': 'Κάλυψη',
     'footer.h.contact': 'Επικοινωνία',
     'footer.l.dashboard': 'Τερματικό Πληροφοριών Mediterranean Watch',
-    'footer.l.investment': 'Συμβουλευτική Επενδύσεων',
+    'footer.l.investment': 'Advisory (Coming Soon)',
     'footer.l.supply': 'Κίνδυνος Εφοδιαστικής Αλυσίδας',
     'footer.l.tiers': 'Επίπεδα Συνδρομής',
     'footer.geo.1': 'Στενό Γιβραλτάρ',
@@ -2789,8 +2957,10 @@ function setLang(lang) {
   currentLang = lang;
 
   // Update button states
-  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-  document.getElementById('btn-' + lang).classList.add('active');
+  document.querySelectorAll('.lang-btn').forEach(btn => { btn.classList.remove('active'); btn.removeAttribute('aria-current'); });
+  const activeBtn = document.getElementById('btn-' + lang);
+  activeBtn.classList.add('active');
+  activeBtn.setAttribute('aria-current', 'true');
 
   // Set dir for RTL
   document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
@@ -2819,17 +2989,51 @@ document.addEventListener('click', function(e) {
   if (dd && !dd.contains(e.target)) dd.classList.remove('open');
   const cd = document.getElementById('complianceNav');
   if (cd && !cd.contains(e.target)) cd.classList.remove('open');
+  const sd = document.getElementById('servicesNav');
+  if (sd && !sd.contains(e.target)) sd.classList.remove('open');
 });
 
-// Asset type tab switching
-document.querySelectorAll('.asset-tab').forEach(tab => {
-  tab.addEventListener('click', function() {
-    document.querySelectorAll('.asset-tab').forEach(t => t.classList.remove('active'));
-    document.querySelectorAll('.asset-panel').forEach(p => p.classList.remove('active'));
-    this.classList.add('active');
-    document.getElementById('asset-' + this.dataset.asset).classList.add('active');
+// Keep aria-expanded in sync with the .open state on every open/close path
+// (button click, menu-item click, outside click) so screen readers announce it.
+(function() {
+  function sync(container, trigger) {
+    if (!container || !trigger) return;
+    var apply = function() { trigger.setAttribute('aria-expanded', container.classList.contains('open') ? 'true' : 'false'); };
+    apply();
+    new MutationObserver(apply).observe(container, { attributes: true, attributeFilter: ['class'] });
+  }
+  document.querySelectorAll('.nav-comp-wrap').forEach(function(w) { sync(w, w.querySelector('.nav-comp-trigger')); });
+  var langDd = document.getElementById('langDropdown');
+  sync(langDd, langDd && langDd.querySelector('.lang-globe'));
+  var toggle = document.getElementById('navToggle');
+  sync(toggle, toggle);
+  // When the mobile menu opens, move keyboard focus into it (first item)
+  if (toggle) {
+    new MutationObserver(function() {
+      if (toggle.classList.contains('open')) {
+        var links = document.getElementById('navLinks');
+        var first = links && links.querySelector('button, a, [tabindex]');
+        if (first) first.focus();
+      }
+    }).observe(toggle, { attributes: true, attributeFilter: ['class'] });
+  }
+  // Escape closes any open nav menu and returns focus to its trigger
+  document.addEventListener('keydown', function(e) {
+    if (e.key !== 'Escape') return;
+    document.querySelectorAll('.nav-comp-wrap.open, #langDropdown.open').forEach(function(w) {
+      w.classList.remove('open');
+      var t = w.querySelector('.nav-comp-trigger, .lang-globe');
+      if (t) t.focus();
+    });
+    var nt = document.getElementById('navToggle');
+    if (nt && nt.classList.contains('open')) {
+      nt.classList.remove('open');
+      document.getElementById('navLinks').classList.remove('open');
+      nt.focus();
+    }
   });
-});
+})();
+
 
 // Restore saved language on load
 (function() {
@@ -2888,5 +3092,196 @@ document.querySelectorAll('.asset-tab').forEach(tab => {
   setInterval(renderNextDeadline, 60000);
 })();
 </script>
+
+<!-- ── COOKIE CONSENT BANNER ── -->
+<style>
+#sm-cookie-banner {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+  background: #0d1b2a; border-top: 1px solid rgba(45,122,58,0.4);
+  padding: 20px 48px; box-shadow: 0 -8px 40px rgba(0,0,0,0.55);
+  font-family: 'Rajdhani', sans-serif;
+  max-height: 85vh; overflow-y: auto;
+}
+[hidden] { display: none !important; }
+.sm-cookie-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 32px; flex-wrap: wrap;
+}
+.sm-cookie-label {
+  display: block; font-family: 'Share Tech Mono', monospace;
+  font-size: 13px; letter-spacing: 1.5px; color: #3aab4a;
+  text-transform: uppercase; margin-bottom: 7px;
+}
+.sm-cookie-text { font-size: 15px; line-height: 1.65; color: #c8d8ec; max-width: 680px; }
+.sm-cookie-text a { color: #3aab4a; }
+.sm-cookie-text a:hover { color: #4fd962; }
+.sm-cookie-actions { display: flex; gap: 12px; flex-shrink: 0; align-items: center; }
+.sm-cookie-btn {
+  font-family: 'Rajdhani', sans-serif; font-size: 14px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase; cursor: pointer;
+  padding: 11px 26px; border-radius: 0; transition: all 0.25s;
+  -webkit-tap-highlight-color: transparent; white-space: nowrap;
+}
+.sm-cookie-reject, .sm-cookie-manage {
+  background: transparent; color: #c8d8ec; border: 1px solid rgba(200,216,236,0.35);
+}
+.sm-cookie-reject:hover, .sm-cookie-manage:hover { border-color: #eef3f8; color: #eef3f8; }
+.sm-cookie-accept {
+  background: #2d7a3a; color: #fff; border: 1px solid #2d7a3a;
+  -webkit-clip-path: polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px));
+  clip-path: polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px));
+}
+.sm-cookie-accept:hover { background: #3aab4a; border-color: #3aab4a; box-shadow: 0 0 22px rgba(58,171,74,0.35); }
+
+/* ── Manage Preferences panel ── */
+.sm-cookie-prefs {
+  max-width: 1200px; margin: 18px auto 0; padding-top: 18px;
+  border-top: 1px solid rgba(45,122,58,0.25);
+}
+.sm-pref-row {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 24px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.sm-pref-row:last-of-type { border-bottom: none; }
+.sm-pref-name {
+  display: block; font-size: 15px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase; color: #eef3f8;
+}
+label.sm-pref-name { cursor: pointer; }
+.sm-pref-desc { font-size: 14px; line-height: 1.6; color: #c8d8ec; margin-top: 5px; max-width: 720px; }
+.sm-pref-control { flex-shrink: 0; display: flex; align-items: center; min-height: 24px; }
+.sm-pref-always {
+  font-family: 'Share Tech Mono', monospace; font-size: 13px;
+  letter-spacing: 1px; text-transform: uppercase; color: #3aab4a;
+}
+.sm-pref-toggle { width: 24px; height: 24px; accent-color: #2d7a3a; cursor: pointer; }
+.sm-pref-save { display: flex; justify-content: flex-end; padding-top: 16px; }
+@media (max-width: 768px) {
+  #sm-cookie-banner { padding: 18px 20px; }
+  .sm-cookie-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .sm-cookie-actions { width: 100%; flex-wrap: wrap; }
+  /* Labels are nowrap; tighter padding + wrap keeps them inside a 375px screen
+     and lets them stack full-width when they cannot share a row. */
+  .sm-cookie-btn { flex: 1 1 auto; text-align: center; padding: 11px 14px; }
+  .sm-pref-save { justify-content: stretch; }
+  .sm-pref-save .sm-cookie-btn { width: 100%; }
+}
+</style>
+<div id="sm-cookie-banner" role="dialog" aria-modal="false" aria-labelledby="sm-cookie-heading">
+  <div class="sm-cookie-inner">
+    <div>
+      <span class="sm-cookie-label" id="sm-cookie-heading">Cookie Settings</span>
+      <p class="sm-cookie-text">Sentinella Mare (data controller) uses Google Analytics to understand how visitors use this site. Google Analytics loads only if you accept &mdash; if you decline, nothing is sent to Google and no analytics cookies are set. No advertising or third-party tracking cookies are used. <a href="/privacypolicy/">Privacy Policy</a>.</p>
+    </div>
+    <div class="sm-cookie-actions">
+      <button id="sm-cookie-reject" class="sm-cookie-btn sm-cookie-reject">Reject All</button>
+      <button id="sm-cookie-manage" class="sm-cookie-btn sm-cookie-manage" aria-expanded="false" aria-controls="sm-cookie-prefs">Manage Preferences</button>
+      <button id="sm-cookie-accept" class="sm-cookie-btn sm-cookie-accept">Accept Analytics</button>
+    </div>
+  </div>
+  <div id="sm-cookie-prefs" class="sm-cookie-prefs" hidden>
+    <div class="sm-pref-row">
+      <div>
+        <span class="sm-pref-name">Strictly necessary</span>
+        <p class="sm-pref-desc">Required for the site to work and to remember your cookie choice. These are always active and cannot be switched off.</p>
+      </div>
+      <div class="sm-pref-control"><span class="sm-pref-always">Always on</span></div>
+    </div>
+    <div class="sm-pref-row">
+      <div>
+        <label class="sm-pref-name" for="sm-pref-analytics">Analytics</label>
+        <p class="sm-pref-desc">Google Analytics, used to count visits and see which pages are read. Switching this on loads Google Analytics and sets its cookies. Leaving it off means no request is made to Google at all.</p>
+      </div>
+      <div class="sm-pref-control">
+        <input type="checkbox" id="sm-pref-analytics" class="sm-pref-toggle">
+      </div>
+    </div>
+    <div class="sm-pref-save">
+      <button id="sm-cookie-save" class="sm-cookie-btn sm-cookie-accept">Save Preferences</button>
+    </div>
+  </div>
+</div>
+<script>
+(function () {
+  var KEY = 'sm_cookie_consent';
+  var GA_ID = 'G-6FPWJM34X1';
+  var gaLoaded = false;
+
+  // Consent Mode "basic": gtag.js is injected only once consent is granted, so
+  // no request reaches Google — and no IP is disclosed — until the user opts in.
+  function loadGA() {
+    if (gaLoaded) return;
+    gaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', GA_ID);
+  }
+
+  // Withdrawal must be as easy as consent: drop the _ga cookies on refusal.
+  function clearGaCookies() {
+    document.cookie.split(';').forEach(function (c) {
+      var n = c.split('=')[0].trim();
+      if (n.indexOf('_ga') !== 0) return;
+      var h = location.hostname;
+      ['', '; domain=' + h, '; domain=.' + h].forEach(function (d) {
+        document.cookie = n + '=; Max-Age=0; path=/' + d;
+      });
+    });
+  }
+
+  function apply(granted) {
+    if (typeof gtag === 'function') {
+      gtag('consent', 'update', {
+        analytics_storage: granted ? 'granted' : 'denied',
+        ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied'
+      });
+    }
+    if (granted) loadGA(); else clearGaCookies();
+  }
+
+  var banner = document.getElementById('sm-cookie-banner');
+  var prefs  = document.getElementById('sm-cookie-prefs');
+  var manage = document.getElementById('sm-cookie-manage');
+  var toggle = document.getElementById('sm-pref-analytics');
+
+  function read() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function openPrefs(open) {
+    prefs.hidden = !open;
+    manage.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (open) toggle.focus();
+  }
+  function save(granted) {
+    try { localStorage.setItem(KEY, granted ? 'granted' : 'denied'); } catch (e) {}
+    apply(granted);
+    openPrefs(false);
+    banner.style.display = 'none';
+  }
+
+  var stored = read();
+  if (stored === 'granted') { toggle.checked = true; apply(true); }
+  else if (stored === 'denied') { apply(false); }
+  else { banner.style.display = 'block'; }
+
+  manage.addEventListener('click', function () { openPrefs(prefs.hidden); });
+  document.getElementById('sm-cookie-accept').addEventListener('click', function () { toggle.checked = true; save(true); });
+  document.getElementById('sm-cookie-reject').addEventListener('click', function () { toggle.checked = false; save(false); });
+  document.getElementById('sm-cookie-save').addEventListener('click', function () { save(toggle.checked); });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !prefs.hidden) { openPrefs(false); manage.focus(); }
+  });
+
+  window.smOpenCookieSettings = function () {
+    toggle.checked = (read() === 'granted');
+    banner.style.display = 'block';
+    openPrefs(true);
+  };
+})();
+</script>
+
 </body>
 </html>

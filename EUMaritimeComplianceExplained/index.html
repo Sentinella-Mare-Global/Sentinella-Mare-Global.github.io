@@ -1,11 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google Analytics — Consent Mode "basic".
+     The gtag.js tag is deliberately NOT loaded here. It is injected only after
+     the visitor grants consent (see the cookie banner script before </body>),
+     so no request reaches Google, and no IP address is disclosed to Google,
+     unless and until the visitor opts in. -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Queued only — inert until gtag.js is actually loaded post-consent.
+  gtag('consent', 'default', {
+    analytics_storage: 'denied',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied'
+  });
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
 <!-- ── PRIMARY SEO ── -->
 <title>EU Maritime Compliance Pressure Window 2026–2027 | NIS2, CER &amp; Circular 177 Explained — Sentinella Mare</title>
+<!-- Favicon -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <meta name="description" content="How NIS2, the CER Directive, and Italy's Circular 177/2025 converge on Mediterranean maritime operators between June 2026 and approximately June 2027 — twelve months of compounding obligation, and how Sentinella Mare addresses each one.">
 <link rel="canonical" href="https://sentinellaglobal.com/EUMaritimeComplianceExplained">
 
@@ -42,9 +64,9 @@
 }
 </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Rajdhani:wght@300;500;600;700&family=Share+Tech+Mono&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+<!-- Self-hosted webfonts: no third-party request, so no visitor IP is
+     disclosed to Google before consent. See /fonts/OFL.txt for licensing. -->
+<link rel="stylesheet" href="/fonts/fonts.css">
 
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -68,8 +90,10 @@
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 999;
   display: flex; align-items: center; justify-content: space-between;
+  gap: 40px; /* keep the wordmark from colliding with the nav links */
   padding: 14px 64px;
   background: rgba(8,19,30,0.92);
+  -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(45,122,58,0.18);
 }
@@ -81,13 +105,14 @@ nav {
   color: var(--white); letter-spacing: 3px;
 }
 .nav-brand .n2 {
-  font-family: 'Share Tech Mono', monospace; font-size: 9px;
-  color: var(--green-mid); letter-spacing: 4px; margin-top: 3px;
-}
+  font-family: 'Share Tech Mono', monospace; font-size: 12px;
+  color: var(--green-mid); letter-spacing: 2px; margin-top: 3px;
+ white-space: nowrap;}
 .nav-links { display: flex; align-items: center; gap: 32px; }
 .nav-links a {
   color: var(--text); text-decoration: none;
-  font-size: 12px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+  font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  white-space: nowrap;
   transition: color 0.25s;
 }
 .nav-links a:hover { color: var(--green-glow); }
@@ -131,9 +156,9 @@ nav {
 .lang-menu .lang-btn {
   background: none; border: none; border-bottom: 1px solid rgba(45,122,58,0.15);
   cursor: pointer; color: rgba(200,216,236,0.55);
-  font-family: 'Share Tech Mono', monospace; font-size: 11px;
+  font-family: 'Share Tech Mono', monospace; font-size: 13px;
   padding: 9px 16px; text-transform: uppercase; text-align: center;
-  transition: color 0.2s, background 0.2s; letter-spacing: 2px;
+  transition: color 0.2s, background 0.2s; letter-spacing: 1.5px;
 }
 .lang-menu .lang-btn:last-child { border-bottom: none; }
 .lang-menu .lang-btn:hover { color: var(--green-glow); background: rgba(45,122,58,0.1); }
@@ -144,7 +169,8 @@ nav {
 .nav-comp-trigger {
   background: none; border: none; cursor: pointer; padding: 0;
   color: var(--text); font-family: 'Rajdhani', sans-serif;
-  font-size: 12px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+  font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  white-space: nowrap;
   display: flex; align-items: center; gap: 5px; transition: color 0.25s;
 }
 .nav-comp-trigger:hover { color: var(--green-glow); }
@@ -162,7 +188,7 @@ nav {
 .nav-comp-menu a {
   display: block; padding: 12px 20px;
   color: rgba(200,216,236,0.7);
-  font-family: 'Share Tech Mono', monospace; font-size: 10px;
+  font-family: 'Share Tech Mono', monospace; font-size: 12px;
   letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
   border-bottom: 1px solid rgba(45,122,58,0.12);
   transition: color 0.2s, background 0.2s;
@@ -170,7 +196,7 @@ nav {
 .nav-comp-menu a:last-child { border-bottom: none; }
 .nav-comp-menu a:hover { color: var(--green-glow); background: rgba(45,122,58,0.08); }
 .nav-comp-menu .comp-link-label {
-  display: block; font-size: 8px; color: rgba(45,122,58,0.6);
+  display: block; font-size: 12px; color: rgba(45,122,58,0.6);
   letter-spacing: 1.5px; margin-top: 2px;
 }
 
@@ -188,23 +214,24 @@ footer {
 .footer-brand-text { display: flex; flex-direction: column; gap: 12px; }
 .footer-brand img { height: 100px; width: fit-content; }
 .footer-brand p {
-  font-size: 13px; line-height: 1.7; color: var(--text);
+  font-size: 14px; line-height: 1.7; color: var(--text);
   max-width: 280px; font-family: 'Rajdhani', sans-serif;
 }
 .footer-brand .hq {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 9px; letter-spacing: 3px; color: var(--green-mid);
+  font-size: 12px; letter-spacing: 2px; color: var(--green-mid);
   text-transform: uppercase;
 }
 .footer-contact-btn { display: inline-block; width: fit-content; }
+  .footer-col a.footer-contact-btn { color: #fff; }  /* WCAG 1.4.3: .footer-col a would otherwise win on specificity and dim this button's text */
 .footer-col .footer-nav-title {
   font-family: 'Cinzel', serif;
-  font-size: 13px; font-weight: 600;
+  font-size: 14px; font-weight: 600;
   color: var(--white); letter-spacing: 1px;
   margin-bottom: 20px;
 }
 .footer-col a, .footer-col p {
-  display: block; font-size: 13px;
+  display: block; font-size: 14px;
   color: var(--text); text-decoration: none;
   margin-bottom: 10px; letter-spacing: 0.5px;
   transition: color 0.25s; font-family: 'Rajdhani', sans-serif;
@@ -216,6 +243,7 @@ footer {
   font-size: 13px; font-weight: 700; letter-spacing: 2.5px;
   text-transform: uppercase; text-decoration: none;
   border: none; cursor: pointer; display: inline-block;
+  -webkit-clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
   clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
   transition: all 0.3s;
 }
@@ -230,9 +258,13 @@ body {
   background: #060f18;
   color: #f0f5fc;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.75;
+  /* Stop iOS inflating text when the device rotates to landscape */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   min-height: 100vh;
+  min-height: 100dvh; /* iOS: account for the dynamic toolbar */
 }
 
 /* ── PAGE TOKENS ── */
@@ -246,7 +278,7 @@ body {
 }
 .hero-eyebrow {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase;
+  font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase;
   color: #3aab4a; margin-bottom: 20px;
 }
 .page-hero h1 {
@@ -257,7 +289,7 @@ body {
 }
 .page-hero h1 em { font-style: italic; color: #3aab4a; }
 .hero-sub {
-  font-size: 16px; color: #6a8aaa; max-width: 620px;
+  font-size: 16px; color: #8aa5bf; max-width: 620px;
   margin: 0 auto 40px; font-weight: 300; line-height: 1.8;
 }
 .hero-rule {
@@ -270,7 +302,7 @@ body {
 section { max-width: 980px; margin: 0 auto; padding: 60px 3rem; }
 .section-label {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase;
+  font-size: 13px; letter-spacing: 0.22em; text-transform: uppercase;
   color: #3aab4a; margin-bottom: 12px;
 }
 .section-title {
@@ -280,7 +312,7 @@ section { max-width: 980px; margin: 0 auto; padding: 60px 3rem; }
   margin-bottom: 16px; line-height: 1.2;
 }
 .section-body {
-  font-size: 15px; color: #6a8aaa; line-height: 1.85;
+  font-size: 16px; color: #8aa5bf; line-height: 1.85;
   max-width: 680px; font-weight: 300;
 }
 
@@ -299,7 +331,7 @@ hr.divider {
 .fw-card:hover { background: #1a3450; }
 .fw-tag {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 8px; font-weight: 400; letter-spacing: 0.14em;
+  font-size: 12px; font-weight: 400; letter-spacing: 0.14em;
   text-transform: uppercase; padding: 3px 8px; border-radius: 2px;
   display: inline-block; margin-bottom: 14px;
 }
@@ -310,16 +342,16 @@ hr.divider {
   font-family: 'Cinzel', serif; font-size: 18px; font-weight: 700;
   color: #f0f5fc; margin-bottom: 8px;
 }
-.fw-full { font-size: 11px; color: #6a8aaa; margin-bottom: 16px;
+.fw-full { font-size: 13px; color: #8aa5bf; margin-bottom: 16px;
   font-family: 'Share Tech Mono', monospace; letter-spacing: 0.04em; }
-.fw-body { font-size: 13px; color: #6a8aaa; line-height: 1.7; font-weight: 300; }
+.fw-body { font-size: 15px; color: #8aa5bf; line-height: 1.7; font-weight: 300; }
 .fw-dates { margin-top: 16px; display: flex; flex-direction: column; gap: 6px; }
 .fw-date { display: flex; justify-content: space-between; align-items: center;
-  font-size: 11px; padding: 5px 0;
+  font-size: 13px; padding: 5px 0;
   border-bottom: 1px solid rgba(45,122,58,0.15); }
 .fw-date:last-child { border-bottom: none; }
-.fw-date-label { color: #6a8aaa; font-weight: 300; }
-.fw-date-val { font-family: 'Share Tech Mono', monospace; font-size: 10px; }
+.fw-date-label { color: #8aa5bf; font-weight: 300; }
+.fw-date-val { font-family: 'Share Tech Mono', monospace; font-size: 13px; }
 .nis2-val { color: #a78bfa; }
 .cer-val  { color: #0eb5af; }
 .c177-val { color: #c9a84c; }
@@ -348,20 +380,33 @@ hr.divider {
 }
 .tl-month {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 8px; color: #6a8aaa;
+  font-size: 12px; color: #8aa5bf;
   text-align: center; letter-spacing: 0.04em;
 }
 .tl-month.now { color: #3aab4a; font-weight: 400; }
-.tl-tracks { display: flex; flex-direction: column; gap: 10px; margin-top: 6px; }
+.tl-tracks { display: flex; flex-direction: column; gap: 40px; margin-top: 10px; }
+/* Dots less than a label-width apart (CER sits at 88% and 96%) overlap into
+   unreadable text, so the second label is lifted into its own band. */
+.tl-dot-label.lbl-hi { top: -46px; }
+/* A centred label on a dot near the left edge overhangs the track name
+   ("NIS2"/"CER"); anchor those to the dot and let them run rightwards. */
+.tl-dot-label.lbl-left { transform: none; left: -3px; }
+/* Mirror case: a centred label on a dot near the right edge spills out of the
+   timeline; anchor those to the dot and let them run leftwards. */
+.tl-dot-label.lbl-right { transform: translateX(-100%); left: 6px; }
 .tl-track { display: grid; grid-template-columns: 80px 1fr; align-items: center; gap: 12px; }
 .tl-label {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 9px; letter-spacing: 0.08em; text-align: right;
+  font-size: 13px; letter-spacing: 0.08em; text-align: right;
 }
 .tl-label.nis2 { color: #a78bfa; }
 .tl-label.cer  { color: #0eb5af; }
 .tl-label.c177 { color: #c9a84c; }
-.tl-bar-wrap { position: relative; height: 22px; background: #1a3450; border-radius: 2px; overflow: hidden; }
+/* No overflow:hidden — .tl-dot-label and .now-line::before are positioned
+   above the bar (top:-18px) and were being clipped down onto the gradient,
+   where same-coloured text was unreadable. .tl-bar carries its own
+   border-radius, so the wrap does not need to clip. */
+.tl-bar-wrap { position: relative; height: 22px; background: #1a3450; border-radius: 2px; }
 .tl-bar { position: absolute; height: 100%; border-radius: 2px; top: 0; opacity: 0.85; }
 .bar-nis2 { background: linear-gradient(90deg, #7c3aed, #a78bfa); }
 .bar-cer  { background: linear-gradient(90deg, #0d9488, #0eb5af); }
@@ -371,10 +416,16 @@ hr.divider {
   width: 6px; height: 6px; border-radius: 50%; border: 1.5px solid #060d18;
 }
 .tl-dot-label {
-  position: absolute; top: -18px;
+  position: absolute; top: -20px;
   font-family: 'Share Tech Mono', monospace;
-  font-size: 7px; white-space: nowrap;
+  font-size: 12px; white-space: nowrap;
   transform: translateX(-50%);
+  /* The label straddles the bar, and each label is tinted to match its own
+     track — i.e. the same colour as the gradient beneath it, which made the
+     text unreadable. The chip guarantees a dark backdrop whatever it sits on. */
+  background: rgba(6,13,24,0.92);
+  padding: 2px 6px;
+  border-radius: 2px;
 }
 .now-line {
   position: absolute; top: 0; bottom: 0; width: 1.5px;
@@ -384,10 +435,10 @@ hr.divider {
   content: 'TODAY'; position: absolute; top: -18px;
   left: 50%; transform: translateX(-50%);
   font-family: 'Share Tech Mono', monospace;
-  font-size: 7px; color: #ef4444; white-space: nowrap;
+  font-size: 12px; color: #f87171; white-space: nowrap;  /* #ef4444 was 4.26:1 on #112336 once unclipped */
 }
 .tl-note {
-  margin-top: 16px; font-size: 11px; color: #6a8aaa;
+  margin-top: 16px; font-size: 13px; color: #8aa5bf;
   font-family: 'Share Tech Mono', monospace; letter-spacing: 0.04em;
 }
 
@@ -403,14 +454,14 @@ hr.divider {
   font-size: 22px; font-weight: 700; color: #f0f5fc;
   margin-bottom: 16px;
 }
-.wh-body { font-size: 13px; color: #6a8aaa; line-height: 1.8; font-weight: 300; }
+.wh-body { font-size: 16px; color: #8aa5bf; line-height: 1.8; font-weight: 300; }
 .wh-list { margin-top: 16px; display: flex; flex-direction: column; gap: 10px; }
 .wh-item { display: flex; gap: 10px; align-items: flex-start; }
 .wh-bullet {
   width: 6px; height: 6px; border-radius: 50%;
   flex-shrink: 0; margin-top: 7px;
 }
-.wh-item-text { font-size: 13px; color: #6a8aaa; font-weight: 300; line-height: 1.7; }
+.wh-item-text { font-size: 15px; color: #8aa5bf; font-weight: 300; line-height: 1.7; }
 .wh-item-text strong { color: #ddeeff; font-weight: 500; }
 
 /* OVERLAP CALLOUT */
@@ -423,11 +474,11 @@ hr.divider {
 }
 .overlap-callout .label {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase;
+  font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
   color: #c9a84c; margin-bottom: 10px;
 }
 .overlap-callout p {
-  font-size: 14px; color: #6a8aaa; font-weight: 300; line-height: 1.8;
+  font-size: 15px; color: #8aa5bf; font-weight: 300; line-height: 1.8;
 }
 .overlap-callout strong { color: #f0f5fc; font-weight: 500; }
 
@@ -448,13 +499,13 @@ hr.divider {
 .resp-card.c177 { border-left-color: #c9a84c; }
 .resp-name {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase;
+  font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;
   margin-bottom: 10px;
 }
 .resp-card.nis2 .resp-name { color: #a78bfa; }
 .resp-card.cer  .resp-name { color: #0eb5af; }
 .resp-card.c177 .resp-name { color: #c9a84c; }
-.resp-body { font-size: 12.5px; color: #6a8aaa; line-height: 1.75; font-weight: 300; }
+.resp-body { font-size: 15px; color: #8aa5bf; line-height: 1.75; font-weight: 300; }
 .resp-body strong { color: #ddeeff; font-weight: 500; }
 
 /* CTA */
@@ -469,20 +520,21 @@ hr.divider {
   font-size: clamp(22px, 3vw, 30px); font-weight: 700;
   color: #f0f5fc; margin-bottom: 12px;
 }
-.cta-band p { font-size: 14px; color: #6a8aaa; font-weight: 300; margin-bottom: 28px; }
+.cta-band p { font-size: 16px; color: #8aa5bf; font-weight: 300; margin-bottom: 28px; }
 .cta-btn {
   display: inline-block;
   background: #2d7a3a; color: white;
   font-family: 'Rajdhani', sans-serif; font-weight: 700;
-  font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase;
+  font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;
   padding: 14px 36px; border-radius: 2px; text-decoration: none;
+  -webkit-clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
   clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
   transition: all 0.25s;
 }
 .cta-btn:hover { background: #3aab4a; box-shadow: 0 0 24px rgba(79,217,98,0.25); transform: translateY(-2px); }
 
 /* iPad landscape — collapse nav to hamburger */
-@media (max-width: 1100px) {
+@media (max-width: 1300px) {
   .nav-toggle { display: flex; }
   .nav-links {
     display: none; position: fixed;
@@ -507,7 +559,7 @@ hr.divider {
   .nav-comp-wrap.open .nav-comp-menu {
     display: flex; flex-direction: column; align-items: center; gap: 0; padding: 6px 0;
   }
-  .nav-comp-menu a { border: none; font-size: 11px; padding: 8px 0; text-align: center; }
+  .nav-comp-menu a { border: none; font-size: 13px; padding: 8px 0; text-align: center; }
   .nav-comp-menu .comp-link-label { display: none; }
 }
 
@@ -516,7 +568,7 @@ hr.divider {
   nav { padding: 12px 20px; backdrop-filter: none; -webkit-backdrop-filter: none; }
   .nav-logo img { height: 70px; }
   .nav-brand .n1 { font-size: 15px; letter-spacing: 2px; }
-  .nav-brand .n2 { font-size: 8px; letter-spacing: 3px; }
+  .nav-brand .n2 { font-size: 12px; letter-spacing: 2px; }
   .nav-toggle { display: flex; }
   .nav-links {
     display: none; position: fixed;
@@ -545,7 +597,7 @@ hr.divider {
   .nav-comp-wrap.open .nav-comp-menu {
     display: flex; flex-direction: column; align-items: center; gap: 0; padding: 6px 0;
   }
-  .nav-comp-menu a { border: none; font-size: 11px; padding: 8px 0; text-align: center; }
+  .nav-comp-menu a { border: none; font-size: 13px; padding: 8px 0; text-align: center; }
   .nav-comp-menu .comp-link-label { display: none; }
   .page-hero { padding: 120px 1.25rem 48px; }
   section { padding: 48px 1.25rem; }
@@ -563,12 +615,12 @@ hr.divider {
 @media (max-width: 480px) {
   nav { padding: 10px 16px; }
   .nav-logo img { height: 56px; }
-  .nav-brand .n1 { font-size: 12px; letter-spacing: 1px; }
-  .nav-brand .n2 { font-size: 7px; letter-spacing: 2px; display: none; }
+  .nav-brand .n1 { font-size: 13px; letter-spacing: 1px; }
+  .nav-brand .n2 { font-size: 12px; letter-spacing: 2px; display: none; }
 }
 
 a, button { -webkit-tap-highlight-color: transparent; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 120px; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
@@ -579,16 +631,80 @@ html { scroll-behavior: smooth; }
   border-top: 1px solid rgba(45,122,58,0.15);
   background: #060f18;
 }
+/* WCAG 2.2 SC 2.5.8: standalone link rendered 15px tall. */
 .cross-link-strip a {
+  display: inline-block; padding: 5px 0;
   font-family: 'Share Tech Mono', monospace;
-  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
   color: rgba(240,245,252,0.5); text-decoration: none;
   transition: color 0.2s;
 }
 .cross-link-strip a:hover { color: #4fd962; }
+  .footer-legal-links {
+    display: flex; align-items: flex-start; gap: 16px; flex-wrap: wrap;
+  }
+  .footer-legal-link {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px; letter-spacing: 1.5px; color: rgba(240,245,252,0.65);
+    text-transform: uppercase; text-decoration: none;
+    background: none; border: none; cursor: pointer; padding: 6px 0;
+    line-height: 1; vertical-align: top;
+    transition: color 0.2s;
+  }
+  .footer-legal-link:hover { color: #eef3f8; }
+
+  /* ── Accessibility: focus, skip link, in-text link cues ── */
+  a:focus-visible, button:focus-visible, input:focus-visible,
+  select:focus-visible, textarea:focus-visible,
+  [tabindex]:not([tabindex="-1"]):focus-visible {
+    outline: 3px solid #4fd962; outline-offset: 3px; border-radius: 3px;
+  }
+  main:focus { outline: none; }
+  .skip-link {
+    position: absolute; left: 12px; top: -60px; z-index: 3000;
+    background: #2d7a3a; color: #fff; padding: 12px 20px; border-radius: 4px;
+    font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 13px;
+    letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
+    transition: top 0.2s;
+  }
+  .skip-link:focus { top: 12px; }
+  .sm-cookie-text a { text-decoration: underline; }
+
+
+/* iOS safe-area + nav edge padding (matches legal pages) */
+@supports (padding: max(0px)) {
+  nav {
+    padding-top: max(14px, env(safe-area-inset-top));
+    padding-left: max(20px, calc((100% - 1440px) / 2), env(safe-area-inset-left));
+    padding-right: max(20px, calc((100% - 1440px) / 2), env(safe-area-inset-right));
+  }
+  /* Keep footer content clear of the iPhone home indicator */
+  footer {
+    padding-bottom: max(32px, env(safe-area-inset-bottom));
+  }
+  @media (max-width: 480px) {
+    nav { padding-top: max(10px, env(safe-area-inset-top)); }
+    footer { padding-bottom: max(20px, env(safe-area-inset-bottom)); }
+  }
+}
+
+  /* WCAG 2.2 SC 2.5.8 Target Size */
+  .footer-col a { padding: 3px 0; }
+  /* .footer-col a wins on specificity over .btn-primary; restore button sizing/shape for the Contact CTA */
+  .footer-col a.footer-contact-btn {
+    display: inline-block; padding: 14px 36px; letter-spacing: 2px; margin-bottom: 0;
+  }
+  .footer-legal-links { row-gap: 4px; }
+  /* Primary nav links rendered 15-23px tall — under the 24px minimum, and not
+     covered by the inline-in-prose exception. Vertical padding only, so the nav
+     height (driven by the logo) is unchanged. */
+  .nav-links > a { padding: 5px 0; }
+  .nav-comp-trigger { padding: 5px 0; }
 </style>
 </head>
 <body>
+
+<a href="#main" class="skip-link">Skip to content</a>
 
 <!-- ── SITE NAV ── -->
 <nav>
@@ -599,24 +715,40 @@ html { scroll-behavior: smooth; }
       <span class="n2">Mediterranean Intelligence</span>
     </div>
   </a>
-  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open')">
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open')">
     <span></span><span></span><span></span>
   </button>
   <div class="nav-links" id="navLinks">
-    <a href="/#services" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Services</a>
+    <div class="nav-comp-wrap" id="servicesNav">
+      <button class="nav-comp-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="servicesMenu" onclick="document.getElementById('servicesNav').classList.toggle('open')">
+        Services
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="nav-comp-menu" id="servicesMenu">
+        <a href="/#platform" onclick="document.getElementById('servicesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">
+          Intelligence Terminal
+          <span class="comp-link-label">Live Intelligence Platform</span>
+        </a>
+        <a href="/#advisory" onclick="document.getElementById('servicesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">
+          Advisory
+          <span class="comp-link-label">(Coming Soon)</span>
+        </a>
+      </div>
+    </div>
     <a href="/#platform" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Live Platform</a>
-    <a href="/#advisory" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Advisory</a>
-    <a href="/#pricing" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Subscription</a>
+    <a href="/#pricing" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Pricing</a>
     <a href="/#clients" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Clients</a>
     <a href="/Leadership" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Leadership</a>
     <div class="nav-comp-wrap" id="complianceNav">
-      <button class="nav-comp-trigger" onclick="document.getElementById('complianceNav').classList.toggle('open')">
+      <button class="nav-comp-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="complianceMenu" onclick="document.getElementById('complianceNav').classList.toggle('open')">
         Compliance
         <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
-      <div class="nav-comp-menu">
+      <div class="nav-comp-menu" id="complianceMenu">
         <a href="/EUMaritimeComplianceCountdown" target="_blank" rel="noopener noreferrer">
           Deadline Countdown
           <span class="comp-link-label">NIS2 · CER · Circ. 177 live timers</span>
@@ -628,23 +760,25 @@ html { scroll-behavior: smooth; }
       </div>
     </div>
     <div class="lang-dropdown" id="langDropdown">
-      <button class="lang-globe" onclick="document.getElementById('langDropdown').classList.toggle('open')" aria-label="Select language">
+      <button class="lang-globe" onclick="document.getElementById('langDropdown').classList.toggle('open')" aria-label="Select language" aria-expanded="false" aria-haspopup="true" aria-controls="langMenu">
         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="10"/>
           <ellipse cx="12" cy="12" rx="4" ry="10"/>
           <line x1="2" y1="12" x2="22" y2="12"/>
         </svg>
       </button>
-      <div class="lang-menu">
-        <button class="lang-btn active" id="btn-en">EN</button>
+      <div class="lang-menu" id="langMenu">
+        <button class="lang-btn active" aria-current="true" id="btn-en">EN</button>
         <button class="lang-btn" id="btn-it">IT</button>
         <button class="lang-btn" id="btn-ar">AR</button>
         <button class="lang-btn" id="btn-el">EL</button>
       </div>
     </div>
-    <a href="/#contact" class="btn-nav" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Request Access</a>
+    <a href="https://mare.sentinellaglobal.com/" class="btn-nav" target="_blank" rel="noopener noreferrer" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Launch Terminal</a>
   </div>
 </nav>
+
+<main id="main" tabindex="-1">
 
 <!-- ── HERO ── -->
 <div class="page-hero">
@@ -734,10 +868,10 @@ html { scroll-behavior: smooth; }
               <div class="now-line" style="left:4%"></div>
               <div class="tl-bar bar-nis2" style="left:0%;width:100%"></div>
               <div class="tl-dot" style="left:8%;background:#a78bfa">
-                <div class="tl-dot-label" style="color:#a78bfa">Categorisation 30 Jun</div>
+                <div class="tl-dot-label lbl-left" style="color:#a78bfa">Categorisation 30 Jun</div>
               </div>
               <div class="tl-dot" style="left:42%;background:#a78bfa">
-                <div class="tl-dot-label" style="color:#a78bfa">Italy full Oct</div>
+                <div class="tl-dot-label lbl-hi" style="color:#a78bfa">Italy full Oct</div>
               </div>
             </div>
           </div>
@@ -747,13 +881,13 @@ html { scroll-behavior: smooth; }
               <div class="now-line" style="left:4%"></div>
               <div class="tl-bar bar-cer" style="left:8%;width:92%"></div>
               <div class="tl-dot" style="left:8%;background:#0eb5af">
-                <div class="tl-dot-label" style="color:#0eb5af">Designation 17 Jul</div>
+                <div class="tl-dot-label lbl-left" style="color:#0eb5af">Designation 17 Jul</div>
               </div>
               <div class="tl-dot" style="left:88%;background:#0eb5af">
                 <div class="tl-dot-label" style="color:#0eb5af">Risk assess. May (est.)</div>
               </div>
               <div class="tl-dot" style="left:96%;background:#0eb5af">
-                <div class="tl-dot-label" style="color:#0eb5af">Full compliance Jun (est.)</div>
+                <div class="tl-dot-label lbl-hi lbl-right" style="color:#0eb5af">Full compliance Jun (est.)</div>
               </div>
             </div>
           </div>
@@ -790,7 +924,7 @@ html { scroll-behavior: smooth; }
             <div class="wh-item-text"><strong>Ferry and Ro-Ro operators</strong> — CER + Circolare 177. Designation in July starts the notification clock toward risk assessment.</div>
           </div>
           <div class="wh-item">
-            <div class="wh-bullet" style="background: #6a8aaa"></div>
+            <div class="wh-bullet" style="background: #8aa5bf"></div>
             <div class="wh-item-text"><strong>Subsea cable operators</strong> — NIS2 + likely CER. Cable inclusion under CER sits at member state discretion — not explicitly named in the Directive Annex — but Mediterranean exposure makes in-scope treatment likely.</div>
           </div>
         </div>
@@ -801,7 +935,7 @@ html { scroll-behavior: smooth; }
         <div class="wh-list">
           <div class="wh-item">
             <div class="wh-bullet" style="background: #ef4444"></div>
-            <div class="wh-item-text"><strong>June 30 — NIS2 annual categorisation.</strong> Entities submit risk classification to the ACN portal. ACN's first on-site inspections begin from October.</div>
+            <div class="wh-item-text"><strong>June 30 — NIS2 annual categorisation.</strong> Entities submit risk classification to the ACN portal. ACN's on-site inspections are expected from late 2026.</div>
           </div>
           <div class="wh-item">
             <div class="wh-bullet" style="background: #f59e0b"></div>
@@ -868,6 +1002,8 @@ html { scroll-behavior: smooth; }
 </div>
 
 <!-- ── SITE FOOTER ── -->
+</main>
+
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
@@ -878,14 +1014,14 @@ html { scroll-behavior: smooth; }
       </div>
     </div>
     <div class="footer-col">
-      <h3 class="footer-nav-title">Services</h3>
+      <p class="footer-nav-title">Services</p>
       <a href="/#services">Mediterranean Watch Intelligence Terminal</a>
       <a href="/#advisory">Investment Advisory</a>
       <a href="/#advisory">Supply Chain Risk</a>
       <a href="/#pricing">Subscription Tiers</a>
     </div>
     <div class="footer-col">
-      <h3 class="footer-nav-title">Coverage</h3>
+      <p class="footer-nav-title">Coverage</p>
       <p>Strait of Gibraltar</p>
       <p>Tyrrhenian Sea</p>
       <p>Strait of Sicily</p>
@@ -894,6 +1030,18 @@ html { scroll-behavior: smooth; }
     </div>
     <div class="footer-col">
       <a href="mailto:james@sentinellaglobal.com" class="btn-primary footer-contact-btn">Contact</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px 48px;padding:20px 0 0;border-top:1px solid rgba(255,255,255,0.07);">
+    <p style="font-family:'Share Tech Mono',monospace;font-size:12px;letter-spacing:1.5px;color:#f0f5fc;text-transform:uppercase;">© 2026 Sentinella LLC · 8 The Green STE A, Dover, DE 19901, USA · HQ: Brussels, Belgium</p>
+    <div class="footer-legal-links">
+      <a href="/privacypolicy/" class="footer-legal-link">Privacy Policy</a>
+      <a href="/legalterms/" class="footer-legal-link">Terms</a>
+      <a href="/dpa/" class="footer-legal-link">DPA</a>
+      <a href="/legalnotice/" class="footer-legal-link">Legal Notice</a>
+      <a href="/accessibility/" class="footer-legal-link">Accessibility</a>
+      <button onclick="if(typeof smOpenCookieSettings==='function')smOpenCookieSettings();" class="footer-legal-link">Cookie Settings</button>
     </div>
   </div>
 </footer>
@@ -943,6 +1091,210 @@ document.addEventListener('click', function(e) {
   if (d3 >= 0) parts.push('Circolare 177 ' + fmt(d3));
   var el = document.getElementById('tl-note');
   if (el) el.textContent = parts.join('  ·  ');
+})();
+</script>
+
+
+<!-- ── COOKIE CONSENT BANNER ── -->
+<style>
+#sm-cookie-banner {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+  background: #0d1b2a; border-top: 1px solid rgba(45,122,58,0.4);
+  padding: 20px 48px; box-shadow: 0 -8px 40px rgba(0,0,0,0.55);
+  font-family: 'Rajdhani', sans-serif;
+  max-height: 85vh; overflow-y: auto;
+}
+[hidden] { display: none !important; }
+.sm-cookie-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 32px; flex-wrap: wrap;
+}
+.sm-cookie-label {
+  display: block; font-family: 'Share Tech Mono', monospace;
+  font-size: 13px; letter-spacing: 1.5px; color: #3aab4a;
+  text-transform: uppercase; margin-bottom: 7px;
+}
+.sm-cookie-text { font-size: 15px; line-height: 1.65; color: #c8d8ec; max-width: 680px; }
+.sm-cookie-text a { color: #3aab4a; }
+.sm-cookie-text a:hover { color: #4fd962; }
+.sm-cookie-actions { display: flex; gap: 12px; flex-shrink: 0; align-items: center; }
+.sm-cookie-btn {
+  font-family: 'Rajdhani', sans-serif; font-size: 14px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase; cursor: pointer;
+  padding: 11px 26px; border-radius: 0; transition: all 0.25s;
+  -webkit-tap-highlight-color: transparent; white-space: nowrap;
+}
+.sm-cookie-reject, .sm-cookie-manage {
+  background: transparent; color: #c8d8ec; border: 1px solid rgba(200,216,236,0.35);
+}
+.sm-cookie-reject:hover, .sm-cookie-manage:hover { border-color: #eef3f8; color: #eef3f8; }
+.sm-cookie-accept {
+  background: #2d7a3a; color: #fff; border: 1px solid #2d7a3a;
+  -webkit-clip-path: polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px));
+  clip-path: polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px));
+}
+.sm-cookie-accept:hover { background: #3aab4a; border-color: #3aab4a; box-shadow: 0 0 22px rgba(58,171,74,0.35); }
+
+/* ── Manage Preferences panel ── */
+.sm-cookie-prefs {
+  max-width: 1200px; margin: 18px auto 0; padding-top: 18px;
+  border-top: 1px solid rgba(45,122,58,0.25);
+}
+.sm-pref-row {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 24px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.sm-pref-row:last-of-type { border-bottom: none; }
+.sm-pref-name {
+  display: block; font-size: 15px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase; color: #eef3f8;
+}
+label.sm-pref-name { cursor: pointer; }
+.sm-pref-desc { font-size: 14px; line-height: 1.6; color: #c8d8ec; margin-top: 5px; max-width: 720px; }
+.sm-pref-control { flex-shrink: 0; display: flex; align-items: center; min-height: 24px; }
+.sm-pref-always {
+  font-family: 'Share Tech Mono', monospace; font-size: 13px;
+  letter-spacing: 1px; text-transform: uppercase; color: #3aab4a;
+}
+.sm-pref-toggle { width: 24px; height: 24px; accent-color: #2d7a3a; cursor: pointer; }
+.sm-pref-save { display: flex; justify-content: flex-end; padding-top: 16px; }
+@media (max-width: 768px) {
+  #sm-cookie-banner { padding: 18px 20px; }
+  .sm-cookie-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .sm-cookie-actions { width: 100%; flex-wrap: wrap; }
+  /* Labels are nowrap; tighter padding + wrap keeps them inside a 375px screen
+     and lets them stack full-width when they cannot share a row. */
+  .sm-cookie-btn { flex: 1 1 auto; text-align: center; padding: 11px 14px; }
+  .sm-pref-save { justify-content: stretch; }
+  .sm-pref-save .sm-cookie-btn { width: 100%; }
+}
+</style>
+<div id="sm-cookie-banner" role="dialog" aria-modal="false" aria-labelledby="sm-cookie-heading">
+  <div class="sm-cookie-inner">
+    <div>
+      <span class="sm-cookie-label" id="sm-cookie-heading">Cookie Settings</span>
+      <p class="sm-cookie-text">Sentinella Mare (data controller) uses Google Analytics to understand how visitors use this site. Google Analytics loads only if you accept &mdash; if you decline, nothing is sent to Google and no analytics cookies are set. No advertising or third-party tracking cookies are used. <a href="/privacypolicy/">Privacy Policy</a>.</p>
+    </div>
+    <div class="sm-cookie-actions">
+      <button id="sm-cookie-reject" class="sm-cookie-btn sm-cookie-reject">Reject All</button>
+      <button id="sm-cookie-manage" class="sm-cookie-btn sm-cookie-manage" aria-expanded="false" aria-controls="sm-cookie-prefs">Manage Preferences</button>
+      <button id="sm-cookie-accept" class="sm-cookie-btn sm-cookie-accept">Accept Analytics</button>
+    </div>
+  </div>
+  <div id="sm-cookie-prefs" class="sm-cookie-prefs" hidden>
+    <div class="sm-pref-row">
+      <div>
+        <span class="sm-pref-name">Strictly necessary</span>
+        <p class="sm-pref-desc">Required for the site to work and to remember your cookie choice. These are always active and cannot be switched off.</p>
+      </div>
+      <div class="sm-pref-control"><span class="sm-pref-always">Always on</span></div>
+    </div>
+    <div class="sm-pref-row">
+      <div>
+        <label class="sm-pref-name" for="sm-pref-analytics">Analytics</label>
+        <p class="sm-pref-desc">Google Analytics, used to count visits and see which pages are read. Switching this on loads Google Analytics and sets its cookies. Leaving it off means no request is made to Google at all.</p>
+      </div>
+      <div class="sm-pref-control">
+        <input type="checkbox" id="sm-pref-analytics" class="sm-pref-toggle">
+      </div>
+    </div>
+    <div class="sm-pref-save">
+      <button id="sm-cookie-save" class="sm-cookie-btn sm-cookie-accept">Save Preferences</button>
+    </div>
+  </div>
+</div>
+<script>
+(function () {
+  var KEY = 'sm_cookie_consent';
+  var GA_ID = 'G-6FPWJM34X1';
+  var gaLoaded = false;
+
+  // Consent Mode "basic": gtag.js is injected only once consent is granted, so
+  // no request reaches Google — and no IP is disclosed — until the user opts in.
+  function loadGA() {
+    if (gaLoaded) return;
+    gaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', GA_ID);
+  }
+
+  // Withdrawal must be as easy as consent: drop the _ga cookies on refusal.
+  function clearGaCookies() {
+    document.cookie.split(';').forEach(function (c) {
+      var n = c.split('=')[0].trim();
+      if (n.indexOf('_ga') !== 0) return;
+      var h = location.hostname;
+      ['', '; domain=' + h, '; domain=.' + h].forEach(function (d) {
+        document.cookie = n + '=; Max-Age=0; path=/' + d;
+      });
+    });
+  }
+
+  function apply(granted) {
+    if (typeof gtag === 'function') {
+      gtag('consent', 'update', {
+        analytics_storage: granted ? 'granted' : 'denied',
+        ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied'
+      });
+    }
+    if (granted) loadGA(); else clearGaCookies();
+  }
+
+  var banner = document.getElementById('sm-cookie-banner');
+  var prefs  = document.getElementById('sm-cookie-prefs');
+  var manage = document.getElementById('sm-cookie-manage');
+  var toggle = document.getElementById('sm-pref-analytics');
+
+  function read() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function openPrefs(open) {
+    prefs.hidden = !open;
+    manage.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (open) toggle.focus();
+  }
+  function save(granted) {
+    try { localStorage.setItem(KEY, granted ? 'granted' : 'denied'); } catch (e) {}
+    apply(granted);
+    openPrefs(false);
+    banner.style.display = 'none';
+  }
+
+  var stored = read();
+  if (stored === 'granted') { toggle.checked = true; apply(true); }
+  else if (stored === 'denied') { apply(false); }
+  else { banner.style.display = 'block'; }
+
+  manage.addEventListener('click', function () { openPrefs(prefs.hidden); });
+  document.getElementById('sm-cookie-accept').addEventListener('click', function () { toggle.checked = true; save(true); });
+  document.getElementById('sm-cookie-reject').addEventListener('click', function () { toggle.checked = false; save(false); });
+  document.getElementById('sm-cookie-save').addEventListener('click', function () { save(toggle.checked); });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !prefs.hidden) { openPrefs(false); manage.focus(); }
+  });
+
+  window.smOpenCookieSettings = function () {
+    toggle.checked = (read() === 'granted');
+    banner.style.display = 'block';
+    openPrefs(true);
+  };
+})();
+</script>
+
+
+<script>
+/* Accessibility: keep aria-expanded synced, Escape to close, focus into mobile menu */
+(function(){
+  function sync(c,t){ if(!c||!t)return; var a=function(){t.setAttribute('aria-expanded',c.classList.contains('open')?'true':'false');}; a(); new MutationObserver(a).observe(c,{attributes:true,attributeFilter:['class']}); }
+  document.querySelectorAll('.nav-comp-wrap').forEach(function(w){ sync(w,w.querySelector('.nav-comp-trigger')); });
+  var ld=document.getElementById('langDropdown'); sync(ld, ld&&ld.querySelector('.lang-globe'));
+  var tg=document.getElementById('navToggle'); sync(tg,tg);
+  if(tg){ new MutationObserver(function(){ if(tg.classList.contains('open')){ var l=document.getElementById('navLinks'); var f=l&&l.querySelector('button, a, [tabindex]'); if(f)f.focus(); } }).observe(tg,{attributes:true,attributeFilter:['class']}); }
+  document.addEventListener('keydown',function(e){ if(e.key!=='Escape')return; document.querySelectorAll('.nav-comp-wrap.open, #langDropdown.open').forEach(function(w){ w.classList.remove('open'); var t=w.querySelector('.nav-comp-trigger, .lang-globe'); if(t)t.focus(); }); var nt=document.getElementById('navToggle'); if(nt&&nt.classList.contains('open')){ nt.classList.remove('open'); document.getElementById('navLinks').classList.remove('open'); nt.focus(); } });
 })();
 </script>
 

@@ -1,24 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google Analytics — Consent Mode "basic".
+     The gtag.js tag is deliberately NOT loaded here. It is injected only after
+     the visitor grants consent (see the cookie banner script before </body>),
+     so no request reaches Google, and no IP address is disclosed to Google,
+     unless and until the visitor opts in. -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Queued only — inert until gtag.js is actually loaded post-consent.
+  gtag('consent', 'default', {
+    analytics_storage: 'denied',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied'
+  });
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <link rel="canonical" href="https://sentinellaglobal.com/Leadership">
-<title>Leadership — Sentinella Global</title>
-<meta name="description" content="Meet the Sentinella Global leadership team — maritime intelligence professionals, security analysts, and compliance experts serving Mediterranean operators.">
+<title>Leadership — Sentinella Mare</title>
+<!-- Favicon -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="description" content="Meet the Sentinella Mare leadership team — maritime intelligence professionals, security analysts, and compliance experts serving Mediterranean operators.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Sentinella Mare">
-<meta property="og:title" content="Leadership — Sentinella Global">
-<meta property="og:description" content="Meet the Sentinella Global leadership team — maritime intelligence professionals, security analysts, and compliance experts serving Mediterranean operators.">
+<meta property="og:title" content="Leadership — Sentinella Mare">
+<meta property="og:description" content="Meet the Sentinella Mare leadership team — maritime intelligence professionals, security analysts, and compliance experts serving Mediterranean operators.">
 <meta property="og:url" content="https://sentinellaglobal.com/Leadership">
 <meta property="og:image" content="https://sentinellaglobal.com/Sentinella%20Mare%20Logo_White.png">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Leadership — Sentinella Global">
+<meta name="twitter:title" content="Leadership — Sentinella Mare">
 <meta name="twitter:description" content="The team behind Sentinella Mare — maritime intelligence professionals and compliance experts serving Mediterranean operators.">
 <meta name="twitter:image" content="https://sentinellaglobal.com/Sentinella%20Mare%20Logo_White.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&family=Noto+Sans:wght@400;600;700&subset=greek&display=swap" rel="stylesheet">
+<!-- Self-hosted webfonts: no third-party request, so no visitor IP is
+     disclosed to Google before consent. See /fonts/OFL.txt for licensing. -->
+<link rel="stylesheet" href="/fonts/fonts.css">
 <style>
   :root {
     --navy: #060f18;
@@ -57,8 +79,10 @@
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
     display: flex; align-items: center; justify-content: space-between;
+  gap: 40px; /* keep the wordmark from colliding with the nav links */
     padding: 14px 64px;
     background: rgba(8,19,30,0.92);
+    -webkit-backdrop-filter: blur(16px);
     backdrop-filter: blur(16px);
     border-bottom: 1px solid rgba(45,122,58,0.18);
   }
@@ -70,13 +94,14 @@
     color: var(--white); letter-spacing: 3px;
   }
   .nav-brand .n2 {
-    font-family: 'Share Tech Mono', monospace; font-size: 9px;
-    color: var(--green-mid); letter-spacing: 4px; margin-top: 3px;
-  }
+    font-family: 'Share Tech Mono', monospace; font-size: 12px;
+    color: var(--green-mid); letter-spacing: 2px; margin-top: 3px;
+   white-space: nowrap;}
   .nav-links { display: flex; align-items: center; gap: 32px; }
   .nav-links a {
     color: var(--text); text-decoration: none;
-    font-size: 12px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+    font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  white-space: nowrap;
     transition: color 0.25s;
   }
   .nav-links a:hover, .nav-links a.active { color: var(--green-glow); }
@@ -120,9 +145,9 @@
   .lang-menu .lang-btn {
     background: none; border: none; border-bottom: 1px solid rgba(45,122,58,0.15);
     cursor: pointer; color: rgba(200,216,236,0.55);
-    font-family: 'Share Tech Mono', monospace; font-size: 11px;
+    font-family: 'Share Tech Mono', monospace; font-size: 13px;
     padding: 9px 16px; text-transform: uppercase; text-align: center;
-    transition: color 0.2s, background 0.2s; letter-spacing: 2px;
+    transition: color 0.2s, background 0.2s; letter-spacing: 1.5px;
   }
   .lang-menu .lang-btn:last-child { border-bottom: none; }
   .lang-menu .lang-btn:hover { color: var(--green-glow); background: rgba(45,122,58,0.1); }
@@ -146,7 +171,7 @@
   }
   .page-label {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 11px; letter-spacing: 3px; color: var(--green-mid);
+    font-size: 13px; letter-spacing: 2px; color: var(--green-mid);
     text-transform: uppercase; margin-bottom: 20px;
     display: flex; align-items: center; gap: 10px;
   }
@@ -202,7 +227,7 @@
   }
   .leader-title {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 12px; letter-spacing: 3px;
+    font-size: 13px; letter-spacing: 2px;
     color: var(--green-mid); text-transform: uppercase;
   }
   .leader-bio p {
@@ -232,12 +257,12 @@
   .footer-brand-text { display: flex; flex-direction: column; gap: 12px; }
   .footer-brand img { height: 100px; width: fit-content; }
   .footer-brand p {
-    font-size: 13px; line-height: 1.7; color: var(--text-dim);
+    font-size: 14px; line-height: 1.7; color: var(--text-dim);
     max-width: 280px;
   }
   .footer-brand .hq {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 9px; letter-spacing: 3px; color: var(--green-mid);
+    font-size: 13px; letter-spacing: 1.5px; color: var(--green-mid);
     text-transform: uppercase;
   }
   .footer-col .footer-nav-title {
@@ -248,21 +273,35 @@
   }
   .footer-col a, .footer-col p {
     display: block; color: var(--text-dim); text-decoration: none;
-    font-size: 13px; line-height: 1.6; margin-bottom: 10px;
+    font-size: 14px; line-height: 1.6; margin-bottom: 10px;
   }
   .footer-col a:hover { color: var(--green-mid); }
   .footer-contact-btn { display: inline-block; width: fit-content; }
+  .footer-col a.footer-contact-btn { color: #fff; }  /* WCAG 1.4.3: .footer-col a would otherwise win on specificity and dim this button's text */
   .footer-bottom {
     border-top: 1px solid rgba(45,122,58,0.1);
     padding-top: 24px;
     display: flex; justify-content: space-between; align-items: center;
-    flex-wrap: wrap; gap: 12px;
+    flex-wrap: wrap; gap: 12px 48px;
   }
   .footer-bottom p {
     font-family: 'Share Tech Mono', monospace;
-    font-size: 10px; letter-spacing: 2px;
+    font-size: 13px; letter-spacing: 1px;
     color: var(--text-dim); text-transform: uppercase;
   }
+  .footer-legal-links {
+    display: flex; align-items: flex-start; gap: 16px; flex-wrap: wrap;
+  }
+  .footer-legal-link {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px; letter-spacing: 1px; color: rgba(240,245,252,0.65);
+    text-transform: uppercase; text-decoration: none;
+    background: none; border: none; cursor: pointer; padding: 6px 0;
+    line-height: 1; vertical-align: top;
+    transition: color 0.2s;
+  }
+  .footer-legal-link:hover { color: #eef3f8; }
+
   .btn-primary {
     background: var(--green); color: #fff;
     padding: 14px 36px; font-family: 'Rajdhani', sans-serif;
@@ -324,7 +363,7 @@
   }
 
   /* iPad landscape — collapse nav to hamburger */
-  @media (max-width: 1100px) {
+  @media (max-width: 1300px) {
     .nav-toggle { display: flex; }
     .nav-links {
       display: none; position: fixed;
@@ -381,7 +420,7 @@
   @media (max-width: 480px) {
     nav { padding: 10px 16px; }
     .nav-logo img { height: 56px; }
-    .nav-brand .n1 { font-size: 12px; letter-spacing: 1px; }
+    .nav-brand .n1 { font-size: 13px; letter-spacing: 1px; }
     .nav-brand .n2 { display: none; }
     .page-hero { padding: 100px 16px 40px; }
     .leadership-section { padding: 36px 16px; }
@@ -389,12 +428,12 @@
     .leader-header { flex-direction: column; align-items: flex-start; gap: 20px; }
     .leader-headshot { width: 100px; height: 100px; }
     .leader-name { font-size: 20px; }
-    .leader-bio p { font-size: 15px; }
+    .leader-bio p { font-size: 17px; }
     footer { padding: 28px 16px 20px; }
     .footer-top { grid-template-columns: 1fr; gap: 20px; }
     .footer-brand { flex-direction: column; grid-column: auto; }
     .footer-brand img { height: 80px; }
-    .footer-col a, .footer-col p { font-size: 12px; }
+    .footer-col a, .footer-col p { font-size: 14px; }
   }
 
   /* ── Extra small phones (≤ 360px) ── */
@@ -410,8 +449,8 @@
   @supports (padding: max(0px)) {
     nav {
       padding-top: max(14px, env(safe-area-inset-top));
-      padding-left: max(20px, env(safe-area-inset-left));
-      padding-right: max(20px, env(safe-area-inset-right));
+      padding-left: max(20px, calc((100% - 1440px) / 2), env(safe-area-inset-left));
+      padding-right: max(20px, calc((100% - 1440px) / 2), env(safe-area-inset-right));
     }
     footer { padding-bottom: max(32px, env(safe-area-inset-bottom)); }
     @media (max-width: 480px) {
@@ -443,7 +482,8 @@
   .nav-comp-trigger {
     background: none; border: none; cursor: pointer; padding: 0;
     color: var(--text); font-family: 'Rajdhani', sans-serif;
-    font-size: 12px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+    font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  white-space: nowrap;
     display: flex; align-items: center; gap: 5px; transition: color 0.25s;
   }
   .nav-comp-trigger:hover { color: var(--green-glow); }
@@ -461,15 +501,15 @@
   .nav-comp-menu a {
     display: block; padding: 12px 20px;
     color: rgba(200,216,236,0.7);
-    font-family: 'Share Tech Mono', monospace; font-size: 10px;
-    letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
+    font-family: 'Share Tech Mono', monospace; font-size: 13px;
+    letter-spacing: 1px; text-transform: uppercase; text-decoration: none;
     border-bottom: 1px solid rgba(45,122,58,0.12);
     transition: color 0.2s, background 0.2s;
   }
   .nav-comp-menu a:last-child { border-bottom: none; }
   .nav-comp-menu a:hover { color: var(--green-glow); background: rgba(45,122,58,0.08); }
   .nav-comp-menu .comp-link-label {
-    display: block; font-size: 8px; color: rgba(45,122,58,0.6);
+    display: block; font-size: 13px; color: rgba(45,122,58,0.6);
     letter-spacing: 1.5px; margin-top: 2px;
   }
   @media (max-width: 768px) {
@@ -482,17 +522,48 @@
     .nav-comp-wrap.open .nav-comp-menu {
       display: flex; flex-direction: column; align-items: center; gap: 0; padding: 6px 0;
     }
-    .nav-comp-menu a { border: none; font-size: 11px; padding: 8px 0; text-align: center; }
+    .nav-comp-menu a { border: none; font-size: 13px; padding: 8px 0; text-align: center; }
     .nav-comp-menu .comp-link-label { display: none; }
   }
+
+  /* ── Accessibility: focus, skip link, in-text link cues ── */
+  a:focus-visible, button:focus-visible, input:focus-visible,
+  select:focus-visible, textarea:focus-visible,
+  [tabindex]:not([tabindex="-1"]):focus-visible {
+    outline: 3px solid #4fd962; outline-offset: 3px; border-radius: 3px;
+  }
+  main:focus { outline: none; }
+  .skip-link {
+    position: absolute; left: 12px; top: -60px; z-index: 3000;
+    background: #2d7a3a; color: #fff; padding: 12px 20px; border-radius: 4px;
+    font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 13px;
+    letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
+    transition: top 0.2s;
+  }
+  .skip-link:focus { top: 12px; }
+  .sm-cookie-text a { text-decoration: underline; }
+
+
+  /* WCAG 2.2 SC 2.5.8 Target Size */
+  .footer-col a { padding: 3px 0; }
+  /* .footer-col a wins on specificity over .btn-primary; restore button sizing/shape for the Contact CTA */
+  .footer-col a.footer-contact-btn {
+    display: inline-block; padding: 14px 36px; letter-spacing: 2px; margin-bottom: 0;
+  }
+  .footer-legal-links { row-gap: 4px; }
+  /* Primary nav links rendered 15-23px tall — under the 24px minimum, and not
+     covered by the inline-in-prose exception. Vertical padding only, so the nav
+     height (driven by the logo) is unchanged. */
+  .nav-links > a { padding: 5px 0; }
+  .nav-comp-trigger { padding: 5px 0; }
 </style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "AboutPage",
-  "name": "Leadership — Sentinella Global",
+  "name": "Leadership — Sentinella Mare",
   "url": "https://sentinellaglobal.com/Leadership",
-  "description": "Meet the Sentinella Global leadership team — maritime intelligence professionals, security analysts, and compliance experts serving Mediterranean operators.",
+  "description": "Meet the Sentinella Mare leadership team — maritime intelligence professionals, security analysts, and compliance experts serving Mediterranean operators.",
   "isPartOf": {
     "@type": "WebSite",
     "name": "Sentinella Mare",
@@ -503,6 +574,8 @@
 </head>
 <body>
 
+<a href="#main" class="skip-link">Skip to content</a>
+
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="../">
@@ -512,24 +585,40 @@
       <span class="n2" data-i18n="nav.tagline">Mediterranean Intelligence</span>
     </div>
   </a>
-  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open')">
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open')">
     <span></span><span></span><span></span>
   </button>
   <div class="nav-links" id="navLinks">
-    <a href="../#services" data-i18n="nav.services" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Services</a>
-    <a href="../#platform" data-i18n="nav.platform" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Live Platform</a>
-    <a href="../#advisory" data-i18n="nav.advisory" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Advisory</a>
-    <a href="../#pricing" data-i18n="nav.pricing" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Subscription</a>
-    <a href="../#clients" data-i18n="nav.clients" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Clients</a>
-    <a href="/Leadership" class="active" data-i18n="nav.leadership" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Leadership</a>
+    <div class="nav-comp-wrap" id="servicesNav">
+      <button class="nav-comp-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="servicesMenu" onclick="document.getElementById('servicesNav').classList.toggle('open')">
+        Services
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="nav-comp-menu" id="servicesMenu">
+        <a href="../#platform" onclick="document.getElementById('servicesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">
+          Intelligence Terminal
+          <span class="comp-link-label">Live Intelligence Platform</span>
+        </a>
+        <a href="../#advisory" onclick="document.getElementById('servicesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">
+          Advisory
+          <span class="comp-link-label">(Coming Soon)</span>
+        </a>
+      </div>
+    </div>
+    <a href="../#platform" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Live Platform</a>
+    <a href="../#pricing" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Pricing</a>
+    <a href="../#clients" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Clients</a>
+    <a href="/Leadership" class="active" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Leadership</a>
     <div class="nav-comp-wrap" id="complianceNav">
-      <button class="nav-comp-trigger" onclick="document.getElementById('complianceNav').classList.toggle('open')">
+      <button class="nav-comp-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="complianceMenu" onclick="document.getElementById('complianceNav').classList.toggle('open')">
         Compliance
         <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
-      <div class="nav-comp-menu">
+      <div class="nav-comp-menu" id="complianceMenu">
         <a href="/EUMaritimeComplianceCountdown" target="_blank" rel="noopener noreferrer">
           Deadline Countdown
           <span class="comp-link-label">NIS2 · CER · Circ. 177 live timers</span>
@@ -541,27 +630,29 @@
       </div>
     </div>
     <div class="lang-dropdown" id="langDropdown">
-      <button class="lang-globe" onclick="document.getElementById('langDropdown').classList.toggle('open')" aria-label="Select language">
+      <button class="lang-globe" onclick="document.getElementById('langDropdown').classList.toggle('open')" aria-label="Select language" aria-expanded="false" aria-haspopup="true" aria-controls="langMenu">
         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="10"/>
           <ellipse cx="12" cy="12" rx="4" ry="10"/>
           <line x1="2" y1="12" x2="22" y2="12"/>
         </svg>
       </button>
-      <div class="lang-menu">
-        <button class="lang-btn active" onclick="setLang('en'); document.getElementById('langDropdown').classList.remove('open')" id="btn-en">EN</button>
+      <div class="lang-menu" id="langMenu">
+        <button class="lang-btn active" aria-current="true" onclick="setLang('en'); document.getElementById('langDropdown').classList.remove('open')" id="btn-en">EN</button>
         <button class="lang-btn" onclick="setLang('it'); document.getElementById('langDropdown').classList.remove('open')" id="btn-it">IT</button>
         <button class="lang-btn" onclick="setLang('ar'); document.getElementById('langDropdown').classList.remove('open')" id="btn-ar">AR</button>
         <button class="lang-btn" onclick="setLang('el'); document.getElementById('langDropdown').classList.remove('open')" id="btn-el">EL</button>
       </div>
     </div>
-    <a href="../#contact" class="btn-nav" data-i18n="nav.cta" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Request Access</a>
+    <a href="https://mare.sentinellaglobal.com/" class="btn-nav" target="_blank" rel="noopener noreferrer" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Launch Terminal</a>
   </div>
 </nav>
 
+<main id="main" tabindex="-1">
+
 <!-- PAGE HERO -->
 <div class="page-hero">
-  <div class="page-label" data-i18n="leadership.label">Sentinella Global</div>
+  <div class="page-label" data-i18n="leadership.label">Sentinella Mare</div>
   <h1 data-i18n-html="true" data-i18n="leadership.h1">Our <span>Leadership</span></h1>
 </div>
 
@@ -576,15 +667,50 @@
       </div>
     </div>
     <div class="leader-bio">
-      <p data-i18n="leader.bio1">Founder and CEO of Sentinella Global. James leads the company's strategic direction, the development of its intelligence framework, and its institutional partnerships across the Mediterranean.</p>
+      <p data-i18n="leader.bio1">Founder and CEO of Sentinella Mare. James leads the company's strategic direction, the development of its intelligence framework, and its institutional partnerships across the Mediterranean.</p>
       <div class="leader-divider"></div>
       <p data-i18n="leader.bio2">He brings more than a decade of federal law enforcement and hybrid threat intelligence experience to the role, with deep coverage of both Latin America and Russia and fluency in Spanish and Russian. His operational background spans all-source intelligence collection, virtual operations, protective intelligence, and disinformation campaigns. That cross-domain experience is the foundation of the MHTES framework that powers Sentinella Mare — a single, operationally validated exposure score that synthesises five threat vectors into one continuously updated picture.</p>
-      <p data-i18n="leader.bio3">James founded Sentinella Global to bring the integrated, all-source craft developed inside federal service to the commercial maritime operators who increasingly need it.</p>
+      <p data-i18n="leader.bio3">James founded Sentinella Mare to bring the integrated, all-source craft developed inside federal service to the commercial maritime operators who increasingly need it.</p>
+    </div>
+  </div>
+
+  <div class="leadership-card" style="margin-top: 48px;">
+    <div class="leader-header">
+      <img src="../Jian Roachell_Headshot.jpeg" alt="Jianyin Roachell" class="leader-headshot">
+      <div class="leader-meta">
+        <div class="leader-name" data-i18n="leader3.name">Jianyin Roachell</div>
+        <div class="leader-title" data-i18n="leader3.title">Co-Founder &amp; CTO</div>
+      </div>
+    </div>
+    <div class="leader-bio">
+      <p data-i18n="leader3.bio1">Co-Founder and CTO of Sentinella Mare. Jianyin leads software architecture, engineering, and data infrastructure for the Sentinella Mare platform, directing the design, development, and deployment of the MHTES scoring engine, data pipelines, and client-facing dashboard.</p>
+      <div class="leader-divider"></div>
+      <p data-i18n="leader3.bio2">He brings more than ten years of data science and data journalism experience to the role, with a background spanning text-mining NLP models in both English and Chinese, predictive analytics, and machine learning applied across logistics, supply chain, finance, public policy, and social media domains. His technical foundation — built on large-scale data pipeline design, database architecture, and applied machine learning frameworks ranging from neural networks to Bayesian methods — underpins the platform's integration of AIS data feeds, open-source intelligence sources, and commercial data providers into a single operational system. He also oversees the Company's cloud infrastructure, cybersecurity standards, and technology roadmap, working closely with the CEO and founding team.</p>
+      <p data-i18n="leader3.bio3">Jianyin previously conducted research in computational social science at the Max Planck Institute of Geoanthropology and has spent his career applying data science to social good and civic technology. That commitment to using data for public benefit, paired with deep technical craft in open-source intelligence tooling and agentic AI systems, drives his work building the infrastructure behind Sentinella Mare's maritime intelligence platform.</p>
+    </div>
+  </div>
+
+  <div class="leadership-card" style="margin-top: 48px;">
+    <div class="leader-header">
+      <img src="../Erika Ritzmann_Headshot.png" alt="Erika Ritzmann" class="leader-headshot" style="object-position: 50% 25%;">
+      <div class="leader-meta">
+        <div class="leader-name" data-i18n="leader2.name">Erika Ritzmann</div>
+        <div class="leader-title" data-i18n="leader2.title">Co-Founder &amp; COO</div>
+      </div>
+    </div>
+    <div class="leader-bio">
+      <p data-i18n="leader2.bio1">Co-Founder and COO of Sentinella Mare. Erika leads the company's operational infrastructure, regulatory and compliance posture, and institutional partnership development, translating Sentinella's technical capabilities into deployable solutions for clients and partners.</p>
+      <div class="leader-divider"></div>
+      <p data-i18n="leader2.bio2">She brings more than eight years of public policy and management consulting experience to the role, supporting U.S. federal agencies — including the IRS, FEMA, and DHS — on regulatory compliance, emergency management, and data-driven operational improvement. Her background spans national-level emergency management policy and doctrine, business continuity and resilience planning, program evaluation for federally mandated initiatives, and workforce training design grounded in adult learning methodologies.</p>
+      <p data-i18n="leader2.bio3">That cross-functional experience is the foundation of Sentinella Mare's operating architecture — the compliance frameworks, service agreements, and partnership structures that move the MHTES methodology from concept to contract with Mediterranean port authorities, fleet operators, and subsea cable stakeholders.</p>
+      <p data-i18n="leader2.bio4">Erika co-founded Sentinella Mare to give the MHTES framework the institutional backbone it needs to operate credibly with regulators and partners across the Mediterranean.</p>
     </div>
   </div>
 </section>
 
 <!-- FOOTER -->
+</main>
+
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
@@ -595,14 +721,14 @@
       </div>
     </div>
     <div class="footer-col">
-      <h3 class="footer-nav-title" data-i18n="footer.h.services">Services</h3>
+      <p class="footer-nav-title" data-i18n="footer.h.services">Services</p>
       <a href="../#services" data-i18n="footer.l.dashboard">Mediterranean Watch Intelligence Terminal</a>
       <a href="../#advisory" data-i18n="footer.l.investment">Investment Advisory</a>
       <a href="../#advisory" data-i18n="footer.l.supply">Supply Chain Risk</a>
       <a href="../#pricing" data-i18n="footer.l.tiers">Subscription Tiers</a>
     </div>
     <div class="footer-col">
-      <h3 class="footer-nav-title" data-i18n="footer.h.coverage">Coverage</h3>
+      <p class="footer-nav-title" data-i18n="footer.h.coverage">Coverage</p>
       <p data-i18n="footer.geo.1">Strait of Gibraltar</p>
       <p data-i18n="footer.geo.2">Tyrrhenian Sea</p>
       <p data-i18n="footer.geo.3">Strait of Sicily</p>
@@ -614,8 +740,16 @@
     </div>
   </div>
   <div class="footer-bottom">
-    <p data-i18n="footer.copy">© 2025 Sentinella Global. All rights reserved.</p>
+    <p data-i18n="footer.copy">© 2026 Sentinella LLC · 8 The Green STE A, Dover, DE 19901, USA · HQ: Brussels, Belgium</p>
     <p data-i18n="footer.platform">MARITIME HYBRID THREAT INTELLIGENCE PLATFORM</p>
+    <div class="footer-legal-links">
+      <a href="/privacypolicy/" class="footer-legal-link">Privacy Policy</a>
+      <a href="/legalterms/" class="footer-legal-link">Terms</a>
+      <a href="/dpa/" class="footer-legal-link">DPA</a>
+      <a href="/legalnotice/" class="footer-legal-link">Legal Notice</a>
+      <a href="/accessibility/" class="footer-legal-link">Accessibility</a>
+      <button onclick="if(typeof smOpenCookieSettings==='function')smOpenCookieSettings();" class="footer-legal-link">Cookie Settings</button>
+    </div>
   </div>
 </footer>
 
@@ -632,13 +766,24 @@ const translations = {
     'nav.clients': 'Clients',
     'nav.leadership': 'Leadership',
     'nav.cta': 'Request Access',
-    'leadership.label': 'Sentinella Global',
+    'leadership.label': 'Sentinella Mare',
     'leadership.h1': 'Our <span>Leadership</span>',
     'leader.name': 'James Davies',
     'leader.title': 'Founder & CEO',
-    'leader.bio1': 'Founder and CEO of Sentinella Global. James leads the company\'s strategic direction, the development of its intelligence framework, and its institutional partnerships across the Mediterranean.',
+    'leader.bio1': 'Founder and CEO of Sentinella Mare. James leads the company\'s strategic direction, the development of its intelligence framework, and its institutional partnerships across the Mediterranean.',
     'leader.bio2': 'He brings more than a decade of federal law enforcement and hybrid threat intelligence experience to the role, with deep coverage of both Latin America and Russia and fluency in Spanish and Russian. His operational background spans all-source intelligence collection, virtual operations, protective intelligence, and disinformation campaigns. That cross-domain experience is the foundation of the MHTES framework that powers Sentinella Mare — a single, operationally validated exposure score that synthesises five threat vectors into one continuously updated picture.',
-    'leader.bio3': 'James founded Sentinella Global to bring the integrated, all-source craft developed inside federal service to the commercial maritime operators who increasingly need it.',
+    'leader.bio3': 'James founded Sentinella Mare to bring the integrated, all-source craft developed inside federal service to the commercial maritime operators who increasingly need it.',
+    'leader3.name': 'Jianyin Roachell',
+    'leader3.title': 'Co-Founder & CTO',
+    'leader3.bio1': 'Co-Founder and CTO of Sentinella Mare. Jianyin leads software architecture, engineering, and data infrastructure for the Sentinella Mare platform, directing the design, development, and deployment of the MHTES scoring engine, data pipelines, and client-facing dashboard.',
+    'leader3.bio2': 'He brings more than ten years of data science and data journalism experience to the role, with a background spanning text-mining NLP models in both English and Chinese, predictive analytics, and machine learning applied across logistics, supply chain, finance, public policy, and social media domains. His technical foundation — built on large-scale data pipeline design, database architecture, and applied machine learning frameworks ranging from neural networks to Bayesian methods — underpins the platform\'s integration of AIS data feeds, open-source intelligence sources, and commercial data providers into a single operational system. He also oversees the Company\'s cloud infrastructure, cybersecurity standards, and technology roadmap, working closely with the CEO and founding team.',
+    'leader3.bio3': 'Jianyin previously conducted research in computational social science at the Max Planck Institute of Geoanthropology and has spent his career applying data science to social good and civic technology. That commitment to using data for public benefit, paired with deep technical craft in open-source intelligence tooling and agentic AI systems, drives his work building the infrastructure behind Sentinella Mare\'s maritime intelligence platform.',
+    'leader2.name': 'Erika Ritzmann',
+    'leader2.title': 'Co-Founder & COO',
+    'leader2.bio1': 'Co-Founder and COO of Sentinella Mare. Erika leads the company\'s operational infrastructure, regulatory and compliance posture, and institutional partnership development, translating Sentinella\'s technical capabilities into deployable solutions for clients and partners.',
+    'leader2.bio2': 'She brings more than eight years of public policy and management consulting experience to the role, supporting U.S. federal agencies — including the IRS, FEMA, and DHS — on regulatory compliance, emergency management, and data-driven operational improvement. Her background spans national-level emergency management policy and doctrine, business continuity and resilience planning, program evaluation for federally mandated initiatives, and workforce training design grounded in adult learning methodologies.',
+    'leader2.bio3': 'That cross-functional experience is the foundation of Sentinella Mare\'s operating architecture — the compliance frameworks, service agreements, and partnership structures that move the MHTES methodology from concept to contract with Mediterranean port authorities, fleet operators, and subsea cable stakeholders.',
+    'leader2.bio4': 'Erika co-founded Sentinella Mare to give the MHTES framework the institutional backbone it needs to operate credibly with regulators and partners across the Mediterranean.',
     'footer.brand': 'Mediterranean maritime intelligence. AI-driven risk intelligence for shipping operators, logistics firms, and institutional investors navigating the world\'s most strategically complex sea.',
     'footer.hq': '// HQ: Brussels, Belgium',
     'footer.h.services': 'Services',
@@ -653,7 +798,7 @@ const translations = {
     'footer.geo.4': 'Adriatic Sea',
     'footer.geo.5': 'Eastern Mediterranean',
     'footer.h.contact': 'Contact',
-    'footer.copy': '© 2025 Sentinella Global. All rights reserved.',
+    'footer.copy': '© 2026 Sentinella LLC · 8 The Green STE A, Dover, DE 19901, USA · HQ: Brussels, Belgium',
     'footer.platform': 'MARITIME HYBRID THREAT INTELLIGENCE PLATFORM',
   },
   it: {
@@ -665,13 +810,19 @@ const translations = {
     'nav.clients': 'Clienti',
     'nav.leadership': 'Leadership',
     'nav.cta': 'Richiedi Accesso',
-    'leadership.label': 'Sentinella Global',
+    'leadership.label': 'Sentinella Mare',
     'leadership.h1': 'La Nostra <span>Leadership</span>',
     'leader.name': 'James Davies',
     'leader.title': 'Fondatore e CEO',
-    'leader.bio1': 'Fondatore e CEO di Sentinella Global. James guida la direzione strategica dell\'azienda, lo sviluppo del suo framework di intelligence e le sue partnership istituzionali nel Mediterraneo.',
+    'leader.bio1': 'Fondatore e CEO di Sentinella Mare. James guida la direzione strategica dell\'azienda, lo sviluppo del suo framework di intelligence e le sue partnership istituzionali nel Mediterraneo.',
     'leader.bio2': 'Porta al ruolo più di un decennio di esperienza nelle forze dell\'ordine federali e nell\'intelligence sulle minacce ibride, con una copertura approfondita sia dell\'America Latina che della Russia e con la padronanza dello spagnolo e del russo. Il suo background operativo abbraccia la raccolta di intelligence da tutte le fonti, le operazioni virtuali, l\'intelligence protettiva e le campagne di disinformazione. Questa esperienza multidisciplinare è il fondamento del framework MHTES che alimenta Sentinella Mare — un unico punteggio di esposizione operativamente validato che sintetizza cinque vettori di minaccia in un quadro aggiornato continuamente.',
-    'leader.bio3': 'James ha fondato Sentinella Global per portare il lavoro di intelligence integrata, da tutte le fonti, sviluppato nel servizio federale agli operatori marittimi commerciali che ne hanno sempre più bisogno.',
+    'leader.bio3': 'James ha fondato Sentinella Mare per portare il lavoro di intelligence integrata, da tutte le fonti, sviluppato nel servizio federale agli operatori marittimi commerciali che ne hanno sempre più bisogno.',
+    'leader2.name': 'Erika Ritzmann',
+    'leader2.title': 'Co-Fondatrice e COO',
+    'leader2.bio1': 'Co-Fondatrice e COO di Sentinella Mare. Erika guida l\'infrastruttura operativa dell\'azienda, il posizionamento regolatorio e di compliance, e lo sviluppo delle partnership istituzionali, traducendo le capacità tecniche di Sentinella in soluzioni operative per clienti e partner.',
+    'leader2.bio2': 'Porta al ruolo più di otto anni di esperienza in politiche pubbliche e consulenza gestionale, avendo supportato agenzie federali statunitensi — tra cui IRS, FEMA e DHS — in materia di conformità normativa, gestione delle emergenze e miglioramento operativo basato sui dati. Il suo background spazia dalla politica e dottrina di gestione delle emergenze a livello nazionale, alla pianificazione della continuità operativa e della resilienza, alla valutazione di programmi federali obbligatori, fino alla progettazione di percorsi formativi per adulti.',
+    'leader2.bio3': 'Questa esperienza trasversale è il fondamento dell\'architettura operativa di Sentinella Mare — i framework di compliance, gli accordi di servizio e le strutture di partnership che portano la metodologia MHTES dal concetto al contratto con autorità portuali mediterranee, operatori di flotte e stakeholder dei cavi sottomarini.',
+    'leader2.bio4': 'Erika ha co-fondato Sentinella Mare per dare al framework MHTES la struttura istituzionale necessaria a operare con credibilità presso regolatori e partner in tutto il Mediterraneo.',
     'footer.brand': 'Intelligence marittima mediterranea. Intelligence del rischio basata sull\'IA per operatori di spedizioni, società di logistica e investitori istituzionali.',
     'footer.hq': '// QG: Bruxelles, Belgio',
     'footer.h.services': 'Servizi',
@@ -686,7 +837,7 @@ const translations = {
     'footer.geo.4': 'Mar Adriatico',
     'footer.geo.5': 'Mediterraneo Orientale',
     'footer.h.contact': 'Contatto',
-    'footer.copy': '© 2025 Sentinella Global. Tutti i diritti riservati.',
+    'footer.copy': '© 2026 Sentinella LLC · 8 The Green STE A, Dover, DE 19901, USA · HQ: Brussels, Belgium',
     'footer.platform': 'PIATTAFORMA DI INTELLIGENCE IBRIDA MARITTIMA',
   },
   ar: {
@@ -702,9 +853,15 @@ const translations = {
     'leadership.h1': '<span>قيادتنا</span>',
     'leader.name': 'جيمس ديفيز',
     'leader.title': 'المؤسس والرئيس التنفيذي',
-    'leader.bio1': 'مؤسس والرئيس التنفيذي لشركة Sentinella Global. يقود جيمس التوجه الاستراتيجي للشركة، وتطوير إطارها الاستخباراتي، وشراكاتها المؤسسية عبر منطقة البحر المتوسط.',
+    'leader.bio1': 'مؤسس والرئيس التنفيذي لشركة Sentinella Mare. يقود جيمس التوجه الاستراتيجي للشركة، وتطوير إطارها الاستخباراتي، وشراكاتها المؤسسية عبر منطقة البحر المتوسط.',
     'leader.bio2': 'يجلب إلى هذا الدور أكثر من عقد من الخبرة في مجال تطبيق القانون الفيدرالي واستخبارات التهديدات الهجينة، مع تغطية معمّقة لكل من أمريكا اللاتينية وروسيا وإتقان اللغتين الإسبانية والروسية. تمتد خلفيته العملياتية لتشمل جمع المعلومات الاستخباراتية من جميع المصادر، والعمليات الافتراضية، والاستخبارات الوقائية، وحملات التضليل. هذه الخبرة متعددة المجالات هي أساس إطار MHTES الذي يشغّل Sentinella Mare — درجة تعرض مُتحققة عملياتياً تجمع خمسة متجهات تهديد في صورة واحدة محدّثة باستمرار.',
-    'leader.bio3': 'أسس جيمس Sentinella Global لإيصال الحرفة الاستخباراتية المتكاملة من جميع المصادر، التي طُوِّرت داخل الخدمة الفيدرالية، إلى مشغّلي النقل البحري التجاري الذين يحتاجونها بشكل متزايد.',
+    'leader.bio3': 'أسس جيمس Sentinella Mare لإيصال الحرفة الاستخباراتية المتكاملة من جميع المصادر، التي طُوِّرت داخل الخدمة الفيدرالية، إلى مشغّلي النقل البحري التجاري الذين يحتاجونها بشكل متزايد.',
+    'leader2.name': 'إيريكا ريتزمان',
+    'leader2.title': 'المؤسسة المشاركة والمديرة التشغيلية',
+    'leader2.bio1': 'المؤسسة المشاركة والمديرة التشغيلية لشركة Sentinella Mare. تقود إيريكا البنية التشغيلية للشركة وموقفها التنظيمي والامتثالي وتطوير الشراكات المؤسسية، وتترجم القدرات التقنية لـ Sentinella إلى حلول قابلة للتطبيق للعملاء والشركاء.',
+    'leader2.bio2': 'تجلب إلى هذا الدور أكثر من ثماني سنوات من الخبرة في السياسات العامة والاستشارات الإدارية، حيث دعمت وكالات فيدرالية أمريكية — بما فيها مصلحة الضرائب وإدارة الطوارئ الفيدرالية ووزارة الأمن الداخلي — في مجالات الامتثال التنظيمي وإدارة الطوارئ والتحسين التشغيلي القائم على البيانات. يمتد خلفيتها ليشمل سياسة وعقيدة إدارة الطوارئ على المستوى الوطني، وتخطيط استمرارية الأعمال والمرونة، وتقييم البرامج الفيدرالية الإلزامية، وتصميم برامج تدريب القوى العاملة.',
+    'leader2.bio3': 'هذه الخبرة متعددة الوظائف هي أساس البنية التشغيلية لـ Sentinella Mare — أطر الامتثال واتفاقيات الخدمة وهياكل الشراكة التي تنقل منهجية MHTES من المفهوم إلى العقد مع سلطات الموانئ المتوسطية ومشغلي الأساطيل وأصحاب المصلحة في الكابلات البحرية.',
+    'leader2.bio4': 'شاركت إيريكا في تأسيس Sentinella Mare لمنح إطار MHTES العمود الفقري المؤسسي الذي يحتاجه للعمل بمصداقية مع الجهات التنظيمية والشركاء في جميع أنحاء البحر المتوسط.',
     'footer.brand': 'استخبارات بحرية متوسطية. استخبارات المخاطر المدعومة بالذكاء الاصطناعي لمشغلي الشحن والشركات اللوجستية والمستثمرين المؤسسيين.',
     'footer.hq': '// المقر: بروكسل، بلجيكا',
     'footer.h.services': 'الخدمات',
@@ -719,7 +876,7 @@ const translations = {
     'footer.geo.4': 'البحر الأدرياتيكي',
     'footer.geo.5': 'شرق البحر المتوسط',
     'footer.h.contact': 'تواصل',
-    'footer.copy': '© 2025 Sentinella Global. جميع الحقوق محفوظة.',
+    'footer.copy': '© 2026 Sentinella LLC · 8 The Green STE A, Dover, DE 19901, USA · HQ: Brussels, Belgium',
     'footer.platform': 'منصة استخبارات التهديدات الهجينة البحرية',
   },
   el: {
@@ -731,13 +888,19 @@ const translations = {
     'nav.clients': 'Πελάτες',
     'nav.leadership': 'Ηγεσία',
     'nav.cta': 'Αίτηση Πρόσβασης',
-    'leadership.label': 'Sentinella Global',
+    'leadership.label': 'Sentinella Mare',
     'leadership.h1': 'Η <span>Ηγεσία</span> μας',
     'leader.name': 'James Davies',
     'leader.title': 'Ιδρυτής & Διευθύνων Σύμβουλος',
-    'leader.bio1': 'Ιδρυτής και Διευθύνων Σύμβουλος της Sentinella Global. Ο James ηγείται της στρατηγικής κατεύθυνσης της εταιρείας, της ανάπτυξης του πλαισίου πληροφόρησής της και των θεσμικών συνεργασιών της σε ολόκληρη τη Μεσόγειο.',
+    'leader.bio1': 'Ιδρυτής και Διευθύνων Σύμβουλος της Sentinella Mare. Ο James ηγείται της στρατηγικής κατεύθυνσης της εταιρείας, της ανάπτυξης του πλαισίου πληροφόρησής της και των θεσμικών συνεργασιών της σε ολόκληρη τη Μεσόγειο.',
     'leader.bio2': 'Φέρνει στον ρόλο περισσότερο από μια δεκαετία εμπειρίας στην ομοσπονδιακή επιβολή νόμου και στις υβριδικές απειλές, με βαθιά κάλυψη τόσο της Λατινικής Αμερικής όσο και της Ρωσίας, και άριστη γνώση ισπανικών και ρωσικών. Το επιχειρησιακό του υπόβαθρο περιλαμβάνει συλλογή πληροφοριών από όλες τις πηγές, εικονικές επιχειρήσεις, προστατευτική πληροφόρηση και εκστρατείες παραπληροφόρησης. Αυτή η διατομεακή εμπειρία αποτελεί τη βάση του πλαισίου MHTES που τροφοδοτεί το Sentinella Mare — ένα ενιαίο, επιχειρησιακά επαληθευμένο σκορ έκθεσης που συνθέτει πέντε φορείς απειλών σε μία συνεχώς ενημερωμένη εικόνα.',
-    'leader.bio3': 'Ο James ίδρυσε την Sentinella Global για να φέρει την ολοκληρωμένη, πολυπηγαία τέχνη που αναπτύχθηκε εντός της ομοσπονδιακής υπηρεσίας στους εμπορικούς ναυτιλιακούς χειριστές που τη χρειάζονται όλο και περισσότερο.',
+    'leader.bio3': 'Ο James ίδρυσε την Sentinella Mare για να φέρει την ολοκληρωμένη, πολυπηγαία τέχνη που αναπτύχθηκε εντός της ομοσπονδιακής υπηρεσίας στους εμπορικούς ναυτιλιακούς χειριστές που τη χρειάζονται όλο και περισσότερο.',
+    'leader2.name': 'Erika Ritzmann',
+    'leader2.title': 'Συν-Ιδρύτρια & COO',
+    'leader2.bio1': 'Συν-Ιδρύτρια και COO της Sentinella Mare. Η Erika ηγείται της επιχειρησιακής υποδομής της εταιρείας, της ρυθμιστικής και συμμόρφωσης τοποθέτησης, και της ανάπτυξης θεσμικών συνεργασιών, μεταφράζοντας τις τεχνικές δυνατότητες της Sentinella σε αναπτύξιμες λύσεις για πελάτες και συνεργάτες.',
+    'leader2.bio2': 'Φέρνει στον ρόλο περισσότερα από οκτώ χρόνια εμπειρίας σε δημόσιες πολιτικές και διοικητική συμβουλευτική, υποστηρίζοντας ομοσπονδιακές αμερικανικές υπηρεσίες — συμπεριλαμβανομένων της IRS, FEMA και DHS — σε θέματα ρυθμιστικής συμμόρφωσης, διαχείρισης έκτακτων καταστάσεων και λειτουργικής βελτίωσης βασισμένης σε δεδομένα. Το υπόβαθρό της εκτείνεται στην πολιτική και το δόγμα διαχείρισης καταστάσεων έκτακτης ανάγκης εθνικού επιπέδου, στον επιχειρησιακό σχεδιασμό συνέχειας και ανθεκτικότητας, στην αξιολόγηση ομοσπονδιακά εντεταλμένων προγραμμάτων και στον σχεδιασμό εκπαίδευσης εργατικού δυναμικού.',
+    'leader2.bio3': 'Αυτή η διαλειτουργική εμπειρία αποτελεί τη βάση της επιχειρησιακής αρχιτεκτονικής της Sentinella Mare — τα πλαίσια συμμόρφωσης, οι συμφωνίες υπηρεσιών και οι δομές συνεργασίας που μεταφέρουν τη μεθοδολογία MHTES από την ιδέα στη σύμβαση με μεσογειακές λιμενικές αρχές, χειριστές στόλων και ενδιαφερόμενους υποθαλάσσιων καλωδίων.',
+    'leader2.bio4': 'Η Erika συν-ίδρυσε τη Sentinella Mare για να δώσει στο πλαίσιο MHTES τη θεσμική ραχοκοκαλιά που χρειάζεται για να λειτουργεί αξιόπιστα με ρυθμιστικές αρχές και συνεργάτες σε όλη τη Μεσόγειο.',
     'footer.brand': 'Μεσογειακή ναυτική πληροφόρηση. Πληροφόρηση κινδύνου με τεχνητή νοημοσύνη για ναυτιλιακούς χειριστές, εταιρείες logistics και θεσμικούς επενδυτές.',
     'footer.hq': '// ΕΔΡ: Βρυξέλλες, Βέλγιο',
     'footer.h.services': 'Υπηρεσίες',
@@ -752,15 +915,15 @@ const translations = {
     'footer.geo.4': 'Αδριατική Θάλασσα',
     'footer.geo.5': 'Ανατολική Μεσόγειος',
     'footer.h.contact': 'Επικοινωνία',
-    'footer.copy': '© 2025 Sentinella Global. Με επιφύλαξη παντός δικαιώματος.',
+    'footer.copy': '© 2026 Sentinella LLC · 8 The Green STE A, Dover, DE 19901, USA · HQ: Brussels, Belgium',
     'footer.platform': 'ΠΛΑΤΦΌΡΜΑ ΥΒΡΙΔΙΚΗΣ ΝΑΥΤΙΚΗΣ ΠΛΗΡΟΦΟΡΙΑΚΗΣ ΑΠΕΙΛΗΣ',
   },
 };
 
 function setLang(lang) {
   currentLang = lang;
-  document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-  document.getElementById('btn-' + lang).classList.add('active');
+  document.querySelectorAll('.lang-btn').forEach(btn => { btn.classList.remove('active'); btn.removeAttribute('aria-current'); });
+  var _ab=document.getElementById('btn-' + lang); _ab.classList.add('active'); _ab.setAttribute('aria-current','true');
   document.documentElement.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
   document.documentElement.setAttribute('lang', lang);
   const t = translations[lang];
@@ -798,5 +961,209 @@ document.addEventListener('click', function(e) {
   else setLang('en');
 })();
 </script>
+
+<!-- ── COOKIE CONSENT BANNER ── -->
+<style>
+#sm-cookie-banner {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+  background: #0d1b2a; border-top: 1px solid rgba(45,122,58,0.4);
+  padding: 20px 48px; box-shadow: 0 -8px 40px rgba(0,0,0,0.55);
+  font-family: 'Rajdhani', sans-serif;
+  max-height: 85vh; overflow-y: auto;
+}
+[hidden] { display: none !important; }
+.sm-cookie-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 32px; flex-wrap: wrap;
+}
+.sm-cookie-label {
+  display: block; font-family: 'Share Tech Mono', monospace;
+  font-size: 13px; letter-spacing: 1.5px; color: #3aab4a;
+  text-transform: uppercase; margin-bottom: 7px;
+}
+.sm-cookie-text { font-size: 15px; line-height: 1.65; color: #c8d8ec; max-width: 680px; }
+.sm-cookie-text a { color: #3aab4a; }
+.sm-cookie-text a:hover { color: #4fd962; }
+.sm-cookie-actions { display: flex; gap: 12px; flex-shrink: 0; align-items: center; }
+.sm-cookie-btn {
+  font-family: 'Rajdhani', sans-serif; font-size: 14px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase; cursor: pointer;
+  padding: 11px 26px; border-radius: 0; transition: all 0.25s;
+  -webkit-tap-highlight-color: transparent; white-space: nowrap;
+}
+.sm-cookie-reject, .sm-cookie-manage {
+  background: transparent; color: #c8d8ec; border: 1px solid rgba(200,216,236,0.35);
+}
+.sm-cookie-reject:hover, .sm-cookie-manage:hover { border-color: #eef3f8; color: #eef3f8; }
+.sm-cookie-accept {
+  background: #2d7a3a; color: #fff; border: 1px solid #2d7a3a;
+  -webkit-clip-path: polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px));
+  clip-path: polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px));
+}
+.sm-cookie-accept:hover { background: #3aab4a; border-color: #3aab4a; box-shadow: 0 0 22px rgba(58,171,74,0.35); }
+
+/* ── Manage Preferences panel ── */
+.sm-cookie-prefs {
+  max-width: 1200px; margin: 18px auto 0; padding-top: 18px;
+  border-top: 1px solid rgba(45,122,58,0.25);
+}
+.sm-pref-row {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 24px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.sm-pref-row:last-of-type { border-bottom: none; }
+.sm-pref-name {
+  display: block; font-size: 15px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase; color: #eef3f8;
+}
+label.sm-pref-name { cursor: pointer; }
+.sm-pref-desc { font-size: 14px; line-height: 1.6; color: #c8d8ec; margin-top: 5px; max-width: 720px; }
+.sm-pref-control { flex-shrink: 0; display: flex; align-items: center; min-height: 24px; }
+.sm-pref-always {
+  font-family: 'Share Tech Mono', monospace; font-size: 13px;
+  letter-spacing: 1px; text-transform: uppercase; color: #3aab4a;
+}
+.sm-pref-toggle { width: 24px; height: 24px; accent-color: #2d7a3a; cursor: pointer; }
+.sm-pref-save { display: flex; justify-content: flex-end; padding-top: 16px; }
+@media (max-width: 768px) {
+  #sm-cookie-banner { padding: 18px 20px; }
+  .sm-cookie-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .sm-cookie-actions { width: 100%; flex-wrap: wrap; }
+  /* Labels are nowrap; tighter padding + wrap keeps them inside a 375px screen
+     and lets them stack full-width when they cannot share a row. */
+  .sm-cookie-btn { flex: 1 1 auto; text-align: center; padding: 11px 14px; }
+  .sm-pref-save { justify-content: stretch; }
+  .sm-pref-save .sm-cookie-btn { width: 100%; }
+}
+</style>
+<div id="sm-cookie-banner" role="dialog" aria-modal="false" aria-labelledby="sm-cookie-heading">
+  <div class="sm-cookie-inner">
+    <div>
+      <span class="sm-cookie-label" id="sm-cookie-heading">Cookie Settings</span>
+      <p class="sm-cookie-text">Sentinella Mare (data controller) uses Google Analytics to understand how visitors use this site. Google Analytics loads only if you accept &mdash; if you decline, nothing is sent to Google and no analytics cookies are set. No advertising or third-party tracking cookies are used. <a href="/privacypolicy/">Privacy Policy</a>.</p>
+    </div>
+    <div class="sm-cookie-actions">
+      <button id="sm-cookie-reject" class="sm-cookie-btn sm-cookie-reject">Reject All</button>
+      <button id="sm-cookie-manage" class="sm-cookie-btn sm-cookie-manage" aria-expanded="false" aria-controls="sm-cookie-prefs">Manage Preferences</button>
+      <button id="sm-cookie-accept" class="sm-cookie-btn sm-cookie-accept">Accept Analytics</button>
+    </div>
+  </div>
+  <div id="sm-cookie-prefs" class="sm-cookie-prefs" hidden>
+    <div class="sm-pref-row">
+      <div>
+        <span class="sm-pref-name">Strictly necessary</span>
+        <p class="sm-pref-desc">Required for the site to work and to remember your cookie choice. These are always active and cannot be switched off.</p>
+      </div>
+      <div class="sm-pref-control"><span class="sm-pref-always">Always on</span></div>
+    </div>
+    <div class="sm-pref-row">
+      <div>
+        <label class="sm-pref-name" for="sm-pref-analytics">Analytics</label>
+        <p class="sm-pref-desc">Google Analytics, used to count visits and see which pages are read. Switching this on loads Google Analytics and sets its cookies. Leaving it off means no request is made to Google at all.</p>
+      </div>
+      <div class="sm-pref-control">
+        <input type="checkbox" id="sm-pref-analytics" class="sm-pref-toggle">
+      </div>
+    </div>
+    <div class="sm-pref-save">
+      <button id="sm-cookie-save" class="sm-cookie-btn sm-cookie-accept">Save Preferences</button>
+    </div>
+  </div>
+</div>
+<script>
+(function () {
+  var KEY = 'sm_cookie_consent';
+  var GA_ID = 'G-6FPWJM34X1';
+  var gaLoaded = false;
+
+  // Consent Mode "basic": gtag.js is injected only once consent is granted, so
+  // no request reaches Google — and no IP is disclosed — until the user opts in.
+  function loadGA() {
+    if (gaLoaded) return;
+    gaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', GA_ID);
+  }
+
+  // Withdrawal must be as easy as consent: drop the _ga cookies on refusal.
+  function clearGaCookies() {
+    document.cookie.split(';').forEach(function (c) {
+      var n = c.split('=')[0].trim();
+      if (n.indexOf('_ga') !== 0) return;
+      var h = location.hostname;
+      ['', '; domain=' + h, '; domain=.' + h].forEach(function (d) {
+        document.cookie = n + '=; Max-Age=0; path=/' + d;
+      });
+    });
+  }
+
+  function apply(granted) {
+    if (typeof gtag === 'function') {
+      gtag('consent', 'update', {
+        analytics_storage: granted ? 'granted' : 'denied',
+        ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied'
+      });
+    }
+    if (granted) loadGA(); else clearGaCookies();
+  }
+
+  var banner = document.getElementById('sm-cookie-banner');
+  var prefs  = document.getElementById('sm-cookie-prefs');
+  var manage = document.getElementById('sm-cookie-manage');
+  var toggle = document.getElementById('sm-pref-analytics');
+
+  function read() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function openPrefs(open) {
+    prefs.hidden = !open;
+    manage.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (open) toggle.focus();
+  }
+  function save(granted) {
+    try { localStorage.setItem(KEY, granted ? 'granted' : 'denied'); } catch (e) {}
+    apply(granted);
+    openPrefs(false);
+    banner.style.display = 'none';
+  }
+
+  var stored = read();
+  if (stored === 'granted') { toggle.checked = true; apply(true); }
+  else if (stored === 'denied') { apply(false); }
+  else { banner.style.display = 'block'; }
+
+  manage.addEventListener('click', function () { openPrefs(prefs.hidden); });
+  document.getElementById('sm-cookie-accept').addEventListener('click', function () { toggle.checked = true; save(true); });
+  document.getElementById('sm-cookie-reject').addEventListener('click', function () { toggle.checked = false; save(false); });
+  document.getElementById('sm-cookie-save').addEventListener('click', function () { save(toggle.checked); });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !prefs.hidden) { openPrefs(false); manage.focus(); }
+  });
+
+  window.smOpenCookieSettings = function () {
+    toggle.checked = (read() === 'granted');
+    banner.style.display = 'block';
+    openPrefs(true);
+  };
+})();
+</script>
+
+
+<script>
+/* Accessibility: keep aria-expanded synced, Escape to close, focus into mobile menu */
+(function(){
+  function sync(c,t){ if(!c||!t)return; var a=function(){t.setAttribute('aria-expanded',c.classList.contains('open')?'true':'false');}; a(); new MutationObserver(a).observe(c,{attributes:true,attributeFilter:['class']}); }
+  document.querySelectorAll('.nav-comp-wrap').forEach(function(w){ sync(w,w.querySelector('.nav-comp-trigger')); });
+  var ld=document.getElementById('langDropdown'); sync(ld, ld&&ld.querySelector('.lang-globe'));
+  var tg=document.getElementById('navToggle'); sync(tg,tg);
+  if(tg){ new MutationObserver(function(){ if(tg.classList.contains('open')){ var l=document.getElementById('navLinks'); var f=l&&l.querySelector('button, a, [tabindex]'); if(f)f.focus(); } }).observe(tg,{attributes:true,attributeFilter:['class']}); }
+  document.addEventListener('keydown',function(e){ if(e.key!=='Escape')return; document.querySelectorAll('.nav-comp-wrap.open, #langDropdown.open').forEach(function(w){ w.classList.remove('open'); var t=w.querySelector('.nav-comp-trigger, .lang-globe'); if(t)t.focus(); }); var nt=document.getElementById('navToggle'); if(nt&&nt.classList.contains('open')){ nt.classList.remove('open'); document.getElementById('navLinks').classList.remove('open'); nt.focus(); } });
+})();
+</script>
+
 </body>
 </html>

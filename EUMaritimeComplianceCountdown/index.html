@@ -1,11 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<!-- Google Analytics — Consent Mode "basic".
+     The gtag.js tag is deliberately NOT loaded here. It is injected only after
+     the visitor grants consent (see the cookie banner script before </body>),
+     so no request reaches Google, and no IP address is disclosed to Google,
+     unless and until the visitor opts in. -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Queued only — inert until gtag.js is actually loaded post-consent.
+  gtag('consent', 'default', {
+    analytics_storage: 'denied',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied'
+  });
+</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
 <!-- ── PRIMARY SEO ── -->
 <title>EU Maritime Compliance Countdown | NIS2, CER Directive &amp; Circular 177/2025 Deadlines — Sentinella Mare</title>
+<!-- Favicon -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
 <meta name="description" content="Live countdown to every NIS2, CER Directive, and Italian Circular 177/2025 deadline facing Mediterranean port authorities, ferry operators, ISM shipping companies, and subsea cable operators. Filter by operator type.">
 <link rel="canonical" href="https://sentinellaglobal.com/EUMaritimeComplianceCountdown">
 
@@ -29,7 +51,7 @@
   "name": "EU Maritime Compliance Countdown 2026–2027",
   "description": "Live countdown to NIS2, CER Directive, and Italian Circular 177/2025 regulatory deadlines for Mediterranean maritime operators.",
   "itemListElement": [
-    {"@type":"Event","position":1,"name":"NIS2 Annual Categorisation Deadline","startDate":"2026-06-30","description":"Annual categorisation submission to the ACN portal for port authorities, PFSOs, ISM shipping companies, and subsea cable operators. ACN's first on-site inspections begin from October 2026.","location":{"@type":"Place","name":"European Union"},"organizer":{"@type":"Organization","name":"Sentinella Mare","url":"https://sentinellaglobal.com"}},
+    {"@type":"Event","position":1,"name":"NIS2 Annual Categorisation Deadline","startDate":"2026-06-30","description":"Annual categorisation submission to the ACN portal for port authorities, PFSOs, ISM shipping companies, and subsea cable operators. ACN's on-site inspections are expected from late 2026.","location":{"@type":"Place","name":"European Union"},"organizer":{"@type":"Organization","name":"Sentinella Mare","url":"https://sentinellaglobal.com"}},
     {"@type":"Event","position":2,"name":"CER Critical Entity Designation","startDate":"2026-07-17","description":"Member states formally identify critical maritime entities. Formal notification, which starts the compliance clock, typically follows within weeks of designation.","location":{"@type":"Place","name":"European Union"},"organizer":{"@type":"Organization","name":"Sentinella Mare","url":"https://sentinellaglobal.com"}},
     {"@type":"Event","position":3,"name":"Italy Full NIS2 Compliance","startDate":"2026-10-01","description":"Full NIS2 compliance obligations active under Italian Legislative Decree 138/2024. Exact date is entity-notification-dependent — approximately October–November 2026.","location":{"@type":"Place","name":"Italy"},"organizer":{"@type":"Organization","name":"Sentinella Mare","url":"https://sentinellaglobal.com"}},
     {"@type":"Event","position":4,"name":"Circolare 177/2025 Binding Date","startDate":"2026-11-01","description":"Italy's maritime cyber risk circular, aligned with IMO MSC-FAL.1/Circ.3, becomes fully enforceable for port facilities and ferry operators.","location":{"@type":"Place","name":"Italy"},"organizer":{"@type":"Organization","name":"Sentinella Mare","url":"https://sentinellaglobal.com"}},
@@ -39,11 +61,14 @@
 }
 </script>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Rajdhani:wght@300;500;600;700&family=Share+Tech+Mono&family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+<!-- Self-hosted webfonts: no third-party request, so no visitor IP is
+     disclosed to Google before consent. See /fonts/OFL.txt for licensing. -->
+<link rel="stylesheet" href="/fonts/fonts.css">
 
 <style>
+  /* WCAG 2.2 SC 2.4.11 Focus Not Obscured: keep focused/anchor targets
+     clear of the fixed nav */
+  html { scroll-behavior: smooth; scroll-padding-top: 120px; }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 /* ── SITE DESIGN TOKENS ── */
@@ -65,8 +90,10 @@
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 999;
   display: flex; align-items: center; justify-content: space-between;
+  gap: 40px; /* keep the wordmark from colliding with the nav links */
   padding: 14px 64px;
   background: rgba(8,19,30,0.92);
+  -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(45,122,58,0.18);
 }
@@ -78,13 +105,14 @@ nav {
   color: var(--white); letter-spacing: 3px;
 }
 .nav-brand .n2 {
-  font-family: 'Share Tech Mono', monospace; font-size: 9px;
-  color: var(--green-mid); letter-spacing: 4px; margin-top: 3px;
-}
+  font-family: 'Share Tech Mono', monospace; font-size: 12px;
+  color: var(--green-mid); letter-spacing: 2px; margin-top: 3px;
+ white-space: nowrap;}
 .nav-links { display: flex; align-items: center; gap: 32px; }
 .nav-links a {
   color: var(--text); text-decoration: none;
-  font-size: 12px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+  font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  white-space: nowrap;
   transition: color 0.25s;
 }
 .nav-links a:hover { color: var(--green-glow); }
@@ -128,9 +156,9 @@ nav {
 .lang-menu .lang-btn {
   background: none; border: none; border-bottom: 1px solid rgba(45,122,58,0.15);
   cursor: pointer; color: rgba(200,216,236,0.55);
-  font-family: 'Share Tech Mono', monospace; font-size: 11px;
+  font-family: 'Share Tech Mono', monospace; font-size: 13px;
   padding: 9px 16px; text-transform: uppercase; text-align: center;
-  transition: color 0.2s, background 0.2s; letter-spacing: 2px;
+  transition: color 0.2s, background 0.2s; letter-spacing: 1.5px;
 }
 .lang-menu .lang-btn:last-child { border-bottom: none; }
 .lang-menu .lang-btn:hover { color: var(--green-glow); background: rgba(45,122,58,0.1); }
@@ -141,7 +169,8 @@ nav {
 .nav-comp-trigger {
   background: none; border: none; cursor: pointer; padding: 0;
   color: var(--text); font-family: 'Rajdhani', sans-serif;
-  font-size: 12px; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase;
+  font-size: 13px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+  white-space: nowrap;
   display: flex; align-items: center; gap: 5px; transition: color 0.25s;
 }
 .nav-comp-trigger:hover { color: var(--green-glow); }
@@ -159,7 +188,7 @@ nav {
 .nav-comp-menu a {
   display: block; padding: 12px 20px;
   color: rgba(200,216,236,0.7);
-  font-family: 'Share Tech Mono', monospace; font-size: 10px;
+  font-family: 'Share Tech Mono', monospace; font-size: 12px;
   letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
   border-bottom: 1px solid rgba(45,122,58,0.12);
   transition: color 0.2s, background 0.2s;
@@ -167,7 +196,7 @@ nav {
 .nav-comp-menu a:last-child { border-bottom: none; }
 .nav-comp-menu a:hover { color: var(--green-glow); background: rgba(45,122,58,0.08); }
 .nav-comp-menu .comp-link-label {
-  display: block; font-size: 8px; color: rgba(45,122,58,0.6);
+  display: block; font-size: 12px; color: rgba(45,122,58,0.6);
   letter-spacing: 1.5px; margin-top: 2px;
 }
 
@@ -185,15 +214,16 @@ footer {
 .footer-brand-text { display: flex; flex-direction: column; gap: 12px; }
 .footer-brand img { height: 100px; width: fit-content; }
 .footer-brand p {
-  font-size: 13px; line-height: 1.7; color: var(--text);
+  font-size: 14px; line-height: 1.7; color: var(--text);
   max-width: 280px; font-family: 'Rajdhani', sans-serif;
 }
 .footer-brand .hq {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 9px; letter-spacing: 3px; color: var(--green-mid);
+  font-size: 12px; letter-spacing: 2px; color: var(--green-mid);
   text-transform: uppercase;
 }
 .footer-contact-btn { display: inline-block; width: fit-content; }
+  .footer-col a.footer-contact-btn { color: #fff; }  /* WCAG 1.4.3: .footer-col a would otherwise win on specificity and dim this button's text */
 .footer-col .footer-nav-title {
   font-family: 'Cinzel', serif;
   font-size: 13px; font-weight: 600;
@@ -201,7 +231,7 @@ footer {
   margin-bottom: 20px;
 }
 .footer-col a, .footer-col p {
-  display: block; font-size: 13px;
+  display: block; font-size: 14px;
   color: var(--text); text-decoration: none;
   margin-bottom: 10px; letter-spacing: 0.5px;
   transition: color 0.25s; font-family: 'Rajdhani', sans-serif;
@@ -213,6 +243,7 @@ footer {
   font-size: 13px; font-weight: 700; letter-spacing: 2.5px;
   text-transform: uppercase; text-decoration: none;
   border: none; cursor: pointer; display: inline-block;
+  -webkit-clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
   clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
   transition: all 0.3s;
 }
@@ -227,9 +258,13 @@ body {
   background: #060f18;
   color: #f0f5fc;
   font-family: 'Rajdhani', sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.6;
+  /* Stop iOS inflating text when the device rotates to landscape */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   min-height: 100vh;
+  min-height: 100dvh; /* iOS: account for the dynamic toolbar */
 }
 
 /* ── PAGE VARIABLES (scoped, don't conflict with site vars) ── */
@@ -269,7 +304,7 @@ body {
 }
 .wordmark {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 10px;
+  font-size: 13px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #3aab4a;
@@ -316,7 +351,7 @@ body {
 .hero-reg {
   display: inline-block;
   font-family: 'Share Tech Mono', monospace;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.12em;
   padding: 2px 8px;
@@ -328,7 +363,7 @@ body {
 @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.7} }
 .hero-sub {
   margin-top: 8px;
-  font-size: 12px;
+  font-size: 15px;
   color: rgba(200,216,236,0.55);
   font-family: 'Share Tech Mono', monospace;
   letter-spacing: 0.04em;
@@ -346,7 +381,7 @@ body {
 }
 .filter-label {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 9px;
+  font-size: 13px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: rgba(200,216,236,0.55);
@@ -354,7 +389,7 @@ body {
 }
 .seg-btn {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 9px;
+  font-size: 13px;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -386,7 +421,7 @@ body {
 }
 .overlap-label {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 9px;
+  font-size: 13px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #3aab4a;
@@ -401,13 +436,13 @@ body {
 .overlap-count.low { color: #D97706; }
 .overlap-count.vlow { color: #3aab4a; }
 .overlap-text {
-  font-size: 12px;
+  font-size: 15px;
   color: rgba(200,216,236,0.55);
   max-width: 480px;
 }
 
 /* Timeline */
-.timeline { padding: 32px 40px; max-width: 1100px; margin: 0 auto; }
+.timeline { padding: 32px 40px; max-width: 1300px; margin: 0 auto; }
 .deadline-card {
   display: grid;
   grid-template-columns: 120px 1fr;
@@ -451,19 +486,19 @@ body {
 .passed  .days-num { font-size: 22px; color: rgba(200,216,236,0.55); }
 .days-label {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 8px;
+  font-size: 12px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
-.crit     .days-label { color: #FC8181; }
+.crit     .days-label { color: #FCA5A5; }
 .urgent   .days-label { color: #FCD34D; }
 .appr     .days-label { color: #FDE68A; }
 .upcoming .days-label { color: #3aab4a; }
-.passed   .days-label { color: rgba(200,216,236,0.55); }
+.passed   .days-label { color: rgba(200,216,236,0.7); }
 .urgency-tag {
   display: block;
   font-family: 'Share Tech Mono', monospace;
-  font-size: 7px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -471,11 +506,11 @@ body {
   padding: 2px 6px;
   border-radius: 2px;
 }
-.crit .urgency-tag    { background: rgba(229,62,62,0.3); color: #FC8181; }
+.crit .urgency-tag    { background: rgba(229,62,62,0.3); color: #FECACA; }  /* #FCA5A5 = 4.08:1 on the composited red; needs 4.5 at 12px */
 .urgent .urgency-tag  { background: rgba(217,119,6,0.3); color: #FCD34D; }
 .appr .urgency-tag    { background: rgba(180,83,9,0.3); color: #FDE68A; }
 .upcoming .urgency-tag{ background: rgba(45,122,58,0.25); color: #4fd962; }
-.passed .urgency-tag  { background: rgba(42,74,108,0.5); color: rgba(200,216,236,0.55); }
+.passed .urgency-tag  { background: rgba(42,74,108,0.5); color: rgba(200,216,236,0.7); }
 
 /* Right content column */
 .card-content {
@@ -506,7 +541,7 @@ body {
 .card-top { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
 .reg-badge {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 8px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: 0.1em;
   padding: 3px 8px;
@@ -529,16 +564,16 @@ body {
 }
 .card-date {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 9px;
+  font-size: 13px;
   color: rgba(200,216,236,0.55);
   white-space: nowrap;
   margin-top: 4px;
 }
-.card-desc { font-size: 12px; color: rgba(200,216,236,0.55); margin-bottom: 12px; line-height: 1.6; }
+.card-desc { font-size: 15px; color: rgba(200,216,236,0.55); margin-bottom: 12px; line-height: 1.6; }
 .seg-chips { display: flex; flex-wrap: wrap; gap: 5px; margin-bottom: 12px; }
 .seg-chip {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 8px;
+  font-size: 12px;
   letter-spacing: 0.06em;
   padding: 2px 7px;
   border: 1px solid rgba(45,122,58,0.18);
@@ -554,13 +589,13 @@ body {
 }
 .consequence-label {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 8px;
+  font-size: 13px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #FC8181;
   margin-bottom: 3px;
 }
-.consequence-text { font-size: 11px; color: #FCA5A5; line-height: 1.55; }
+.consequence-text { font-size: 15px; color: #FCA5A5; line-height: 1.55; }
 .sentinella-block {
   background: rgba(45,122,58,0.05);
   border-left: 2px solid #3aab4a;
@@ -569,13 +604,13 @@ body {
 }
 .sentinella-label {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 8px;
+  font-size: 13px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: #3aab4a;
   margin-bottom: 3px;
 }
-.sentinella-text { font-size: 11px; color: #c8f0cb; line-height: 1.6; }
+.sentinella-text { font-size: 15px; color: #c8f0cb; line-height: 1.6; }
 
 /* Page footer note */
 .page-footer-note {
@@ -588,12 +623,12 @@ body {
   gap: 16px;
   background: #0B1F3A;
 }
-.page-footer-note .fn-text { font-size: 10px; color: rgba(200,216,236,0.55); max-width: 540px; line-height: 1.7; }
-.page-footer-note .fn-sig { font-family: 'Share Tech Mono', monospace; font-size: 9px; color: rgba(200,216,236,0.55); text-align: right; line-height: 1.9; }
+.page-footer-note .fn-text { font-size: 13px; color: rgba(200,216,236,0.7); max-width: 540px; line-height: 1.7; }
+.page-footer-note .fn-sig { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: rgba(200,216,236,0.7); text-align: right; line-height: 1.9; }
 .page-footer-note .fn-sig .teal { color: #3aab4a; }
 
 /* iPad landscape — collapse nav to hamburger */
-@media (max-width: 1100px) {
+@media (max-width: 1300px) {
   .nav-toggle { display: flex; }
   .nav-links {
     display: none; position: fixed;
@@ -618,7 +653,7 @@ body {
   .nav-comp-wrap.open .nav-comp-menu {
     display: flex; flex-direction: column; align-items: center; gap: 0; padding: 6px 0;
   }
-  .nav-comp-menu a { border: none; font-size: 11px; padding: 8px 0; text-align: center; }
+  .nav-comp-menu a { border: none; font-size: 13px; padding: 8px 0; text-align: center; }
   .nav-comp-menu .comp-link-label { display: none; }
 }
 
@@ -627,7 +662,7 @@ body {
   nav { padding: 12px 20px; backdrop-filter: none; -webkit-backdrop-filter: none; }
   .nav-logo img { height: 70px; }
   .nav-brand .n1 { font-size: 15px; letter-spacing: 2px; }
-  .nav-brand .n2 { font-size: 8px; letter-spacing: 3px; }
+  .nav-brand .n2 { font-size: 12px; letter-spacing: 2px; }
   .nav-toggle { display: flex; }
   .nav-links {
     display: none; position: fixed;
@@ -656,7 +691,7 @@ body {
   .nav-comp-wrap.open .nav-comp-menu {
     display: flex; flex-direction: column; align-items: center; gap: 0; padding: 6px 0;
   }
-  .nav-comp-menu a { border: none; font-size: 11px; padding: 8px 0; text-align: center; }
+  .nav-comp-menu a { border: none; font-size: 13px; padding: 8px 0; text-align: center; }
   .nav-comp-menu .comp-link-label { display: none; }
   .page-hero { padding: 36px 20px 28px; padding-top: 140px; }
   .timeline { padding: 20px 16px; }
@@ -674,8 +709,8 @@ body {
 @media (max-width: 480px) {
   nav { padding: 10px 16px; }
   .nav-logo img { height: 56px; }
-  .nav-brand .n1 { font-size: 12px; letter-spacing: 1px; }
-  .nav-brand .n2 { font-size: 7px; letter-spacing: 2px; display: none; }
+  .nav-brand .n1 { font-size: 13px; letter-spacing: 1px; }
+  .nav-brand .n2 { font-size: 12px; letter-spacing: 2px; display: none; }
 }
 
 a, button { -webkit-tap-highlight-color: transparent; }
@@ -689,16 +724,80 @@ a, button { -webkit-tap-highlight-color: transparent; }
   border-top: 1px solid rgba(45,122,58,0.15);
   background: #060f18;
 }
+/* WCAG 2.2 SC 2.5.8: standalone link rendered 15px tall. */
 .cross-link-strip a {
+  display: inline-block; padding: 5px 0;
   font-family: 'Share Tech Mono', monospace;
-  font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
   color: rgba(240,245,252,0.5); text-decoration: none;
   transition: color 0.2s;
 }
 .cross-link-strip a:hover { color: #4fd962; }
+  .footer-legal-links {
+    display: flex; align-items: flex-start; gap: 16px; flex-wrap: wrap;
+  }
+  .footer-legal-link {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 13px; letter-spacing: 1.5px; color: rgba(240,245,252,0.65);
+    text-transform: uppercase; text-decoration: none;
+    background: none; border: none; cursor: pointer; padding: 6px 0;
+    line-height: 1; vertical-align: top;
+    transition: color 0.2s;
+  }
+  .footer-legal-link:hover { color: #eef3f8; }
+
+  /* ── Accessibility: focus, skip link, in-text link cues ── */
+  a:focus-visible, button:focus-visible, input:focus-visible,
+  select:focus-visible, textarea:focus-visible,
+  [tabindex]:not([tabindex="-1"]):focus-visible {
+    outline: 3px solid #4fd962; outline-offset: 3px; border-radius: 3px;
+  }
+  main:focus { outline: none; }
+  .skip-link {
+    position: absolute; left: 12px; top: -60px; z-index: 3000;
+    background: #2d7a3a; color: #fff; padding: 12px 20px; border-radius: 4px;
+    font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 13px;
+    letter-spacing: 2px; text-transform: uppercase; text-decoration: none;
+    transition: top 0.2s;
+  }
+  .skip-link:focus { top: 12px; }
+  .sm-cookie-text a { text-decoration: underline; }
+
+
+/* iOS safe-area + nav edge padding (matches legal pages) */
+@supports (padding: max(0px)) {
+  nav {
+    padding-top: max(14px, env(safe-area-inset-top));
+    padding-left: max(20px, calc((100% - 1440px) / 2), env(safe-area-inset-left));
+    padding-right: max(20px, calc((100% - 1440px) / 2), env(safe-area-inset-right));
+  }
+  /* Keep footer content clear of the iPhone home indicator */
+  footer {
+    padding-bottom: max(32px, env(safe-area-inset-bottom));
+  }
+  @media (max-width: 480px) {
+    nav { padding-top: max(10px, env(safe-area-inset-top)); }
+    footer { padding-bottom: max(20px, env(safe-area-inset-bottom)); }
+  }
+}
+
+  /* WCAG 2.2 SC 2.5.8 Target Size */
+  .footer-col a { padding: 3px 0; }
+  /* .footer-col a wins on specificity over .btn-primary; restore button sizing/shape for the Contact CTA */
+  .footer-col a.footer-contact-btn {
+    display: inline-block; padding: 14px 36px; letter-spacing: 2px; margin-bottom: 0;
+  }
+  .footer-legal-links { row-gap: 4px; }
+  /* Primary nav links rendered 15-23px tall — under the 24px minimum, and not
+     covered by the inline-in-prose exception. Vertical padding only, so the nav
+     height (driven by the logo) is unchanged. */
+  .nav-links > a { padding: 5px 0; }
+  .nav-comp-trigger { padding: 5px 0; }
 </style>
 </head>
 <body>
+
+<a href="#main" class="skip-link">Skip to content</a>
 
 <!-- ── SITE NAV ── -->
 <nav>
@@ -709,24 +808,40 @@ a, button { -webkit-tap-highlight-color: transparent; }
       <span class="n2">Mediterranean Intelligence</span>
     </div>
   </a>
-  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open')">
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open')">
     <span></span><span></span><span></span>
   </button>
   <div class="nav-links" id="navLinks">
-    <a href="/#services" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Services</a>
+    <div class="nav-comp-wrap" id="servicesNav">
+      <button class="nav-comp-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="servicesMenu" onclick="document.getElementById('servicesNav').classList.toggle('open')">
+        Services
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="nav-comp-menu" id="servicesMenu">
+        <a href="/#platform" onclick="document.getElementById('servicesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">
+          Intelligence Terminal
+          <span class="comp-link-label">Live Intelligence Platform</span>
+        </a>
+        <a href="/#advisory" onclick="document.getElementById('servicesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">
+          Advisory
+          <span class="comp-link-label">(Coming Soon)</span>
+        </a>
+      </div>
+    </div>
     <a href="/#platform" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Live Platform</a>
-    <a href="/#advisory" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Advisory</a>
-    <a href="/#pricing" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Subscription</a>
+    <a href="/#pricing" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Pricing</a>
     <a href="/#clients" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Clients</a>
     <a href="/Leadership" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Leadership</a>
     <div class="nav-comp-wrap" id="complianceNav">
-      <button class="nav-comp-trigger" onclick="document.getElementById('complianceNav').classList.toggle('open')">
+      <button class="nav-comp-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="complianceMenu" onclick="document.getElementById('complianceNav').classList.toggle('open')">
         Compliance
         <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
-      <div class="nav-comp-menu">
+      <div class="nav-comp-menu" id="complianceMenu">
         <a href="/EUMaritimeComplianceCountdown" target="_blank" rel="noopener noreferrer">
           Deadline Countdown
           <span class="comp-link-label">NIS2 · CER · Circ. 177 live timers</span>
@@ -738,23 +853,25 @@ a, button { -webkit-tap-highlight-color: transparent; }
       </div>
     </div>
     <div class="lang-dropdown" id="langDropdown">
-      <button class="lang-globe" onclick="document.getElementById('langDropdown').classList.toggle('open')" aria-label="Select language">
+      <button class="lang-globe" onclick="document.getElementById('langDropdown').classList.toggle('open')" aria-label="Select language" aria-expanded="false" aria-haspopup="true" aria-controls="langMenu">
         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="10"/>
           <ellipse cx="12" cy="12" rx="4" ry="10"/>
           <line x1="2" y1="12" x2="22" y2="12"/>
         </svg>
       </button>
-      <div class="lang-menu">
-        <button class="lang-btn active" id="btn-en">EN</button>
+      <div class="lang-menu" id="langMenu">
+        <button class="lang-btn active" aria-current="true" id="btn-en">EN</button>
         <button class="lang-btn" id="btn-it">IT</button>
         <button class="lang-btn" id="btn-ar">AR</button>
         <button class="lang-btn" id="btn-el">EL</button>
       </div>
     </div>
-    <a href="/#contact" class="btn-nav" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Request Access</a>
+    <a href="https://mare.sentinellaglobal.com/" class="btn-nav" target="_blank" rel="noopener noreferrer" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Launch Terminal</a>
   </div>
 </nav>
+
+<main id="main" tabindex="-1">
 
 <!-- ── PAGE CONTENT ── -->
 <div class="page-wrap">
@@ -789,7 +906,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
 
 <div class="page-footer-note">
   <div class="fn-text">
-    Deadlines computed live from today's date. CER risk assessment, CER full compliance, and Italy full NIS2 dates are estimates pending formal notification timing and are marked "est." accordingly. NIS2: D.Lgs. 138/2024 (EU 2022/2555). CER: D.Lgs. 134/2024 (EU Directive 2022/2557). Circolare 177/2025: issued by the Capitanerie di Porto command (under MIT) as Italy's NIS transport sector authority. Operators should confirm applicable obligations with their national competent authority or qualified legal counsel. Nothing here constitutes legal advice. Content reviewed June 2026.
+    Deadlines computed live from today's date. CER risk assessment, CER full compliance, and Italy full NIS2 dates are estimates pending formal notification timing and are marked "est." accordingly. NIS2: D.Lgs. 138/2024 (EU 2022/2555). CER: D.Lgs. 134/2024 (EU Directive 2022/2557). Circolare 177/2025: issued by the Capitanerie di Porto command (under MIT) as Italy's NIS transport sector authority. Operators should confirm applicable obligations with their national competent authority or qualified legal counsel. Nothing here constitutes legal advice. Content reviewed July 2026.
   </div>
   <div class="fn-sig">
     <span class="teal">SENTINELLA MARE</span><br>
@@ -805,6 +922,8 @@ a, button { -webkit-tap-highlight-color: transparent; }
 </div>
 
 <!-- ── SITE FOOTER ── -->
+</main>
+
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
@@ -815,14 +934,14 @@ a, button { -webkit-tap-highlight-color: transparent; }
       </div>
     </div>
     <div class="footer-col">
-      <h3 class="footer-nav-title">Services</h3>
+      <p class="footer-nav-title">Services</p>
       <a href="/#services">Mediterranean Watch Intelligence Terminal</a>
       <a href="/#advisory">Investment Advisory</a>
       <a href="/#advisory">Supply Chain Risk</a>
       <a href="/#pricing">Subscription Tiers</a>
     </div>
     <div class="footer-col">
-      <h3 class="footer-nav-title">Coverage</h3>
+      <p class="footer-nav-title">Coverage</p>
       <p>Strait of Gibraltar</p>
       <p>Tyrrhenian Sea</p>
       <p>Strait of Sicily</p>
@@ -831,6 +950,18 @@ a, button { -webkit-tap-highlight-color: transparent; }
     </div>
     <div class="footer-col">
       <a href="mailto:james@sentinellaglobal.com" class="btn-primary footer-contact-btn">Contact</a>
+    </div>
+  </div>
+
+  <div class="footer-bottom" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px 48px;padding:20px 0 0;border-top:1px solid rgba(255,255,255,0.07);">
+    <p style="font-family:'Share Tech Mono',monospace;font-size:12px;letter-spacing:1.5px;color:#f0f5fc;text-transform:uppercase;">© 2026 Sentinella LLC · 8 The Green STE A, Dover, DE 19901, USA · HQ: Brussels, Belgium</p>
+    <div class="footer-legal-links">
+      <a href="/privacypolicy/" class="footer-legal-link">Privacy Policy</a>
+      <a href="/legalterms/" class="footer-legal-link">Terms</a>
+      <a href="/dpa/" class="footer-legal-link">DPA</a>
+      <a href="/legalnotice/" class="footer-legal-link">Legal Notice</a>
+      <a href="/accessibility/" class="footer-legal-link">Accessibility</a>
+      <button onclick="if(typeof smOpenCookieSettings==='function')smOpenCookieSettings();" class="footer-legal-link">Cookie Settings</button>
     </div>
   </div>
 </footer>
@@ -845,7 +976,7 @@ const DEADLINES = [
     regClass: "reg-nis2",
     title: "NIS2 Annual Categorisation Deadline",
     segments: ["Port Authority","PFSO","ISM / Shipping","Subsea Cable"],
-    desc: "Annual entity categorisation submission to the ACN portal — not a formal audit. Entities must register their risk classification and confirm a documented risk assessment process, incident reporting capability, supply chain security measures, and active governance are in place. ACN's first on-site inspections begin from October 2026.",
+    desc: "Annual entity categorisation submission to the ACN portal — not a formal audit. Entities must register their risk classification and confirm a documented risk assessment process, incident reporting capability, supply chain security measures, and active governance are in place. ACN's on-site inspections are expected from late 2026.",
     consequence: "Non-compliance: up to €10M or 2% of global turnover (essential entities; €7M / 1.4% for important entities). Personal director liability under ACN enforcement. Repeat non-compliance may result in authorities ordering public disclosure of the violation.",
     sentinella: "The Asset Status panel is your daily risk management record — exactly what NIS2 Article 21 requires to demonstrate ongoing monitoring. P-MHTES and C-MHTES scores provide the external threat intelligence layer no internal IT tool produces. Compliance CSV and AI-generated PDF/A-1b export on demand — not assembled at audit time."
   },
@@ -1076,5 +1207,209 @@ updateOverlap();
 // Refresh hero countdown every minute
 setInterval(renderHero, 60000);
 </script>
+
+<!-- ── COOKIE CONSENT BANNER ── -->
+<style>
+#sm-cookie-banner {
+  display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
+  background: #0d1b2a; border-top: 1px solid rgba(45,122,58,0.4);
+  padding: 20px 48px; box-shadow: 0 -8px 40px rgba(0,0,0,0.55);
+  font-family: 'Rajdhani', sans-serif;
+  max-height: 85vh; overflow-y: auto;
+}
+[hidden] { display: none !important; }
+.sm-cookie-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 32px; flex-wrap: wrap;
+}
+.sm-cookie-label {
+  display: block; font-family: 'Share Tech Mono', monospace;
+  font-size: 13px; letter-spacing: 1.5px; color: #3aab4a;
+  text-transform: uppercase; margin-bottom: 7px;
+}
+.sm-cookie-text { font-size: 15px; line-height: 1.65; color: #c8d8ec; max-width: 680px; }
+.sm-cookie-text a { color: #3aab4a; }
+.sm-cookie-text a:hover { color: #4fd962; }
+.sm-cookie-actions { display: flex; gap: 12px; flex-shrink: 0; align-items: center; }
+.sm-cookie-btn {
+  font-family: 'Rajdhani', sans-serif; font-size: 14px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase; cursor: pointer;
+  padding: 11px 26px; border-radius: 0; transition: all 0.25s;
+  -webkit-tap-highlight-color: transparent; white-space: nowrap;
+}
+.sm-cookie-reject, .sm-cookie-manage {
+  background: transparent; color: #c8d8ec; border: 1px solid rgba(200,216,236,0.35);
+}
+.sm-cookie-reject:hover, .sm-cookie-manage:hover { border-color: #eef3f8; color: #eef3f8; }
+.sm-cookie-accept {
+  background: #2d7a3a; color: #fff; border: 1px solid #2d7a3a;
+  -webkit-clip-path: polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px));
+  clip-path: polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px));
+}
+.sm-cookie-accept:hover { background: #3aab4a; border-color: #3aab4a; box-shadow: 0 0 22px rgba(58,171,74,0.35); }
+
+/* ── Manage Preferences panel ── */
+.sm-cookie-prefs {
+  max-width: 1200px; margin: 18px auto 0; padding-top: 18px;
+  border-top: 1px solid rgba(45,122,58,0.25);
+}
+.sm-pref-row {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 24px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.sm-pref-row:last-of-type { border-bottom: none; }
+.sm-pref-name {
+  display: block; font-size: 15px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase; color: #eef3f8;
+}
+label.sm-pref-name { cursor: pointer; }
+.sm-pref-desc { font-size: 14px; line-height: 1.6; color: #c8d8ec; margin-top: 5px; max-width: 720px; }
+.sm-pref-control { flex-shrink: 0; display: flex; align-items: center; min-height: 24px; }
+.sm-pref-always {
+  font-family: 'Share Tech Mono', monospace; font-size: 13px;
+  letter-spacing: 1px; text-transform: uppercase; color: #3aab4a;
+}
+.sm-pref-toggle { width: 24px; height: 24px; accent-color: #2d7a3a; cursor: pointer; }
+.sm-pref-save { display: flex; justify-content: flex-end; padding-top: 16px; }
+@media (max-width: 768px) {
+  #sm-cookie-banner { padding: 18px 20px; }
+  .sm-cookie-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .sm-cookie-actions { width: 100%; flex-wrap: wrap; }
+  /* Labels are nowrap; tighter padding + wrap keeps them inside a 375px screen
+     and lets them stack full-width when they cannot share a row. */
+  .sm-cookie-btn { flex: 1 1 auto; text-align: center; padding: 11px 14px; }
+  .sm-pref-save { justify-content: stretch; }
+  .sm-pref-save .sm-cookie-btn { width: 100%; }
+}
+</style>
+<div id="sm-cookie-banner" role="dialog" aria-modal="false" aria-labelledby="sm-cookie-heading">
+  <div class="sm-cookie-inner">
+    <div>
+      <span class="sm-cookie-label" id="sm-cookie-heading">Cookie Settings</span>
+      <p class="sm-cookie-text">Sentinella Mare (data controller) uses Google Analytics to understand how visitors use this site. Google Analytics loads only if you accept &mdash; if you decline, nothing is sent to Google and no analytics cookies are set. No advertising or third-party tracking cookies are used. <a href="/privacypolicy/">Privacy Policy</a>.</p>
+    </div>
+    <div class="sm-cookie-actions">
+      <button id="sm-cookie-reject" class="sm-cookie-btn sm-cookie-reject">Reject All</button>
+      <button id="sm-cookie-manage" class="sm-cookie-btn sm-cookie-manage" aria-expanded="false" aria-controls="sm-cookie-prefs">Manage Preferences</button>
+      <button id="sm-cookie-accept" class="sm-cookie-btn sm-cookie-accept">Accept Analytics</button>
+    </div>
+  </div>
+  <div id="sm-cookie-prefs" class="sm-cookie-prefs" hidden>
+    <div class="sm-pref-row">
+      <div>
+        <span class="sm-pref-name">Strictly necessary</span>
+        <p class="sm-pref-desc">Required for the site to work and to remember your cookie choice. These are always active and cannot be switched off.</p>
+      </div>
+      <div class="sm-pref-control"><span class="sm-pref-always">Always on</span></div>
+    </div>
+    <div class="sm-pref-row">
+      <div>
+        <label class="sm-pref-name" for="sm-pref-analytics">Analytics</label>
+        <p class="sm-pref-desc">Google Analytics, used to count visits and see which pages are read. Switching this on loads Google Analytics and sets its cookies. Leaving it off means no request is made to Google at all.</p>
+      </div>
+      <div class="sm-pref-control">
+        <input type="checkbox" id="sm-pref-analytics" class="sm-pref-toggle">
+      </div>
+    </div>
+    <div class="sm-pref-save">
+      <button id="sm-cookie-save" class="sm-cookie-btn sm-cookie-accept">Save Preferences</button>
+    </div>
+  </div>
+</div>
+<script>
+(function () {
+  var KEY = 'sm_cookie_consent';
+  var GA_ID = 'G-6FPWJM34X1';
+  var gaLoaded = false;
+
+  // Consent Mode "basic": gtag.js is injected only once consent is granted, so
+  // no request reaches Google — and no IP is disclosed — until the user opts in.
+  function loadGA() {
+    if (gaLoaded) return;
+    gaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', GA_ID);
+  }
+
+  // Withdrawal must be as easy as consent: drop the _ga cookies on refusal.
+  function clearGaCookies() {
+    document.cookie.split(';').forEach(function (c) {
+      var n = c.split('=')[0].trim();
+      if (n.indexOf('_ga') !== 0) return;
+      var h = location.hostname;
+      ['', '; domain=' + h, '; domain=.' + h].forEach(function (d) {
+        document.cookie = n + '=; Max-Age=0; path=/' + d;
+      });
+    });
+  }
+
+  function apply(granted) {
+    if (typeof gtag === 'function') {
+      gtag('consent', 'update', {
+        analytics_storage: granted ? 'granted' : 'denied',
+        ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied'
+      });
+    }
+    if (granted) loadGA(); else clearGaCookies();
+  }
+
+  var banner = document.getElementById('sm-cookie-banner');
+  var prefs  = document.getElementById('sm-cookie-prefs');
+  var manage = document.getElementById('sm-cookie-manage');
+  var toggle = document.getElementById('sm-pref-analytics');
+
+  function read() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function openPrefs(open) {
+    prefs.hidden = !open;
+    manage.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (open) toggle.focus();
+  }
+  function save(granted) {
+    try { localStorage.setItem(KEY, granted ? 'granted' : 'denied'); } catch (e) {}
+    apply(granted);
+    openPrefs(false);
+    banner.style.display = 'none';
+  }
+
+  var stored = read();
+  if (stored === 'granted') { toggle.checked = true; apply(true); }
+  else if (stored === 'denied') { apply(false); }
+  else { banner.style.display = 'block'; }
+
+  manage.addEventListener('click', function () { openPrefs(prefs.hidden); });
+  document.getElementById('sm-cookie-accept').addEventListener('click', function () { toggle.checked = true; save(true); });
+  document.getElementById('sm-cookie-reject').addEventListener('click', function () { toggle.checked = false; save(false); });
+  document.getElementById('sm-cookie-save').addEventListener('click', function () { save(toggle.checked); });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !prefs.hidden) { openPrefs(false); manage.focus(); }
+  });
+
+  window.smOpenCookieSettings = function () {
+    toggle.checked = (read() === 'granted');
+    banner.style.display = 'block';
+    openPrefs(true);
+  };
+})();
+</script>
+
+
+<script>
+/* Accessibility: keep aria-expanded synced, Escape to close, focus into mobile menu */
+(function(){
+  function sync(c,t){ if(!c||!t)return; var a=function(){t.setAttribute('aria-expanded',c.classList.contains('open')?'true':'false');}; a(); new MutationObserver(a).observe(c,{attributes:true,attributeFilter:['class']}); }
+  document.querySelectorAll('.nav-comp-wrap').forEach(function(w){ sync(w,w.querySelector('.nav-comp-trigger')); });
+  var ld=document.getElementById('langDropdown'); sync(ld, ld&&ld.querySelector('.lang-globe'));
+  var tg=document.getElementById('navToggle'); sync(tg,tg);
+  if(tg){ new MutationObserver(function(){ if(tg.classList.contains('open')){ var l=document.getElementById('navLinks'); var f=l&&l.querySelector('button, a, [tabindex]'); if(f)f.focus(); } }).observe(tg,{attributes:true,attributeFilter:['class']}); }
+  document.addEventListener('keydown',function(e){ if(e.key!=='Escape')return; document.querySelectorAll('.nav-comp-wrap.open, #langDropdown.open').forEach(function(w){ w.classList.remove('open'); var t=w.querySelector('.nav-comp-trigger, .lang-globe'); if(t)t.focus(); }); var nt=document.getElementById('navToggle'); if(nt&&nt.classList.contains('open')){ nt.classList.remove('open'); document.getElementById('navLinks').classList.remove('open'); nt.focus(); } });
+})();
+</script>
+
 </body>
 </html>
