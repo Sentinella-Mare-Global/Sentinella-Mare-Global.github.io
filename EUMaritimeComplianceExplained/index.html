@@ -243,6 +243,7 @@ footer {
   font-size: 13px; font-weight: 700; letter-spacing: 2.5px;
   text-transform: uppercase; text-decoration: none;
   border: none; cursor: pointer; display: inline-block;
+  -webkit-clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
   clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
   transition: all 0.3s;
 }
@@ -259,6 +260,9 @@ body {
   font-family: 'Rajdhani', sans-serif;
   font-size: 16px;
   line-height: 1.75;
+  /* Stop iOS inflating text when the device rotates to landscape */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   min-height: 100vh;
   min-height: 100dvh; /* iOS: account for the dynamic toolbar */
 }
@@ -380,7 +384,16 @@ hr.divider {
   text-align: center; letter-spacing: 0.04em;
 }
 .tl-month.now { color: #3aab4a; font-weight: 400; }
-.tl-tracks { display: flex; flex-direction: column; gap: 10px; margin-top: 6px; }
+.tl-tracks { display: flex; flex-direction: column; gap: 40px; margin-top: 10px; }
+/* Dots less than a label-width apart (CER sits at 88% and 96%) overlap into
+   unreadable text, so the second label is lifted into its own band. */
+.tl-dot-label.lbl-hi { top: -46px; }
+/* A centred label on a dot near the left edge overhangs the track name
+   ("NIS2"/"CER"); anchor those to the dot and let them run rightwards. */
+.tl-dot-label.lbl-left { transform: none; left: -3px; }
+/* Mirror case: a centred label on a dot near the right edge spills out of the
+   timeline; anchor those to the dot and let them run leftwards. */
+.tl-dot-label.lbl-right { transform: translateX(-100%); left: 6px; }
 .tl-track { display: grid; grid-template-columns: 80px 1fr; align-items: center; gap: 12px; }
 .tl-label {
   font-family: 'Share Tech Mono', monospace;
@@ -389,7 +402,11 @@ hr.divider {
 .tl-label.nis2 { color: #a78bfa; }
 .tl-label.cer  { color: #0eb5af; }
 .tl-label.c177 { color: #c9a84c; }
-.tl-bar-wrap { position: relative; height: 22px; background: #1a3450; border-radius: 2px; overflow: hidden; }
+/* No overflow:hidden — .tl-dot-label and .now-line::before are positioned
+   above the bar (top:-18px) and were being clipped down onto the gradient,
+   where same-coloured text was unreadable. .tl-bar carries its own
+   border-radius, so the wrap does not need to clip. */
+.tl-bar-wrap { position: relative; height: 22px; background: #1a3450; border-radius: 2px; }
 .tl-bar { position: absolute; height: 100%; border-radius: 2px; top: 0; opacity: 0.85; }
 .bar-nis2 { background: linear-gradient(90deg, #7c3aed, #a78bfa); }
 .bar-cer  { background: linear-gradient(90deg, #0d9488, #0eb5af); }
@@ -399,10 +416,16 @@ hr.divider {
   width: 6px; height: 6px; border-radius: 50%; border: 1.5px solid #060d18;
 }
 .tl-dot-label {
-  position: absolute; top: -18px;
+  position: absolute; top: -20px;
   font-family: 'Share Tech Mono', monospace;
   font-size: 12px; white-space: nowrap;
   transform: translateX(-50%);
+  /* The label straddles the bar, and each label is tinted to match its own
+     track — i.e. the same colour as the gradient beneath it, which made the
+     text unreadable. The chip guarantees a dark backdrop whatever it sits on. */
+  background: rgba(6,13,24,0.92);
+  padding: 2px 6px;
+  border-radius: 2px;
 }
 .now-line {
   position: absolute; top: 0; bottom: 0; width: 1.5px;
@@ -412,7 +435,7 @@ hr.divider {
   content: 'TODAY'; position: absolute; top: -18px;
   left: 50%; transform: translateX(-50%);
   font-family: 'Share Tech Mono', monospace;
-  font-size: 12px; color: #ef4444; white-space: nowrap;
+  font-size: 12px; color: #f87171; white-space: nowrap;  /* #ef4444 was 4.26:1 on #112336 once unclipped */
 }
 .tl-note {
   margin-top: 16px; font-size: 13px; color: #8aa5bf;
@@ -504,6 +527,7 @@ hr.divider {
   font-family: 'Rajdhani', sans-serif; font-weight: 700;
   font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;
   padding: 14px 36px; border-radius: 2px; text-decoration: none;
+  -webkit-clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
   clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
   transition: all 0.25s;
 }
@@ -607,7 +631,9 @@ html { scroll-behavior: smooth; scroll-padding-top: 120px; }
   border-top: 1px solid rgba(45,122,58,0.15);
   background: #060f18;
 }
+/* WCAG 2.2 SC 2.5.8: standalone link rendered 15px tall. */
 .cross-link-strip a {
+  display: inline-block; padding: 5px 0;
   font-family: 'Share Tech Mono', monospace;
   font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
   color: rgba(240,245,252,0.5); text-decoration: none;
@@ -669,6 +695,11 @@ html { scroll-behavior: smooth; scroll-padding-top: 120px; }
     display: inline-block; padding: 14px 36px; letter-spacing: 2px; margin-bottom: 0;
   }
   .footer-legal-links { row-gap: 4px; }
+  /* Primary nav links rendered 15-23px tall — under the 24px minimum, and not
+     covered by the inline-in-prose exception. Vertical padding only, so the nav
+     height (driven by the logo) is unchanged. */
+  .nav-links > a { padding: 5px 0; }
+  .nav-comp-trigger { padding: 5px 0; }
 </style>
 </head>
 <body>
@@ -837,10 +868,10 @@ html { scroll-behavior: smooth; scroll-padding-top: 120px; }
               <div class="now-line" style="left:4%"></div>
               <div class="tl-bar bar-nis2" style="left:0%;width:100%"></div>
               <div class="tl-dot" style="left:8%;background:#a78bfa">
-                <div class="tl-dot-label" style="color:#a78bfa">Categorisation 30 Jun</div>
+                <div class="tl-dot-label lbl-left" style="color:#a78bfa">Categorisation 30 Jun</div>
               </div>
               <div class="tl-dot" style="left:42%;background:#a78bfa">
-                <div class="tl-dot-label" style="color:#a78bfa">Italy full Oct</div>
+                <div class="tl-dot-label lbl-hi" style="color:#a78bfa">Italy full Oct</div>
               </div>
             </div>
           </div>
@@ -850,13 +881,13 @@ html { scroll-behavior: smooth; scroll-padding-top: 120px; }
               <div class="now-line" style="left:4%"></div>
               <div class="tl-bar bar-cer" style="left:8%;width:92%"></div>
               <div class="tl-dot" style="left:8%;background:#0eb5af">
-                <div class="tl-dot-label" style="color:#0eb5af">Designation 17 Jul</div>
+                <div class="tl-dot-label lbl-left" style="color:#0eb5af">Designation 17 Jul</div>
               </div>
               <div class="tl-dot" style="left:88%;background:#0eb5af">
                 <div class="tl-dot-label" style="color:#0eb5af">Risk assess. May (est.)</div>
               </div>
               <div class="tl-dot" style="left:96%;background:#0eb5af">
-                <div class="tl-dot-label" style="color:#0eb5af">Full compliance Jun (est.)</div>
+                <div class="tl-dot-label lbl-hi lbl-right" style="color:#0eb5af">Full compliance Jun (est.)</div>
               </div>
             </div>
           </div>
@@ -1100,6 +1131,7 @@ document.addEventListener('click', function(e) {
 .sm-cookie-reject:hover, .sm-cookie-manage:hover { border-color: #eef3f8; color: #eef3f8; }
 .sm-cookie-accept {
   background: #2d7a3a; color: #fff; border: 1px solid #2d7a3a;
+  -webkit-clip-path: polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px));
   clip-path: polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px));
 }
 .sm-cookie-accept:hover { background: #3aab4a; border-color: #3aab4a; box-shadow: 0 0 22px rgba(58,171,74,0.35); }

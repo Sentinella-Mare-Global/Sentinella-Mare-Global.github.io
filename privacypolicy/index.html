@@ -242,7 +242,9 @@
     --white: #eef3f8;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: var(--body); font-weight: 400; line-height: 1.75; }
+  body { background: var(--bg); color: var(--text); font-family: var(--body); font-weight: 400; line-height: 1.75;
+    /* Stop iOS inflating text when the device rotates to landscape */
+    -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   .wrap { max-width: 860px; margin: 0 auto; padding: 160px 2rem 5rem; }
   @media (max-width: 1024px) { .wrap { padding-top: 132px; } }
   @media (max-width: 768px)  { .wrap { padding-top: 116px; } }
@@ -259,6 +261,13 @@
   a { color: var(--teal); text-decoration: none; }
   a:hover { text-decoration: underline; }
   table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 1rem; line-height: 1.6; }
+  /* WCAG 1.4.10 Reflow: at 320px these tables dragged the whole page into
+     horizontal scroll. A data table legitimately needs two-dimensional layout,
+     so it scrolls inside its own region rather than moving the page. The region
+     is focusable so keyboard users can scroll it (2.1.1). */
+  .table-scroll { overflow-x: auto; margin: 1rem 0 1.5rem; }
+  .table-scroll > table { margin: 0; }
+  .table-scroll:focus-visible { outline: 2px solid #4fd962; outline-offset: 3px; }
   th { text-align: left; color: var(--teal); font-weight: 500; padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--rule); }
   td { color: var(--text-mid); padding: 0.6rem 0.8rem; border-bottom: 1px solid rgba(14,181,175,0.07); vertical-align: top; }
   .notice { background: var(--panel); border: 1px solid var(--gold); border-radius: 8px; padding: 1.1rem 1.3rem; margin: 1.5rem 0; font-size: 1rem; line-height: 1.7; color: var(--text-mid); }
@@ -290,6 +299,11 @@
     display: inline-block; padding: 14px 36px; letter-spacing: 2px; margin-bottom: 0;
   }
   .footer-legal-links { row-gap: 4px; }
+  /* Primary nav links rendered 15-23px tall — under the 24px minimum, and not
+     covered by the inline-in-prose exception. Vertical padding only, so the nav
+     height (driven by the logo) is unchanged. */
+  .nav-links > a { padding: 5px 0; }
+  .nav-comp-trigger { padding: 5px 0; }
 </style>
 </head>
 <body>
@@ -394,6 +408,7 @@
 <p>The Platform provides intelligence about maritime assets, infrastructure, and publicly observable events. It is not designed to process special categories of personal data (Article 9 GDPR), and we ask that you do not submit such data to us.</p>
 
 <h2>3. Why We Process Your Data (Purposes and Legal Bases)</h2>
+<div class="table-scroll" role="region" tabindex="0" aria-label="3. Why We Process Your Data (Purposes and Legal Bases) table">
 <table>
   <tr><th scope="col">Purpose</th><th scope="col">Legal basis (Art. 6 GDPR)</th></tr>
   <tr><td>Responding to demo requests, enquiries, and correspondence</td><td>Legitimate interests (Art. 6(1)(f)) — responding to your request</td></tr>
@@ -403,6 +418,7 @@
   <tr><td>Complying with legal obligations (tax, accounting, regulatory requests)</td><td>Legal obligation (Art. 6(1)(c))</td></tr>
   <tr><td>Establishing, exercising, or defending legal claims</td><td>Legitimate interests (Art. 6(1)(f))</td></tr>
 </table>
+</div>
 <p>Where we rely on legitimate interests, we have assessed that our interests are not overridden by your rights and freedoms. You may object at any time (see Section 7).</p>
 
 <h2>4. Who We Share Data With</h2>
@@ -410,6 +426,7 @@
 <ul>
   <li><strong>Service providers (processors)</strong> who help us operate the Site and Platform, under contracts that comply with Article 28 GDPR. Our current sub-processors are:</li>
 </ul>
+<div class="table-scroll" role="region" tabindex="0" aria-label="4. Who We Share Data With table">
 <table>
   <tr><th scope="col">Provider</th><th scope="col">Purpose</th><th scope="col">Location</th></tr>
   <tr><td>Google LLC (Google Analytics)</td><td>Site analytics — loaded only after you consent; no data is sent to Google if you decline (see Section 8.1)</td><td>USA / EU</td></tr>
@@ -427,6 +444,7 @@
   <tr><td>Functional Software, Inc. (Sentry)</td><td>Error monitoring and application diagnostics</td><td>USA / EU</td></tr>
   <tr><td>Slack Technologies (Salesforce, Inc.)</td><td>Internal business communications, including handling of customer enquiries and support</td><td>USA / EU</td></tr>
 </table>
+</div>
 <p>Payment card details are collected and processed directly by Stripe; we do not store full card numbers. We will update this list as our providers change.</p>
 <ul>
   <li><strong>Professional advisers</strong> (lawyers, accountants, auditors) where necessary.</li>
@@ -461,12 +479,14 @@
 
 <h2>8. Cookies</h2>
 <p>The Site uses the following categories of cookies and similar technologies:</p>
+<div class="table-scroll" role="region" tabindex="0" aria-label="8. Cookies table">
 <table>
   <tr><th scope="col">Category</th><th scope="col">Purpose</th><th scope="col">Basis</th></tr>
   <tr><td>Strictly necessary</td><td>Site operation and security</td><td>Legitimate interests — no consent required</td></tr>
   <tr><td>Analytics</td><td>Understanding how visitors use the Site so we can improve it</td><td>Consent (via cookie banner)</td></tr>
   <tr><td>Functional / embedded content</td><td>Embedded forms and scheduling tools (e.g. demo booking)</td><td>Consent (via cookie banner)</td></tr>
 </table>
+</div>
 <p>Non-essential cookies — including Google Analytics cookies — are set only after you give consent through our cookie banner. You can change or withdraw your cookie preferences at any time via the cookie settings link in the Site footer, and you can also control cookies through your browser settings.</p>
 
 <h3>8.1 When Google Analytics loads</h3>
@@ -569,6 +589,7 @@
 .sm-cookie-reject:hover, .sm-cookie-manage:hover { border-color: #eef3f8; color: #eef3f8; }
 .sm-cookie-accept {
   background: #2d7a3a; color: #fff; border: 1px solid #2d7a3a;
+  -webkit-clip-path: polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px));
   clip-path: polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px));
 }
 .sm-cookie-accept:hover { background: #3aab4a; border-color: #3aab4a; box-shadow: 0 0 22px rgba(58,171,74,0.35); }

@@ -266,6 +266,7 @@
     font-size: 14px; font-weight: 700; letter-spacing: 2px;
     text-transform: uppercase; text-decoration: none;
     border: none; cursor: pointer;
+    -webkit-clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
     clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
     transition: all 0.3s;
   }
@@ -1636,6 +1637,11 @@
   /* WCAG 2.2 SC 2.5.8 Target Size */
   .footer-col a { padding: 3px 0; }
   .footer-legal-links { row-gap: 4px; }
+  /* Primary nav links rendered 15-23px tall — under the 24px minimum, and not
+     covered by the inline-in-prose exception. Vertical padding only, so the nav
+     height (driven by the logo) is unchanged. */
+  .nav-links > a { padding: 5px 0; }
+  .nav-comp-trigger { padding: 5px 0; }
   /* .footer-col a wins on specificity over .btn-primary; restore button sizing/shape for the Contact CTA */
   .footer-col a.footer-contact-btn {
     display: inline-block; padding: 14px 36px; letter-spacing: 2px; margin-bottom: 0;
@@ -1781,11 +1787,11 @@
       <div class="live-dot"></div>
       <span data-i18n="live.feed">LIVE PORT SURVEILLANCE CAMS</span>
     </div>
-    <div class="live-sep">|</div>
+    <div class="live-sep" aria-hidden="true">|</div>
     <div class="live-item">
       <span data-i18n="live.vessels">VESSELS TRACKED</span> <span class="live-val">285,163</span>
     </div>
-    <div class="live-sep">|</div>
+    <div class="live-sep" aria-hidden="true">|</div>
     <div class="live-item">
       <div class="live-dot amber"></div>
       <span data-i18n="live.traffic">MARINE TRAFFIC — MEDITERRANEAN LIVE</span>
@@ -1898,7 +1904,7 @@
     </table>
   </div>
   <p class="platform-img-caption"><strong>Intelligence anyone in the room can understand.</strong> Maria, our maritime AI, doesn't just flag threats — she calibrates supply chain stress testing and geopolitical scenario modeling to forecast probable outcomes.</p>
-  <img src="Maria Screenshot 2.png" alt="Maria Screenshot" loading="lazy" decoding="async" style="width:100%; height:auto; display:block; border-radius:4px; box-shadow:0 8px 48px rgba(0,0,0,0.6); margin-bottom:16px;">
+  <img src="Maria Screenshot 2.png" alt="The MARIA assistant answering a natural-language question about Mediterranean supply chain risk, showing a written assessment alongside the vessel and port data it drew on." loading="lazy" decoding="async" style="width:100%; height:auto; display:block; border-radius:4px; box-shadow:0 8px 48px rgba(0,0,0,0.6); margin-bottom:16px;">
   <p class="platform-img-caption"><strong>Every feed. Every vessel. One screen.</strong> Connect your own live port camera feeds and watch them alongside AIS vessel tracking data — all in one place. Full situational awareness, zero system switching.</p>
   <img src="Dashboard Screenshot.png" alt="Mediterranean Watch Intelligence Terminal" loading="lazy" decoding="async" style="width:100%; height:auto; display:block; border-radius:4px; box-shadow:0 8px 48px rgba(0,0,0,0.6);">
   <div style="margin-top:40px; display:flex; justify-content:center; align-items:center; gap:16px; flex-wrap:wrap;">
@@ -3119,6 +3125,7 @@ document.addEventListener('click', function(e) {
 .sm-cookie-reject:hover, .sm-cookie-manage:hover { border-color: #eef3f8; color: #eef3f8; }
 .sm-cookie-accept {
   background: #2d7a3a; color: #fff; border: 1px solid #2d7a3a;
+  -webkit-clip-path: polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px));
   clip-path: polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px));
 }
 .sm-cookie-accept:hover { background: #3aab4a; border-color: #3aab4a; box-shadow: 0 0 22px rgba(58,171,74,0.35); }

@@ -243,6 +243,7 @@ footer {
   font-size: 13px; font-weight: 700; letter-spacing: 2.5px;
   text-transform: uppercase; text-decoration: none;
   border: none; cursor: pointer; display: inline-block;
+  -webkit-clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
   clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
   transition: all 0.3s;
 }
@@ -259,6 +260,9 @@ body {
   font-family: 'Rajdhani', sans-serif;
   font-size: 16px;
   line-height: 1.6;
+  /* Stop iOS inflating text when the device rotates to landscape */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
   min-height: 100vh;
   min-height: 100dvh; /* iOS: account for the dynamic toolbar */
 }
@@ -502,7 +506,7 @@ body {
   padding: 2px 6px;
   border-radius: 2px;
 }
-.crit .urgency-tag    { background: rgba(229,62,62,0.3); color: #FCA5A5; }
+.crit .urgency-tag    { background: rgba(229,62,62,0.3); color: #FECACA; }  /* #FCA5A5 = 4.08:1 on the composited red; needs 4.5 at 12px */
 .urgent .urgency-tag  { background: rgba(217,119,6,0.3); color: #FCD34D; }
 .appr .urgency-tag    { background: rgba(180,83,9,0.3); color: #FDE68A; }
 .upcoming .urgency-tag{ background: rgba(45,122,58,0.25); color: #4fd962; }
@@ -720,7 +724,9 @@ a, button { -webkit-tap-highlight-color: transparent; }
   border-top: 1px solid rgba(45,122,58,0.15);
   background: #060f18;
 }
+/* WCAG 2.2 SC 2.5.8: standalone link rendered 15px tall. */
 .cross-link-strip a {
+  display: inline-block; padding: 5px 0;
   font-family: 'Share Tech Mono', monospace;
   font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
   color: rgba(240,245,252,0.5); text-decoration: none;
@@ -782,6 +788,11 @@ a, button { -webkit-tap-highlight-color: transparent; }
     display: inline-block; padding: 14px 36px; letter-spacing: 2px; margin-bottom: 0;
   }
   .footer-legal-links { row-gap: 4px; }
+  /* Primary nav links rendered 15-23px tall — under the 24px minimum, and not
+     covered by the inline-in-prose exception. Vertical padding only, so the nav
+     height (driven by the logo) is unchanged. */
+  .nav-links > a { padding: 5px 0; }
+  .nav-comp-trigger { padding: 5px 0; }
 </style>
 </head>
 <body>
@@ -1233,6 +1244,7 @@ setInterval(renderHero, 60000);
 .sm-cookie-reject:hover, .sm-cookie-manage:hover { border-color: #eef3f8; color: #eef3f8; }
 .sm-cookie-accept {
   background: #2d7a3a; color: #fff; border: 1px solid #2d7a3a;
+  -webkit-clip-path: polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px));
   clip-path: polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px));
 }
 .sm-cookie-accept:hover { background: #3aab4a; border-color: #3aab4a; box-shadow: 0 0 22px rgba(58,171,74,0.35); }

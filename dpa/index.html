@@ -242,7 +242,9 @@
     --white: #eef3f8;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: var(--body); font-weight: 400; line-height: 1.75; }
+  body { background: var(--bg); color: var(--text); font-family: var(--body); font-weight: 400; line-height: 1.75;
+    /* Stop iOS inflating text when the device rotates to landscape */
+    -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   .wrap { max-width: 860px; margin: 0 auto; padding: 160px 2rem 5rem; }
   @media (max-width: 1024px) { .wrap { padding-top: 132px; } }
   @media (max-width: 768px)  { .wrap { padding-top: 116px; } }
@@ -259,6 +261,13 @@
   a { color: var(--teal); text-decoration: none; }
   a:hover { text-decoration: underline; }
   table { width: 100%; border-collapse: collapse; margin: 1rem 0 1.5rem; font-size: 1rem; line-height: 1.6; }
+  /* WCAG 1.4.10 Reflow: at 320px these tables dragged the whole page into
+     horizontal scroll. A data table legitimately needs two-dimensional layout,
+     so it scrolls inside its own region rather than moving the page. The region
+     is focusable so keyboard users can scroll it (2.1.1). */
+  .table-scroll { overflow-x: auto; margin: 1rem 0 1.5rem; }
+  .table-scroll > table { margin: 0; }
+  .table-scroll:focus-visible { outline: 2px solid #4fd962; outline-offset: 3px; }
   th { text-align: left; color: var(--teal); font-weight: 500; padding: 0.6rem 0.8rem; border-bottom: 1px solid var(--rule); }
   td { color: var(--text-mid); padding: 0.6rem 0.8rem; border-bottom: 1px solid rgba(14,181,175,0.07); vertical-align: top; }
   .notice { background: var(--panel); border: 1px solid var(--gold); border-radius: 8px; padding: 1.1rem 1.3rem; margin: 1.5rem 0; font-size: 1rem; line-height: 1.7; color: var(--text-mid); }
@@ -290,6 +299,11 @@
     display: inline-block; padding: 14px 36px; letter-spacing: 2px; margin-bottom: 0;
   }
   .footer-legal-links { row-gap: 4px; }
+  /* Primary nav links rendered 15-23px tall — under the 24px minimum, and not
+     covered by the inline-in-prose exception. Vertical padding only, so the nav
+     height (driven by the logo) is unchanged. */
+  .nav-links > a { padding: 5px 0; }
+  .nav-comp-trigger { padding: 5px 0; }
 </style>
 </head>
 <body>
@@ -369,6 +383,7 @@
 </ul>
 
 <h2>2. Details of Processing</h2>
+<div class="table-scroll" role="region" tabindex="0" aria-label="2. Details of Processing table">
 <table>
   <tr><th scope="col">Item</th><th scope="col">Description</th></tr>
   <tr><td>Subject matter</td><td>Provision of maritime hybrid threat intelligence services via the Sentinella Mare platform</td></tr>
@@ -378,6 +393,7 @@
   <tr><td>Categories of personal data</td><td>Name, business contact details, credentials, role/title; usage data; any personal data contained in Customer-submitted content or assistant queries</td></tr>
   <tr><td>Special categories</td><td>None intended. The Customer agrees not to submit special category data (Art. 9 GDPR) to the Services.</td></tr>
 </table>
+</div>
 
 <h2>3. Processor Obligations</h2>
 <p>Sentinella will:</p>
@@ -436,6 +452,7 @@
 <p>Sentinella reviews these measures periodically and updates this Annex as additional controls (including enhanced security monitoring, formalised access management, and audit processes) are implemented.</p>
 
 <h2>Annex III — Authorised Sub-processors</h2>
+<div class="table-scroll" role="region" tabindex="0" aria-label="Annex III — Authorised Sub-processors table">
 <table>
   <tr><th scope="col">Sub-processor</th><th scope="col">Purpose</th><th scope="col">Location</th></tr>
   <tr><td>Vercel Inc.</td><td>Frontend and Platform hosting, global content delivery (CDN), serverless functions, and scheduled jobs</td><td>USA / EU</td></tr>
@@ -451,6 +468,7 @@
   <tr><td>Google LLC (Google Workspace)</td><td>Email and business correspondence</td><td>USA / EU</td></tr>
   <tr><td>Slack Technologies (Salesforce, Inc.)</td><td>Internal communications supporting service delivery and customer support</td><td>USA / EU</td></tr>
 </table>
+</div>
 </div>
 </main>
 
@@ -530,6 +548,7 @@
 .sm-cookie-reject:hover, .sm-cookie-manage:hover { border-color: #eef3f8; color: #eef3f8; }
 .sm-cookie-accept {
   background: #2d7a3a; color: #fff; border: 1px solid #2d7a3a;
+  -webkit-clip-path: polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px));
   clip-path: polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px));
 }
 .sm-cookie-accept:hover { background: #3aab4a; border-color: #3aab4a; box-shadow: 0 0 22px rgba(58,171,74,0.35); }

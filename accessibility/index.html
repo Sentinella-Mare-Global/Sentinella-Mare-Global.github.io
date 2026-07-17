@@ -242,7 +242,9 @@
     --white: #eef3f8;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: var(--body); font-weight: 400; line-height: 1.75; }
+  body { background: var(--bg); color: var(--text); font-family: var(--body); font-weight: 400; line-height: 1.75;
+    /* Stop iOS inflating text when the device rotates to landscape */
+    -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
   .wrap { max-width: 860px; margin: 0 auto; padding: 160px 2rem 5rem; }
   @media (max-width: 1024px) { .wrap { padding-top: 132px; } }
   @media (max-width: 768px)  { .wrap { padding-top: 116px; } }
@@ -290,6 +292,11 @@
     display: inline-block; padding: 14px 36px; letter-spacing: 2px; margin-bottom: 0;
   }
   .footer-legal-links { row-gap: 4px; }
+  /* Primary nav links rendered 15-23px tall — under the 24px minimum, and not
+     covered by the inline-in-prose exception. Vertical padding only, so the nav
+     height (driven by the logo) is unchanged. */
+  .nav-links > a { padding: 5px 0; }
+  .nav-comp-trigger { padding: 5px 0; }
 </style>
 </head>
 <body>
@@ -486,6 +493,7 @@
 .sm-cookie-reject:hover, .sm-cookie-manage:hover { border-color: #eef3f8; color: #eef3f8; }
 .sm-cookie-accept {
   background: #2d7a3a; color: #fff; border: 1px solid #2d7a3a;
+  -webkit-clip-path: polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px));
   clip-path: polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px));
 }
 .sm-cookie-accept:hover { background: #3aab4a; border-color: #3aab4a; box-shadow: 0 0 22px rgba(58,171,74,0.35); }
