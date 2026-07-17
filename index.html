@@ -394,6 +394,7 @@
     font-size: 13px; letter-spacing: 0.5px;
     color: var(--green-mid); text-decoration: none;
     transition: color 0.2s; white-space: nowrap;
+    padding: 4px 0; /* WCAG 2.2 SC 2.5.8 Target Size */
     margin-left: auto;
   }
   .reg-deadline-link:hover { color: var(--green-glow); }
@@ -1138,7 +1139,7 @@
     font-family: 'Share Tech Mono', monospace;
     font-size: 13px; letter-spacing: 1.5px; color: rgba(240,245,252,0.65);
     text-transform: uppercase; text-decoration: none;
-    background: none; border: none; cursor: pointer; padding: 0;
+    background: none; border: none; cursor: pointer; padding: 6px 0;
     line-height: 1; vertical-align: top;
     transition: color 0.2s;
   }
@@ -1518,8 +1519,8 @@
   @supports (padding: max(0px)) {
     nav {
       padding-top: max(14px, env(safe-area-inset-top));
-      padding-left: max(20px, env(safe-area-inset-left));
-      padding-right: max(20px, env(safe-area-inset-right));
+      padding-left: max(20px, calc((100% - 1440px) / 2), env(safe-area-inset-left));
+      padding-right: max(20px, calc((100% - 1440px) / 2), env(safe-area-inset-right));
     }
     /* Prevent content from being hidden behind home indicator */
     footer {
@@ -1630,6 +1631,14 @@
     }
     .nav-comp-menu a { border: none; font-size: 13px; padding: 8px 0; text-align: center; }
     .nav-comp-menu .comp-link-label { display: none; }
+  }
+
+  /* WCAG 2.2 SC 2.5.8 Target Size */
+  .footer-col a { padding: 3px 0; }
+  .footer-legal-links { row-gap: 4px; }
+  /* .footer-col a wins on specificity over .btn-primary; restore button sizing/shape for the Contact CTA */
+  .footer-col a.footer-contact-btn {
+    display: inline-block; padding: 14px 36px; letter-spacing: 2px; margin-bottom: 0;
   }
 </style>
 <script type="application/ld+json">

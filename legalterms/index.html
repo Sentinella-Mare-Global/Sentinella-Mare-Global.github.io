@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Terms & Conditions — Sentinella Mare</title>
 <!-- Favicon -->
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -135,7 +135,7 @@
   .footer-legal-link {
     font-family: 'Share Tech Mono', monospace; font-size: 13px; letter-spacing: 1px; color: rgba(240,245,252,0.65);
     text-transform: uppercase; text-decoration: none;
-    background: none; border: none; cursor: pointer; padding: 0;
+    background: none; border: none; cursor: pointer; padding: 6px 0;
     line-height: 1; vertical-align: top; transition: color 0.2s;
   }
   .footer-legal-link:hover { color: #eef3f8; }
@@ -200,8 +200,8 @@
   @supports (padding: max(0px)) {
     nav {
       padding-top: max(14px, env(safe-area-inset-top));
-      padding-left: max(20px, env(safe-area-inset-left));
-      padding-right: max(20px, env(safe-area-inset-right));
+      padding-left: max(20px, calc((100% - 1440px) / 2), env(safe-area-inset-left));
+      padding-right: max(20px, calc((100% - 1440px) / 2), env(safe-area-inset-right));
     }
     footer { padding-bottom: max(32px, env(safe-area-inset-bottom)); }
     @media (max-width: 480px) {
@@ -278,6 +278,14 @@
   .sm-cookie-text a { text-decoration: underline; }
   .wrap a { text-decoration: underline; }
 
+
+  /* WCAG 2.2 SC 2.5.8 Target Size */
+  .footer-col a { padding: 3px 0; }
+  /* .footer-col a wins on specificity over .btn-primary; restore button sizing/shape for the Contact CTA */
+  .footer-col a.footer-contact-btn {
+    display: inline-block; padding: 14px 36px; letter-spacing: 2px; margin-bottom: 0;
+  }
+  .footer-legal-links { row-gap: 4px; }
 </style>
 </head>
 <body>
