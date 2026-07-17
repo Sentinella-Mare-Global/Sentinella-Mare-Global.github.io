@@ -13,21 +13,25 @@
 <meta name="description" content="Data Processing Agreement (DPA) for the Sentinella Mare platform, incorporating GDPR Article 28 processor terms.">
 <link rel="canonical" href="https://sentinellaglobal.com/dpa">
 <meta name="robots" content="index, follow">
-<!-- Google tag (gtag.js) — Consent Mode v2 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-6FPWJM34X1"></script>
+<!-- Google Analytics — Consent Mode "basic".
+     The gtag.js tag is deliberately NOT loaded here. It is injected only after
+     the visitor grants consent (see the cookie banner script before </body>),
+     so no request reaches Google, and no IP address is disclosed to Google,
+     unless and until the visitor opts in. -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+  // Queued only — inert until gtag.js is actually loaded post-consent.
   gtag('consent', 'default', {
-    analytics_storage: 'denied', ad_storage: 'denied',
-    ad_user_data: 'denied', ad_personalization: 'denied', wait_for_update: 500
+    analytics_storage: 'denied',
+    ad_storage: 'denied',
+    ad_user_data: 'denied',
+    ad_personalization: 'denied'
   });
-  gtag('js', new Date());
-  gtag('config', 'G-6FPWJM34X1');
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<!-- Self-hosted webfonts: no third-party request, so no visitor IP is
+     disclosed to Google before consent. See /fonts/OFL.txt for licensing. -->
+<link rel="stylesheet" href="/fonts/fonts.css">
 <style>
   /* WCAG 2.2 SC 2.4.11 Focus Not Obscured: keep focused/anchor targets
      clear of the fixed nav */
@@ -485,6 +489,7 @@
       <a href="/legalterms/" class="footer-legal-link">Terms</a>
       <a href="/dpa/" class="footer-legal-link">DPA</a>
       <a href="/legalnotice/" class="footer-legal-link">Legal Notice</a>
+      <a href="/accessibility/" class="footer-legal-link">Accessibility</a>
       <button onclick="if(typeof smOpenCookieSettings==='function')smOpenCookieSettings();" class="footer-legal-link">Cookie Settings</button>
     </div>
   </div>
@@ -495,8 +500,10 @@
   display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999;
   background: #0d1b2a; border-top: 1px solid rgba(45,122,58,0.4);
   padding: 20px 48px; box-shadow: 0 -8px 40px rgba(0,0,0,0.55);
-  font-family: 'Jost', 'Rajdhani', sans-serif;
+  font-family: 'Rajdhani', sans-serif;
+  max-height: 85vh; overflow-y: auto;
 }
+[hidden] { display: none !important; }
 .sm-cookie-inner {
   max-width: 1200px; margin: 0 auto;
   display: flex; align-items: center; justify-content: space-between;
@@ -512,60 +519,166 @@
 .sm-cookie-text a:hover { color: #4fd962; }
 .sm-cookie-actions { display: flex; gap: 12px; flex-shrink: 0; align-items: center; }
 .sm-cookie-btn {
-  font-family: 'Rajdhani', 'Jost', sans-serif; font-size: 14px; font-weight: 700;
+  font-family: 'Rajdhani', sans-serif; font-size: 14px; font-weight: 700;
   letter-spacing: 2px; text-transform: uppercase; cursor: pointer;
   padding: 11px 26px; border-radius: 0; transition: all 0.25s;
   -webkit-tap-highlight-color: transparent; white-space: nowrap;
 }
-.sm-cookie-reject { background: transparent; color: #c8d8ec; border: 1px solid rgba(200,216,236,0.35); }
-.sm-cookie-reject:hover { border-color: #eef3f8; color: #eef3f8; }
+.sm-cookie-reject, .sm-cookie-manage {
+  background: transparent; color: #c8d8ec; border: 1px solid rgba(200,216,236,0.35);
+}
+.sm-cookie-reject:hover, .sm-cookie-manage:hover { border-color: #eef3f8; color: #eef3f8; }
 .sm-cookie-accept {
   background: #2d7a3a; color: #fff; border: 1px solid #2d7a3a;
   clip-path: polygon(0 0,calc(100% - 9px) 0,100% 9px,100% 100%,9px 100%,0 calc(100% - 9px));
 }
 .sm-cookie-accept:hover { background: #3aab4a; border-color: #3aab4a; box-shadow: 0 0 22px rgba(58,171,74,0.35); }
+
+/* ── Manage Preferences panel ── */
+.sm-cookie-prefs {
+  max-width: 1200px; margin: 18px auto 0; padding-top: 18px;
+  border-top: 1px solid rgba(45,122,58,0.25);
+}
+.sm-pref-row {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 24px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.sm-pref-row:last-of-type { border-bottom: none; }
+.sm-pref-name {
+  display: block; font-size: 15px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase; color: #eef3f8;
+}
+label.sm-pref-name { cursor: pointer; }
+.sm-pref-desc { font-size: 14px; line-height: 1.6; color: #c8d8ec; margin-top: 5px; max-width: 720px; }
+.sm-pref-control { flex-shrink: 0; display: flex; align-items: center; min-height: 24px; }
+.sm-pref-always {
+  font-family: 'Share Tech Mono', monospace; font-size: 13px;
+  letter-spacing: 1px; text-transform: uppercase; color: #3aab4a;
+}
+.sm-pref-toggle { width: 24px; height: 24px; accent-color: #2d7a3a; cursor: pointer; }
+.sm-pref-save { display: flex; justify-content: flex-end; padding-top: 16px; }
 @media (max-width: 768px) {
   #sm-cookie-banner { padding: 18px 20px; }
   .sm-cookie-inner { flex-direction: column; align-items: flex-start; gap: 16px; }
-  .sm-cookie-actions { width: 100%; }
-  .sm-cookie-btn { flex: 1; text-align: center; }
+  .sm-cookie-actions { width: 100%; flex-wrap: wrap; }
+  /* Labels are nowrap; tighter padding + wrap keeps them inside a 375px screen
+     and lets them stack full-width when they cannot share a row. */
+  .sm-cookie-btn { flex: 1 1 auto; text-align: center; padding: 11px 14px; }
+  .sm-pref-save { justify-content: stretch; }
+  .sm-pref-save .sm-cookie-btn { width: 100%; }
 }
 </style>
-<div id="sm-cookie-banner" role="dialog" aria-modal="false" aria-label="Cookie consent">
+<div id="sm-cookie-banner" role="dialog" aria-modal="false" aria-labelledby="sm-cookie-heading">
   <div class="sm-cookie-inner">
     <div>
-      <span class="sm-cookie-label">Cookie Settings</span>
-      <p class="sm-cookie-text">Sentinella Mare (data controller) uses Google Analytics to understand how visitors use this site. No advertising or third-party tracking cookies are used. <a href="/privacypolicy/">Privacy Policy</a>.</p>
+      <span class="sm-cookie-label" id="sm-cookie-heading">Cookie Settings</span>
+      <p class="sm-cookie-text">Sentinella Mare (data controller) uses Google Analytics to understand how visitors use this site. Google Analytics loads only if you accept &mdash; if you decline, nothing is sent to Google and no analytics cookies are set. No advertising or third-party tracking cookies are used. <a href="/privacypolicy/">Privacy Policy</a>.</p>
     </div>
     <div class="sm-cookie-actions">
       <button id="sm-cookie-reject" class="sm-cookie-btn sm-cookie-reject">Reject All</button>
+      <button id="sm-cookie-manage" class="sm-cookie-btn sm-cookie-manage" aria-expanded="false" aria-controls="sm-cookie-prefs">Manage Preferences</button>
       <button id="sm-cookie-accept" class="sm-cookie-btn sm-cookie-accept">Accept Analytics</button>
+    </div>
+  </div>
+  <div id="sm-cookie-prefs" class="sm-cookie-prefs" hidden>
+    <div class="sm-pref-row">
+      <div>
+        <span class="sm-pref-name">Strictly necessary</span>
+        <p class="sm-pref-desc">Required for the site to work and to remember your cookie choice. These are always active and cannot be switched off.</p>
+      </div>
+      <div class="sm-pref-control"><span class="sm-pref-always">Always on</span></div>
+    </div>
+    <div class="sm-pref-row">
+      <div>
+        <label class="sm-pref-name" for="sm-pref-analytics">Analytics</label>
+        <p class="sm-pref-desc">Google Analytics, used to count visits and see which pages are read. Switching this on loads Google Analytics and sets its cookies. Leaving it off means no request is made to Google at all.</p>
+      </div>
+      <div class="sm-pref-control">
+        <input type="checkbox" id="sm-pref-analytics" class="sm-pref-toggle">
+      </div>
+    </div>
+    <div class="sm-pref-save">
+      <button id="sm-cookie-save" class="sm-cookie-btn sm-cookie-accept">Save Preferences</button>
     </div>
   </div>
 </div>
 <script>
 (function () {
   var KEY = 'sm_cookie_consent';
-  function updateConsent(granted) {
-    if (typeof gtag !== 'function') return;
-    gtag('consent', 'update', {
-      analytics_storage: granted ? 'granted' : 'denied',
-      ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied'
+  var GA_ID = 'G-6FPWJM34X1';
+  var gaLoaded = false;
+
+  // Consent Mode "basic": gtag.js is injected only once consent is granted, so
+  // no request reaches Google — and no IP is disclosed — until the user opts in.
+  function loadGA() {
+    if (gaLoaded) return;
+    gaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+    document.head.appendChild(s);
+    gtag('js', new Date());
+    gtag('config', GA_ID);
+  }
+
+  // Withdrawal must be as easy as consent: drop the _ga cookies on refusal.
+  function clearGaCookies() {
+    document.cookie.split(';').forEach(function (c) {
+      var n = c.split('=')[0].trim();
+      if (n.indexOf('_ga') !== 0) return;
+      var h = location.hostname;
+      ['', '; domain=' + h, '; domain=.' + h].forEach(function (d) {
+        document.cookie = n + '=; Max-Age=0; path=/' + d;
+      });
     });
   }
-  function hideBanner() { var b = document.getElementById('sm-cookie-banner'); if (b) b.style.display = 'none'; }
-  var stored = localStorage.getItem(KEY);
-  if (stored === 'granted') { updateConsent(true); }
-  else if (stored === 'denied') { updateConsent(false); }
-  else { document.getElementById('sm-cookie-banner').style.display = 'block'; }
-  document.getElementById('sm-cookie-accept').addEventListener('click', function () {
-    localStorage.setItem(KEY, 'granted'); updateConsent(true); hideBanner();
+
+  function apply(granted) {
+    if (typeof gtag === 'function') {
+      gtag('consent', 'update', {
+        analytics_storage: granted ? 'granted' : 'denied',
+        ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied'
+      });
+    }
+    if (granted) loadGA(); else clearGaCookies();
+  }
+
+  var banner = document.getElementById('sm-cookie-banner');
+  var prefs  = document.getElementById('sm-cookie-prefs');
+  var manage = document.getElementById('sm-cookie-manage');
+  var toggle = document.getElementById('sm-pref-analytics');
+
+  function read() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+  function openPrefs(open) {
+    prefs.hidden = !open;
+    manage.setAttribute('aria-expanded', open ? 'true' : 'false');
+    if (open) toggle.focus();
+  }
+  function save(granted) {
+    try { localStorage.setItem(KEY, granted ? 'granted' : 'denied'); } catch (e) {}
+    apply(granted);
+    openPrefs(false);
+    banner.style.display = 'none';
+  }
+
+  var stored = read();
+  if (stored === 'granted') { toggle.checked = true; apply(true); }
+  else if (stored === 'denied') { apply(false); }
+  else { banner.style.display = 'block'; }
+
+  manage.addEventListener('click', function () { openPrefs(prefs.hidden); });
+  document.getElementById('sm-cookie-accept').addEventListener('click', function () { toggle.checked = true; save(true); });
+  document.getElementById('sm-cookie-reject').addEventListener('click', function () { toggle.checked = false; save(false); });
+  document.getElementById('sm-cookie-save').addEventListener('click', function () { save(toggle.checked); });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !prefs.hidden) { openPrefs(false); manage.focus(); }
   });
-  document.getElementById('sm-cookie-reject').addEventListener('click', function () {
-    localStorage.setItem(KEY, 'denied'); updateConsent(false); hideBanner();
-  });
+
   window.smOpenCookieSettings = function () {
-    document.getElementById('sm-cookie-banner').style.display = 'block';
+    toggle.checked = (read() === 'granted');
+    banner.style.display = 'block';
+    openPrefs(true);
   };
 })();
 </script>

@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Privacy Policy — Sentinella Mare</title>
+<title>Accessibility Statement — Sentinella Mare</title>
 <!-- Favicon -->
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="manifest" href="/site.webmanifest">
-<meta name="description" content="Privacy Policy for Sentinella Global and Sentinella Mare. How we collect, use, and protect personal data under the GDPR.">
-<link rel="canonical" href="https://sentinellaglobal.com/privacypolicy">
+<meta name="description" content="Accessibility statement for sentinellaglobal.com: conformance status against WCAG 2.2 Level AA, measures taken, known limitations, and how to report an accessibility barrier.">
+<link rel="canonical" href="https://sentinellaglobal.com/accessibility">
 <meta name="robots" content="index, follow">
 <!-- Google Analytics — Consent Mode "basic".
      The gtag.js tag is deliberately NOT loaded here. It is injected only after
@@ -354,142 +354,59 @@
 <main id="main" tabindex="-1">
 <div class="wrap">
 
-<div class="eyebrow">Legal</div>
-<h1>Privacy Policy</h1>
-<p class="updated">Last updated: 16 July 2026 · Effective date: 13 July 2026</p>
+<div class="eyebrow">Accessibility</div>
+<h1>Accessibility Statement</h1>
+<p class="updated">Last updated: 16 July 2026</p>
 
-<p>This Privacy Policy explains how Sentinella LLC, operating as Sentinella Global and Sentinella Mare ("Sentinella," "we," "us," or "our"), collects, uses, shares, and protects personal data when you visit <a href="https://sentinellaglobal.com">sentinellaglobal.com</a> (the "Site"), use the Sentinella Mare platform (the "Platform"), or otherwise interact with us.</p>
+<p>Sentinella LLC is committed to making <strong>sentinellaglobal.com</strong> usable by as many people as possible, regardless of disability or assistive technology. This statement explains how far we currently meet recognised accessibility standards, where we fall short, and how to tell us about a barrier.</p>
 
-<p>We process personal data in accordance with the EU General Data Protection Regulation (Regulation (EU) 2016/679, the "GDPR") and applicable national data protection laws.</p>
+<h2>1. Scope</h2>
+<p>This statement applies to the public website at <strong>sentinellaglobal.com</strong>, including our home page, Leadership page, compliance resources, and legal pages.</p>
+<p>It does <strong>not</strong> cover the Mediterranean Watch intelligence terminal at <strong>mare.sentinellaglobal.com</strong>, which is a separate application with its own interface, nor third-party forms we embed or link to (see section 5). We intend to publish a separate statement for the platform.</p>
 
-<h2>1. Who We Are (Data Controller)</h2>
-<p>The data controller responsible for your personal data is:</p>
+<h2>2. Conformance Status</h2>
+<p>The <a href="https://www.w3.org/TR/WCAG22/" rel="noopener">Web Content Accessibility Guidelines (WCAG)</a> define requirements for making web content more accessible. This website is <strong>partially conformant with WCAG 2.2 Level AA</strong>. "Partially conformant" means that while most of the standard is met, some content does not yet fully conform; the specific exceptions we are aware of are listed in section 5.</p>
+<p>We target WCAG 2.2 Level AA because it is the level referenced by the European Accessibility Act and the harmonised European standard EN 301 549, and it is the level most commonly expected of commercial websites in the United States.</p>
+
+<h2>3. Measures We Have Taken</h2>
+<p>We have carried out a structured accessibility review of this website and made the following changes:</p>
+<ul>
+  <li><strong>Colour contrast (SC 1.4.3).</strong> Body text, labels, and interactive elements were measured against their actual rendered backgrounds and adjusted to meet the 4.5:1 minimum.</li>
+  <li><strong>Target size (SC 2.5.8).</strong> Footer links, legal links, and other small controls were enlarged so that touch targets meet the minimum size, which particularly affects users with motor impairments on touch devices.</li>
+  <li><strong>Focus visibility and focus not obscured (SC 2.4.11).</strong> Keyboard focus indicators are visible and are not hidden behind the sticky navigation bar.</li>
+  <li><strong>Text spacing (SC 1.4.12).</strong> Content remains readable and is not clipped when users override line height, letter spacing, or word spacing.</li>
+  <li><strong>Keyboard access.</strong> The site can be operated without a mouse. A "Skip to content" link is the first focusable element, dropdown menus are operable from the keyboard, and the <kbd>Escape</kbd> key closes open menus and returns focus to the control that opened them.</li>
+  <li><strong>Structure and semantics.</strong> Pages use a logical heading order, landmark regions, and ARIA attributes on navigation controls that reflect their expanded or collapsed state.</li>
+  <li><strong>Reduced motion.</strong> Animations and transitions are suppressed for visitors whose system requests reduced motion.</li>
+  <li><strong>Resizing and reflow.</strong> Layouts are responsive and remain usable when zoomed or viewed on small screens, without loss of content or horizontal scrolling.</li>
+</ul>
+
+<h2>4. Technical Specifications</h2>
+<p>Accessibility of this site relies on HTML, CSS, WAI-ARIA, and JavaScript. The site is designed to work with current versions of major browsers (Chrome, Safari, Firefox, and Edge) on desktop, tablet, and mobile, used together with assistive technologies such as screen readers, screen magnifiers, and speech recognition software.</p>
+
+<h2>5. Known Limitations</h2>
+<p>We would rather state our gaps plainly than overstate our conformance. We are aware of the following, and are working to address them:</p>
+<ul>
+  <li><strong>Product screenshots.</strong> Some images of the intelligence terminal and the MARIA assistant carry only short alternative text and do not yet have a full text equivalent describing the data shown in them. Users relying on a screen reader will not receive the detail contained in those images.</li>
+  <li><strong>Complex data tables.</strong> The MHTES methodology table expresses multi-dimensional relationships that may be harder to follow when read linearly by a screen reader than when viewed.</li>
+  <li><strong>Embedded and linked third-party forms.</strong> Demo and access requests are handled by a third-party form provider. We do not control that provider's code and cannot guarantee its conformance. If a third-party form prevents you from reaching us, please email us instead, using the address below, and we will process your request directly.</li>
+  <li><strong>Translated content.</strong> The Italian, Arabic, and Greek versions of this site are translated and may contain wording that reads less naturally than the English original.</li>
+  <li><strong>Assessment method.</strong> Our conformance claim is based on an internal self-assessment, supported by automated and manual testing. It has <strong>not</strong> been validated by an independent third-party accessibility audit. We are considering commissioning one.</li>
+</ul>
+
+<h2>6. Feedback and Contact</h2>
+<p>If you encounter a barrier on this site, or need information from it in a different format, please tell us. Accessibility feedback is welcome, and it is the fastest way for us to find problems we have missed.</p>
 <p>
-  <strong>Sentinella LLC</strong><br>
-  8 The Green STE A<br>
-  Dover, DE 19901, United States<br><br>
-  European headquarters: Brussels, Belgium<br>
-  Privacy contact: <a href="mailto:james@sentinellaglobal.com">james@sentinellaglobal.com</a>
+  Email: <a href="mailto:james@sentinellaglobal.com">james@sentinellaglobal.com</a><br>
+  Postal: Sentinella LLC, 8 The Green STE A, Dover, DE 19901, United States
 </p>
-<p>We have not appointed a Data Protection Officer, as we are not required to do so under Article 37 GDPR. All privacy enquiries should be directed to the contact above.</p>
+<p>Please include the page address, a short description of the problem, and the browser and assistive technology you were using. <strong>We aim to acknowledge accessibility reports within 10 business days.</strong> If we cannot resolve an issue quickly, we will tell you what we plan to do and when, and we will offer the information you were seeking by another means in the meantime.</p>
 
-<h2>2. Personal Data We Collect</h2>
+<h2>7. Enforcement</h2>
+<p>If you are not satisfied with our response, you may escalate. Visitors in the European Union may contact the national authority responsible for enforcing accessibility requirements in their country of residence. Visitors in Belgium, where our European headquarters is located, may contact <a href="https://www.unia.be/" rel="noopener">Unia</a>, the Belgian interfederal equal opportunities centre.</p>
 
-<h3>2.1 Data you provide to us</h3>
-<ul>
-  <li><strong>Contact and demo requests.</strong> When you request a demo, contact us by email, or fill in a form on the Site, we collect your name, business email address, company name, job title, and any information you include in your message.</li>
-  <li><strong>Account and subscription data.</strong> If you subscribe to the Platform, we collect the information needed to create and administer your account: name, business email, company details, billing information, and subscription tier.</li>
-  <li><strong>Platform interactions.</strong> If you use in-Platform features, including our AI assistant ("Maria"), we process the queries and content you submit in order to provide the feature, maintain security, and improve the service. Do not submit personal data of third parties or sensitive personal data to the assistant.</li>
-  <li><strong>Newsletter and updates.</strong> If you sign up for updates or downloadable resources, we collect your name and email address.</li>
-  <li><strong>Correspondence.</strong> Records of your communications with us, including support requests.</li>
-</ul>
-
-<h3>2.2 Data we collect automatically</h3>
-<ul>
-  <li><strong>Usage and device data.</strong> When you visit the Site or use the Platform, we automatically collect technical data such as IP address, browser type and version, device type, operating system, pages visited, referring URL, and timestamps.</li>
-  <li><strong>Cookies and similar technologies.</strong> See Section 8 below.</li>
-</ul>
-
-<h3>2.3 Data we do not collect</h3>
-<p>The Platform provides intelligence about maritime assets, infrastructure, and publicly observable events. It is not designed to process special categories of personal data (Article 9 GDPR), and we ask that you do not submit such data to us.</p>
-
-<h2>3. Why We Process Your Data (Purposes and Legal Bases)</h2>
-<table>
-  <tr><th scope="col">Purpose</th><th scope="col">Legal basis (Art. 6 GDPR)</th></tr>
-  <tr><td>Responding to demo requests, enquiries, and correspondence</td><td>Legitimate interests (Art. 6(1)(f)) — responding to your request</td></tr>
-  <tr><td>Providing and administering Platform subscriptions, including billing and support</td><td>Performance of a contract (Art. 6(1)(b))</td></tr>
-  <tr><td>Sending newsletters, compliance updates, and marketing communications</td><td>Consent (Art. 6(1)(a)) — you may withdraw at any time</td></tr>
-  <tr><td>Operating, securing, and improving the Site and Platform</td><td>Legitimate interests (Art. 6(1)(f)) — network and information security, service improvement</td></tr>
-  <tr><td>Complying with legal obligations (tax, accounting, regulatory requests)</td><td>Legal obligation (Art. 6(1)(c))</td></tr>
-  <tr><td>Establishing, exercising, or defending legal claims</td><td>Legitimate interests (Art. 6(1)(f))</td></tr>
-</table>
-<p>Where we rely on legitimate interests, we have assessed that our interests are not overridden by your rights and freedoms. You may object at any time (see Section 7).</p>
-
-<h2>4. Who We Share Data With</h2>
-<p>We do not sell personal data. We share personal data only with:</p>
-<ul>
-  <li><strong>Service providers (processors)</strong> who help us operate the Site and Platform, under contracts that comply with Article 28 GDPR. Our current sub-processors are:</li>
-</ul>
-<table>
-  <tr><th scope="col">Provider</th><th scope="col">Purpose</th><th scope="col">Location</th></tr>
-  <tr><td>Google LLC (Google Analytics)</td><td>Site analytics — loaded only after you consent; no data is sent to Google if you decline (see Section 8.1)</td><td>USA / EU</td></tr>
-  <tr><td>Google LLC (Google Workspace / Gmail)</td><td>Email and business correspondence</td><td>USA / EU</td></tr>
-  <tr><td>Tally B.V.</td><td>Contact and demo request forms</td><td>Belgium (EU)</td></tr>
-  <tr><td>Stripe, Inc.</td><td>Payment processing for subscriptions</td><td>USA / EU</td></tr>
-  <tr><td>HubSpot, Inc.</td><td>Customer relationship management</td><td>USA / EU</td></tr>
-  <tr><td>Vercel Inc.</td><td>Frontend and Platform hosting, global content delivery (CDN), and serverless functions</td><td>USA / EU</td></tr>
-  <tr><td>Neon, Inc.</td><td>Database for account, subscription, transaction, and billing records</td><td>USA / EU</td></tr>
-  <tr><td>Upstash, Inc.</td><td>Data caching infrastructure for the Platform</td><td>USA / EU</td></tr>
-  <tr><td>Railway Corp.</td><td>Backend services and real-time data relay infrastructure for the Platform</td><td>USA</td></tr>
-  <tr><td>Convex, Inc.</td><td>Database services for email and waitlist registration</td><td>USA</td></tr>
-  <tr><td>GitHub, Inc. (Microsoft)</td><td>Source-code version control and CI/CD deployment pipeline</td><td>USA</td></tr>
-  <tr><td>Anthropic, PBC</td><td>Large language model services powering the in-platform assistant ("Maria")</td><td>USA</td></tr>
-  <tr><td>Functional Software, Inc. (Sentry)</td><td>Error monitoring and application diagnostics</td><td>USA / EU</td></tr>
-  <tr><td>Slack Technologies (Salesforce, Inc.)</td><td>Internal business communications, including handling of customer enquiries and support</td><td>USA / EU</td></tr>
-</table>
-<p>Payment card details are collected and processed directly by Stripe; we do not store full card numbers. We will update this list as our providers change.</p>
-<ul>
-  <li><strong>Professional advisers</strong> (lawyers, accountants, auditors) where necessary.</li>
-  <li><strong>Authorities</strong> where required by law, court order, or to protect legal rights.</li>
-  <li><strong>A successor entity</strong> in the event of a merger, acquisition, or asset sale, subject to this Policy.</li>
-</ul>
-
-<h2>5. International Data Transfers</h2>
-<p>Sentinella LLC is established in the United States with operations in Belgium. Where personal data collected in the European Economic Area is transferred to the United States or other countries without an adequacy decision, we implement appropriate safeguards under Chapter V GDPR, including the European Commission's Standard Contractual Clauses, supplemented where necessary by additional technical and organisational measures. You may request a copy of the relevant safeguards via the privacy contact above.</p>
-
-<h2>6. How Long We Keep Data</h2>
-<ul>
-  <li><strong>Enquiry and demo request data:</strong> up to 24 months after our last interaction, unless a business relationship develops.</li>
-  <li><strong>Account and subscription data:</strong> for the duration of the contract and up to 7 years thereafter where required for tax, accounting, or legal purposes.</li>
-  <li><strong>Marketing data:</strong> until you withdraw consent or unsubscribe.</li>
-  <li><strong>Technical logs:</strong> typically 12 months, unless needed longer for security investigation.</li>
-</ul>
-
-<h2>7. Your Rights</h2>
-<p>Under the GDPR, you have the right to:</p>
-<ul>
-  <li><strong>Access</strong> the personal data we hold about you (Art. 15);</li>
-  <li><strong>Rectify</strong> inaccurate or incomplete data (Art. 16);</li>
-  <li><strong>Erase</strong> your data in certain circumstances (Art. 17);</li>
-  <li><strong>Restrict</strong> processing in certain circumstances (Art. 18);</li>
-  <li><strong>Data portability</strong> — receive your data in a structured, commonly used, machine-readable format (Art. 20);</li>
-  <li><strong>Object</strong> to processing based on legitimate interests, and to direct marketing at any time (Art. 21);</li>
-  <li><strong>Withdraw consent</strong> at any time, without affecting the lawfulness of processing before withdrawal (Art. 7(3)).</li>
-</ul>
-<p>To exercise any of these rights, contact <a href="mailto:james@sentinellaglobal.com">james@sentinellaglobal.com</a>. We will respond within one month, extendable by two further months for complex requests. We may need to verify your identity before acting on a request.</p>
-<p>You also have the right to lodge a complaint with a supervisory authority — in Belgium, the Data Protection Authority (Autorité de protection des données / Gegevensbeschermingsautoriteit, <a href="https://www.dataprotectionauthority.be" rel="noopener">dataprotectionauthority.be</a>) — or with the supervisory authority of your habitual residence or place of work.</p>
-
-<h2>8. Cookies</h2>
-<p>The Site uses the following categories of cookies and similar technologies:</p>
-<table>
-  <tr><th scope="col">Category</th><th scope="col">Purpose</th><th scope="col">Basis</th></tr>
-  <tr><td>Strictly necessary</td><td>Site operation and security</td><td>Legitimate interests — no consent required</td></tr>
-  <tr><td>Analytics</td><td>Understanding how visitors use the Site so we can improve it</td><td>Consent (via cookie banner)</td></tr>
-  <tr><td>Functional / embedded content</td><td>Embedded forms and scheduling tools (e.g. demo booking)</td><td>Consent (via cookie banner)</td></tr>
-</table>
-<p>Non-essential cookies — including Google Analytics cookies — are set only after you give consent through our cookie banner. You can change or withdraw your cookie preferences at any time via the cookie settings link in the Site footer, and you can also control cookies through your browser settings.</p>
-
-<h3>8.1 When Google Analytics loads</h3>
-<p>We want to be precise about this, because it is easy to describe misleadingly. We run Google Analytics in Google's "basic" consent mode, which means the Google Analytics tag is <strong>not loaded at all</strong> until you accept analytics cookies. Until then, your browser makes no request to Google, and <strong>your IP address is not disclosed to Google</strong>. If you decline, or simply ignore the banner and carry on reading, nothing is sent.</p>
-<p>If you accept, we load Google Analytics and it sets its cookies (<code>_ga</code> and similar), which let us recognise returning visitors and measure sessions over time. Google acts as our processor for this, and the data is transferred subject to the safeguards described in Section 5.</p>
-<p>You can withdraw consent at any time using the "Cookie Settings" link in the Site footer. Withdrawing stops further collection and deletes the Google Analytics cookies from your browser. Withdrawal is as easy as giving consent, and costs you no functionality: nothing on this Site depends on analytics.</p>
-
-<h2>9. Security</h2>
-<p>We implement appropriate technical and organisational measures to protect personal data against unauthorised access, alteration, disclosure, or destruction, taking into account the state of the art, the risks presented, and the nature of the data processed (Art. 32 GDPR). No system is perfectly secure; if we become aware of a personal data breach likely to result in a risk to your rights, we will notify the competent supervisory authority and, where required, affected individuals in accordance with Articles 33–34 GDPR.</p>
-
-<h2>10. Children</h2>
-<p>The Site and Platform are business tools intended for professional users. They are not directed at children under 16, and we do not knowingly collect personal data from children.</p>
-
-<h2>11. Changes to This Policy</h2>
-<p>We may update this Policy from time to time. The "Last updated" date at the top reflects the most recent revision. For material changes affecting how we use your personal data, we will provide reasonable notice — for example by email to account holders or a prominent notice on the Site.</p>
-
-<h2>12. Contact</h2>
-<p>Questions, requests, or concerns about this Policy or our data practices:</p>
-<p>
-  Sentinella LLC — Privacy<br>
-  8 The Green STE A, Dover, DE 19901, United States<br>
-  <a href="mailto:james@sentinellaglobal.com">james@sentinellaglobal.com</a>
-</p>
+<h2>8. Preparation of This Statement</h2>
+<p>This statement was prepared on 16 July 2026 following an internal review of this website against WCAG 2.2 Level AA, combining automated checks with manual keyboard, contrast, and screen-reader testing. We review it when the site changes materially, and at least once a year.</p>
 </div>
 </main>
 
