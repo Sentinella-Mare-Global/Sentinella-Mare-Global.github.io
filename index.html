@@ -475,8 +475,9 @@
   }
   .svc-sub.gold { color: var(--gold); }
   .service-card { display: flex; flex-direction: column; }
-  .svc-card-cta { margin-top: auto; padding-top: 28px; display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
-  .svc-cta-ghost { visibility: hidden; pointer-events: none; user-select: none; }
+  .svc-card-cta { margin-top: auto; padding-top: 28px; }
+  /* Lead-in above the briefings bullet list, mirroring Box 1's bullet block */
+  .svc-blist-lead { font-family: 'Share Tech Mono', monospace; font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
   #briefings { scroll-margin-top: 110px; }
   .svc-features { list-style: none; margin-bottom: 0; }
   .svc-features li {
@@ -1765,20 +1766,16 @@
       <h3 data-i18n="s1.title" data-i18n-html="true">Mediterranean Watch<br>Intelligence Terminal</h3>
       <p class="svc-sub" data-i18n="s1.sub">One platform, one scored picture — showing how hybrid threats hit both security and trade at once.</p>
       <p class="svc-desc">
-        <span data-i18n="s1.desc">The Intelligence Terminal doesn't separate operational risk from economic risk, because the Mediterranean doesn't either. A single event — a dark vessel off Sicily, a cyber probe on a port, a chokepoint disruption at Suez — shows up in one continuous picture, scored for its impact on both your assets and your supply chain. Powered by Maria, our maritime AI, and delivered live inside the platform.</span>
+        <span data-i18n="s1.desc">The Intelligence Terminal doesn't separate operational risk from economic risk, because the Mediterranean doesn't either. One event — a dark vessel off Sicily, a cyber probe on a port, a disruption at Suez — shows up in a single scored picture, with forecasting powered by Maria, our maritime AI.</span>
       </p>
       <ul class="svc-features">
-        <li data-i18n="s1.f1">Real-time vessel tracking with AIS cross-referencing across 1,200+ routes</li>
-        <li data-i18n="s1.f2">Geopolitical threat scoring per corridor — Strait of Gibraltar to Suez</li>
-        <li data-i18n="s1.f3">Cross-domain alert engine: cyber, military, disinformation, weather, port disruption</li>
+        <li data-i18n="s1.f1">Real-time vessel tracking and per-corridor threat scoring — Gibraltar to Suez</li>
+        <li data-i18n="s1.f2">Cross-domain alerts: cyber, military, disinformation, weather, port disruption</li>
+        <li data-i18n="s1.f3">Supply-chain stress-testing across Mediterranean chokepoints</li>
         <li data-i18n="s1.f4">Automated early-warning triggers with priority notification</li>
-        <li data-i18n="s1.f5">Supply chain stress-testing across Mediterranean chokepoints</li>
-        <li data-i18n="s1.f6">Port infrastructure and regional exposure analysis</li>
-        <li data-i18n="s1.f7">Geopolitical scenario modeling and marine insurance risk profiling</li>
       </ul>
       <div class="svc-card-cta">
         <a href="https://mare.sentinellaglobal.com/" class="svc-cta" data-i18n="s1.launch" data-i18n-html="true" target="_blank" rel="noopener noreferrer">Launch Terminal <span>→</span></a>
-        <a href="#pricing" class="svc-cta" data-i18n="s1.cta" data-i18n-html="true">View Subscription Plans <span>→</span></a>
       </div>
     </div>
 
@@ -1792,9 +1789,14 @@
       <p class="svc-desc">
         <span data-i18n="s2.desc">We publish briefings on what's moving in the Mediterranean: the incidents, regulatory shifts, and hybrid-threat patterns our analysts are tracking in real time. Plain-language reads for operators, compliance teams, and anyone who needs to understand the basin without watching it full-time.</span>
       </p>
+      <div class="svc-blist-lead" data-i18n="s2.flead">In each briefing:</div>
+      <ul class="svc-features">
+        <li class="gold-li" data-i18n="s2.f1">Incident analysis — what happened in the basin and why it matters</li>
+        <li class="gold-li" data-i18n="s2.f2">Regulatory watch — NIS2, CER, and Circular 177/2025 developments</li>
+        <li class="gold-li" data-i18n="s2.f3">Hybrid-threat patterns our analysts are tracking in real time</li>
+      </ul>
       <div class="svc-card-cta">
         <a href="https://sentinellamare.substack.com/" class="svc-cta gold-cta" data-i18n="s2.cta" data-i18n-html="true" target="_blank" rel="noopener noreferrer">Read the Briefings <span>→</span></a>
-        <a class="svc-cta svc-cta-ghost" aria-hidden="true" tabindex="-1" data-i18n="s1.cta" data-i18n-html="true">View Subscription Plans <span>→</span></a>
       </div>
     </div>
   </div>
@@ -2066,17 +2068,18 @@ const translations = {
     's1.launch': "Launch Terminal <span>→</span>",
     's2.sub': "Field notes from the basin — curated analysis, straight from our team.",
     'footer.l.briefings': "Intelligence Briefings",
-    's1.desc': "The Intelligence Terminal doesn't separate operational risk from economic risk, because the Mediterranean doesn't either. A single event — a dark vessel off Sicily, a cyber probe on a port, a chokepoint disruption at Suez — shows up in one continuous picture, scored for its impact on both your assets and your supply chain. Powered by Maria, our maritime AI, and delivered live inside the platform.",
+    's1.desc': "The Intelligence Terminal doesn't separate operational risk from economic risk, because the Mediterranean doesn't either. One event — a dark vessel off Sicily, a cyber probe on a port, a disruption at Suez — shows up in a single scored picture, with forecasting powered by Maria, our maritime AI.",
     's1.cta': 'View Subscription Plans <span>→</span>',
-    's1.f1': 'Real-time vessel tracking with AIS cross-referencing across 1,200+ routes',
-    's1.f2': 'Geopolitical threat scoring per corridor — Strait of Gibraltar to Suez',
-    's1.f3': 'Cross-domain alert engine: cyber, military, disinformation, weather, port disruption',
-    's1.f4': 'Automated early-warning triggers with priority notification',
-    's1.f5': "Supply chain stress-testing across Mediterranean chokepoints",
-    's1.f6': "Port infrastructure and regional exposure analysis",
-    's1.f7': "Geopolitical scenario modeling and marine insurance risk profiling",
+    's1.f1': "Real-time vessel tracking and per-corridor threat scoring — Gibraltar to Suez",
+    's1.f2': "Cross-domain alerts: cyber, military, disinformation, weather, port disruption",
+    's1.f3': "Supply-chain stress-testing across Mediterranean chokepoints",
+    's1.f4': "Automated early-warning triggers with priority notification",
     's2.tagline': "Subscriber Newsletter",
     's2.title': "Intelligence<br>Briefings",
+    's2.flead': "In each briefing:",
+    's2.f1': "Incident analysis — what happened in the basin and why it matters",
+    's2.f2': "Regulatory watch — NIS2, CER, and Circular 177/2025 developments",
+    's2.f3': "Hybrid-threat patterns our analysts are tracking in real time",
     's2.desc': "We publish briefings on what's moving in the Mediterranean: the incidents, regulatory shifts, and hybrid-threat patterns our analysts are tracking in real time. Plain-language reads for operators, compliance teams, and anyone who needs to understand the basin without watching it full-time.",
     's2.cta': "Read the Briefings <span>→</span>",
     // Live status bar
@@ -2233,21 +2236,21 @@ const translations = {
     's1.tagline': "Piattaforma di Intelligence Live",
     's1.title': 'Terminale Intelligence di Sorveglianza<br>del Mediterraneo',
     's1.sub': "Una piattaforma, un unico quadro con punteggio — che mostra come le minacce ibride colpiscono contemporaneamente sicurezza e commercio.",
-    's1.desc': "Il Terminale Intelligence non separa il rischio operativo dal rischio economico, perché il Mediterraneo non lo fa. Un singolo evento — una dark vessel al largo della Sicilia, una sonda cyber su un porto, l'interruzione di un chokepoint a Suez — appare in un unico quadro continuo, con un punteggio del suo impatto sia sui vostri asset sia sulla vostra supply chain. Alimentato da Maria, la nostra AI marittima, e fornito in tempo reale all'interno della piattaforma.",
+    's1.desc': "Il Terminale Intelligence non separa il rischio operativo dal rischio economico, perché il Mediterraneo non lo fa. Un solo evento — una dark vessel al largo della Sicilia, una sonda cyber su un porto, un'interruzione a Suez — appare in un unico quadro con punteggio, con previsioni alimentate da Maria, la nostra AI marittima.",
     's1.launch': "Avvia il Terminale <span>→</span>",
     's2.sub': "Note dal bacino — analisi curata, direttamente dal nostro team.",
     'footer.l.briefings': "Intelligence Briefings",
-    "s1.desc": "Un terminale di intelligence geopolitico e operativo marittimo aggiornato continuamente, che fornisce a compagnie di navigazione e operatori logistici un quadro situazionale in tempo reale sul Mediterraneo. Basato sul nostro motore proprietario di intelligence predittiva — non un report, un segnale vivo.",
     's1.cta': 'Visualizza i Piani di Abbonamento <span>→</span>',
-    's1.f1': 'Tracciamento navi in tempo reale con riferimenti AIS su 1.200+ rotte',
-    's1.f2': 'Scoring delle minacce geopolitiche per corridoio — da Gibilterra a Suez',
-    's1.f3': 'Motore di allerta multi-dominio: cyber, militare, disinformazione, meteo, disruption portuale',
-    's1.f4': 'Trigger di early-warning automatizzati con notifica prioritaria',
-    's1.f5': "Stress test della supply chain attraverso i chokepoint mediterranei",
-    's1.f6': "Analisi dell'esposizione delle infrastrutture portuali e regionali",
-    's1.f7': "Modellazione di scenari geopolitici e profilazione del rischio assicurativo marittimo",
+    's1.f1': "Tracciamento navale in tempo reale e scoring delle minacce per corridoio — da Gibilterra a Suez",
+    's1.f2': "Allerte cross-dominio: cyber, militare, disinformazione, meteo, interruzioni portuali",
+    's1.f3': "Stress test della supply chain attraverso i chokepoint mediterranei",
+    's1.f4': "Trigger di allerta precoce automatizzati con notifica prioritaria",
     's2.tagline': "Newsletter per Abbonati",
     's2.title': "Intelligence<br>Briefings",
+    's2.flead': "In ogni briefing:",
+    's2.f1': "Analisi degli incidenti — cosa è successo nel bacino e perché è importante",
+    's2.f2': "Osservatorio normativo — sviluppi su NIS2, CER e Circolare 177/2025",
+    's2.f3': "Pattern di minaccia ibrida che i nostri analisti monitorano in tempo reale",
     's2.desc': "Pubblichiamo briefing su ciò che si muove nel Mediterraneo: gli incidenti, i cambiamenti normativi e i pattern di minaccia ibrida che i nostri analisti monitorano in tempo reale. Letture in linguaggio chiaro per operatori, team di compliance e chiunque debba comprendere il bacino senza osservarlo a tempo pieno.",
     's2.cta': "Leggi i Briefing <span>→</span>",
     // Live status bar
@@ -2403,17 +2406,18 @@ const translations = {
     's1.launch': "تشغيل التيرمينال <span>→</span>",
     's2.sub': "ملاحظات ميدانية من الحوض — تحليل منسَّق، مباشرةً من فريقنا.",
     'footer.l.briefings': "Intelligence Briefings",
-    's1.desc': "لا يفصل تيرمينال الاستخبارات بين المخاطر التشغيلية والمخاطر الاقتصادية، لأن البحر الأبيض المتوسط لا يفصل بينهما أيضاً. يظهر حدث واحد — سفينة مظلمة قبالة صقلية، أو فحص سيبراني على ميناء، أو تعطّل نقطة اختناق في السويس — في صورة واحدة متواصلة، مسجَّلة بالنقاط بحسب تأثيره على أصولك وسلسلة التوريد الخاصة بك معاً. مدعوم بـ Maria، ذكاؤنا الاصطناعي البحري، ويُقدَّم مباشرةً داخل المنصة.",
+    's1.desc': "لا يفصل تيرمينال الاستخبارات بين المخاطر التشغيلية والمخاطر الاقتصادية، لأن البحر الأبيض المتوسط لا يفصل بينهما أيضاً. حدث واحد — سفينة مظلمة قبالة صقلية، أو فحص سيبراني على ميناء، أو تعطّل في السويس — يظهر في صورة واحدة مسجَّلة بالنقاط، مع تنبؤات مدعومة بـ Maria، ذكاؤنا الاصطناعي البحري.",
     's1.cta': 'عرض خطط الاشتراك <span>→</span>',
-    's1.f1': 'تتبع السفن في الوقت الفعلي مع إسناد AIS عبر 1,200+ مسار',
-    's1.f2': 'تسجيل نقاط التهديد الجيوسياسي لكل ممر — من جبل طارق إلى السويس',
-    's1.f3': 'محرك تنبيه متعدد المجالات: سيبراني، عسكري، تضليل، الطقس، اضطراب الموانئ',
-    's1.f4': 'محفزات إنذار مبكر آلية مع إشعار ذي أولوية',
-    's1.f5': "اختبار إجهاد سلسلة التوريد عبر نقاط الاختناق المتوسطية",
-    's1.f6': "تحليل تعرّض البنية التحتية للموانئ والمناطق الإقليمية",
-    's1.f7': "نمذجة السيناريوهات الجيوسياسية وتحديد ملف مخاطر التأمين البحري",
+    's1.f1': "تتبّع السفن في الوقت الفعلي وتسجيل التهديدات لكل ممر — من جبل طارق إلى السويس",
+    's1.f2': "تنبيهات متعددة المجالات: سيبرانية، عسكرية، تضليل، طقس، تعطّل الموانئ",
+    's1.f3': "اختبار إجهاد سلسلة التوريد عبر نقاط الاختناق المتوسطية",
+    's1.f4': "مشغّلات إنذار مبكر آلية مع إشعار ذي أولوية",
     's2.tagline': "نشرة للمشتركين",
     's2.title': "Intelligence<br>Briefings",
+    's2.flead': "في كل إحاطة:",
+    's2.f1': "تحليل الحوادث — ما الذي حدث في الحوض ولماذا يهم",
+    's2.f2': "رصد تنظيمي — تطورات NIS2 وCER والتعميم 177/2025",
+    's2.f3': "أنماط التهديد الهجين التي يتابعها محللونا في الوقت الفعلي",
     's2.desc': "ننشر إحاطات حول ما يتحرك في البحر الأبيض المتوسط: الحوادث والتحولات التنظيمية وأنماط التهديد الهجين التي يتابعها محللونا في الوقت الفعلي. قراءات بلغة واضحة للمشغّلين وفرق الامتثال وكل من يحتاج إلى فهم الحوض دون متابعته بدوام كامل.",
     's2.cta': "اقرأ الإحاطات <span>→</span>",
     // Live status bar
@@ -2569,17 +2573,18 @@ const translations = {
     's1.launch': "Εκκίνηση Τερματικού <span>→</span>",
     's2.sub': "Σημειώσεις πεδίου από τη λεκάνη — επιμελημένη ανάλυση, απευθείας από την ομάδα μας.",
     'footer.l.briefings': "Intelligence Briefings",
-    's1.desc': "Το Τερματικό Πληροφόρησης δεν διαχωρίζει τον επιχειρησιακό κίνδυνο από τον οικονομικό, επειδή ούτε η Μεσόγειος το κάνει. Ένα μόνο συμβάν — ένα «σκοτεινό» πλοίο ανοιχτά της Σικελίας, μια κυβερνοανίχνευση σε λιμάνι, μια διαταραχή σε σημείο συμφόρησης στο Σουέζ — εμφανίζεται σε μία συνεχή εικόνα, βαθμολογημένο για τον αντίκτυπό του τόσο στα περιουσιακά σας στοιχεία όσο και στην εφοδιαστική σας αλυσίδα. Με την υποστήριξη της Maria, της ναυτιλιακής μας AI, και παραδίδεται ζωντανά μέσα στην πλατφόρμα.",
+    's1.desc': "Το Τερματικό Πληροφόρησης δεν διαχωρίζει τον επιχειρησιακό κίνδυνο από τον οικονομικό, επειδή ούτε η Μεσόγειος το κάνει. Ένα μόνο συμβάν — ένα «σκοτεινό» πλοίο ανοιχτά της Σικελίας, μια κυβερνοανίχνευση σε λιμάνι, μια διαταραχή στο Σουέζ — εμφανίζεται σε μία ενιαία βαθμολογημένη εικόνα, με προβλέψεις που υποστηρίζονται από τη Maria, τη ναυτιλιακή μας AI.",
     's1.cta': 'Δείτε τα Πλάνα Συνδρομής <span>→</span>',
-    's1.f1': 'Παρακολούθηση πλοίων σε πραγματικό χρόνο με διασταύρωση AIS σε 1.200+ διαδρομές',
-    's1.f2': 'Βαθμολόγηση γεωπολιτικής απειλής ανά διάδρομο — από το Γιβραλτάρ έως το Σουέζ',
-    's1.f3': 'Μηχανή ειδοποιήσεων πολλαπλών τομέων: κυβερνο-, στρατιωτικό, παραπληροφόρηση, καιρός, αναστάτωση λιμανιών',
-    's1.f4': 'Αυτοματοποιημένα ερεθίσματα έγκαιρης προειδοποίησης με ειδοποίηση προτεραιότητας',
-    's1.f5': "Stress testing εφοδιαστικής αλυσίδας στα μεσογειακά σημεία συμφόρησης",
-    's1.f6': "Ανάλυση έκθεσης λιμενικών υποδομών και περιφερειών",
-    's1.f7': "Γεωπολιτική μοντελοποίηση σεναρίων και κατάρτιση προφίλ ναυτιλιακού ασφαλιστικού κινδύνου",
+    's1.f1': "Παρακολούθηση πλοίων σε πραγματικό χρόνο και βαθμολόγηση απειλών ανά διάδρομο — από το Γιβραλτάρ έως το Σουέζ",
+    's1.f2': "Ειδοποιήσεις πολλαπλών τομέων: κυβερνο-, στρατιωτικές, παραπληροφόρηση, καιρός, διαταραχές λιμένων",
+    's1.f3': "Stress testing εφοδιαστικής αλυσίδας στα μεσογειακά σημεία συμφόρησης",
+    's1.f4': "Αυτοματοποιημένοι πυροδοτητές έγκαιρης προειδοποίησης με ειδοποίηση προτεραιότητας",
     's2.tagline': "Ενημερωτικό Δελτίο Συνδρομητών",
     's2.title': "Intelligence<br>Briefings",
+    's2.flead': "Σε κάθε ενημέρωση:",
+    's2.f1': "Ανάλυση περιστατικών — τι συνέβη στη λεκάνη και γιατί έχει σημασία",
+    's2.f2': "Κανονιστική παρακολούθηση — εξελίξεις σε NIS2, CER και Εγκύκλιο 177/2025",
+    's2.f3': "Μοτίβα υβριδικών απειλών που παρακολουθούν οι αναλυτές μας σε πραγματικό χρόνο",
     's2.desc': "Δημοσιεύουμε ενημερώσεις για όσα κινούνται στη Μεσόγειο: τα περιστατικά, τις κανονιστικές αλλαγές και τα μοτίβα υβριδικών απειλών που παρακολουθούν οι αναλυτές μας σε πραγματικό χρόνο. Κείμενα σε απλή γλώσσα για χειριστές, ομάδες συμμόρφωσης και όποιον χρειάζεται να κατανοεί τη λεκάνη χωρίς να την παρακολουθεί με πλήρη απασχόληση.",
     's2.cta': "Διαβάστε τα Δελτία <span>→</span>",
     // Live status bar
