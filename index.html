@@ -471,11 +471,12 @@
      cards' buttons align despite unequal content height. */
   .svc-sub {
     font-size: 17px; line-height: 1.6; font-weight: 600;
-    color: var(--white); margin-bottom: 20px;
+    color: var(--green-mid); margin-bottom: 20px;
   }
   .svc-sub.gold { color: var(--gold); }
   .service-card { display: flex; flex-direction: column; }
-  .svc-card-cta { margin-top: auto; padding-top: 28px; }
+  .svc-card-cta { margin-top: auto; padding-top: 28px; display: flex; flex-direction: column; align-items: flex-start; gap: 14px; }
+  .svc-cta-ghost { visibility: hidden; pointer-events: none; user-select: none; }
   #briefings { scroll-margin-top: 110px; }
   .svc-features { list-style: none; margin-bottom: 0; }
   .svc-features li {
@@ -1777,6 +1778,7 @@
       </ul>
       <div class="svc-card-cta">
         <a href="https://mare.sentinellaglobal.com/" class="svc-cta" data-i18n="s1.launch" data-i18n-html="true" target="_blank" rel="noopener noreferrer">Launch Terminal <span>→</span></a>
+        <a href="#pricing" class="svc-cta" data-i18n="s1.cta" data-i18n-html="true">View Subscription Plans <span>→</span></a>
       </div>
     </div>
 
@@ -1785,18 +1787,16 @@
       <div class="svc-num" aria-hidden="true">02</div>
       <div class="svc-icon gold-icon">✉&#xFE0E;</div>
       <div class="svc-tagline gold" data-i18n="s2.tagline">Subscriber Newsletter</div>
-      <h3 data-i18n="s2.title" data-i18n-html="true">Intelligence Briefings</h3>
+      <h3 data-i18n="s2.title" data-i18n-html="true">Intelligence<br>Briefings</h3>
       <p class="svc-sub gold" data-i18n="s2.sub">Field notes from the basin — curated analysis, straight from our team.</p>
       <p class="svc-desc">
         <span data-i18n="s2.desc">We publish briefings on what's moving in the Mediterranean: the incidents, regulatory shifts, and hybrid-threat patterns our analysts are tracking in real time. Plain-language reads for operators, compliance teams, and anyone who needs to understand the basin without watching it full-time.</span>
       </p>
       <div class="svc-card-cta">
         <a href="https://sentinellamare.substack.com/" class="svc-cta gold-cta" data-i18n="s2.cta" data-i18n-html="true" target="_blank" rel="noopener noreferrer">Read the Briefings <span>→</span></a>
+        <a class="svc-cta svc-cta-ghost" aria-hidden="true" tabindex="-1" data-i18n="s1.cta" data-i18n-html="true">View Subscription Plans <span>→</span></a>
       </div>
     </div>
-  </div>
-  <div class="svc-buttons-outer">
-    <a href="#pricing" class="svc-cta" data-i18n="s1.cta" data-i18n-html="true">View Subscription Plans <span>→</span></a>
   </div>
 </section>
 
@@ -2076,7 +2076,7 @@ const translations = {
     's1.f6': "Port infrastructure and regional exposure analysis",
     's1.f7': "Geopolitical scenario modeling and marine insurance risk profiling",
     's2.tagline': "Subscriber Newsletter",
-    's2.title': "Intelligence Briefings",
+    's2.title': "Intelligence<br>Briefings",
     's2.desc': "We publish briefings on what's moving in the Mediterranean: the incidents, regulatory shifts, and hybrid-threat patterns our analysts are tracking in real time. Plain-language reads for operators, compliance teams, and anyone who needs to understand the basin without watching it full-time.",
     's2.cta': "Read the Briefings <span>→</span>",
     // Live status bar
@@ -2247,7 +2247,7 @@ const translations = {
     's1.f6': "Analisi dell'esposizione delle infrastrutture portuali e regionali",
     's1.f7': "Modellazione di scenari geopolitici e profilazione del rischio assicurativo marittimo",
     's2.tagline': "Newsletter per Abbonati",
-    's2.title': "Intelligence Briefings",
+    's2.title': "Intelligence<br>Briefings",
     's2.desc': "Pubblichiamo briefing su ciò che si muove nel Mediterraneo: gli incidenti, i cambiamenti normativi e i pattern di minaccia ibrida che i nostri analisti monitorano in tempo reale. Letture in linguaggio chiaro per operatori, team di compliance e chiunque debba comprendere il bacino senza osservarlo a tempo pieno.",
     's2.cta': "Leggi i Briefing <span>→</span>",
     // Live status bar
@@ -2413,7 +2413,7 @@ const translations = {
     's1.f6': "تحليل تعرّض البنية التحتية للموانئ والمناطق الإقليمية",
     's1.f7': "نمذجة السيناريوهات الجيوسياسية وتحديد ملف مخاطر التأمين البحري",
     's2.tagline': "نشرة للمشتركين",
-    's2.title': "Intelligence Briefings",
+    's2.title': "Intelligence<br>Briefings",
     's2.desc': "ننشر إحاطات حول ما يتحرك في البحر الأبيض المتوسط: الحوادث والتحولات التنظيمية وأنماط التهديد الهجين التي يتابعها محللونا في الوقت الفعلي. قراءات بلغة واضحة للمشغّلين وفرق الامتثال وكل من يحتاج إلى فهم الحوض دون متابعته بدوام كامل.",
     's2.cta': "اقرأ الإحاطات <span>→</span>",
     // Live status bar
@@ -2579,7 +2579,7 @@ const translations = {
     's1.f6': "Ανάλυση έκθεσης λιμενικών υποδομών και περιφερειών",
     's1.f7': "Γεωπολιτική μοντελοποίηση σεναρίων και κατάρτιση προφίλ ναυτιλιακού ασφαλιστικού κινδύνου",
     's2.tagline': "Ενημερωτικό Δελτίο Συνδρομητών",
-    's2.title': "Intelligence Briefings",
+    's2.title': "Intelligence<br>Briefings",
     's2.desc': "Δημοσιεύουμε ενημερώσεις για όσα κινούνται στη Μεσόγειο: τα περιστατικά, τις κανονιστικές αλλαγές και τα μοτίβα υβριδικών απειλών που παρακολουθούν οι αναλυτές μας σε πραγματικό χρόνο. Κείμενα σε απλή γλώσσα για χειριστές, ομάδες συμμόρφωσης και όποιον χρειάζεται να κατανοεί τη λεκάνη χωρίς να την παρακολουθεί με πλήρη απασχόληση.",
     's2.cta': "Διαβάστε τα Δελτία <span>→</span>",
     // Live status bar
