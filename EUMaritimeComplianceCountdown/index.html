@@ -824,9 +824,9 @@ a, button { -webkit-tap-highlight-color: transparent; }
           Intelligence Terminal
           <span class="comp-link-label">Live Intelligence Platform</span>
         </a>
-        <a href="/#advisory" onclick="document.getElementById('servicesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">
-          Advisory
-          <span class="comp-link-label">(Coming Soon)</span>
+        <a href="/#briefings" onclick="document.getElementById('servicesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">
+          Intelligence Briefings
+          <span class="comp-link-label">Subscriber newsletter</span>
         </a>
       </div>
     </div>
@@ -936,8 +936,7 @@ a, button { -webkit-tap-highlight-color: transparent; }
     <div class="footer-col">
       <p class="footer-nav-title">Services</p>
       <a href="/#services">Mediterranean Watch Intelligence Terminal</a>
-      <a href="/#advisory">Investment Advisory</a>
-      <a href="/#advisory">Supply Chain Risk</a>
+      <a href="/#briefings">Intelligence Briefings</a>
       <a href="/#pricing">Subscription Tiers</a>
     </div>
     <div class="footer-col">
@@ -978,7 +977,7 @@ const DEADLINES = [
     segments: ["Port Authority","PFSO","ISM / Shipping","Subsea Cable"],
     desc: "Annual entity categorisation submission to the ACN portal — not a formal audit. Entities must register their risk classification and confirm a documented risk assessment process, incident reporting capability, supply chain security measures, and active governance are in place. ACN's on-site inspections are expected from late 2026.",
     consequence: "Non-compliance: up to €10M or 2% of global turnover (essential entities; €7M / 1.4% for important entities). Personal director liability under ACN enforcement. Repeat non-compliance may result in authorities ordering public disclosure of the violation.",
-    sentinella: "The Asset Status panel is your daily risk management record — exactly what NIS2 Article 21 requires to demonstrate ongoing monitoring. P-MHTES and C-MHTES scores provide the external threat intelligence layer no internal IT tool produces. Compliance CSV and AI-generated PDF/A-1b export on demand — not assembled at audit time."
+    sentinella: "The Alert Center panel is your daily risk management record — exactly what NIS2 Article 21 requires to demonstrate ongoing monitoring. P-MHTES and C-MHTES scores provide the external threat intelligence layer no internal IT tool produces. Compliance CSV and AI-generated PDF/A-1b export on demand — not assembled at audit time."
   },
   {
     id: "cer-designation",
@@ -1002,7 +1001,7 @@ const DEADLINES = [
     segments: ["Port Authority","PFSO","ISM / Shipping","Subsea Cable"],
     desc: "ACN (Italy's NIS2 national competent authority) requires full documentation of risk management measures, supply chain security, business continuity planning, and incident reporting procedures. Exact timing is entity-notification-dependent — approximately October–November 2026, with some sources citing 31 October.",
     consequence: "ACN begins active enforcement proceedings. Entities without documented ongoing threat monitoring face remediation orders, fines, and potential operational restrictions. Port operators face additional scrutiny given Italy's critical infrastructure exposure.",
-    sentinella: "NIS2 is a process obligation, not a report obligation. Auditors need to see that threat monitoring is continuous, not assembled on deadline day. The three-panel workflow — Asset Status, Hybrid Threat Awareness, compliance export — is designed around this distinction. Clients who signed pilots in July have three months of monitoring history on record by October."
+    sentinella: "NIS2 is a process obligation, not a report obligation. Auditors need to see that threat monitoring is continuous, not assembled on deadline day. The three-panel workflow — Alert Center, Ops Map, Deep Simulation — is designed around this distinction. Clients who signed pilots in July have three months of monitoring history on record by October."
   },
   {
     id: "c177",
@@ -1014,7 +1013,7 @@ const DEADLINES = [
     segments: ["Port Authority","PFSO","Ferry Operator"],
     desc: "Italy's maritime cyber risk circular, aligned with IMO MSC-FAL.1/Circ.3/Rev.3, becomes fully enforceable. Port facilities, AdSP jurisdictions, and ferry operators face mandatory cyber risk assessments under the Capitanerie di Porto command (operating under MIT as Italy's NIS transport sector authority). Circolare 177 targets cyber risk to maritime OT/IT systems — narrower in scope than NIS2 or CER's hybrid/all-hazards coverage.",
     consequence: "Enforcement by the Capitanerie di Porto command. Non-compliance triggers mandatory remediation orders. Personal director liability for inadequate risk management is a NIS2 Article 20 matter attaching to management bodies — not a PFSO-specific liability under Circolare 177 itself. This regulation was written for the cyber risk exposure across maritime OT/IT that Sentinella monitors.",
-    sentinella: "Sentinella's cyber vulnerability signals (OT/IT) and Asset Status panel map directly to Circolare 177's cyber risk assessment obligation — scored continuously, not prepared once. When cyber signals converge with other threat vectors on an asset, the Convergence Alert fires before the incident occurs — broader coverage than Circolare 177 requires alone."
+    sentinella: "Sentinella's Alert Center maps directly to Circolare 177's cyber risk assessment obligation — scored continuously, not prepared once. When cyber signals converge with other threat vectors on an asset, the Convergence Alert fires before the incident occurs — broader coverage than Circolare 177 requires alone."
   },
   {
     id: "cer-risk",
@@ -1038,7 +1037,7 @@ const DEADLINES = [
     segments: ["Port Authority","PFSO","Ferry Operator","Subsea Cable"],
     desc: "Full CER resilience compliance required across all designated critical entities, approximately 10 months after formal notification of designation — not the designation date itself. Resilience measures, incident response plans, ongoing monitoring capability, and supply chain security must all be demonstrably operational — not planned, not in progress, operational.",
     consequence: "Entities failing full compliance face enforcement action and financial penalties under D.Lgs. 134/2024 — €25,000 to €125,000, tripling for repeat non-compliance. After roughly 10 months of regulatory scrutiny, there is no grace period and no goodwill for entities arriving unprepared.",
-    sentinella: "Founding Client Programme members who began in July 2026 reach full compliance with an 11-month operational record, four years of rate-locked access, and compliance exports already structured for CER audit requirements. Full compliance is not a sprint finished at the deadline — it is the record built since July. The difference between a client and a non-client at this date is months of documented process."
+    sentinella: "Founding Client Programme members who began in July 2026 reach full compliance with an 11-month operational record, four years of rate-locked access, and deep simulation already structured for CER audit requirements. Full compliance is not a sprint finished at the deadline — it is the record built since July. The difference between a client and a non-client at this date is months of documented process."
   }
 ];
 
