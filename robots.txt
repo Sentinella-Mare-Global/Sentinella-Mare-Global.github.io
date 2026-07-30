@@ -1,8 +1,4 @@
 User-agent: *
 Allow: /
 
-# Draft / internal files — not for indexing
-Disallow: /other_index.html
-Disallow: /sentinella_unified_pricing.html
-
 Sitemap: https://sentinellaglobal.com/sitemap.xml
