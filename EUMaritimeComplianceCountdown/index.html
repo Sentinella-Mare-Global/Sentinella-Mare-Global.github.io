@@ -834,6 +834,24 @@ a, button { -webkit-tap-highlight-color: transparent; }
     <a href="/#pricing" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Pricing</a>
     <a href="/#clients" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Clients</a>
     <a href="/Leadership" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Leadership</a>
+    <div class="nav-comp-wrap" id="storiesNav">
+      <button class="nav-comp-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="storiesMenu" onclick="document.getElementById('storiesNav').classList.toggle('open')">
+        Data Stories
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+      <div class="nav-comp-menu" id="storiesMenu">
+        <a href="/DataStories/" onclick="document.getElementById('storiesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">
+          The Map Lobby
+          <span class="comp-link-label">Grand timeline and map</span>
+        </a>
+        <a href="/DataStories/EvolutionOfMaritimeHistory/" onclick="document.getElementById('storiesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">
+          Evolution of Maritime History
+          <span class="comp-link-label">Mediterranean, Black Sea, Red Sea</span>
+        </a>
+      </div>
+    </div>
     <div class="nav-comp-wrap" id="complianceNav">
       <button class="nav-comp-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="complianceMenu" onclick="document.getElementById('complianceNav').classList.toggle('open')">
         Compliance
@@ -1197,6 +1215,8 @@ document.addEventListener('click', function(e) {
   if (dd && !dd.contains(e.target)) dd.classList.remove('open');
   const cd = document.getElementById('complianceNav');
   if (cd && !cd.contains(e.target)) cd.classList.remove('open');
+  var storiesNav = document.getElementById('storiesNav');
+  if (storiesNav && !storiesNav.contains(e.target)) storiesNav.classList.remove('open');
 });
 
 renderHero();

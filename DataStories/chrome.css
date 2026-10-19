@@ -1,0 +1,135 @@
+:root {
+  --navy: #060f18; --navy-2: #0d1b2a; --navy-3: #112336; --navy-4: #1a3450;
+  --green: #2d7a3a; --green-mid: #3aab4a; --green-glow: #4fd962; --green-dim: #1d5228;
+  --gold: #c9a84c; --text: #f0f5fc; --text-dim: #c8d8ec; --white: #eef3f8;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+img { max-width: 100%; height: auto; }
+html { scroll-behavior: smooth; scroll-padding-top: 120px; }
+body {
+  background: var(--navy); color: var(--text);
+  font-family: 'Rajdhani', sans-serif; font-size: 16px; line-height: 1.6; overflow-x: hidden;
+}
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between; gap: 40px;
+  padding: 14px 64px; background: rgba(8, 19, 30, 0.92);
+  backdrop-filter: blur(16px); border-bottom: 1px solid rgba(45, 122, 58, 0.18);
+}
+.nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.nav-logo img { height: 90px; max-width: 160px; }
+.nav-brand { display: flex; flex-direction: column; line-height: 1; }
+.nav-brand .n1 { font-family: 'Cinzel', serif; font-size: 18px; font-weight: 700; color: var(--white); letter-spacing: 3px; }
+.nav-brand .n2 { font-family: 'Share Tech Mono', monospace; font-size: 12px; color: var(--green-mid); letter-spacing: 2px; margin-top: 3px; white-space: nowrap; }
+.nav-links { display: flex; align-items: center; gap: 28px; }
+.nav-links a {
+  color: var(--text); text-decoration: none; font-size: 13px; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase; white-space: nowrap; padding: 5px 0;
+}
+.nav-links a:hover, .nav-links a.active { color: var(--green-glow); }
+.btn-nav {
+  border: 1px solid var(--green); color: var(--green-mid) !important;
+  padding: 8px 20px !important; letter-spacing: 2px !important;
+}
+.btn-nav:hover { background: var(--green) !important; color: #fff !important; }
+.nav-toggle { display: none; flex-direction: column; justify-content: center; gap: 5px; cursor: pointer; padding: 8px; background: none; border: none; z-index: 1001; }
+.nav-toggle span { display: block; width: 24px; height: 2px; background: var(--green-mid); transition: all 0.3s; }
+.nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.nav-comp-wrap { position: relative; display: flex; align-items: center; }
+.nav-comp-trigger {
+  background: none; border: none; cursor: pointer; padding: 5px 0; color: var(--text);
+  font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 2px;
+  text-transform: uppercase; white-space: nowrap; display: flex; align-items: center; gap: 5px;
+}
+.nav-comp-trigger:hover, .nav-comp-wrap.open .nav-comp-trigger { color: var(--green-glow); }
+.nav-comp-wrap.open .nav-comp-trigger svg { transform: rotate(180deg); }
+.nav-comp-menu {
+  display: none; position: absolute; top: calc(100% + 16px); left: 50%; transform: translateX(-50%);
+  background: rgba(6, 15, 24, 0.98); border: 1px solid rgba(45, 122, 58, 0.3);
+  min-width: 280px; z-index: 1100; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+.nav-comp-wrap.open .nav-comp-menu { display: block; }
+.nav-comp-menu a {
+  display: block; padding: 12px 20px; color: rgba(200, 216, 236, 0.85);
+  font-family: 'Share Tech Mono', monospace; font-size: 12px; letter-spacing: 1px;
+  text-transform: uppercase; text-decoration: none; white-space: normal;
+  border-bottom: 1px solid rgba(45, 122, 58, 0.12);
+}
+.nav-comp-menu a:last-child { border-bottom: none; }
+.nav-comp-menu a:hover { color: var(--green-glow); background: rgba(45, 122, 58, 0.08); }
+.comp-link-label { display: block; font-size: 11px; color: rgba(58, 171, 74, 0.85); letter-spacing: 1px; margin-top: 3px; text-transform: none; }
+.lang-dropdown { position: relative; }
+.lang-globe { background: none; border: none; cursor: pointer; color: #fff; padding: 4px 6px; display: flex; }
+.lang-menu { display: none; position: absolute; right: 0; top: calc(100% + 10px); background: rgba(6, 15, 24, 0.98); border: 1px solid rgba(45, 122, 58, 0.3); min-width: 64px; z-index: 1100; }
+.lang-dropdown.open .lang-menu { display: flex; flex-direction: column; }
+.lang-btn { background: none; border: none; border-bottom: 1px solid rgba(45, 122, 58, 0.15); color: rgba(200, 216, 236, 0.7); font-family: 'Share Tech Mono', monospace; font-size: 13px; padding: 9px 16px; cursor: pointer; }
+.lang-btn.active { color: var(--green-mid); }
+.page-hero { padding: 148px 64px 36px; position: relative; }
+.page-hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 60% at 80% 40%, rgba(45, 122, 58, 0.08), transparent 70%); pointer-events: none; }
+.page-label { font-family: 'Share Tech Mono', monospace; font-size: 13px; letter-spacing: 2px; color: var(--green-mid); text-transform: uppercase; margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+.page-label::before { content: ''; width: 30px; height: 1px; background: var(--green-mid); }
+.page-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(34px, 5vw, 58px); font-weight: 700; letter-spacing: 1px; color: var(--white); line-height: 1.15; }
+.page-hero h1 span { color: var(--green-glow); }
+.page-hero .lede { max-width: 760px; margin-top: 16px; font-size: 18px; line-height: 1.7; color: var(--text-dim); }
+.section-label { display: inline-flex; align-items: center; gap: 10px; font-family: 'Share Tech Mono', monospace; font-size: 12px; letter-spacing: 3px; text-transform: uppercase; color: var(--green-mid); margin-bottom: 12px; }
+.section-label::before { content: ''; width: 24px; height: 1px; background: var(--green-mid); }
+.section-lead { font-size: 17px; line-height: 1.7; color: var(--text); max-width: 680px; margin-bottom: 18px; }
+.btn-primary { background: var(--green); color: #fff; padding: 14px 28px; font-family: 'Rajdhani', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; display: inline-block; }
+.btn-primary:hover { background: var(--green-mid); }
+footer { background: var(--navy-2); border-top: 1px solid rgba(45, 122, 58, 0.12); padding: 56px 64px 32px; margin-top: 28px; }
+.footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+.footer-brand { display: flex; gap: 20px; }
+.footer-brand img { height: 100px; width: auto; }
+.footer-brand p { font-size: 14px; line-height: 1.7; color: var(--text-dim); max-width: 280px; }
+.hq { font-family: 'Share Tech Mono', monospace; font-size: 13px; letter-spacing: 1.5px; color: var(--green-mid); text-transform: uppercase; }
+.footer-col .footer-nav-title { font-family: 'Cinzel', serif; font-size: 13px; color: var(--white); margin-bottom: 16px; }
+.footer-col a, .footer-col p { display: block; color: var(--text-dim); text-decoration: none; font-size: 14px; margin-bottom: 8px; padding: 3px 0; }
+.footer-col a:hover { color: var(--green-mid); }
+.footer-bottom { border-top: 1px solid rgba(45, 122, 58, 0.1); padding-top: 22px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.footer-bottom p, .footer-legal-link { font-family: 'Share Tech Mono', monospace; font-size: 12px; letter-spacing: 1px; color: var(--text-dim); text-transform: uppercase; text-decoration: none; background: none; border: none; cursor: pointer; }
+.footer-legal-links { display: flex; gap: 14px; flex-wrap: wrap; }
+.skip-link { position: absolute; left: 12px; top: -60px; z-index: 3000; background: #2d7a3a; color: #fff; padding: 12px 20px; text-decoration: none; }
+.skip-link:focus { top: 12px; }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid #4fd962; outline-offset: 3px; }
+main:focus { outline: none; }
+html[dir="rtl"] nav { flex-direction: row-reverse; }
+html[dir="rtl"] main { direction: ltr; }
+@media (max-width: 1300px) {
+  .nav-toggle { display: flex; }
+  .nav-links { display: none; position: fixed; inset: 0; background: var(--navy); flex-direction: column; align-items: center; justify-content: center; gap: 28px; z-index: 1000; }
+  .nav-links.open { display: flex; }
+  .nav-comp-wrap { flex-direction: column; }
+  .nav-comp-menu { position: static; transform: none; background: transparent; border: none; box-shadow: none; min-width: 0; }
+  .nav-comp-wrap.open .nav-comp-menu { display: flex; flex-direction: column; align-items: center; }
+  .nav-comp-trigger { font-size: 16px; letter-spacing: 3px; }
+}
+@media (max-width: 768px) {
+  nav { padding: 12px 20px; }
+  .nav-logo img { height: 64px; }
+  .page-hero { padding: 118px 20px 28px; }
+  footer { padding: 36px 20px 24px; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .footer-brand { grid-column: 1 / -1; }
+}
+@media (max-width: 480px) {
+  .footer-top, .footer-bottom { grid-template-columns: 1fr; flex-direction: column; }
+  .nav-brand .n2 { display: none; }
+}
+#sm-cookie-banner { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 9999; background: #0d1b2a; border-top: 1px solid rgba(45, 122, 58, 0.4); padding: 20px 48px; }
+[hidden] { display: none !important; }
+.sm-cookie-inner { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; align-items: center; }
+.sm-cookie-label { font-family: 'Share Tech Mono', monospace; font-size: 13px; letter-spacing: 1.5px; color: #3aab4a; text-transform: uppercase; }
+.sm-cookie-text { font-size: 15px; color: #c8d8ec; max-width: 680px; }
+.sm-cookie-text a { color: #3aab4a; }
+.sm-cookie-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+.sm-cookie-btn { font-family: 'Rajdhani', sans-serif; font-size: 14px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; padding: 11px 22px; background: transparent; color: #c8d8ec; border: 1px solid rgba(200, 216, 236, 0.35); }
+.sm-cookie-accept { background: #2d7a3a; color: #fff; border-color: #2d7a3a; }
+.sm-cookie-prefs { max-width: 1200px; margin: 16px auto 0; border-top: 1px solid rgba(45, 122, 58, 0.25); padding-top: 12px; }
+.sm-pref-row { display: flex; justify-content: space-between; gap: 16px; padding: 10px 0; }
+.sm-pref-name { font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+.sm-pref-desc { color: #c8d8ec; font-size: 14px; }
+.sm-pref-always { font-family: 'Share Tech Mono', monospace; color: #3aab4a; font-size: 12px; }
+.sm-pref-save { display: flex; justify-content: flex-end; padding-top: 8px; }
+@media (hover: none) and (pointer: coarse) { nav { backdrop-filter: none; } }
