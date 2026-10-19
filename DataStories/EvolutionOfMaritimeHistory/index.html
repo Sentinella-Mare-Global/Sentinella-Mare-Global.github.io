@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    analytics_storage: 'denied', ad_storage: 'denied',
+    ad_user_data: 'denied', ad_personalization: 'denied'
+  });
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="canonical" href="https://sentinellaglobal.com/DataStories/EvolutionOfMaritimeHistory/">
+<title>Evolution of Maritime History — Sentinella Mare</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="description" content="A scrolling history of maritime trade, war, finance, and infrastructure from the Bronze Age to subsea cables, across the Mediterranean, Black Sea, Red Sea, and Strait of Hormuz.">
+<meta property="og:title" content="Evolution of Maritime History — Sentinella Mare">
+<meta property="og:description" content="Each period has a narrative. The map keeps up. Straits, cargo, credit, and displacement from Troy to today.">
+<meta property="og:url" content="https://sentinellaglobal.com/DataStories/EvolutionOfMaritimeHistory/">
+<meta property="og:image" content="https://sentinellaglobal.com/DataStories/EvolutionOfMaritimeHistory/assets/era-now.jpg">
+<link rel="preconnect" href="https://server.arcgisonline.com" crossorigin>
+<link rel="stylesheet" href="/fonts/fonts.css">
+<link rel="stylesheet" href="/DataStories/vendor/leaflet.css">
+<link rel="stylesheet" href="/DataStories/chrome.css">
+<link rel="stylesheet" href="/DataStories/atlas.css">
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+<nav>
+  <a class="nav-logo" href="/">
+    <img src="/Sentinella%20Mare%20Logo_White.png" alt="Sentinella Mare">
+    <div class="nav-brand"><span class="n1">SENTINELLA MARE</span><span class="n2">Mediterranean Intelligence</span></div>
+  </a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open')"><span></span><span></span><span></span></button>
+  <div class="nav-links" id="navLinks">
+    <div class="nav-comp-wrap" id="servicesNav">
+      <button class="nav-comp-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="servicesMenu" onclick="document.getElementById('servicesNav').classList.toggle('open')">Services
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+      <div class="nav-comp-menu" id="servicesMenu">
+        <a href="/#platform" onclick="document.getElementById('servicesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Intelligence Terminal<span class="comp-link-label">Live Intelligence Platform</span></a>
+        <a href="/#briefings" onclick="document.getElementById('servicesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Intelligence Briefings<span class="comp-link-label">Subscriber newsletter</span></a>
+      </div>
+    </div>
+    <a href="/#platform">Live Platform</a>
+    <a href="/#pricing">Pricing</a>
+    <a href="/#clients">Clients</a>
+    <a href="/Leadership">Leadership</a>
+    <div class="nav-comp-wrap" id="storiesNav">
+      <button class="nav-comp-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="storiesMenu" onclick="document.getElementById('storiesNav').classList.toggle('open')">Data Stories
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+      <div class="nav-comp-menu" id="storiesMenu">
+        <a href="/DataStories/" onclick="document.getElementById('storiesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">The Map Lobby<span class="comp-link-label">Grand timeline and map</span></a>
+        <a href="/DataStories/EvolutionOfMaritimeHistory/" onclick="document.getElementById('storiesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Evolution of Maritime History<span class="comp-link-label">Mediterranean, Black Sea, Red Sea, Hormuz</span></a>
+      </div>
+    </div>
+    <div class="nav-comp-wrap" id="complianceNav">
+      <button class="nav-comp-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="complianceMenu" onclick="document.getElementById('complianceNav').classList.toggle('open')">Compliance
+        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" aria-hidden="true"><path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </button>
+      <div class="nav-comp-menu" id="complianceMenu">
+        <a href="/EUMaritimeComplianceCountdown">Deadline Countdown<span class="comp-link-label">NIS2, CER, Circ. 177</span></a>
+        <a href="/EUMaritimeComplianceExplained">Compliance Explained<span class="comp-link-label">2026–2027 pressure window</span></a>
+      </div>
+    </div>
+    <div class="lang-dropdown" id="langDropdown">
+      <button class="lang-globe" aria-label="Select language" onclick="document.getElementById('langDropdown').classList.toggle('open')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="12" cy="12" r="10"/><ellipse cx="12" cy="12" rx="4" ry="10"/><line x1="2" y1="12" x2="22" y2="12"/></svg>
+      </button>
+      <div class="lang-menu">
+        <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
+        <button class="lang-btn" id="btn-it" onclick="setLang('it')">IT</button>
+        <button class="lang-btn" id="btn-ar" onclick="setLang('ar')">AR</button>
+        <button class="lang-btn" id="btn-el" onclick="setLang('el')">EL</button>
+      </div>
+    </div>
+    <a href="https://mare.sentinellaglobal.com/" class="btn-nav" target="_blank" rel="noopener noreferrer">Launch Terminal</a>
+  </div>
+</nav>
+<main id="main" tabindex="-1">
+  <header class="page-hero story-hero">
+    <p class="page-label">Data Stories</p>
+    <h1>Evolution of <span>Maritime History</span></h1>
+    <p class="lede">A reading of the Mediterranean, the Black Sea, the Red Sea, and the Strait of Hormuz, from the Bronze Age to the present. Scroll the periods. The map on the side keeps the same doors in view. The later chapters go deeper, because coal, oil, containers, insurance, and subsea cables changed what those doors cost.</p>
+  </header>
+  <div id="atlas-root" data-atlas="story"></div>
+</main>
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="/Sentinella%20Mare%20Logo_White.png" alt="Sentinella Mare">
+      <div><p>Mediterranean maritime intelligence for operators, ports, and insurers.</p><span class="hq">// HQ: Brussels, Belgium</span></div>
+    </div>
+    <div class="footer-col">
+      <p class="footer-nav-title">Stories</p>
+      <a href="/DataStories/">The Map Lobby</a>
+      <a href="/DataStories/EvolutionOfMaritimeHistory/">Evolution of Maritime History</a>
+    </div>
+    <div class="footer-col">
+      <p class="footer-nav-title">Coverage</p>
+      <p>Gibraltar to Hormuz</p>
+      <p>Black Sea straits</p>
+      <p>Suez and Bab el-Mandeb</p>
+    </div>
+    <div class="footer-col">
+      <a href="mailto:james@sentinellaglobal.com" class="btn-primary">Contact</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Sentinella LLC · 8 The Green STE A, Dover, DE 19901, USA · HQ: Brussels, Belgium</p>
+    <div class="footer-legal-links">
+      <a class="footer-legal-link" href="/privacypolicy/">Privacy Policy</a>
+      <a class="footer-legal-link" href="/legalterms/">Terms</a>
+      <a class="footer-legal-link" href="/dpa/">DPA</a>
+      <a class="footer-legal-link" href="/legalnotice/">Legal Notice</a>
+      <a class="footer-legal-link" href="/accessibility/">Accessibility</a>
+      <button class="footer-legal-link" onclick="if(window.smOpenCookieSettings)smOpenCookieSettings()">Cookie Settings</button>
+    </div>
+  </div>
+</footer>
+<div id="sm-cookie-banner" role="dialog" aria-labelledby="sm-cookie-heading">
+  <div class="sm-cookie-inner">
+    <div>
+      <span class="sm-cookie-label" id="sm-cookie-heading">Cookie Settings</span>
+      <p class="sm-cookie-text">Sentinella Mare uses Google Analytics only if you accept. Map tiles are a separate request, to Esri, and load when you open the map. <a href="/privacypolicy/">Privacy Policy</a>.</p>
+    </div>
+    <div class="sm-cookie-actions">
+      <button id="sm-cookie-reject" class="sm-cookie-btn">Reject All</button>
+      <button id="sm-cookie-manage" class="sm-cookie-btn" aria-expanded="false" aria-controls="sm-cookie-prefs">Manage Preferences</button>
+      <button id="sm-cookie-accept" class="sm-cookie-btn sm-cookie-accept">Accept Analytics</button>
+    </div>
+  </div>
+  <div id="sm-cookie-prefs" class="sm-cookie-prefs" hidden>
+    <div class="sm-pref-row"><div><span class="sm-pref-name">Strictly necessary</span><p class="sm-pref-desc">Remembers this choice. Always on.</p></div><span class="sm-pref-always">Always on</span></div>
+    <div class="sm-pref-row"><div><label class="sm-pref-name" for="sm-pref-analytics">Analytics</label><p class="sm-pref-desc">Google Analytics. Off means no request to Google.</p></div><input type="checkbox" id="sm-pref-analytics"></div>
+    <div class="sm-pref-save"><button id="sm-cookie-save" class="sm-cookie-btn sm-cookie-accept">Save Preferences</button></div>
+  </div>
+</div>
+<script src="/DataStories/vendor/leaflet.js"></script>
+<script src="/DataStories/js/chrome.js"></script>
+<script src="/DataStories/js/atlas.js"></script>
+</body>
+</html>
