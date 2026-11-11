@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#060f18">
+<meta name="color-scheme" content="dark">
 <title>Legal Notice / Imprint — Sentinella Mare</title>
 <!-- Favicon -->
 <link rel="icon" href="/favicon.ico" sizes="any">
@@ -153,7 +155,7 @@
   .btn-primary:hover { background: #3aab4a; box-shadow: 0 0 32px rgba(79,217,98,0.3); }
 
   /* ── Responsive: nav & footer ── */
-  @media (max-width: 1300px) {
+  @media (max-width: 1380px) {
     .nav-toggle { display: flex; }
     .nav-links {
       display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0;
@@ -297,6 +299,24 @@
      height (driven by the logo) is unchanged. */
   .nav-links > a { padding: 5px 0; }
   .nav-comp-trigger { padding: 5px 0; }
+
+/* ---- Device polish: desktop, tablet, phone ---- */
+html{-webkit-tap-highlight-color:rgba(79,217,98,.18)}
+a,button,summary,label,select,[role="button"],[role="tab"]{touch-action:manipulation}
+@media (max-width:360px){
+  .nav-logo img{width:100px;height:64px;object-fit:contain}
+  .nav-brand .n1{font-size:12px;letter-spacing:.5px}
+}
+@media (min-width:1381px) and (max-width:1500px){
+  nav{padding-left:32px;padding-right:32px}
+  .nav-links{gap:20px}
+}
+@media (pointer:coarse),(max-width:1024px){
+  .nav-toggle{min-width:44px;min-height:44px}
+  .footer-col a{display:flex;align-items:center;min-height:44px}
+  .footer-legal-link{display:inline-flex;align-items:center;min-height:44px}
+  .footer-legal-link{min-width:44px;justify-content:center}
+}
 </style>
 </head>
 <body>
@@ -304,37 +324,19 @@
 <a href="#main" class="skip-link">Skip to content</a>
 <nav>
   <a class="nav-logo" href="/">
-    <img src="/Sentinella Mare Logo_White.png" alt="Sentinella Mare">
+    <img src="/Sentinella Mare Logo_White_360.png" width="360" height="337" alt="Sentinella Mare">
     <div class="nav-brand">
       <span class="n1">SENTINELLA MARE</span>
-      <span class="n2">Mediterranean Intelligence</span>
+      <span class="n2">Maritime Critical Infrastructure</span>
     </div>
   </a>
   <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open')">
     <span></span><span></span><span></span>
   </button>
   <div class="nav-links" id="navLinks">
-    <div class="nav-comp-wrap" id="servicesNav">
-      <button class="nav-comp-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="servicesMenu" onclick="document.getElementById('servicesNav').classList.toggle('open')">
-        Services
-        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-      <div class="nav-comp-menu" id="servicesMenu">
-        <a href="/#platform" onclick="document.getElementById('servicesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">
-          Intelligence Terminal
-          <span class="comp-link-label">Live Intelligence Platform</span>
-        </a>
-        <a href="/#briefings" onclick="document.getElementById('servicesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">
-          Intelligence Briefings
-          <span class="comp-link-label">Subscriber newsletter</span>
-        </a>
-      </div>
-    </div>
-    <a href="/#platform" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Live Platform</a>
-    <a href="/#pricing" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Pricing</a>
-    <a href="/#clients" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Clients</a>
+    <a href="/#protect" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">How It Protects</a>
+    <a href="/#methodology" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Methodology</a>
+    <a href="/#enterprise" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Enterprise</a>
     <a href="/Leadership" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Leadership</a>
     <div class="nav-comp-wrap" id="complianceNav">
       <button class="nav-comp-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="complianceMenu" onclick="document.getElementById('complianceNav').classList.toggle('open')">
@@ -354,7 +356,7 @@
         </a>
       </div>
     </div>
-    <a href="https://mare.sentinellaglobal.com/" class="btn-nav" target="_blank" rel="noopener noreferrer" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Launch Terminal</a>
+    <a href="https://mare.sentinellaglobal.com/" class="btn-nav" target="_blank" rel="noopener noreferrer" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Launch Platform</a>
   </div>
 </nav>
 
@@ -401,7 +403,7 @@
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <img src="/Sentinella Mare Logo_White.png" alt="Sentinella Mare">
+      <img src="/Sentinella Mare Logo_White_360.png" width="360" height="337" alt="Sentinella Mare">
       <div class="footer-brand-text">
         <p>Mediterranean maritime intelligence. AI-driven risk intelligence for shipping operators, logistics firms, and institutional investors navigating the world's most strategically complex sea.</p>
         <span class="hq">// HQ: Brussels, Belgium</span>
