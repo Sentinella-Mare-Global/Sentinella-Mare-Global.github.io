@@ -19,6 +19,8 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#060f18">
+<meta name="color-scheme" content="dark">
 <link rel="canonical" href="https://sentinellaglobal.com/Leadership">
 <title>Leadership — Sentinella Mare</title>
 <!-- Favicon -->
@@ -363,7 +365,7 @@
   }
 
   /* iPad landscape — collapse nav to hamburger */
-  @media (max-width: 1300px) {
+  @media (max-width: 1380px) {
     .nav-toggle { display: flex; }
     .nav-links {
       display: none; position: fixed;
@@ -556,6 +558,24 @@
      height (driven by the logo) is unchanged. */
   .nav-links > a { padding: 5px 0; }
   .nav-comp-trigger { padding: 5px 0; }
+
+/* ---- Device polish: desktop, tablet, phone ---- */
+html{-webkit-tap-highlight-color:rgba(79,217,98,.18)}
+a,button,summary,label,select,[role="button"],[role="tab"]{touch-action:manipulation}
+@media (max-width:360px){
+  .nav-logo img{width:100px;height:64px;object-fit:contain}
+  .nav-brand .n1{font-size:12px;letter-spacing:.5px}
+}
+@media (min-width:1381px) and (max-width:1500px){
+  nav{padding-left:32px;padding-right:32px}
+  .nav-links{gap:20px}
+}
+@media (pointer:coarse),(max-width:1024px){
+  .nav-toggle{min-width:44px;min-height:44px}
+  .footer-col a{display:flex;align-items:center;min-height:44px}
+  .footer-legal-link{display:inline-flex;align-items:center;min-height:44px}
+  .footer-legal-link{min-width:44px;justify-content:center}
+}
 </style>
 <script type="application/ld+json">
 {
@@ -579,53 +599,34 @@
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="../">
-    <img src="../Sentinella Mare Logo_White.png" alt="Sentinella Mare">
+    <img src="../Sentinella Mare Logo_White_360.png" width="360" height="337" alt="Sentinella Mare">
     <div class="nav-brand">
       <span class="n1">SENTINELLA MARE</span>
-      <span class="n2" data-i18n="nav.tagline">Mediterranean Intelligence</span>
+      <span class="n2" data-i18n="nav.tagline">Maritime Critical Infrastructure</span>
     </div>
   </a>
   <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="navLinks" onclick="this.classList.toggle('open'); document.getElementById('navLinks').classList.toggle('open')">
     <span></span><span></span><span></span>
   </button>
   <div class="nav-links" id="navLinks">
-    <div class="nav-comp-wrap" id="servicesNav">
-      <button class="nav-comp-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="servicesMenu" onclick="document.getElementById('servicesNav').classList.toggle('open')">
-        Services
-        <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-      <div class="nav-comp-menu" id="servicesMenu">
-        <a href="../#platform" onclick="document.getElementById('servicesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">
-          Intelligence Terminal
-          <span class="comp-link-label">Live Intelligence Platform</span>
-        </a>
-        <a href="../#briefings" onclick="document.getElementById('servicesNav').classList.remove('open'); document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">
-          Intelligence Briefings
-          <span class="comp-link-label">Subscriber newsletter</span>
-        </a>
-      </div>
-    </div>
-    <a href="../#platform" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Live Platform</a>
-    <a href="../#pricing" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Pricing</a>
-    <a href="../#clients" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Clients</a>
-    <a href="/Leadership" class="active" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Leadership</a>
+    <a href="/#protect" data-i18n="nav.protect" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">How It Protects</a>
+    <a href="/#methodology" data-i18n="nav.methodology" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Methodology</a>
+    <a href="/#enterprise" data-i18n="nav.enterprise" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Enterprise</a>
+    <a href="/Leadership" class="active" data-i18n="nav.leadership" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Leadership</a>
     <div class="nav-comp-wrap" id="complianceNav">
-      <button class="nav-comp-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="complianceMenu" onclick="document.getElementById('complianceNav').classList.toggle('open')">
-        Compliance
+      <button class="nav-comp-trigger" aria-expanded="false" aria-haspopup="true" aria-controls="complianceMenu" onclick="document.getElementById('complianceNav').classList.toggle('open')"><span data-i18n="nav.compliance">Compliance</span>
         <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
       <div class="nav-comp-menu" id="complianceMenu">
         <a href="/EUMaritimeComplianceCountdown" target="_blank" rel="noopener noreferrer">
-          Deadline Countdown
-          <span class="comp-link-label">NIS2 · CER · Circ. 177 live timers</span>
+          <span data-i18n="nav.deadline">Deadline Countdown</span>
+          <span class="comp-link-label" data-i18n="nav.deadline.sub">NIS2 · CER · Circ. 177 live timers</span>
         </a>
         <a href="/EUMaritimeComplianceExplained" target="_blank" rel="noopener noreferrer">
-          Compliance Explained
-          <span class="comp-link-label">2026–2027 pressure window guide</span>
+          <span data-i18n="nav.explained">Compliance Explained</span>
+          <span class="comp-link-label" data-i18n="nav.explained.sub">2026–2027 pressure window guide</span>
         </a>
       </div>
     </div>
@@ -644,7 +645,7 @@
         <button class="lang-btn" onclick="setLang('el'); document.getElementById('langDropdown').classList.remove('open')" id="btn-el">EL</button>
       </div>
     </div>
-    <a href="https://mare.sentinellaglobal.com/" class="btn-nav" target="_blank" rel="noopener noreferrer" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')">Launch Terminal</a>
+    <a href="https://mare.sentinellaglobal.com/" class="btn-nav" target="_blank" rel="noopener noreferrer" onclick="document.getElementById('navToggle').classList.remove('open'); document.getElementById('navLinks').classList.remove('open')" data-i18n="nav.cta">Launch Platform</a>
   </div>
 </nav>
 
@@ -660,7 +661,7 @@
 <section class="leadership-section">
   <div class="leadership-card">
     <div class="leader-header">
-      <img src="../James Davies_Headshot.jpeg" alt="James Davies" class="leader-headshot">
+      <img src="../James Davies_Headshot.jpeg" alt="James Davies" width="400" height="400" loading="lazy" decoding="async" class="leader-headshot">
       <div class="leader-meta">
         <div class="leader-name" data-i18n="leader.name">James Davies</div>
         <div class="leader-title" data-i18n="leader.title">Founder &amp; CEO</div>
@@ -676,7 +677,7 @@
 
   <div class="leadership-card" style="margin-top: 48px;">
     <div class="leader-header">
-      <img src="../Jian Roachell_Headshot.jpeg" alt="Jianyin Roachell" class="leader-headshot">
+      <img src="../Jian Roachell_Headshot.jpeg" alt="Jianyin Roachell" width="217" height="217" loading="lazy" decoding="async" class="leader-headshot">
       <div class="leader-meta">
         <div class="leader-name" data-i18n="leader3.name">Jianyin Roachell</div>
         <div class="leader-title" data-i18n="leader3.title">Co-Founder &amp; CTO</div>
@@ -692,7 +693,7 @@
 
   <div class="leadership-card" style="margin-top: 48px;">
     <div class="leader-header">
-      <img src="../Erika Ritzmann_Headshot.png" alt="Erika Ritzmann" class="leader-headshot" style="object-position: 50% 25%;">
+      <img src="../Erika Ritzmann_Headshot.jpg" alt="Erika Ritzmann" width="420" height="560" loading="lazy" decoding="async" class="leader-headshot" style="object-position: 50% 25%;">
       <div class="leader-meta">
         <div class="leader-name" data-i18n="leader2.name">Erika Ritzmann</div>
         <div class="leader-title" data-i18n="leader2.title">Co-Founder &amp; COO</div>
@@ -714,7 +715,7 @@
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <img src="../Sentinella Mare Logo_White.png" alt="Sentinella Mare">
+      <img src="../Sentinella Mare Logo_White_360.png" width="360" height="337" alt="Sentinella Mare">
       <div class="footer-brand-text">
         <p data-i18n="footer.brand">Mediterranean maritime intelligence. AI-driven risk intelligence for shipping operators, logistics firms, and institutional investors navigating the world's most strategically complex sea.</p>
         <span class="hq" data-i18n="footer.hq">// HQ: Brussels, Belgium</span>
@@ -757,13 +758,7 @@ let currentLang = 'en';
 
 const translations = {
   en: {
-    'nav.tagline': 'Mediterranean Intelligence',
-    'nav.services': 'Services',
-    'nav.platform': 'Live Platform',
-    'nav.pricing': 'Subscription',
-    'nav.clients': 'Clients',
     'nav.leadership': 'Leadership',
-    'nav.cta': 'Request Access',
     'leadership.label': 'Sentinella Mare',
     'leadership.h1': 'Our <span>Leadership</span>',
     'leader.name': 'James Davies',
@@ -797,15 +792,19 @@ const translations = {
     'footer.h.contact': 'Contact',
     'footer.copy': '© 2026 Sentinella LLC · 8 The Green STE A, Dover, DE 19901, USA · HQ: Brussels, Belgium',
     'footer.platform': 'MARITIME HYBRID THREAT INTELLIGENCE PLATFORM',
+    "nav.protect": "How It Protects",
+    "nav.methodology": "Methodology",
+    "nav.enterprise": "Enterprise",
+    "nav.compliance": "Compliance",
+    "nav.deadline": "Deadline Countdown",
+    "nav.explained": "Compliance Explained",
+    "nav.deadline.sub": "NIS2 · CER · Circ. 177 live timers",
+    "nav.explained.sub": "2026–2027 pressure window guide",
+    "nav.tagline": "Maritime Critical Infrastructure",
+    "nav.cta": "Launch Platform",
   },
   it: {
-    'nav.tagline': 'Intelligence Mediterranea',
-    'nav.services': 'Servizi',
-    'nav.platform': 'Piattaforma Live',
-    'nav.pricing': 'Abbonamento',
-    'nav.clients': 'Clienti',
     'nav.leadership': 'Leadership',
-    'nav.cta': 'Richiedi Accesso',
     'leadership.label': 'Sentinella Mare',
     'leadership.h1': 'La Nostra <span>Leadership</span>',
     'leader.name': 'James Davies',
@@ -834,15 +833,19 @@ const translations = {
     'footer.h.contact': 'Contatto',
     'footer.copy': '© 2026 Sentinella LLC · 8 The Green STE A, Dover, DE 19901, USA · HQ: Brussels, Belgium',
     'footer.platform': 'PIATTAFORMA DI INTELLIGENCE IBRIDA MARITTIMA',
+    "nav.protect": "Come protegge",
+    "nav.methodology": "Metodologia",
+    "nav.enterprise": "Enterprise",
+    "nav.compliance": "Conformità",
+    "nav.deadline": "Conto alla rovescia delle scadenze",
+    "nav.explained": "La conformità spiegata",
+    "nav.deadline.sub": "NIS2 · CER · Circ. 177: timer in tempo reale",
+    "nav.explained.sub": "Guida alla finestra di pressione 2026–2027",
+    "nav.tagline": "Infrastrutture Marittime Critiche",
+    "nav.cta": "Avvia la Piattaforma",
   },
   ar: {
-    'nav.tagline': 'الاستخبارات المتوسطية',
-    'nav.services': 'الخدمات',
-    'nav.platform': 'المنصة المباشرة',
-    'nav.pricing': 'الاشتراك',
-    'nav.clients': 'العملاء',
     'nav.leadership': 'القيادة',
-    'nav.cta': 'طلب الوصول',
     'leadership.label': 'سينتينيلا غلوبال',
     'leadership.h1': '<span>قيادتنا</span>',
     'leader.name': 'جيمس ديفيز',
@@ -871,15 +874,19 @@ const translations = {
     'footer.h.contact': 'تواصل',
     'footer.copy': '© 2026 Sentinella LLC · 8 The Green STE A, Dover, DE 19901, USA · HQ: Brussels, Belgium',
     'footer.platform': 'منصة استخبارات التهديدات الهجينة البحرية',
+    "nav.protect": "كيف نحمي",
+    "nav.methodology": "المنهجية",
+    "nav.enterprise": "Enterprise",
+    "nav.compliance": "الامتثال",
+    "nav.deadline": "العد التنازلي للمواعيد النهائية",
+    "nav.explained": "الامتثال موضَّحًا",
+    "nav.deadline.sub": "NIS2 · CER · Circ. 177: مؤقتات مباشرة",
+    "nav.explained.sub": "دليل نافذة الضغط 2026–2027",
+    "nav.tagline": "البنية التحتية البحرية الحيوية",
+    "nav.cta": "إطلاق المنصة",
   },
   el: {
-    'nav.tagline': 'Μεσογειακή Πληροφόρηση',
-    'nav.services': 'Υπηρεσίες',
-    'nav.platform': 'Ζωντανή Πλατφόρμα',
-    'nav.pricing': 'Συνδρομή',
-    'nav.clients': 'Πελάτες',
     'nav.leadership': 'Ηγεσία',
-    'nav.cta': 'Αίτηση Πρόσβασης',
     'leadership.label': 'Sentinella Mare',
     'leadership.h1': 'Η <span>Ηγεσία</span> μας',
     'leader.name': 'James Davies',
@@ -908,6 +915,16 @@ const translations = {
     'footer.h.contact': 'Επικοινωνία',
     'footer.copy': '© 2026 Sentinella LLC · 8 The Green STE A, Dover, DE 19901, USA · HQ: Brussels, Belgium',
     'footer.platform': 'ΠΛΑΤΦΌΡΜΑ ΥΒΡΙΔΙΚΗΣ ΝΑΥΤΙΚΗΣ ΠΛΗΡΟΦΟΡΙΑΚΗΣ ΑΠΕΙΛΗΣ',
+    "nav.protect": "Πώς προστατεύει",
+    "nav.methodology": "Μεθοδολογία",
+    "nav.enterprise": "Enterprise",
+    "nav.compliance": "Συμμόρφωση",
+    "nav.deadline": "Αντίστροφη μέτρηση προθεσμιών",
+    "nav.explained": "Η συμμόρφωση εξηγημένη",
+    "nav.deadline.sub": "NIS2 · CER · Circ. 177: ζωντανοί χρονομετρητές",
+    "nav.explained.sub": "Οδηγός για το παράθυρο πίεσης 2026–2027",
+    "nav.tagline": "Κρίσιμες Θαλάσσιες Υποδομές",
+    "nav.cta": "Εκκίνηση Πλατφόρμας",
   },
 };
 
